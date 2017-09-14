@@ -14,7 +14,6 @@ Thumbs.db
 
 # composer vendor dir
 /vendor
-/common/config/main-local.php
 
 # Mac DS_Store Files
 .DS_Store
