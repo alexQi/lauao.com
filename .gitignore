@@ -14,10 +14,7 @@ Thumbs.db
 
 # composer vendor dir
 /vendor
-/config/localhost
-
-# composer itself is not needed
-composer.phar
+/common/config
 
 # Mac DS_Store Files
 .DS_Store
@@ -27,5 +24,7 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
-/web/uploads
-/runtime
+# runtime dir
+/backend/runtime
+/console/runtime
+/frontend/runtime
