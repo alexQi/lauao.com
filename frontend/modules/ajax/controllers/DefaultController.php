@@ -52,6 +52,8 @@ class DefaultController extends BaseController
             }
             $uploadFile = $_FILES['file'];
 
+			
+			
             $bucket = 'apply-user';
             $qiniu = new MyQiniu($bucket);
             $key = 'QB'.time();
