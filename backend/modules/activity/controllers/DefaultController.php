@@ -4,7 +4,7 @@ namespace backend\modules\activity\controllers;
 
 use Yii;
 use common\models\ActivityBase;
-use backend\models\activityBaseSearch;
+use backend\models\ActivityBaseSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
