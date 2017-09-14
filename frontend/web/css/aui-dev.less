@@ -1,0 +1,2737 @@
+@namespace: aui-;
+@fontFamily: "Helvetica Neue", Helvetica, sans-serif;
+@bodyColor: #212121; //body字体颜色
+@bodyBgColor: #f5f5f5;
+@textColor: #212121; //字体主色
+@text2Color: #757575;//字体副色
+@aTextColor: #0062cc;//a标签字体颜色
+@pTextColor: #757575;//p标签字体颜色
+@hTextColor: #757575;//h标签字体颜色
+@textBlueColor: #03a9f4;//默认蓝色字体
+@borderBlueColor: #03a9f4;//默认蓝色线条
+// 常用字体颜色
+@textDefaultColor: #212121;//默认字体色
+@textWhiteColor: #ffffff;//白色
+@textPrimaryColor: #00bcd4;//primary
+@textSuccessColor: #009688;//success
+@textInfoColor: #03a9f4;//info
+@textWarningColor: #ffc107;//warning
+@textDangerColor: #e51c23;//danger
+@textPinkColor: #e91e63;//pink
+@textPurpleColor: #673ab7;//purple
+@textIndigoColor: #3f51b5;//indigo
+// 背景色
+@bgWhiteColor: #ffffff;//白色
+@bgDefaultColor: #f5f5f5;//浅灰
+@bgPrimaryColor: #00bcd4;//primary
+@bgSuccessColor: #009688;//success
+@bgInfoColor: #03a9f4;//info
+@bgWarningColor: #ffc107;//warning
+@bgDangerColor: #e51c23;//danger
+@bgPinkColor: #e91e63;//pink
+@bgPurpleColor: #673ab7;//purple
+@bgIndigoColor: #3f51b5;//indigo
+// label
+@labelTextColor: #616161;//字体色
+@labelBgColor: #dddddd;//背景色
+@labelTextWhiteColor: #ffffff;
+@labelBorderColor: #d9d9d9;
+// badge
+@bageBgColor: #ff2600;
+// dot
+@dotBgColor: #ff2600;
+//button
+@btnDefaultBgColor: #dddddd;
+// button active
+@btnActiveDefaultColor: #bdbdbd;
+@btnActivePrimaryColor: #00acc1;
+@btnActiveSuccessColor: #00897b;
+@btnActiveInfoColor: #039be5;
+@btnActiveWarningColor: #ffb300;
+@btnActiveDangerColor: #dd191b;
+// button border
+@btnBorderDefaultColor: #dcdcdc;
+@btnBorderPrimaryColor: #00bcd4;
+@btnBorderSuccessColor: #009688;
+@btnBorderInfoColor: #03a9f4;
+@btnBorderWarningColor: #ffc107;
+@btnBorderDangerColor: #e51c23;
+// input color
+@inputTextColor: #424242;
+// 线条颜色
+@lineBorderColor: #dddddd;//列表线条颜色
+// list
+@listHeaderTextColor: #212121;//列表header字体颜色
+@listHeaderBgColor: #dddddd;//列表header北京颜色
+@listItemActiveBgColor: #f5f5f5;//列表点击时背景色
+@listItemTitleColor: #212121;//列表字体主色
+@listItemTextColor: #757575;//列表字体副色
+@listItemLabelColor: #212121;//列表label容器内字体及字体图标颜色
+//nav
+@navBgColor: #03a9f4;//默认导航栏颜色
+@navTextColor: #ffffff;//默认导航栏文本色
+@navLightBgColor: #ffffff;//浅色导航栏颜色
+@navLightTextColor: #03a9f4;//浅色导航栏背景色
+// footer bar
+@footerBgColor: #ffffff;//底部工具栏背景色
+@footerTextColor: #757575;//底部工具栏字体色
+@footerActiveTextColor: #03a9f4;//底部工具栏选中时字体色
+//bar btn
+@barBorderColor: #03a9f4;//按钮组线条颜色
+@barActiveBgColor: #03a9f4;//按钮组选中时背景色
+@barActiveTextColor: #ffffff;//按钮组选中时文本色
+@barNavTextColor: #ffffff;//导航栏下按钮组字体色
+@barNavActiveBgColor: #ffffff;//导航栏下按钮组选中时背景
+@barNavActiveTextColor: #03a9f4;//导航栏下按钮组选中时字体
+@barNavLightBorderColor: #03a9f4;//浅色导航栏下按钮组线条
+@barNavLightActiveBgColor: #03a9f4;//浅色导航栏下按钮组选中背景色
+@barNavLightActiveTextColor: #ffffff;//浅色导航栏下按钮组选中文本
+// progress
+@progressBgColor: #f0f0f0;
+@progressTextColor: #ffffff;
+@progressActiveBgColor: #03a9f4;
+// range
+@rangeBgColor: #f0f0f0;
+@rangeActiveColor: #03a9f4;
+// check radio
+@checkBgColor: #ffffff;
+@checkBorderColor: #dddddd;
+@checkActiveColor: #03a9f4;
+//switch
+@switchColor: #03a9f4;
+// 顶部导航栏高度
+@navHeight: 2.2rem;
+// 底部菜单栏
+@footerBarHeight: 2.5rem;
+// 聊天组件
+@chatLeftBgColor: #b3e5fc;
+@chatRightBgColor: #ffffff;
+@chatTextColor: #212121;
+/*
+ * =========================================================================
+ * AUI 框架 @author 流浪男 http://www.auicss.com
+ * Verson 2.2
+ * =========================================================================
+ */
+ /*初始化类*/
+@charset "UTF-8";
+html{
+	font-family: @fontFamily;
+	font-size: 20px;
+	@media only screen and (min-width: 400px) {
+		font-size: 21.33333333px !important;
+	}
+	@media only screen and (min-width: 414px) {
+		font-size: 21px !important;
+	}
+	@media only screen and (min-width: 480px) {
+		font-size: 25.6px !important;
+	}
+}
+html,body {
+	-webkit-touch-callout:none;
+	-webkit-text-size-adjust:none;
+	-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+	-webkit-user-select:none;
+	width: 100%;
+}
+body {
+	line-height: 1.5;
+	font-size: 0.8rem;
+	color: @textColor;
+	background-color: @bodyBgColor;
+	outline: 0;
+}
+* {
+	-webkit-box-sizing: border-box;
+	      	box-sizing: border-box;
+	-webkit-user-select: none;
+	-webkit-tap-highlight-color: transparent;
+	outline: none;
+	margin:0;
+	border:0;
+	padding:0;
+	font-style:normal;
+}
+
+ul, li {
+	list-style: none;
+}
+p {
+	font-size: 0.7rem;
+	color: @pTextColor;
+}
+a {
+	color: @aTextColor;
+	text-decoration: none;
+	background-color: transparent;
+}
+textarea {
+	overflow: hidden;
+	resize: none;
+}
+button {
+	overflow: visible;
+}
+button,select {
+	text-transform: none;
+}
+button,input,select,textarea {
+	font: inherit;
+	color: inherit;
+}
+/*自动隐藏文字*/
+.@{namespace}ellipsis-1 {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.@{namespace}ellipsis {
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	word-break: break-all;
+	white-space: normal !important;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+}
+.@{namespace}ellipsis-2 {
+	display: -webkit-box;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	word-break: break-all;
+	white-space: normal !important;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+/*水平线*/
+.@{namespace}hr {
+	width: 100%;
+	position: relative;
+	border-top: 1px solid @lineBorderColor;
+	height: 1px;
+}
+@media screen and (-webkit-min-device-pixel-ratio:1.5) {
+	.@{namespace}hr{
+		.media-border-t;
+	}
+}
+/*内外边距类*/
+.@{namespace}padded-0 {
+	padding: 0 !important;
+}
+.@{namespace}padded-5 {
+	padding: 0.25rem !important;
+}
+.@{namespace}padded-10 {
+	padding: 0.5rem !important;
+}
+.@{namespace}padded-15 {
+	padding: 0.75rem !important;
+}
+.@{namespace}padded-t-0 {
+	padding-top: 0 !important;
+}
+.@{namespace}padded-t-5 {
+	padding-top: 0.25rem !important;
+}
+.@{namespace}padded-t-10 {
+	padding-top: 0.5rem !important;
+}
+.@{namespace}padded-t-15 {
+	padding-top: 0.75rem !important;
+}
+.@{namespace}padded-b-0 {
+	padding-bottom: 0 !important;
+}
+.@{namespace}padded-b-5 {
+	padding-bottom: 0.25rem !important;
+}
+.@{namespace}padded-b-10 {
+	padding-bottom: 0.5rem !important;
+}
+.@{namespace}padded-b-15 {
+	padding-bottom: 0.75rem !important;
+}
+.@{namespace}padded-l-0 {
+	padding-left: 0 !important;
+}
+.@{namespace}padded-l-5 {
+	padding-left: 0.25rem !important;
+}
+.@{namespace}padded-l-10 {
+	padding-left: 0.5rem !important;
+}
+.@{namespace}padded-l-15 {
+	padding-left: 0.75rem !important;
+}
+.@{namespace}padded-r-0 {
+	padding-right: 0 !important;
+}
+.@{namespace}padded-r-5 {
+	padding-right: 0.25rem !important;
+}
+.@{namespace}padded-r-10 {
+	padding-right: 0.5rem !important;
+}
+.@{namespace}padded-r-15 {
+	padding-right: 0.75rem !important;
+}
+.@{namespace}margin-0 {
+	margin: 0 !important;
+}
+.@{namespace}margin-5 {
+	margin: 0.25rem !important;
+}
+.@{namespace}margin-10 {
+	margin: 0.5rem !important;
+}
+.@{namespace}margin-15 {
+	margin: 0.75rem !important;
+}
+.@{namespace}margin-t-0 {
+	margin-top: 0.25rem !important;
+}
+.@{namespace}margin-t-5 {
+	margin-top: 0 !important;
+}
+.@{namespace}margin-t-10 {
+	margin-top: 0.5rem !important;
+}
+.@{namespace}margin-t-15 {
+	margin-top: 0.75rem !important;
+}
+.@{namespace}margin-b-0 {
+	margin-bottom: 0 !important;
+}
+.@{namespace}margin-b-5 {
+	margin-bottom: 0.25rem !important;
+}
+.@{namespace}margin-b-10 {
+	margin-bottom: 0.5rem !important;
+}
+.@{namespace}margin-b-15 {
+	margin-bottom: 0.75rem !important;
+}
+.@{namespace}margin-l-0 {
+	margin-left: 0 !important;
+}
+.@{namespace}margin-l-5 {
+	margin-left: 0.25rem !important;
+}
+.@{namespace}margin-l-10 {
+	margin-left: 0.5rem !important;
+}
+.@{namespace}margin-l-15 {
+	margin-left: 0.75rem !important;
+}
+.@{namespace}margin-r-0 {
+	margin-right: 0 !important;
+}
+.@{namespace}margin-r-5 {
+	margin-right: 0.25rem !important;
+}
+.@{namespace}margin-r-10 {
+	margin-right: 0.5rem !important;
+}
+.@{namespace}margin-r-15 {
+	margin-right: 0.75rem !important;
+}
+.@{namespace}clearfix {
+	clear: both;
+}
+.@{namespace}clearfix:before {
+	display: table;
+	content: " ";
+}
+.@{namespace}clearfix:after {
+	clear: both;
+}
+/*文字对齐*/
+.@{namespace}text-left {
+	text-align: left !important;
+}
+.@{namespace}text-center {
+	text-align: center !important;
+}
+.@{namespace}text-justify {
+	text-align: justify !important;
+}
+.@{namespace}text-right {
+	text-align: right !important;
+}
+/*文字、背景颜色*/
+h1,h2,h3,h4,h5,h6 {
+	font-weight: 400;
+}
+h1 {
+	font-size: 1.2rem;
+}
+h2 {
+	font-size: 1rem;
+}
+h3 {
+	font-size: 0.8rem;
+}
+h4 {
+	font-size: 0.7rem;
+}
+h5 {
+	font-size: 0.7rem;
+	font-weight: normal;
+	color: @text2Color;
+}
+h6 {
+	font-size: 0.7rem;
+	font-weight: normal;
+	color: @text2Color;
+}
+h1 small,h2 small,h3 small,h4 small {
+	font-weight: normal;
+	line-height: 1;
+	color: @text2Color;
+}
+h5 small,h6 small {
+	font-weight: normal;
+	line-height: 1;
+	color: @text2Color;
+}
+h1 small,h2 small,h3 small {
+	font-size: 65%;
+}
+h4 small,h5 small,h6 small {
+	font-size: 75%;
+}
+img {
+	max-width: 100%;
+	display: block;
+}
+.@{namespace}font-size-12 {
+	font-size: 0.6rem !important;
+}
+.@{namespace}font-size-14 {
+	font-size: 0.7rem !important;
+}
+.@{namespace}font-size-16 {
+	font-size: 0.8rem !important;
+}
+.@{namespace}font-size-18 {
+	font-size: 0.9rem !important;
+}
+.@{namespace}font-size-20 {
+	font-size: 1rem !important;
+}
+.@{namespace}text-default {
+	color: @textDefaultColor !important;
+}
+.@{namespace}text-white {
+	color: @textWhiteColor !important;
+}
+.@{namespace}text-primary {
+	color: @textPrimaryColor !important;
+}
+.@{namespace}text-success {
+	color: @textSuccessColor !important;
+}
+.@{namespace}text-info {
+	color: @textInfoColor !important;
+}
+.@{namespace}text-warning {
+	color: @textWarningColor !important;
+}
+.@{namespace}text-danger {
+	color: @textDangerColor !important;
+}
+.@{namespace}text-pink {
+	color: @textPinkColor !important;
+}
+.@{namespace}text-purple {
+	color: @textPurpleColor !important;
+}
+.@{namespace}text-indigo {
+	color: @textIndigoColor !important;
+}
+.@{namespace}bg-default {
+	background-color: @bgDefaultColor !important;
+}
+.@{namespace}bg-primary {
+	background-color: @bgPrimaryColor !important;
+}
+.@{namespace}bg-success {
+	background-color: @bgSuccessColor !important;
+}
+.@{namespace}bg-info {
+	background-color: @bgInfoColor !important;
+}
+.@{namespace}bg-warning {
+	background-color: @bgWarningColor !important;
+}
+.@{namespace}bg-danger {
+	background-color: @bgDangerColor !important;
+}
+.@{namespace}bg-pink {
+	background-color: @bgPinkColor !important;
+}
+.@{namespace}bg-purple {
+	background-color: @bgPurpleColor !important;
+}
+.@{namespace}bg-indigo {
+	background-color: @bgIndigoColor !important;
+}
+/*警告、成功颜色*/
+.@{namespace}warning,
+.@{namespace}warning label,
+.@{namespace}warning .@{namespace}input,
+.@{namespace}warning .@{namespace}iconfont {
+	color: @textWarningColor !important;
+}
+.@{namespace}success,
+.@{namespace}success label,
+.@{namespace}success .@{namespace}input,
+.@{namespace}success .@{namespace}iconfont {
+	color: @textSuccessColor !important;
+}
+/*对齐,显示，隐藏等*/
+.@{namespace}pull-right {
+	float: right !important;
+}
+.@{namespace}pull-left {
+	float: left !important;
+}
+.@{namespace}hide {
+	display: none !important;
+}
+.@{namespace}show {
+	display: block !important;
+}
+.@{namespace}invisible {
+	visibility: hidden;
+}
+.@{namespace}inline {
+	display: inline-block;
+	vertical-align: top;
+}
+.@{namespace}mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    z-index: 99;
+    visibility: hidden;
+    -webkit-transition: opacity .3s,-webkit-transform .3s;
+    transition: opacity .3s,transform .3s;
+}
+.@{namespace}mask.@{namespace}mask-in {
+	visibility: visible;
+  	opacity: 1;
+}
+.@{namespace}mask.@{namespace}mask-out {
+	opacity: 0;
+}
+img.@{namespace}img-round {
+	border-radius: 50%;
+}
+/*基本容器*/
+.@{namespace}content {
+	-webkit-overflow-scrolling: touch;
+	overflow-x: hidden;
+	word-break: break-all;
+}
+.@{namespace}content-padded {
+  	margin: 0.75rem;
+  	position: relative;
+  	word-break: break-all;
+  	-webkit-overflow-scrolling: touch;
+}
+/*栅格类*/
+.@{namespace}row {
+	overflow: hidden;
+	margin: 0;
+}
+.@{namespace}row-padded {
+	margin-left: -0.125rem;
+	margin-right: -0.125rem;
+}
+.@{namespace}row-padded [class*="@{namespace}col-"] {
+	padding: 0.125rem;
+}
+.@{namespace}col-xs-1,.@{namespace}col-xs-2,.@{namespace}col-xs-3,.@{namespace}col-xs-4,.@{namespace}col-xs-5,.@{namespace}col-xs-6,.@{namespace}col-xs-7,.@{namespace}col-xs-8,.@{namespace}col-xs-9,.@{namespace}col-xs-10,.@{namespace}col-xs-11,.@{namespace}col-5 {
+	position: relative;
+	float: left;
+}
+.@{namespace}col-xs-12 {
+	width: 100%;
+	position: relative;
+}
+.@{namespace}col-xs-11 {
+	width: 91.66666667%;
+}
+.@{namespace}col-xs-10 {
+	width: 83.33333333%;
+}
+.@{namespace}col-xs-9 {
+	width: 75%;
+}
+.@{namespace}col-xs-8 {
+	width: 66.66666667%;
+}
+.@{namespace}col-xs-7 {
+	width: 58.33333333%;
+}
+.@{namespace}col-xs-6 {
+	width: 50%;
+}
+.@{namespace}col-xs-5 {
+	width: 41.66666667%;
+}
+.@{namespace}col-xs-4 {
+	width: 33.33333333%;
+}
+.@{namespace}col-xs-3 {
+	width: 25%;
+}
+.@{namespace}col-xs-2 {
+	width: 16.66666667%;
+}
+.@{namespace}col-xs-1 {
+	width: 8.33333333%;
+}
+.@{namespace}col-5 {
+	width: 20%;
+}
+/*标签*/
+.@{namespace}label {
+	display: inline-block;
+	padding: 0.1rem 0.25rem;
+	font-size: 0.6rem;
+	line-height: normal;
+	color: @labelTextColor;
+    background-color: @labelBgColor;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	border-radius: 0.15rem;
+	position: relative;
+}
+
+.@{namespace}label-primary {
+	color: @labelTextWhiteColor;
+	background-color: @bgPrimaryColor;
+}
+.@{namespace}label-success {
+	color: @labelTextWhiteColor;
+	background-color: @bgSuccessColor;
+}
+.@{namespace}label-info {
+  color: @labelTextWhiteColor;
+  background-color: @bgInfoColor;
+}
+.@{namespace}label-warning {
+	color: @labelTextWhiteColor;
+	background-color: @bgWarningColor;
+}
+.@{namespace}label-danger {
+	color: @labelTextWhiteColor;
+	background-color: @bgDangerColor;
+}
+.@{namespace}label-outlined {
+	background-color: transparent;
+	position: relative;
+}
+.@{namespace}label-outlined:after {
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    height: 200%;
+    content: '';
+    width: 200%;
+	border: 1px solid @labelBorderColor;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    z-index: 1;
+}
+.@{namespace}label-outlined.@{namespace}label-primary,
+.@{namespace}label-outlined.@{namespace}label-primary:after {
+	color: @textPrimaryColor;
+	border-color: @bgPrimaryColor;
+}
+.@{namespace}label-outlined.@{namespace}label-success,
+.@{namespace}label-outlined.@{namespace}label-success:after {
+	color: @textSuccessColor;
+	border-color: @bgSuccessColor;
+}
+.@{namespace}label-outlined.@{namespace}label-info,
+.@{namespace}label-outlined.@{namespace}label-info:after {
+  	color: @textInfoColor;
+  	border-color: @bgInfoColor;
+}
+.@{namespace}label-outlined.@{namespace}label-warning,
+.@{namespace}label-outlined.@{namespace}label-warning:after {
+	color: @textWarningColor;
+	border-color: @bgWarningColor;
+}
+.@{namespace}label-outlined.@{namespace}label-danger,
+.@{namespace}label-outlined.@{namespace}label-danger:after {
+	color: @textDangerColor;
+	border-color: @bgDangerColor;
+}
+.@{namespace}label .@{namespace}iconfont {
+	font-size: 0.6rem;
+}
+/*角标*/
+.@{namespace}badge {
+	display: inline-block;
+	width: auto;
+	text-align: center;
+	min-width: 0.8rem;
+	height: 0.8rem;
+    line-height: 0.8rem;
+    padding: 0 0.2rem;
+    font-size: 0.6rem;
+    color: @textWhiteColor;
+    background-color: @bageBgColor;
+    border-radius: 0.4rem;
+    position: absolute;
+    top: 0.2rem;
+    left: 60%;
+    z-index: 99;
+}
+.@{namespace}dot {
+	display: inline-block;
+    width: 0.4rem;
+    height: 0.4rem;
+    background: @dotBgColor;
+    border-radius: 0.5rem;
+    position: absolute;
+    top: 0.3rem;
+    right: 20%;
+    z-index: 99;
+}
+/*按钮样式*/
+button, .@{namespace}btn {
+	position: relative;
+	display: inline-block;
+	font-size: 0.7rem;
+	font-weight: 400;
+	font-family: inherit;
+	text-decoration: none;
+	text-align: center;
+	margin: 0;
+	background: @btnDefaultBgColor;
+	padding: 0 0.6rem;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	border-radius: 0.2rem;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	vertical-align: middle;
+	-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+	-webkit-user-select: none;
+	      	user-select: none;
+	&:active {
+		color: @textDefaultColor;
+		background-color: @btnActiveDefaultColor;
+	}
+}
+.@{namespace}btn-primary {
+	color: @textWhiteColor;
+	background-color: @bgPrimaryColor;
+	&.@{namespace}active,&:active {
+		color: @textWhiteColor;
+		background-color: @btnActivePrimaryColor;
+	}
+}
+.@{namespace}btn-success {
+	color: @textWhiteColor;
+	background-color: @bgSuccessColor;
+	&.@{namespace}active,&:active {
+		color: @textWhiteColor;
+		background-color: @btnActiveSuccessColor;
+	}
+}
+.@{namespace}btn-info {
+	color: @textWhiteColor !important;
+	background-color: @bgInfoColor !important;
+	&.@{namespace}active,&:active {
+		color: @textWhiteColor !important;
+		background-color: @btnActiveInfoColor !important;
+	}
+}
+.@{namespace}btn-warning {
+	color: @textWhiteColor !important;
+	background-color: @bgWarningColor !important;
+	&.@{namespace}active,&:active {
+		color: @textWhiteColor !important;
+		background-color: @btnActiveWarningColor !important;
+	}
+}
+.@{namespace}btn-danger {
+	color: @textWhiteColor !important;
+	background-color: @bgDangerColor !important;
+	&.@{namespace}active,&:active {
+		color: @textWhiteColor !important;
+		background-color: @btnActiveDangerColor !important;
+	}
+}
+.@{namespace}btn-block {
+	display: block;
+	width: 100%;
+	height: 2.5rem;
+	line-height: 2.55rem;
+	margin-bottom: 0;
+	font-size: 0.9rem;
+}
+.@{namespace}btn-block.@{namespace}btn-sm {
+	font-size: 0.7rem;
+	height: 1.8rem;
+	line-height: 1.85rem;
+}
+.@{namespace}btn .@{namespace}iconfont, .@{namespace}btn-block .@{namespace}iconfont {
+	margin-right: 0.3rem;
+}
+.@{namespace}btn .@{namespace}badge, .@{namespace}btn-block .@{namespace}badge {
+	margin-left: 0.3rem;
+}
+.@{namespace}btn-outlined {
+	background: transparent !important;
+	&:after{
+		-webkit-border-radius: 4px;
+	    border-radius: 4px;
+	    height: 200%;
+	    content: '';
+	    width: 200%;
+	    border: 1px solid @btnBorderDefaultColor;
+	    position: absolute;
+	    top: -1px;
+	    left: -1px;
+	    transform: scale(0.5);
+	    -webkit-transform: scale(0.5);
+	    transform-origin: 0 0;
+	    -webkit-transform-origin: 0 0;
+	    z-index: 1;
+	}
+}
+.@{namespace}btn-outlined:active {
+	background: transparent !important;
+}
+.@{namespace}btn-default.@{namespace}btn-outlined {
+	color: @textDefaultColor !important;
+	&:after{
+		border: 1px solid @btnBorderDefaultColor !important;
+	}
+}
+.@{namespace}btn-primary.@{namespace}btn-outlined {
+	color: @textPrimaryColor !important;
+	&:after{
+		border: 1px solid @btnBorderPrimaryColor !important;
+	}
+}
+.@{namespace}btn-success.@{namespace}btn-outlined {
+	color: @textSuccessColor !important;
+	&:after{
+		border: 1px solid @btnBorderSuccessColor !important;
+	}
+}
+.@{namespace}btn-info.@{namespace}btn-outlined {
+	color: @textInfoColor !important;
+	&:after{
+		border: 1px solid @btnBorderInfoColor !important;
+	}
+}
+.@{namespace}btn-warning.@{namespace}btn-outlined {
+	color: @textWarningColor !important;
+	&:after{
+		border: 1px solid @btnBorderWarningColor !important;
+	}
+}
+.@{namespace}btn-danger.@{namespace}btn-outlined {
+	color: @textDangerColor !important;
+	&:after{
+		border: 1px solid @btnBorderDangerColor !important;
+	}
+}
+/*
+*表单类\输入框\radio\checkbox
+**/
+.@{namespace}input,
+input[type="text"],
+input[type="password"],
+input[type="search"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="time"],
+input[type="number"],
+select,
+textarea {
+    border: none;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 2.2rem;
+    line-height: normal;
+    color: @inputTextColor;
+    font-size: 0.8rem;
+    font-family: inherit;
+    box-sizing: border-box;
+    -webkit-user-select: text;
+            user-select: text;
+    -webkit-appearance: none;
+            appearance: none;
+}
+input[type="search"]::-webkit-search-cancel-button {
+	display: none;
+}
+/*列表*/
+.@{namespace}list {
+    position: relative;
+    font-size: 0.8rem;
+    background-color: @bgWhiteColor;
+    border-top: 1px solid @lineBorderColor;
+    .@{namespace}content {
+		overflow: hidden;
+	}
+	&.@{namespace}list-noborder,
+	&.@{namespace}list-noborder {
+	    border-top: none;
+	}
+	.@{namespace}list-header {
+	    background-color: @listHeaderBgColor;
+	    color: @listHeaderTextColor;
+	    position: relative;
+	    font-size: 0.6rem;
+	    padding: 0.4rem 0.75rem;
+	    .flex-between-center;
+	}
+	.@{namespace}list-item {
+	    list-style: none;
+	    margin: 0;
+	    padding: 0;
+	    padding-left: 0.75rem;
+	    color: @listItemTitleColor;
+	    border-bottom: 1px solid @lineBorderColor;
+	    position: relative;
+	    min-height: 2.2rem;
+	    -webkit-box-sizing: border-box;
+	    		box-sizing: border-box;
+	    display: -webkit-box;
+	    display: -webkit-flex;
+	    display: flex;
+	    -webkit-box-pack: justify;
+	    -webkit-justify-content: space-between;
+	    		justify-content: space-between;
+	    &:active {
+		    background-color: @listItemActiveBgColor;
+		}
+		i.@{namespace}iconfont {
+		    -webkit-align-self: center;
+		            align-self: center;
+		    font-size: 0.8rem;
+		}
+	}
+	.@{namespace}list-item-inner {
+	    position: relative;
+	    min-height: 2.2rem;
+		padding-right: 0.75rem;
+	    width: 100%;
+	    .flex-between-center;
+	}
+	.@{namespace}list-item-text {
+	    font-size: 0.7rem;
+	    color: @listItemTextColor;
+	    position: relative;
+	    .flex-between-center;
+	}
+	.@{namespace}list-item-title {
+	    font-size: 0.8rem;
+	    position: relative;
+	    max-width: 100%;
+	    color: @textColor;
+	}
+	.@{namespace}list-item-inner p {
+	    overflow: hidden;
+	}
+	.@{namespace}list-media-list {
+	    -webkit-box-orient: vertical;
+	    -webkit-box-direction: normal;
+	    -webkit-flex-direction: column;
+	            flex-direction: column;
+	}
+	.@{namespace}list-item-arrow:before {
+	    content: '';
+	    width: 0.4rem;
+	    height: 0.4rem;
+	    position: absolute;
+	    top: 50%;
+	    right: 0.75rem;
+	    margin-top: -0.2rem;
+	    background: transparent;
+	    border: 1px solid @lineBorderColor;
+	    border-top: none;
+	    border-right: none;
+	    z-index: 2;
+	    -webkit-border-radius: 0;
+	            border-radius: 0;
+	    -webkit-transform: rotate(-135deg);
+	            transform: rotate(-135deg);
+	}
+	.@{namespace}list-item-inner.@{namespace}list-item-arrow {
+	    overflow: hidden;
+	    padding-right: 1.5rem;
+	}
+}
+.@{namespace}list.@{namespace}list-noborder .@{namespace}list-item:last-child {
+    border-bottom: 0;
+}
+.@{namespace}list .@{namespace}list-item-right,
+.@{namespace}list-item-title-row em {
+	max-width: 50%;
+	position: relative;
+    font-size: 0.6rem;
+    color: @text2Color;
+    margin-left: 0.25rem;
+}
+.@{namespace}media-list-item-inner {
+	-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.@{namespace}media-list {
+	.@{namespace}list-item {
+		display: block;
+	}
+	.@{namespace}list-item-inner {
+		display: block;
+		padding-top: 0.5rem;
+	    padding-bottom: 0.5rem;
+	}
+	.@{namespace}media-list-item-inner + .@{namespace}info {
+		margin-right: 0.75rem;
+	}
+	.@{namespace}list-item-media {
+		width: 4.5rem;
+		position: relative;
+	    padding: 0.5rem 0;
+	    padding-right: 0.75rem;
+	    display: inherit;
+	    -webkit-flex-shrink: 0;
+	    		flex-shrink: 0;
+	    -webkit-flex-wrap: nowrap;
+	    		flex-wrap: nowrap;
+	    -webkit-box-align: center;
+	    -webkit-align-items: flex-start;
+	            align-items: flex-start;
+	}
+	.@{namespace}list-item-media img {
+		width: 100%;
+	    display: block;
+	}
+	.@{namespace}list-item-media-list {
+		margin-top: 0.25rem;
+		padding-right: 0;
+		display: block;
+	}
+}
+.@{namespace}list [class*="@{namespace}col-xs-"] img{
+    max-width: 100%;
+    width: 100%;
+    display: block;
+}
+.@{namespace}list-item-middle .@{namespace}list-item-inner:after {
+	display: block;
+}
+.@{namespace}list .@{namespace}list-item-middle > .@{namespace}list-item-media,
+.@{namespace}list .@{namespace}list-item-middle > .@{namespace}list-item-inner,
+.@{namespace}list .@{namespace}list-item-middle > * {
+    -webkit-box-align: center;
+    		box-align: center;
+    -webkit-align-items: center;
+    		align-items: center;
+}
+.@{namespace}list .@{namespace}list-item-center > .@{namespace}list-item-media,
+.@{namespace}list .@{namespace}list-item-center > .@{namespace}list-item-inner,
+.@{namespace}list .@{namespace}list-item-center {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        	justify-content: center;
+}
+.@{namespace}list-item.@{namespace}list-item-arrow {
+    padding-right: 0.75rem;
+}
+.@{namespace}list label {
+    line-height: 1.3rem;
+}
+.@{namespace}list.@{namespace}form-list .@{namespace}list-item:active {
+	background-color: @bgWhiteColor;
+}
+.@{namespace}list.@{namespace}form-list .@{namespace}list-item-inner {
+	-webkit-box-sizing: border-box;
+    		box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+	padding: 0;
+}
+.@{namespace}list .@{namespace}list-item-label,
+.@{namespace}list .@{namespace}list-item-label-icon {
+	color: @listItemLabelColor;
+    width: 35%;
+    min-width: 1.5rem;
+    margin: 0;
+    padding: 0;
+    padding-right: 0.25rem;
+    line-height: 2.2rem;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 100%;
+    -webkit-box-sizing: border-box;
+    		box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+            align-items: center;
+}
+.@{namespace}list .@{namespace}list-item-label-icon {
+    width: auto;
+    padding-right: 0.75rem;
+}
+.@{namespace}list .@{namespace}list-item-input {
+    width: 100%;
+    padding: 0;
+    padding-right: 0.75rem;
+    -webkit-box-flex: 1;
+            box-flex: 1;
+    -webkit-flex-shrink: 1;
+            flex-shrink: 1;
+}
+.@{namespace}list.@{namespace}select-list .@{namespace}list-item:active {
+	background-color: @bgWhiteColor;
+}
+.@{namespace}list.@{namespace}select-list .@{namespace}list-item-inner {
+    display: block;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    -webkit-align-self: stretch;
+    		align-self: stretch;
+}
+.@{namespace}list.@{namespace}select-list .@{namespace}list-item-label {
+	width: auto;
+	min-width: 2.2rem;
+    padding: 0.5rem 0;
+    padding-right: 0.75rem;
+}
+.@{namespace}list.@{namespace}form-list .@{namespace}list-item-btn {
+	padding: 0.75rem 0.75rem 0.75rem 0;
+}
+.@{namespace}list textarea {
+    overflow: auto;
+    margin: 0.5rem 0;
+    height: 3rem;
+    line-height: 1rem;
+    resize: none;
+}
+.@{namespace}list .@{namespace}list-item-right .@{namespace}badge,
+.@{namespace}list .@{namespace}list-item-right .@{namespace}dot {
+	display: inherit;
+}
+@media screen and (-webkit-min-device-pixel-ratio:1.5) {
+	.@{namespace}list {
+		.media-border-t;
+	}
+	.@{namespace}list .@{namespace}list-item {
+		.media-border-b;
+	}
+	.@{namespace}list.@{namespace}list-in .@{namespace}list-item {
+		.media-border-b;
+		background-position: 0.75rem bottom;
+	}
+	.@{namespace}list.@{namespace}list-in .@{namespace}list-item:last-child {
+		background-position: bottom;
+	}
+	.@{namespace}list.@{namespace}list-noborder,
+	.@{namespace}list.@{namespace}list-noborder .@{namespace}list-item:last-child {
+		border: none;
+        background-size: 100% 0;
+        background-image: none;
+	}
+}
+/*tab切换类*/
+.@{namespace}tab {
+	position: relative;
+    background-color: @bgWhiteColor;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+    -webkit-align-self: center;
+            align-self: center;
+}
+.@{namespace}tab-item {
+    width: 100%;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    position: relative;
+    font-size: 0.7rem;
+    text-align: center;
+    /*color: @textColor;*/
+    margin-left: -1px;
+    -webkit-box-flex: 1;
+            box-flex: 1;
+}
+.@{namespace}tab-item.@{namespace}active {
+    color: @textBlueColor;
+    border-bottom: 2px solid @borderBlueColor;
+}
+/*卡片列表布局*/
+.@{namespace}card-list {
+	position: relative;
+    margin-bottom: 0.75rem;
+    background: @bgWhiteColor;
+    .@{namespace}card-list-header,
+	.@{namespace}card-list-footer {
+		position: relative;
+		// min-height: 2.2rem;
+		padding: 0.5rem 0.75rem;
+	    .flex-between-center;
+	}
+	.@{namespace}card-list-header {
+		font-size: 0.8rem;
+		// color: @textColor;
+	}
+	.@{namespace}card-list-header.@{namespace}card-list-user {
+		display: block;
+	}
+	.@{namespace}card-list-user-avatar {
+		width: 2rem;
+		float: left;
+		margin-right: 0.5rem;
+	}
+	.@{namespace}card-list-user-avatar img {
+		width: 100%;
+		display: block;
+	}
+	.@{namespace}card-list-user-name {
+		// color: @textColor;
+		position: relative;
+		font-size: 0.7rem;
+		.flex-between-center;
+	}
+	.@{namespace}card-list-user-name > *,
+	.@{namespace}card-list-user-name small {
+		position: relative;
+	}
+	.@{namespace}card-list-user-name small {
+		color: @text2Color;
+	}
+	.@{namespace}card-list-user-info {
+		color: @text2Color;
+		font-size: 0.6rem;
+	}
+	.@{namespace}card-list-content {
+		position: relative;
+	}
+	.@{namespace}card-list-content-padded {
+		position: relative;
+		padding: 0.5rem 0.75rem;
+	}
+	.@{namespace}card-list-content,
+	.@{namespace}card-list-content-padded {
+		word-break: break-all;
+		font-size: 0.7rem;
+		// color: @textColor;
+	}
+	.@{namespace}card-list-content img,
+	.@{namespace}card-list-content-padded img {
+		width: 100%;
+		display: block;
+	}
+	.@{namespace}card-list-footer {
+		font-size: 0.7rem;
+		color: @text2Color;
+	}
+	.@{namespace}card-list-footer > * {
+		position: relative;
+	}
+	.@{namespace}card-list-footer.@{namespace}text-center {
+		display: -webkit-box;
+	    display: -webkit-flex;
+	    display: flex;
+		-webkit-box-pack: center;
+	    box-pack: center;
+	    -webkit-justify-content: center;
+	    justify-content: center;
+	}
+	.@{namespace}card-list-footer .@{namespace}iconfont {
+		font-size: 0.9rem;
+	}
+}
+
+/*宫格布局*/
+.@{namespace}grid {
+	width: 100%;
+	background-color: @bgWhiteColor;
+	display: table;
+	table-layout: fixed;
+	[class*="@{namespace}col-"] {
+		display: table-cell;
+		position: relative;
+	    text-align: center;
+	    vertical-align: middle;
+	    padding: 1rem 0;
+	    &:active {
+			background-color: #f5f5f5;
+		}
+	}
+	.@{namespace}iconfont {
+		position: relative;
+	    z-index: 20;
+	    top: 0;
+	    height: 1.4rem;
+	    font-size: 1.4rem;
+	    line-height: 1.4rem;
+	}
+	.@{namespace}grid-label {
+		display: block;
+	    font-size: 0.7rem;
+	    position: relative;
+	    margin-top: 0.25rem;
+	}
+	.@{namespace}badge {
+		position: absolute;
+	    top: 0.5rem;
+	    left: 60%;
+	    z-index: 99;
+	}
+	.@{namespace}dot {
+		position: absolute;
+	    top: 0.5rem;
+	    right: 20%;
+	    z-index: 99;
+	}
+}
+/*单选、多选、开关*/
+.@{namespace}radio,
+.@{namespace}checkbox {
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: @checkBgColor;
+    border: solid 1px @checkBorderColor;
+    -webkit-border-radius: 0.6rem;
+    border-radius: 0.6rem;
+    font-size: 0.8rem;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    cursor: default;
+    -webkit-appearance: none;
+    -webkit-user-select: none;
+            user-select: none;
+    -webkit-transition: background-color ease 0.1s;
+            transition: background-color ease 0.1s;
+    &:checked,
+	&.@{namespace}checked {
+	    background-color: @checkActiveColor;
+	    border: solid 1px @checkActiveColor;
+	    text-align: center;
+	    background-clip: padding-box;
+	}
+	&:checked:before,
+	&.@{namespace}checked:before,
+	&:checked:after,
+	&.@{namespace}checked:after {
+	    content: '';
+	    width: 0.5rem;
+	    height: 0.3rem;
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    margin-left: -0.25rem;
+	    margin-top: -0.25rem;
+	    background: transparent;
+	    border: 1px solid #ffffff;
+	    border-top: none;
+	    border-right: none;
+	    z-index: 2;
+	    -webkit-border-radius: 0;
+	            border-radius: 0;
+	    -webkit-transform: rotate(-45deg);
+	            transform: rotate(-45deg);
+	}
+	&:disabled,
+	&.@{namespace}disabled {
+	    background-color: @lineBorderColor;
+	    border: solid 1px @lineBorderColor;
+	}
+
+	&:disabled:before,
+	&.@{namespace}disabled:before,
+	&:disabled:after,
+	&disabled:after {
+	    content: '';
+	    width: 0.5rem;
+	    height: 0.3rem;
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    margin-left: -0.25rem;
+	    margin-top: -0.25rem;
+	    background: transparent;
+	    border: 1px solid #ffffff;
+	    border-top: none;
+	    border-right: none;
+	    z-index: 2;
+	    -webkit-border-radius: 0;
+	            border-radius: 0;
+	    -webkit-transform: rotate(-45deg);
+	            transform: rotate(-45deg);
+	}
+}
+.@{namespace}checkbox {
+    border-radius: 0.1rem;
+}
+.@{namespace}switch {
+    width: 2.3rem;
+    height: 1.2rem;
+    position: relative;
+    vertical-align: top;
+    border: 1px solid @lineBorderColor;
+    background-color: @lineBorderColor;
+    border-radius: 0.6rem;
+    background-clip: content-box;
+    display: inline-block;
+    outline: none;
+    -webkit-appearance: none;
+            appearance: none;
+    -webkit-user-select: none;
+            user-select: none;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+    -webkit-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+    &:before {
+	    width: 1.1rem;
+	    height: 1.1rem;
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    border-radius: 0.6rem;
+	    background-color: #fff;
+	    content: '';
+	    -webkit-transition: left 0.2s;
+	            transition: left 0.2s;
+	}
+	&:checked {
+	    border-color: @switchColor;
+	    background-color: @switchColor;
+	}
+	&:checked:before {
+	    left: 1.1rem;
+	}
+}
+/*导航栏*/
+.@{namespace}bar {
+	position: relative;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	min-height: @navHeight;
+	font-size: 0.9rem;
+	text-align: center;
+	display: table;
+}
+.@{namespace}bar-nav {
+	top: 0;
+	line-height: @navHeight;
+	background-color: @navBgColor;
+	color: @navTextColor;
+}
+.@{namespace}title a {
+	color: inherit;
+}
+.@{namespace}bar-nav .@{namespace}title {
+	min-height: @navHeight;
+	position: absolute;
+	margin: 0;
+	text-align: center;
+	white-space: nowrap;
+	right: 5rem;
+	left: 5rem;
+	width: auto;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	z-index: 2;
+}
+.@{namespace}bar-nav a {
+	color: @navTextColor;
+}
+.@{namespace}bar-nav .@{namespace}iconfont {
+	position: relative;
+	z-index: 20;
+	font-size: 0.9rem;
+	color: @navTextColor;
+	font-weight: 400;
+	line-height: @navHeight;
+}
+.@{namespace}bar-nav .@{namespace}pull-left {
+	padding: 0 0.5rem;
+	font-size: 0.8rem;
+	font-weight: 400;
+	z-index: 2;
+	-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+            align-items: center;
+}
+.@{namespace}bar-nav .@{namespace}pull-right {
+	padding: 0 0.5rem;
+	font-size: 0.8rem;
+	font-weight: 400;
+	z-index: 2;
+	-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+            align-items: center;
+}
+.@{namespace}bar-nav .@{namespace}btn {
+	position: relative;
+	z-index: 20;
+	height: @navHeight;
+	line-height: @navHeight;
+	padding-top: 0;
+	padding-bottom: 0;
+	margin: 0;
+	border-radius: 0.1rem;
+	border-width: 0;
+	background: transparent !important;
+	&:active{
+		background: none;
+	}
+}
+.@{namespace}bar-nav .@{namespace}btn.@{namespace}btn-outlined {
+	position: relative;
+	padding: 0 0.15rem;
+	margin: 0.5rem;
+	height: 1.25rem;
+	line-height: 1.25rem;
+	border-width: 1px;
+	background: transparent !important;
+	border-color: @navTextColor;
+}
+.@{namespace}bar-nav .@{namespace}btn .@{namespace}iconfont {
+	font-size: 0.9rem;
+	line-height: 1.25rem;
+	padding: 0;
+	margin: 0;
+	color: @navTextColor;
+}
+.@{namespace}bar-light {
+	color: @navLightTextColor;
+	background-color: @navLightBgColor;
+	border-bottom: 1px solid @lineBorderColor;
+}
+.@{namespace}bar-nav.@{namespace}bar-light .@{namespace}iconfont {
+	color: @navLightTextColor;
+}
+.@{namespace}bar-nav.@{namespace}bar-light .@{namespace}btn-outlined {
+	border-color: @navLightTextColor;
+}
+@media screen and (-webkit-min-device-pixel-ratio:1.5) {
+	.@{namespace}bar.@{namespace}bar-light {
+		.media-border-b;
+	}
+}
+/*底部切换栏*/
+.@{namespace}bar-tab {
+	position: fixed;
+	top: auto;
+	bottom: 0;
+	table-layout: fixed;
+	background-color: @footerBgColor;
+	color: @footerTextColor;
+}
+.@{namespace}bar-tab .@{namespace}bar-tab-item {
+	display: table-cell;
+	position: relative;
+    width: 1%;
+    height: @footerBarHeight;
+    text-align: center;
+    vertical-align: middle;
+}
+.@{namespace}bar-tab .@{namespace}active {
+	color: @footerActiveTextColor;
+}
+.@{namespace}bar-tab .@{namespace}bar-tab-item .@{namespace}iconfont {
+	position: relative;
+    z-index: 20;
+    top: 0.1rem;
+    height: 1.2rem;
+    font-size: 1rem;
+    line-height: 1rem;
+}
+.@{namespace}bar-tab .@{namespace}bar-tab-label {
+	display: block;
+    font-size: 0.6rem;
+    position: relative;
+}
+.@{namespace}bar-tab .@{namespace}badge {
+    position: absolute;
+    top: 0.1rem;
+    left: 55%;
+    z-index: 99;
+}
+.@{namespace}bar-tab .@{namespace}dot {
+    position: absolute;
+    top: 0.1rem;
+    right: 30%;
+    z-index: 99;
+}
+/*按钮工具栏*/
+.@{namespace}bar-btn {
+	position: relative;
+    font-size: 0.7rem;
+    display: table;
+    white-space: nowrap;
+    margin: 0 auto;
+    padding: 0;
+    border: none;
+    width: 100%;
+    min-height: 1.8rem;
+}
+.@{namespace}bar-btn-item {
+    display: table-cell;
+    position: relative;
+    width: 1%;
+    line-height: 1.6rem;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 0;
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    border-color: @barBorderColor;
+    border-left-width: 0;
+}
+.@{namespace}bar-btn .@{namespace}input,
+.@{namespace}bar-btn input,
+.@{namespace}bar-btn select {
+	padding-left: 0.25rem;
+	padding-right: 0.25rem;
+    height: 1.8rem;
+}
+.@{namespace}bar-btn-sm {
+    min-height: 1.3rem;
+}
+.@{namespace}bar-btn.@{namespace}bar-btn-sm  .@{namespace}input,
+.@{namespace}bar-btn.@{namespace}bar-btn-sm  input,
+.@{namespace}bar-btn.@{namespace}bar-btn-sm  select {
+    height: 1.2rem;
+}
+.@{namespace}bar-btn-sm .@{namespace}bar-btn-item {
+    line-height: 1.3rem;
+    font-size: 0.6rem;
+}
+.@{namespace}bar-btn-item.@{namespace}active {
+    background-color: @barActiveBgColor;
+    color: @barActiveTextColor;
+}
+.@{namespace}bar-btn-item:first-child {
+    border-left-width: 1px;
+    border-top-left-radius: 0.2rem;
+    border-bottom-left-radius: 0.2rem;
+}
+.@{namespace}bar-btn-item:last-child {
+    border-top-right-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+    border-left: 0px;
+}
+.@{namespace}bar-btn.@{namespace}bar-btn-full .@{namespace}bar-btn-item:first-child {
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.@{namespace}bar-btn.@{namespace}bar-btn-full .@{namespace}bar-btn-item:last-child {
+    border-right-width: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.@{namespace}bar-btn.@{namespace}bar-btn-round .@{namespace}bar-btn-item:first-child {
+    border-top-left-radius: 1.5rem;
+    border-bottom-left-radius: 1.5rem;
+}
+.@{namespace}bar-btn.@{namespace}bar-btn-round .@{namespace}bar-btn-item:last-child {
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+}
+.@{namespace}bar-nav .@{namespace}bar-btn {
+	margin-top: 0.45rem;
+	margin-bottom: 0.4rem;
+    min-height: 1.3rem;
+}
+.@{namespace}bar-nav .@{namespace}bar-btn-item {
+    line-height: 1.3rem;
+    border-color: @barNavTextColor;
+}
+.@{namespace}bar-nav .@{namespace}bar-btn-item.@{namespace}active {
+    background-color: @barNavActiveBgColor;
+    color: @barNavActiveTextColor;
+}
+.@{namespace}bar-nav.@{namespace}bar-light .@{namespace}bar-btn-item {
+    border-color: @barNavLightBorderColor;
+}
+.@{namespace}bar-nav.@{namespace}bar-light .@{namespace}bar-btn-item.@{namespace}active {
+    background-color: @barNavLightActiveBgColor;
+    color: @barNavLightActiveTextColor;
+}
+.@{namespace}bar-nav > .@{namespace}bar-btn {
+	width: 50%;
+}
+.@{namespace}info {
+	position: relative;
+    padding: 0.5rem 0;
+    font-size: 0.7rem;
+    color: @text2Color;
+    background-color: transparent;
+    .flex-between-center;
+}
+.@{namespace}info-item {
+	-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+	display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    		align-items: center;
+}
+.@{namespace}info-item > *,
+.@{namespace}info > * {
+	display: inherit;
+	position: relative;
+}
+/*进度条*/
+.@{namespace}progress {
+	width: 100%;
+	height: 1rem;
+	border-radius: 0.2rem;
+	overflow: hidden;
+	background-color: @progressBgColor;
+	.@{namespace}progress-bar {
+		float: left;
+		width: 0;
+		height: 100%;
+		font-size: 0.6rem;
+		line-height: 1rem;
+		color: @progressTextColor;
+		text-align: center;
+		background-color: @progressActiveBgColor;
+	}
+	&.@{namespace}progress-sm {
+		height: 0.5rem;
+	}
+	&.@{namespace}progress-sm,
+	&.@{namespace}progress-sm .@{namespace}progress-bar {
+		border-radius: 1px;
+	}
+	&.@{namespace}progress-xs {
+		height: 0.35rem;
+	}
+	&.@{namespace}progress-xs,
+	&.@{namespace}progress-xs .progress-bar {
+		border-radius: 1px;
+	}
+	&.@{namespace}progress.xxs,
+	&.@{namespace}progress-xxs {
+		height: 0.15rem;
+	}
+	&.@{namespace}progress-xxs,
+	&.@{namespace}progress-xxs .progress-bar {
+		border-radius: 1px;
+	}
+}
+
+/*滑块*/
+.@{namespace}range {
+    position: relative;
+    display: inline-block;
+}
+.@{namespace}range input[type='range']{
+    height: 0.2rem;
+    border: 0;
+    border-radius: 2px;
+    background-color: #f0f0f0;
+    position: relative;
+    -webkit-appearance: none !important;
+}
+.@{namespace}range input[type='range']::-webkit-slider-thumb {
+    width: 1.2rem;
+    height: 1.2rem;
+    border-radius: 50%;
+    border-color: @rangeActiveColor;
+    background-color: @rangeActiveColor;
+    -webkit-appearance: none !important;
+}
+.@{namespace}range .@{namespace}range-tip {
+    font-size: 1rem;
+    position: absolute;
+    z-index: 999;
+    top: -1.5rem;
+    width: 2.4rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    border: 1px solid @lineBorderColor;
+    border-radius: 0.3rem;
+    background-color: @bgWhiteColor;
+}
+.@{namespace}input-row .@{namespace}range input[type='range'] {
+	width: 90%;
+	margin-left: 5%;
+}
+/*搜索条*/
+.@{namespace}searchbar {
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    height: 2.2rem;
+    overflow: hidden;
+    width: 100%;
+    background-color: #ebeced;
+    color: #9e9e9e;
+    -webkit-backface-visibility: hidden;
+  			backface-visibility: hidden;
+}
+.@{namespace}searchbar.focus {
+    -webkit-box-pack: start;
+}
+.@{namespace}searchbar-input {
+    margin: 0 0.5rem;
+	background-color: @bgWhiteColor;
+    border-radius: 0.25rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    font-size: 0.7rem;
+    position: relative;
+    padding-left: 0.5rem;
+    display: -webkit-box;
+    -webkit-box-flex: 1;
+}
+.@{namespace}searchbar form {
+	width: 90%;
+}
+.@{namespace}searchbar-input input {
+    width: 80%;
+    padding: 0;
+    margin: 0;
+    height: 1.4rem;
+    line-height: normal;
+    border: 0;
+    -webkit-appearance: none;
+    font-size: 0.7rem;
+}
+.@{namespace}searchbar input::-webkit-input-placeholder {
+	color: #ccc;
+}
+.@{namespace}searchbar .@{namespace}iconfont {
+    line-height: 1.4rem;
+    margin-right: 0.25rem;
+    color: #9e9e9e !important;
+}
+.@{namespace}searchbar .@{namespace}searchbar-btn {
+	font-size: 0.7rem;
+	margin-right: -2.2rem;
+	width: 2.2rem;
+	height: 1.4rem;
+	padding-right: 0.5rem;
+	line-height: 1.4rem;
+	text-align: center;
+	-webkit-transition: all .3s;
+	      	transition: all .3s;
+}
+.@{namespace}searchbar-clear-btn {
+	position: absolute;
+	right: 5px;
+	top: 3px;
+	width: 1.1rem;
+	height: 1.1rem;
+	background: #eeeeee;
+	border-radius: 50%;
+	line-height: 0.6rem;
+	text-align: center;
+	display: none;
+}
+.@{namespace}searchbar-clear-btn .@{namespace}iconfont {
+	font-size: 0.6rem;
+	margin: 0 auto;
+	position: relative;
+	top: -2px;
+}
+.@{namespace}searchbar .@{namespace}searchbar-btn .@{namespace}iconfont {
+	color: #666666;
+}
+/*信息提示条*/
+.@{namespace}tips {
+    padding: 0 0.75rem;
+    width: 100%;
+    z-index: 99;
+    height: 1.9rem;
+    line-height: 1.9rem;
+   	position: relative;
+    background-color: rgba(0,0,0,.6);
+    color: #ffffff;
+    .flex-between-center;
+}
+.@{namespace}tips .@{namespace}tips-title {
+	padding: 0 0.5rem;
+	font-size: 0.7rem;
+    position: relative;
+    max-width: 100%;
+}
+/*toast*/
+.@{namespace}toast {
+	background: rgba(0, 0, 0, 0.7);
+	text-align: center;
+	border-radius: 0.25rem;
+	color: #ffffff;
+	position: fixed;
+	z-index: 3;
+	top: 45%;
+	left: 50%;
+	width: 6em;
+	padding: 0.5rem;
+	margin-left: -3em;
+	margin-top: -4rem;
+	opacity: 0;
+	-webkit-transform: scale(0.8);
+	transform: scale(0.8);
+	&.@{namespace}toast-in{
+		opacity: 1;
+		-webkit-transition-duration: 300ms;
+		      transition-duration: 300ms;
+		-webkit-transform: translate3d(0, 0, 0) scale(1);
+		      transform: translate3d(0, 0, 0) scale(1);
+	}
+	&.@{namespace}toast-out {
+	  opacity: 0;
+	  -webkit-transition-duration: 300ms;
+	  transition-duration: 300ms;
+	  -webkit-transform: scale(0.8);
+	  transform: scale(0.8);
+	}
+}
+.@{namespace}toast .@{namespace}iconfont {
+	display: block;
+	font-size: 1.8rem;
+}
+.@{namespace}toast-content {
+	font-size: 0.7rem;
+}
+.@{namespace}toast-loading {
+    background-color: @bgWhiteColor;
+    border-radius: 100%;
+    margin: 0.25rem 0;
+    border: 2px solid #ffffff;
+    border-bottom-color: transparent;
+    height: 1.8rem;
+    width: 1.8rem;
+    background: transparent !important;
+    display: inline-block;
+    -webkit-animation-fill-mode: both;
+        	animation-fill-mode: both;
+    -webkit-animation: rotate 1s 0s linear infinite;
+        	animation: rotate 1s 0s linear infinite;
+}
+/*dialog*/
+.@{namespace}dialog {
+	width: 13.5rem;
+	text-align: center;
+	position: fixed;
+	z-index: 999;
+	left: 50%;
+	margin-left: -6.75rem;
+	margin-top: 0;
+	top: 45%;
+	border-radius: 0.3rem;
+	opacity: 0;
+	background-color: @bgWhiteColor;
+	-webkit-transform: translate3d(0, 0, 0) scale(1.2);
+          	transform: translate3d(0, 0, 0) scale(1.2);
+ 	-webkit-transition-property: -webkit-transform, opacity;
+          	transition-property: transform, opacity;
+}
+.@{namespace}dialog-header {
+    padding: 0.5rem 0.75rem 0 0.75rem;
+    text-align: center;
+    font-size: 1em;
+    color: @textColor;
+}
+.@{namespace}dialog-body {
+    padding: 0.75rem;
+    overflow: hidden;
+    font-size: 0.875em;
+    color: @text2Color;
+}
+.@{namespace}dialog-body input {
+	border: 1px solid @lineBorderColor;
+	height: 1.8rem;
+	line-height: 1.8rem;
+	min-height: 1.8rem;
+	padding-left: 0.25rem;
+	padding-right: 0.25rem;
+}
+.@{namespace}dialog-footer {
+    position: relative;
+    font-size: 1em;
+    border-top: 1px solid @lineBorderColor;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+	-webkit-justify-content: center;
+			justify-content: center;
+}
+.@{namespace}dialog-btn {
+	position: relative;
+	display: block;
+    width: 100%;
+	padding: 0 0.25rem;
+	height: 2.2rem;
+	font-size: 0.8rem;
+	line-height: 2.2rem;
+	text-align: center;
+	color: #0894ec;
+	border-right: 1px solid @lineBorderColor;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+	-webkit-box-flex: 1;
+			box-flex: 1;
+}
+.@{namespace}dialog-btn:last-child {
+	border-right: none;
+}
+.@{namespace}dialog.@{namespace}dialog-in {
+	opacity: 1;
+	-webkit-transition-duration: 300ms;
+	      transition-duration: 300ms;
+	-webkit-transform: translate3d(0, 0, 0) scale(1);
+	      transform: translate3d(0, 0, 0) scale(1);
+}
+.@{namespace}dialog.@{namespace}dialog-out {
+	opacity: 0;
+	-webkit-transition-duration: 300ms;
+	      transition-duration: 300ms;
+	-webkit-transform: translate3d(0, 0, 0) scale(0.815);
+	      transform: translate3d(0, 0, 0) scale(0.815);
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+    .@{namespace}dialog-footer {
+		.media-border-t;
+	}
+	.@{namespace}dialog-btn {
+		.media-border-r;
+	}
+	.@{namespace}dialog-btn:last-child {
+		border: none;
+        background-size: 0 100%;
+	}
+	.@{namespace}dialog-body input {
+		.media-border;
+    }
+}
+/*popup*/
+.@{namespace}popup {
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    position: fixed;
+    height: auto;
+    min-width: 7rem;
+    min-height: 4.5rem;
+    z-index: 999;
+    opacity: 0;
+ 	-webkit-transition-property: -webkit-transform, opacity;
+          	transition-property: transform, opacity;
+}
+.@{namespace}popup.@{namespace}popup-in {
+	opacity: 1;
+	-webkit-transition-duration: 300ms;
+	      transition-duration: 300ms;
+}
+.@{namespace}popup.@{namespace}popup-out {
+	opacity: 0;
+	-webkit-transition-duration: 300ms;
+	      transition-duration: 300ms;
+}
+.@{namespace}popup-right {
+    right: 0.75rem;
+}
+.@{namespace}popup-content {
+    background-color: @bgWhiteColor;
+    border-radius: 0.2rem;
+    overflow: hidden;
+    min-height: 4.5rem;
+    height: 100%;
+}
+.@{namespace}popup-top,
+.@{namespace}popup-top-left,
+.@{namespace}popup-top-right {
+    top: 0.45rem;
+}
+.@{namespace}popup-top {
+    left: 50%;
+    margin-left: -3.5rem;
+}
+.@{namespace}popup-top-left {
+    left: 0.45rem;
+}
+.@{namespace}popup-top-right {
+    right: 0.45rem;
+}
+.@{namespace}popup-arrow {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    -webkit-transform-origin: 50% 50% 0;
+            transform-origin: 50% 50% 0;
+    background-color: transparent;
+    background-image: -webkit-linear-gradient(45deg, #ffffff, #ffffff 50%, transparent 50%);
+    background-image: linear-gradient(45deg, #ffffff, #ffffff 50%, transparent 50%);
+}
+.@{namespace}popup-top .@{namespace}popup-arrow,
+.@{namespace}popup-top-left .@{namespace}popup-arrow,
+.@{namespace}popup-top-right .@{namespace}popup-arrow {
+    top: 0.2rem;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+}
+.@{namespace}popup-top .@{namespace}popup-arrow {
+    left: 50%;
+    margin-left: -0.25rem;
+    margin-top: -0.4rem;
+}
+.@{namespace}popup-top-left .@{namespace}popup-arrow {
+    left: 0.25rem;
+    margin-top: -0.4rem;
+}
+.@{namespace}popup-top-right .@{namespace}popup-arrow {
+    right: 0.25rem;
+    margin-top: -0.4rem;
+}
+.@{namespace}popup-bottom,
+.@{namespace}popup-bottom-left,
+.@{namespace}popup-bottom-right {
+    bottom: 0.45rem;
+}
+.@{namespace}popup-bottom {
+    left: 50%;
+    margin-left: -3.5rem;
+}
+.@{namespace}popup-bottom-left {
+    left: 0.45rem;
+}
+.@{namespace}popup-bottom-right {
+    right: 0.45rem;
+}
+.@{namespace}popup-bottom .@{namespace}popup-arrow,
+.@{namespace}popup-bottom-left .@{namespace}popup-arrow,
+.@{namespace}popup-bottom-right .@{namespace}popup-arrow {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    bottom: 0.2rem;
+}
+.@{namespace}popup-bottom .@{namespace}popup-arrow {
+    left: 50%;
+    margin-left: -0.25rem;
+    margin-bottom: -0.4rem;
+}
+.@{namespace}popup-bottom-left .@{namespace}popup-arrow {
+    left: 0.25rem;
+    margin-bottom: -0.4rem;
+}
+.@{namespace}popup-bottom-right .@{namespace}popup-arrow {
+    right: 0.25rem;
+    margin-bottom: -0.4rem;
+}
+.@{namespace}popup .@{namespace}list {
+	background: transparent;
+}
+.@{namespace}popup-content .@{namespace}list img {
+	display: block;
+	width: 1.6rem;
+}
+/*actionsheet*/
+.@{namespace}actionsheet {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 0 0.5rem;
+    z-index: 999;
+    opacity: 0;
+    -webkit-transition: opacity .3s,-webkit-transform .3s;
+    transition: opacity .3s,transform .3s;
+    -webkit-transform: translate3d(0,100%,0);
+    transform: translate3d(0,100%,0);
+}
+.@{namespace}actionsheet-btn {
+    background-color: @bgWhiteColor;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+.@{namespace}actionsheet-title {
+    font-size: 0.6rem;
+    color: #999999;
+    line-height: 1.8rem;
+}
+.@{namespace}actionsheet-btn-item {
+    height: 2.2rem;
+    line-height: 2.2rem;
+    color: #0075f0;
+}
+/*sharebox*/
+.@{namespace}sharebox {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    background-color: @bgWhiteColor;
+    opacity: 0;
+    -webkit-transition: opacity .3s,-webkit-transform .3s;
+    transition: opacity .3s,transform .3s;
+    -webkit-transform: translate3d(0,100%,0);
+    transform: translate3d(0,100%,0);
+}
+.@{namespace}sharebox .@{namespace}row {
+    padding: 0.5rem 0;
+}
+.@{namespace}sharebox img {
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+}
+.@{namespace}sharebox.@{namespace}grid [class*="@{namespace}col-"] {
+    padding: 0.5rem 0;
+}
+.@{namespace}sharebox.@{namespace}grid .@{namespace}grid-label {
+    font-size: 0.6rem;
+    color: @text2Color;
+}
+.@{namespace}sharebox-close-btn {
+    width: 100%;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    color: @text2Color;
+    text-align: center;
+    font-size: 0.7rem;
+}
+/*折叠菜单*/
+.@{namespace}collapse-header.@{namespace}active {
+    background: #ececec;
+}
+.@{namespace}collapse .@{namespace}list-item:active{
+    background: #ececec;
+}
+.@{namespace}collapse-content {
+    display: none;
+}
+.@{namespace}collapse-content .@{namespace}list-item:last-child {
+    border-bottom: 0;
+}
+@media screen and (-webkit-min-device-pixel-ratio:1.5) {
+    .@{namespace}collapse-content .@{namespace}list-item:last-child {
+        background-position: bottom;
+    }
+    .@{namespace}list.@{namespace}collapse.@{namespace}list-noborder,
+    .@{namespace}list.@{namespace}collapse.@{namespace}list-noborder .@{namespace}collapse-content:last-child .@{namespace}list-item:last-child {
+        .media-border-b;
+    }
+    .@{namespace}list.@{namespace}collapse.@{namespace}list-noborder,
+    .@{namespace}list.@{namespace}collapse.@{namespace}list-noborder .@{namespace}collapse-item:last-child .@{namespace}list-item:last-child {
+        border: none;
+        background-size: 100% 0;
+        background-image: none;
+    }
+    .@{namespace}list.@{namespace}collapse.@{namespace}list-noborder .@{namespace}collapse-item:last-child .@{namespace}list-item.@{namespace}collapse-header,
+    .@{namespace}list.@{namespace}collapse.@{namespace}list-noborder .@{namespace}collapse-content .@{namespace}list-item:last-child  {
+        border: none;
+        background-size: 100% 0;
+        background-image: none;
+    }
+}
+.@{namespace}collapse-header.@{namespace}active .@{namespace}collapse-arrow {
+    display: inline-block;
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+}
+.@{namespace}comment-box {
+    background-color: #f6f6f6;
+    margin-bottom: 0;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+    opacity: 0;
+    -webkit-transition: opacity .3s,-webkit-transform .3s;
+    transition: opacity .3s,transform .3s;
+    -webkit-transform: translate3d(0,100%,0);
+    transform: translate3d(0,100%,0);
+    padding: 0.5rem;
+}
+.@{namespace}comment-box .@{namespace}card-list-content {
+    padding: 0;
+}
+.@{namespace}comment-box textarea {
+    background: #ffffff;
+    height: 4.5rem;
+    padding: 0.25rem;
+    border: 1px solid #eee;
+}
+.@{namespace}comment-box .@{namespace}card-list-header {
+	padding: 0;
+}
+.@{namespace}comment-box .@{namespace}card-list-footer {
+    padding: 0;
+    min-height: 1 !important;
+}
+.@{namespace}comment-box .@{namespace}comment-box-confirm.@{namespace}active {
+    background-color: #03a9f4 !important;
+    color: #ffffff;
+}
+/*聊天气泡*/
+.@{namespace}chat {
+    width: 100%;
+    height: 100%;
+    padding: 0.5rem;
+}
+.@{namespace}chat .@{namespace}chat-item {
+    position: relative;
+    width: 100%;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    display: block;
+}
+.@{namespace}chat .@{namespace}chat-header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.75rem;
+    font-size: 0.6rem;
+    color: @text2Color;
+}
+.@{namespace}chat .@{namespace}chat-left {
+    float: left;
+}
+.@{namespace}chat .@{namespace}chat-right {
+    float: right;
+}
+.@{namespace}chat .@{namespace}chat-media {
+    display: inline-block;
+    max-width: 2rem;
+}
+.@{namespace}chat .@{namespace}chat-media img {
+    width: 100%;
+    border-radius: 50%;
+}
+.@{namespace}chat .@{namespace}chat-inner {
+    position: relative;
+    overflow: hidden;
+    display: inherit;
+}
+.@{namespace}chat .@{namespace}chat-arrow {
+    content: '';
+    position: absolute;
+    width: 0.6rem;
+    height: 0.6rem;
+    top: 0.2rem;
+    -webkit-transform-origin: 50% 50% 0;
+            transform-origin: 50% 50% 0;
+    background-color: transparent;
+}
+.@{namespace}chat .@{namespace}chat-left .@{namespace}chat-arrow {
+    background-image: -webkit-linear-gradient(45deg, @chatLeftBgColor, @chatLeftBgColor 50%, transparent 50%);
+    background-image: linear-gradient(45deg, @chatLeftBgColor, @chatLeftBgColor 50%, transparent 50%);
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    left: -0.25rem;
+}
+.@{namespace}chat .@{namespace}chat-right .@{namespace}chat-arrow {
+    background-image: -webkit-linear-gradient(45deg, @chatRightBgColor, @chatRightBgColor 50%, transparent 50%);
+    background-image: linear-gradient(45deg, @chatRightBgColor, @chatRightBgColor 50%, transparent 50%);
+    -webkit-transform: rotate(-135deg);
+            transform: rotate(-135deg);
+    right: -0.25rem;
+}
+.@{namespace}chat .@{namespace}chat-content {
+    color: @chatTextColor;
+    font-size: 0.7rem;
+    border-radius: 0.2rem;
+    min-height: 2rem;
+    position: relative;
+    padding: 0.5rem;
+    max-width: 80%;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.@{namespace}chat .@{namespace}chat-content img {
+    max-width: 100%;
+    display: block;
+}
+.@{namespace}chat .@{namespace}chat-status {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+}
+.@{namespace}chat .@{namespace}chat-name {
+    width: 100%;
+    position: relative;
+    font-size: 0.6rem;
+    color: @text2Color;
+    margin-bottom: 0.25rem;
+}
+.@{namespace}chat .@{namespace}chat-left .@{namespace}chat-name {
+    left: 0.5rem;
+}
+.@{namespace}chat .@{namespace}chat-left .@{namespace}chat-status {
+    left: 0.5rem;
+    float: left;
+}
+.@{namespace}chat .@{namespace}chat-left .@{namespace}chat-media {
+    width: 2rem;
+    float: left;
+}
+.@{namespace}chat .@{namespace}chat-left .@{namespace}chat-inner {
+    max-width: 70%;
+}
+.@{namespace}chat .@{namespace}chat-left .@{namespace}chat-content{
+    background-color: @chatLeftBgColor;
+    float: left;
+    left: 0.5rem;
+}
+.@{namespace}chat .@{namespace}chat-right .@{namespace}chat-media {
+    width: 2rem;
+    float: right;
+}
+.@{namespace}chat .@{namespace}chat-right .@{namespace}chat-inner {
+    float: right;
+    max-width: 70%;
+}
+.@{namespace}chat .@{namespace}chat-right .@{namespace}chat-name {
+    float: right;
+    right: 0.5rem;
+    text-align: right;
+}
+.@{namespace}chat .@{namespace}chat-right .@{namespace}chat-content {
+    background-color: @chatRightBgColor;
+    right: 0.5rem;
+    float: right;
+}
+.@{namespace}chat .@{namespace}chat-right .@{namespace}chat-status {
+    float: right;
+    right: 0.5rem;
+}
+/*边框样式*/
+.@{namespace}border-l {
+    border-left: 1px solid @lineBorderColor;
+}
+.@{namespace}border-r {
+    border-right: 1px solid @lineBorderColor;
+}
+.@{namespace}border-t {
+    border-top: 1px solid @lineBorderColor;
+}
+.@{namespace}border-b {
+    border-bottom: 1px solid @lineBorderColor;
+}
+.@{namespace}border {
+    border: 1px solid @lineBorderColor;
+}
+@media screen and (-webkit-min-device-pixel-ratio:1.5) {
+	.@{namespace}border-l {
+		.media-border-l;
+	}
+	.@{namespace}border-r {
+		.media-border-r;
+	}
+	.@{namespace}border-t{
+		.media-border-t;
+	}
+	.@{namespace}border-b {
+		.media-border-b;
+	}
+	.@{namespace}border{
+        .media-border;
+    }
+}
+/*时间轴*/
+.@{namespace}timeline {
+    position: relative;
+    padding: 0;
+    list-style: none;
+}
+.@{namespace}timeline:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 1.85rem;
+    width: 2px;
+    height: 100%;
+    background: #ececec;
+    z-index: 0;
+}
+.@{namespace}timeline .@{namespace}timeline-item {
+    position: relative;
+    margin-bottom: 0.75rem;
+}
+.@{namespace}timeline .@{namespace}timeline-item-header {
+	background-color: #ececec;
+	padding: 0.2rem 0.5rem;
+	margin: 0.75rem;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    font-size: 0.7rem;
+}
+.@{namespace}timeline .@{namespace}timeline-item-label {
+    width: 2.5rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    font-size: 0.7em;
+    background-color: #ececec;
+    position: absolute;
+    text-align: center;
+    left: 0.75rem;
+    top: 0;
+}
+.@{namespace}timeline .@{namespace}timeline-item-label-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.7rem;
+    line-height: 1.5rem;
+    background-color: #ececec;
+    position: absolute;
+    border-radius: 50%;
+    text-align: center;
+    left: 1.15rem;
+    top: 0;
+}
+.@{namespace}timeline .@{namespace}timeline-item-inner {
+    margin-left: 3.75rem;
+    margin-right: 0.75rem;
+    padding: 0;
+    position: relative;
+}
+/*基础动画类*/
+@keyframes rotate {
+    0% {
+        -webkit-transform: rotate(0deg) scale(1);
+            	transform: rotate(0deg) scale(1);
+    }
+    50% {
+        -webkit-transform: rotate(180deg) scale(1);
+            	transform: rotate(180deg) scale(1);
+    }
+    100% {
+        -webkit-transform: rotate(360deg) scale(1);
+            	transform: rotate(360deg) scale(1);
+    }
+}
+@-webkit-keyframes rotate {
+    0% {
+        -webkit-transform: rotate(0deg) scale(1);
+            	transform: rotate(0deg) scale(1);
+    }
+    50% {
+        -webkit-transform: rotate(180deg) scale(1);
+            	transform: rotate(180deg) scale(1);
+    }
+    100% {
+        -webkit-transform: rotate(360deg) scale(1);
+            	transform: rotate(360deg) scale(1);
+    }
+}
+@keyframes bounce {
+	0%, 100% {
+	-webkit-transform: scale(0.0);
+			transform: scale(0.0);
+	}
+	50% {
+	-webkit-transform: scale(1.0);
+			transform: scale(1.0);
+	}
+}
+@-webkit-keyframes bounce {
+	0%, 100% {
+		-webkit-transform: scale(0.0);
+				transform: scale(0.0);
+	}
+	50% {
+		-webkit-transform: scale(1.0);
+				transform: scale(1.0);
+	}
+}
+@keyframes fadeIn {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
+}
+@-webkit-keyframes fadeIn {
+    from { opacity: 0.3; }
+    to { opacity: 1; }
+}
+@font-face {
+	font-family: "@{namespace}iconfont";
+	src: url('aui-iconfont.ttf') format('truetype');
+}
+.@{namespace}iconfont {
+	position: relative;
+	font-family:"@{namespace}iconfont" !important;
+	font-size: 0.7rem;
+	font-style:normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.@{namespace}icon-menu:before { content: "\e6eb"; }
+.@{namespace}icon-paper:before { content: "\e6ec"; }
+.@{namespace}icon-info:before { content: "\e6ed"; }
+.@{namespace}icon-question:before { content: "\e6ee"; }
+.@{namespace}icon-left:before { content: "\e6f4"; }
+.@{namespace}icon-right:before { content: "\e6f5"; }
+.@{namespace}icon-top:before { content: "\e6f6"; }
+.@{namespace}icon-down:before { content: "\e6f7"; }
+.@{namespace}icon-share:before { content: "\e700"; }
+.@{namespace}icon-comment:before { content: "\e701"; }
+.@{namespace}icon-edit:before { content: "\e6d3"; }
+.@{namespace}icon-trash:before { content: "\e6d4"; }
+.@{namespace}icon-recovery:before { content: "\e6dc"; }
+.@{namespace}icon-refresh:before { content: "\e6dd"; }
+.@{namespace}icon-close:before { content: "\e6d8"; }
+.@{namespace}icon-cart:before { content: "\e6df"; }
+.@{namespace}icon-star:before { content: "\e6e0"; }
+.@{namespace}icon-plus:before { content: "\e6e3"; }
+.@{namespace}icon-minus:before { content: "\e62d"; }
+.@{namespace}icon-correct:before { content: "\e6e5"; }
+.@{namespace}icon-search:before { content: "\e6e6"; }
+.@{namespace}icon-gear:before { content: "\e6e8"; }
+.@{namespace}icon-map:before { content: "\e6d2"; }
+.@{namespace}icon-location:before { content: "\e6d1"; }
+.@{namespace}icon-image:before { content: "\e6ce"; }
+.@{namespace}icon-phone:before { content: "\e6c4"; }
+.@{namespace}icon-camera:before { content: "\e6cd"; }
+.@{namespace}icon-video:before { content: "\e6cc"; }
+.@{namespace}icon-qq:before { content: "\e6cb"; }
+.@{namespace}icon-wechat:before { content: "\e6c9"; }
+.@{namespace}icon-weibo:before { content: "\e6c8"; }
+.@{namespace}icon-note:before { content: "\e6c6"; }
+.@{namespace}icon-mail:before { content: "\e6c5"; }
+.@{namespace}icon-wechat-circle:before { content: "\e6ca"; }
+.@{namespace}icon-home:before { content: "\e706"; }
+.@{namespace}icon-forward:before { content: "\e6d9"; }
+.@{namespace}icon-back:before { content: "\e6da"; }
+.@{namespace}icon-laud:before { content: "\e64b"; }
+.@{namespace}icon-lock:before { content: "\e6ef"; }
+.@{namespace}icon-unlock:before { content: "\e62f"; }
+.@{namespace}icon-like:before { content: "\e62b"; }
+.@{namespace}icon-my:before { content: "\e610"; }
+.@{namespace}icon-more:before { content: "\e625"; }
+.@{namespace}icon-mobile:before { content: "\e697"; }
+.@{namespace}icon-calendar:before { content: "\e68a"; }
+.@{namespace}icon-date:before { content: "\e68c"; }
+.@{namespace}icon-display:before { content: "\e612"; }
+.@{namespace}icon-hide:before { content: "\e624"; }
+.@{namespace}icon-pencil:before { content: "\e615"; }
+.@{namespace}icon-flag:before { content: "\e6f1"; }
+.@{namespace}icon-cert:before { content: "\e704"; }
+// 1px线条处理
+.media-border-l(){
+	border: none;
+    background-image: -webkit-linear-gradient(0deg, @lineBorderColor, @lineBorderColor 50%, transparent 50%);
+    background-image: linear-gradient(270deg, @lineBorderColor, @lineBorderColor 50%, transparent 50%);
+    background-size: 1px 100%;
+    background-repeat: no-repeat;
+    background-position: left;
+}
+.media-border-r(){
+	border: none;
+    background-image: -webkit-linear-gradient(0deg, @lineBorderColor, @lineBorderColor 50%, transparent 50%);
+    background-image: linear-gradient(270deg, @lineBorderColor, @lineBorderColor 50%, transparent 50%);
+    background-size: 1px 100%;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.media-border-t(){
+	border: none;
+    background-size: 100% 1px;
+	background-repeat: no-repeat;
+	background-position: top;
+    background-image: linear-gradient(@lineBorderColor,@lineBorderColor 50%,transparent 50%);
+    background-image: -webkit-linear-gradient(@lineBorderColor,@lineBorderColor 50%,transparent 50%);
+}
+.media-border-b(){
+	border: none;
+    background-size: 100% 1px;
+	background-repeat: no-repeat;
+	background-position: bottom;
+    background-image: linear-gradient(0,@lineBorderColor,@lineBorderColor 50%,transparent 50%);
+    background-image: -webkit-linear-gradient(90deg,@lineBorderColor,@lineBorderColor 50%,transparent 50%);
+}
+.media-border(){
+	border: none;
+    background-image: -webkit-linear-gradient(270deg, @lineBorderColor, @lineBorderColor 50%, transparent 50%), -webkit-linear-gradient(180deg, @lineBorderColor, @lineBorderColor 50%, transparent 50%), -webkit-linear-gradient(90deg, @lineBorderColor, @lineBorderColor 50%, transparent 50%), -webkit-linear-gradient(0, @lineBorderColor, @lineBorderColor 50%, transparent 50%);
+    background-image: linear-gradient(180deg, @lineBorderColor, @lineBorderColor 50%, transparent 50%), linear-gradient(270deg, @lineBorderColor, @lineBorderColor 50%, transparent 50%), linear-gradient(0deg, @lineBorderColor, @lineBorderColor 50%, transparent 50%), linear-gradient(90deg, @lineBorderColor, @lineBorderColor 50%, transparent 50%);
+    background-size: 100% 1px, 1px 100%, 100% 1px, 1px 100%;
+    background-repeat: no-repeat;
+    background-position: top, right top, bottom, left top;
+}
+.flex-between-center(){
+	-webkit-box-sizing: border-box;
+    		box-sizing: border-box;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    		justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    		align-items: center;
+}
