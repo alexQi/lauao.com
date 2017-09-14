@@ -7,6 +7,8 @@ use yii\helpers\Url;
 
 	<head>
 		<meta charset="utf-8">
+			  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
 		<meta name="format-detection" content="telephone=no,email=no,date=no,aItemress=no">
 		<title>宛聆歌王报名通道</title>
@@ -45,7 +47,7 @@ use yii\helpers\Url;
 				border-bottom: 1px solid #e6e6e6;
 				;
 			}
-			/*	.layui-form-label {width: 100px;}*/
+			
 			
 			.my-btnmarg {
 				width: 110px;
@@ -72,7 +74,8 @@ use yii\helpers\Url;
 	</head>
 
 	<body>
-
+		
+	<form class="layui-form" action="">
 		<div class="mylogo">
 			<img src="/images/apicloud-bg.png" />
 		</div>
@@ -82,19 +85,19 @@ use yii\helpers\Url;
 				<legend>输入基本信息</legend>
 			</fieldset>
 
-			<form class="layui-form" action="">
+		
 				<div class="layui-form-item">
 					<label class="layui-form-label">姓名</label>
 					<div class="layui-input-block">
-						<input type="text" name="name" lay-verify="required" autocomplete="off" placeholder="请输入姓名" class="layui-input">
+						<input type="text" name="apply_name" lay-verify="required" autocomplete="off" placeholder="请输入姓名" class="layui-input">
 					</div>
 				</div>
 
 				<div class="layui-form-item">
 					<label class="layui-form-label">性别</label>
 					<div class="layui-input-block ">
-						<input type="radio" name="sex" value="男" title="男">
-						<input type="radio" name="sex" value="女" title="女" checked="">
+						<input type="radio" name="gender" value="男" title="男">
+						<input type="radio" name="gender" value="女" title="女" checked="">
 					</div>
 				</div>
 
@@ -108,14 +111,14 @@ use yii\helpers\Url;
 				<div class="layui-form-item">
 					<label class="layui-form-label">自我介绍</label>
 					<div class=layui-input-block>
-						<textarea placeholder="请输入自我介绍内容" class="layui-textarea"></textarea>
+						<textarea name="self_desc" placeholder="请输入自我介绍内容" class="layui-textarea"></textarea>
 					</div>
 				</div>
 
 				<div class="layui-form-item">
 					<label class="layui-form-label">推荐单位</label>
 					<div class=layui-input-block>
-						<input type="text" name="unit" lay-verify="required" autocomplete="off" placeholder="请输入推荐单位" class="layui-input">
+						<input type="text" name="recommend" lay-verify="required" autocomplete="off" placeholder="请输入推荐单位" class="layui-input">
 					</div>
 				</div>
 				
@@ -130,91 +133,178 @@ use yii\helpers\Url;
 						<div class="layui-col-xs6 ">
 							<div class="my-btnmarg">
 								<div class="layui-upload">
-									<button type="button" name="upload" class="layui-btn layui-btn-radius  layui-btn-primary" id="uploadimg"> <i class="layui-icon">&#xe64a;</i>上传照片</button>
-									<div class="layui-upload-list">
-										<img class="layui-upload-img" id="demo1" src="">
-										<p id="demoText"></p>
-									</div>
+									<button type="button" class="layui-btn layui-btn-radius  layui-btn-primary self_info" lay-data="{url:'<?php echo Url::to(['/ajax/default/ajax-upload'])?>'}" >
+										 <i class="layui-icon">&#xe64a;</i>
+										 上传照片
+										 </button>
+									
+									
 								</div>
 							</div>
 						</div>
 						<div class="layui-col-xs6">
-							<!--<div class="my-btnmarg">
-								<button type="button" name="upload" class="layui-btn layui-btn-radius layui-btn-primary" id="uploadaudio"><i class="layui-icon"> &#xe652;</i>上传音频</button>
-							</div>-->
+							<div class="my-btnmarg">
+								<div class="layui-upload">
+								<button type="button"  class="layui-btn layui-btn-radius layui-btn-primary self_info" lay-data="{url:'<?php echo Url::to(['/ajax/default/ajax-upload'])?>',accept:'audio'}" >
+									<i class="layui-icon"> &#xe652;</i>
+									上传音频
+								</button>
+								
+								</div>
+							</div>
 						</div>
 
 					</div>
+					
 					<hr class="layui-bg-gray">
 
 					<div class="my-btnmarg">
-						<button class="layui-btn layui-btn-radius layui-btn-primary" lay-submit="" lay-filter="" id="yessubmit">
-    					<i class="layui-icon"> &#xe618;</i>立即报名</button>
+						<div id="now_upload"></div>
+						
+						<button class="layui-btn layui-btn-radius layui-btn-primary" lay-submit="" lay-filter="commitinfo">
+    					<i class="layui-icon"> &#xe618;</i>
+    					立即报名
+    					</button>
+    					
+    					
+    					
 					</div>
+					
+					</form>
 					<br/>
 					<footer class="my-footer">本次活动最终解释权归宣城宛聆音乐</footer>
                 </div>
-			</form>
-
+			
+	</body>
+	
+	
 			<script type="text/javascript" src="/script/jquery.min.js"></script>
 			<script type="text/javascript" src="/layui/layui.js"></script>
-			<!--	<script type="text/javascript" src="script/fastclick.js"></script>-->
-			<!--<script type="text/javascript" src="script/aui-collapse.js"></script>-->
 			<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 			<script>
 				/*加載Layer和Form*/
 				layui.use(['layer','form', 'upload'], function() {
 
-					//var layer = layui.layer,
-					var	form = layui.form,
-						upload = layui.upload;
+					var layer = layui.layer,
+						form = layui.form,
+						upload = layui.upload,
+						passimages=false,
+						passaudio=false;
+						
+					
+					 
+					 
+					 var self=null;
+					
 
 					form.render();
 
-					/*开始上传图片*/
+					/*开始上传图片和音頻*/
 					upload.render({
-                        elem:'#uploadimg',
-                        url:'<?php echo Url::to(['/ajax/default/ajax-upload'])?>',
-                        //auto:false,
-                        //bindAction:'#yessubmit', //指向一个按钮触发上传
-    //					choose: function(obj){
-    //					var files=obj.pushFile();
-    //						obj.preview(function(index, file, result){
-    //   					 console.log(index); //得到文件索引
-    //  					  console.log(file); //得到文件对象
-    //   					});
-                         before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
-                            // layer.load(); //上传loading
+                        elem:'.self_info',
+                        auto:false,
+                        bindAction:'#now_upload', //指向一个按钮触发上传
+                        choose: function(obj){
+                        
+                          obj.pushFile(); //将每次选择的文件追加到文件队列
+                        	 obj.preview(function(index, file, result){
+                        	 	
+                        	 	
+                        	 	//判斷有選擇這兩個
+                        	 	if(file.type.split("/")[0]=="image")
+                        	 	{
+                        	 		passimages=true;
+                        	 	}
+                        	 	if(file.type.split("/")[0]=="audio")
+                        	 	{
+                        	 		passaudio=true;
+                        	 	}
+                        	 	
+                         });
+                         },
+                        before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+                		 layer.load(1);
+                 	    },
+                       done: function(res, index, upload){
+                                      
+                        
+                          
+                          if(res.data.mimeType.split("/")[0]=="image")
+                          {                     	
+                        	 
+                        	 self.field["self_picture"]=res.data.file_url;
+                        	                    	 
+                          }
+                          if(res.data.mimeType.split("/")[0]=="audio")
+                          {
+                        	
+                        	self.field["self_media"]=res.data.file_url;
+                        	
+                          }
+                          
+                          //上面2个地址都不是空的话,就写入数据库
+                         if(self.field["self_picture"]!="" && self.field["self_media"]!="")
+                         {
+                         	self.field["weichat_uid"]="12165465465";
+                         	
+                         	$.post('/ajax/default/save-user',self.field,function(res){
+     
+    						  layer.alert(res.message);
+     						 //res就是返回的结果
+	
+							 });
+                         	
+                         		
                          }
-                        ,done: function(res, index, upload){
-
-                            layer.alert(res.message);
-                            $('.layui-upload-img').attr('src',res.data.file_url);
+                         
+                         layer.closeAll('loading'); //关闭loading
+                          
+                          
+                   
                         }
-					});
+                      });
 					
-					/*开始音频*/
-//					upload.render({
-//					elem:'#uploadaudio',
-//					url:'<?php echo Url::to(['/ajax/default/ajax-upload'])?>',
-//					auto:false,
-//					accept:'audio',
-//					bindAction: '#yessubmit', //指向一个按钮触发上传
-//						choose: function(obj){
-//						var files=obj.pushFile();
-//						obj.preview(function(index, file, result){
-//					  console.log(index); //得到文件索引
-// 					  console.log(file); //得到文件对象
-//					});
-//				}
-//						
-//					
-//					});
-					
+                   
+                            //监听提交
+			form.on('submit(commitinfo)',function(data){
+				
+		  if(!passaudio)
+			{
+				layer.msg('请上传您的音频作品.', {icon: 5,shift: 6});
+				
+			   return false;
+			}
+			if(!passimages)
+			{
+				
+				layer.msg('请上传您的个人照片.', {icon: 5,shift: 6});
+			    return false;
+			}
+			
+			   self=data;
+			   
+			   $("#now_upload").click();
+			   
+			   return false;
+				
+							
+			});
+                
+			
+			
+			
+				
+				//$("now_upload").click();
+				
+				
+		
+			
+//			
+			 		 
+
+				
 });
 				
-			</script>
-
-	</body>
+</script>
 
 </html>
