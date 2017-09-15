@@ -192,7 +192,7 @@ use yii\helpers\Url;
 
     <div style="margin: 0 auto; background:#FF6666;width:260px ;margin-bottom:8px;padding:10px;font-size: 15px;border-radius: 20px;text-align: center;color: white;">
 
-        <li id="chartouttime" style="padding:5px;">倒计时:19天22小时22分钟</li>
+        <li id="chartouttime" style="padding:5px;"></li>
     </div>
 
     <div class="aui-content-padded aui-card-list " style="margin-bottom: 0px;">
@@ -684,7 +684,7 @@ use yii\helpers\Url;
             var myS = Math.floor(nMS / 1000) % 60; //秒
             //var myMS = Math.floor(nMS / 100) % 10; //拆分秒
             if (myD >= 0) {
-                var str = myD + "天" + myH + "小时" + myM + "分" + myS + "秒";
+                var str = "活动倒计时:"+myD + "天" + myH + "小时" + myM + "分" + myS + "秒";
             } else {
                 var str = "活动已结束!";
             }
