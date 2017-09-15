@@ -471,7 +471,7 @@ use yii\helpers\Url;
             }
         });
     }
-
+ 
     loadData(1);
 
     //Wenxin SDK
