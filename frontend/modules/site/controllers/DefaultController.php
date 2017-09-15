@@ -2,6 +2,7 @@
 namespace frontend\modules\site\controllers;
 
 
+use common\models\ActivityBase;
 use Yii;
 use frontend\controllers\BaseController;
 use frontend\models\ApplyUserService;
@@ -22,10 +23,12 @@ class DefaultController extends BaseController
         $advertList   = ApplyUserService::getAdvertList();
         $activityInfo = ApplyUserService::getActivityInfo();
         $serverTime   = time();
+        $activity     = ActivityBase::find()->where(['status'=>2])->asArray()->one();
         return $this->render('index',[
             'advertList' => $advertList,
             'activityInfo' => $activityInfo,
-            'serverTime' => $serverTime
+            'serverTime' => $serverTime,
+            'activity' => $activity
         ]);
     }
 

@@ -71,6 +71,10 @@ class DefaultController extends Controller
             $model->user_id    = yii::$app->user->identity->getId();
             $model->created_at = time();
             $model->updated_at = time();
+            $tempActivityInfo = ActivityBase::find()->where(['status'=>2])->one();
+            if ($tempActivityInfo){
+                $model->status = 1;
+            }
             if ($model->save()){
                 return $this->redirect(['view', 'id' => $model->id]);
             }

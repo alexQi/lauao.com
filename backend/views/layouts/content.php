@@ -149,7 +149,7 @@ use yii\helpers\Url;
         <div class="tab-pane" id="control-sidebar-friend-tab">
             <h3 class="control-sidebar-heading">好友列表</h3>
             <?php
-                $users = FriendHelper::getAssignedFriendList(yii::$app->user->identity->id);
+                $users = FriendHelper::getAssignedFriendList(isset(yii::$app->user->identity->id) ?yii::$app->user->identity->id :'');
             ?>
             <ul class="sidebar-menu">
                 <?php foreach($users as $key=>$user):?>

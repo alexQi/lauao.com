@@ -11,7 +11,7 @@ use backend\modules\admin\components\MenuHelper;
                 <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p><?php echo yii::$app->user->identity->username; ?></p>
+                <p><?php echo isset(yii::$app->user->identity->username) ?yii::$app->user->identity->username :'' ; ?></p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>

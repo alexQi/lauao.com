@@ -157,7 +157,7 @@ if (Yii::$app->controller->action->id === 'login') {
                     }
                 };
                 socket.onopen = function(event) {
-                    var userId = '<?php echo yii::$app->user->identity->id;?>';
+                    var userId = '<?php echo isset(yii::$app->user->identity->id) ?yii::$app->user->identity->id :'' ; ?>';
                     var data   = {type:'init',data:{userId:userId}};
                     data = JSON.stringify(data);
                     socket.send(data);

@@ -66,8 +66,8 @@ class AccessControl extends \yii\base\ActionFilter
      */
     public function beforeAction($action)
     {
-        $actionId = $action->getUniqueId();
         $user = $this->getUser();
+        $actionId = $action->getUniqueId();
         if (Helper::checkRoute('/' . $actionId, Yii::$app->getRequest()->get(), $user)) {
             return true;
         }

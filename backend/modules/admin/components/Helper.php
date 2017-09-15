@@ -105,6 +105,10 @@ class Helper
     {
         $config = Configs::instance();
         $r = static::normalizeRoute($route);
+        if ($user->loginUrl == $r)
+        {
+            return true;
+        }
         if ($config->onlyRegisteredRoute && !isset(static::getRegisteredRoutes()[$r])) {
             return true;
         }
@@ -119,7 +123,9 @@ class Helper
                 return true;
             }
             while (($pos = strrpos($r, '/')) > 0) {
+
                 $r = substr($r, 0, $pos);
+
                 if ($user->can($r . '/*', $params)) {
                     return true;
                 }
