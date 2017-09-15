@@ -259,6 +259,10 @@ use yii\helpers\Url;
     						  layer.alert(res.message);
      						  //res就是返回的结果
 							  // console.log(JSON.stringify(self.field));
+							  if(res.state==1)
+							  {
+							  	window.location.href="index.html";
+							  }
 							  
 							  passimages=false;
 						      passaudio=false;
