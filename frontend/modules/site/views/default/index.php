@@ -96,13 +96,19 @@ use yii\helpers\Url;
         }
         .btnpause{
             background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAADw0lEQVRoQ+2Zj1UTQRDGZypQKxAqUCoQKhArUCoQKxAqECoQKhAqECsQKhAqECoY3++ciZvN3mUvuVwIz3nvIJC7vf1mvvm7KhsuOuT+zey5iLwSkS2/0uVvRYTrRlXvh3rv0gDM7LWIvBeRXRHhc41ci8iViJyrKp8XloUBmBmbPipouu9msMqRqp73fZD7ewPo2PiDazW0W9pPWInfz7IbAPJJVS/6AKkG4Pz+5lRJ34HmzlQVSlSLmQHig9MvfY513tX6SRUA5/l3EcFJQ45F5KT2RW3IzAyHh4pQMgQn36vxj7kAzAwtfU0Wv0FzNYtXm0NEXElnHsV4FBBQiv+1SieAwuaJGgBamZgZG06tcdAFohWAcxTahHQuNCQiMzsUkS++ZiedigDcYX8lnB9t86GIAojtkr+1AUDzRAlk5bTpcPCUTlequpffOwPAzPZFhHCJkPZrs+uQLJqsZWbkFcoThPA6lSdKAKAOoQ3ZGTra9EXp0emnP3erqtvpGlMAsqhzrKrE57VLFpmm/DEHENqnLNhaNkkNhdyTHXtDpqwwAZCZqtpxzQwrfc42SxadKi0KYZlHqq2cWWFC7RTAiYh87Mv9EQGkweVUVckV/6pRM8NRiDgPqprWPJ1MGAsAmzAzkhpV7LWq7kwAeOL67Tu9VFXQVsnIAAihb5uNqzbsaX5k/KzmpT87ig8U3tX4WQBIK84ZB+wyxcgWSP2gCacBINXiYwZAeRMFZsOU/wBGptDTtcAmOnFTmT6ZMErm3dxE5kkiGod7VX1RlYb/JsExExlKRtmTRqutmKvOBWMByDrFYjFHIRedz+aV004j5pMvnT5MAfh77ZI1NFN9eldLWW2FVSOsbikLVngMTX2afe9UNQYOjd7mjVUmjcOqtVxa3/sUircY7cwfq7gV6Gff+KKMzg/WBIChcsxii41W12gRB45DCKbE9MyjSRae77BC9WjRrYDZsESAOFTV0zEQmBlTjphJMeLZbRuw9R2vM6vEGoOdMqYKcc4zlU5H+DO8T5+pPeCAPmEJSg7auaVOF3NLel/O5sNh0TwHKZ1nZnMBtNCJf2MN2rqlkp0nKSiTah3O79coqQqAg6CIQhsRnUKJALlQ1cs+/mFmjEdo0vMTH9ZB81U0rQYQm/OiCkpFyRFf8UKcHmpx5RtAAdCDi+SUD8/QOhvvddrZG0ACBM0x3ovZfR8DpPdyaMhpZ+dhXtviCwNIgKBRqMBVC+aHWwvqLRUMlgbQEk2CLunXDa36UmSeWQcHMO+FQ3//B59HaE+x1ofPAAAAAElFTkSuQmCC");		}
-        /*.loadMore{
-        width: 100%;
-        height: 30px;
-        text-align: center;
-        line-height: 30px;
-        background-color: #ffa87f;
-    }*/
+        .loadMore{
+         display: block;
+   		 }
+   		 
+   		 .noMore{
+          display: none;
+          font-size: 10px;
+         
+          color:#DDDDDD;
+          width: 90px;
+          margin: 0 auto;
+          
+   		 }
 
         .myvote {
             z-index: 10;
@@ -158,6 +164,9 @@ use yii\helpers\Url;
 				line-height: 2.8;
 				font-size: 12px;
 			}
+			
+			
+			
         
     </style>
 </head>
@@ -218,6 +227,8 @@ use yii\helpers\Url;
         </div>
 
     </div>
+    
+    
 
     <section class="aui-grid">
         <div class="aui-col-xs-6 aui-border-r">
@@ -293,7 +304,7 @@ use yii\helpers\Url;
             <div class="aui-text-danger" style="margin: 0 auto;">
                 <div class="voteyes">
                     <i class="aui-iconfont aui-icon-laud aui-text-danger"></i>
-                    投Ta一票
+                  	  投Ta一票
                 </div>
             </div>
         </div>
@@ -306,8 +317,9 @@ use yii\helpers\Url;
     </div>
 
     <div class="box">
+    	<span class="noMore">我是有底线的</span>
         <div class="loader">
-            <span class="loadMore"></span>
+            <span class="loadMore">
             <div class="loading-2">
                 <i></i>
                 <i></i>
@@ -317,10 +329,14 @@ use yii\helpers\Url;
                 <i></i>
                 <i></i>
             </div>
+            </span>
         </div>
+        
     </div>
-
+  
 </div>
+
+
 
 <div class="myvote" style="	bottom:120px;">
     <a href="<?php echo Url::to(['about']); ?>">活动介绍</a>
@@ -331,7 +347,7 @@ use yii\helpers\Url;
 </div>
 <footer class="my-footer">本次活动最终解释权归宣城宛聆音乐</footer>
 <script type="text/template" id="water">
-    <% for(var i=0;i< items.length;i++){%>
+    <% for(var i=0;i< items.list.length;i++){%>
     <div class="item">
 
         <div class="aui-card-list" style="margin-bottom: 0px;">
@@ -340,13 +356,13 @@ use yii\helpers\Url;
                 <div class="aui-card-list" style="margin-bottom: 0px;">
                     <div class="aui-card-list-header aui-collapse-header" tapmode>
                         <div class="aui-iconfont aui-icon-my">
-                            <%= items[i].id%> 号</div>
+                            <%= items.list[i].id%> 号</div>
                         <i class="aui-iconfont aui-icon-down aui-collapse-arrow"></i>
                     </div>
                     <div class="aui-card-list-content-padded aui-collapse-content">
                         <div class="aui-row aui-row-padded">
-                            <p>姓名:<%= items[i].name%></p>
-                            <p>介绍:<%= items[i].desc%></p>
+                            <p>姓名:<%= items.list[i].name%></p>
+                            <p>介绍:<%= items.list[i].desc%></p>
                         </div>
                     </div>
                 </div>
@@ -355,11 +371,11 @@ use yii\helpers\Url;
 
             <div class="aui-card-list-content aui-padded-5">
                 <div class="person">
-                    <div class="myvotenum vote-num-<%= items[i].id%>"><%= items[i].votes%></div>
-                    <img class="personimg" src="<%= items[i].icon%>" alt="">
+                    <div class="myvotenum vote-num-<%= items.list[i].id%>"><%= items.list[i].votes%></div>
+                    <img class="personimg" src="<%= items.list[i].icon%>" alt="">
                     <span class="wlplayer">
-                        <audio id="<%= items[i].id%>"  preload="none">
-                            <source src="<%= items[i].music%>" type="audio/mpeg">
+                        <audio id="<%= items.list[i].id%>"  preload="none">
+                            <source src="<%= items.list[i].music%>" type="audio/mpeg">
                         </audio>
                     </span>
                 </div>
@@ -367,7 +383,7 @@ use yii\helpers\Url;
             <div class="aui-card-list-footer aui-border-t">
 
                 <div class="aui-text-danger" style="margin: 0 auto;">
-                    <div class="voteyes" data-id="<%= items[i].id%>">
+                    <div class="voteyes" data-id="<%= items.list[i].id%>">
                         <i class="aui-iconfont aui-icon-laud aui-text-danger"></i>
                         <small>投Ta一票</small>
                     </div>
@@ -419,6 +435,7 @@ use yii\helpers\Url;
             beforeSend: function() {
 
                 $(".loadMore").addClass("loading");
+                 $(".loadMore").css("display",'block');
             },
             success: function(result) {
                 if (result){
@@ -429,19 +446,28 @@ use yii\helpers\Url;
                     $(".items").append(html);
 
                     $(".loadMore").attr("page", currentPage);
+                    
+                    $(".loadMore").attr("tolPage", result.cnt);
 
                     $(".items").waterFall({
                         col: 2,
                         pad: 7
                     });
+                    
                 }else{
+                	
                     $(".loadMore").removeClass("loading");
+                     $(".loadMore").css("display",'none');
+                    
                 }
 
             },
             complete: function() {
 
                 $(".loadMore").removeClass("loading");
+                
+                 $(".loadMore").css("display",'none');
+                
             }
         });
     }
@@ -553,10 +579,22 @@ use yii\helpers\Url;
         var windowHeight = $(this).height();
 
         var offset = offsetTop + itemsHeight - windowScrollTop - windowHeight;
+          var tolcp = $(".loadMore").attr("tolPage");
+           var cp = $(".loadMore").attr("page");
+           
+        
+        
+        if(cp<tolcp)
+        {
         if(offset <= 100 && !$(".loadMore").hasClass("loading")) {
-            var cp = $(".loadMore").attr("page");
+         
             cp++;
             loadData(cp);
+        }
+        }
+        else
+        {
+        	 $(".noMore").css("display",'block');
         }
     });
 
