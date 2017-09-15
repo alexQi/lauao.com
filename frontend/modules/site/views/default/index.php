@@ -666,29 +666,35 @@ use yii\helpers\Url;
     var serverTime = parseInt('<?php echo $serverTime;?>') * 1000; //服务器时间(时间戳)，毫秒数
     var activityTime = parseInt('<?php echo $activity['end_time'];?>') * 1000; //服务器时间(时间戳)，毫秒数
     $(function () {
-        var dateTime = new Date();
-        var difference = dateTime.getTime() - serverTime; //客户端与服务器时间偏移量
+       // var dateTime = new Date();
+       // var difference = dateTime.getTime() - serverTime; //客户端与服务器时间偏移量
 
         setInterval(function () {
             //$(".endtime").each(function(){
             var obj = $("#chartouttime");
+            
             //var endTime = new Date(parseInt(obj.attr('value')) * 1000);
-            var nowTime = new Date();
+            //var nowTime = new Date();
             //var nMS=endTime.getTime() - nowTime.getTime() + difference;
-            var nMS = serverTime - nowTime.getTime() + difference;
+            activityTime = activityTime-1000;
+            var nMS = activityTime-serverTime;
             var myD = Math.floor(nMS / (1000 * 60 * 60 * 24)); //天
             var myH = Math.floor(nMS / (1000 * 60 * 60)) % 24; //小时
             var myM = Math.floor(nMS / (1000 * 60)) % 60; //分钟
             var myS = Math.floor(nMS / 1000) % 60; //秒
-            var myMS = Math.floor(nMS / 100) % 10; //拆分秒
+            //var myMS = Math.floor(nMS / 100) % 10; //拆分秒
             if (myD >= 0) {
-                var str = myD + "天" + myH + "小时" + myM + "分" + myS + "." + myMS + "秒";
+                var str = myD + "天" + myH + "小时" + myM + "分" + myS + "秒";
             } else {
                 var str = "活动已结束!";
             }
+            
+            
             obj.html(str);
+            
+            
             // });
-        }, 100); //每个0.1秒执行一次
+        }, 1000); //每个0.1秒执行一次
     });
 
 
