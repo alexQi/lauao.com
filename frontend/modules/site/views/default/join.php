@@ -183,7 +183,7 @@ use yii\helpers\Url;
 			<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 			<script>
 				
-				var $;
+				var $,files;
 				/*加載Layer和Form*/
 				layui.use(['jquery','layer','form', 'upload'], function() {
 
@@ -208,7 +208,7 @@ use yii\helpers\Url;
                         bindAction:'#now_upload', //指向一个按钮触发上传
                         choose: function(obj){
                         
-                           var files = obj.pushFile(); //将每次选择的文件追加到文件队列
+                            files = obj.pushFile(); //将每次选择的文件追加到文件队列
                            
                         	 obj.preview(function(index, file, result){
                         	 	
@@ -227,7 +227,7 @@ use yii\helpers\Url;
                         	 	//console.log(index);
                         	 	//console.log(file);
                         	 	
-                        	 	// delete file[index];
+                        	 	// delete files[index];
                          });
                          },
                         before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
