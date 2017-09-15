@@ -178,23 +178,25 @@ use yii\helpers\Url;
 	</body>
 	
 	
-			<script type="text/javascript" src="/script/jquery.min.js"></script>
+		<!--	<script type="text/javascript" src="/script/jquery.min.js"></script>-->
 			<script type="text/javascript" src="/layui/layui.js"></script>
 			<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 			<script>
+				
+				var $;
 				/*加載Layer和Form*/
-				layui.use(['layer','form', 'upload'], function() {
+				layui.use(['jquery','layer','form', 'upload'], function() {
 
 					var layer = layui.layer,
 						form = layui.form,
+						
 						upload = layui.upload,
 						passimages=false,
 						passaudio=false;
 						
-					
+					var self=null;
 					 
-					 
-					 var self=null;
+					 $ = layui.jquery;
 					
 
 					form.render();
@@ -206,7 +208,8 @@ use yii\helpers\Url;
                         bindAction:'#now_upload', //指向一个按钮触发上传
                         choose: function(obj){
                         
-                          obj.pushFile(); //将每次选择的文件追加到文件队列
+                           var files = obj.pushFile(); //将每次选择的文件追加到文件队列
+                           
                         	 obj.preview(function(index, file, result){
                         	 	
                         	 	
@@ -220,6 +223,11 @@ use yii\helpers\Url;
                         	 		passaudio=true;
                         	 	}
                         	 	
+                        	 	
+                        	 	//console.log(index);
+                        	 	//console.log(file);
+                        	 	
+                        	 	// delete file[index];
                          });
                          },
                         before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
@@ -227,7 +235,6 @@ use yii\helpers\Url;
                  	    },
                        done: function(res, index, upload){
                                       
-                        
                           
                           if(res.data.mimeType.split("/")[0]=="image")
                           {                     	
@@ -243,24 +250,28 @@ use yii\helpers\Url;
                           }
                           
                           //上面2个地址都不是空的话,就写入数据库
-                         if(self.field["self_picture"]!="" && self.field["self_media"]!="")
+                         if(self.field["self_picture"]!=undefined && self.field["self_media"]!=undefined)
                          {
                          	self.field["weichat_uid"]="12165465465";
                          	
                          	$.post('/ajax/default/save-user',self.field,function(res){
      
     						  layer.alert(res.message);
-     						 //res就是返回的结果
-	
+     						  //res就是返回的结果
+							  // console.log(JSON.stringify(self.field));
+							  
+							  passimages=false;
+						      passaudio=false;
+
 							 });
                          	
-                         		
+                         	 layer.closeAll('loading'); //关闭loading	
                          }
                          
-                         layer.closeAll('loading'); //关闭loading
+                         delete files[index];
+                         return;
                           
-                          
-                   
+
                         }
                       });
 					
