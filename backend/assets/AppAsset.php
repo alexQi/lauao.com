@@ -21,7 +21,7 @@ class AppAsset extends AssetBundle
     ];
 
     public $jsOptions = [
-//        'position' => View::POS_BEGIN,
+        'position' => View::POS_BEGIN,
     ];
 
     public $depends = [

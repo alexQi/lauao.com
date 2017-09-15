@@ -21,9 +21,11 @@ class DefaultController extends BaseController
     {
         $advertList   = ApplyUserService::getAdvertList();
         $activityInfo = ApplyUserService::getActivityInfo();
+        $serverTime   = time();
         return $this->render('index',[
             'advertList' => $advertList,
             'activityInfo' => $activityInfo,
+            'serverTime' => $serverTime
         ]);
     }
 

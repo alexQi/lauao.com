@@ -74,6 +74,28 @@ class DefaultController extends BaseController
         return $this->ajaxReturn;
     }
 
+    /**
+     * @return array
+     */
+    public function actionSearchApplyUser()
+    {
+        try {
+            if (!$this->getData['apply_id'])
+            {
+                throw new Exception('参数不正确');
+            }
+            $ApplyUserService = new ApplyUserService();
+            $ApplyUserInfo = $ApplyUserService->getApplyUserInfo($this->getData['apply_id']);
+
+            $this->ajaxReturn['state']   = 1;
+            $this->ajaxReturn['data']    = $ApplyUserInfo;
+        }catch (Exception $e){
+            $this->ajaxReturn['message'] = $e->getMessage();
+        }
+
+        return $this->ajaxReturn;
+    }
+
     public function actionSaveUser()
     {
         try{
