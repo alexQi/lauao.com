@@ -96,8 +96,8 @@ use yii\helpers\Url;
 				<div class="layui-form-item">
 					<label class="layui-form-label">性别</label>
 					<div class="layui-input-block ">
-						<input type="radio" name="gender" value="男" title="男">
-						<input type="radio" name="gender" value="女" title="女" checked="">
+						<input type="radio" name="gender" value="1" title="男">
+						<input type="radio" name="gender" value="2" title="女" checked="">
 					</div>
 				</div>
 
