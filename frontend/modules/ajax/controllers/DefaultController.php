@@ -56,7 +56,7 @@ class DefaultController extends BaseController
 			
             $bucket = 'apply-user';
             $qiniu = new MyQiniu($bucket);
-            $key = 'QB'.time();
+            $key = 'QB'.time().rand(1000,9999);
             $result  = $qiniu->uploadFileGetReturn($uploadFile['tmp_name'],$key);
             if (!$result){
                 throw new Exception('上传文件失败');
@@ -116,6 +116,7 @@ class DefaultController extends BaseController
 
             if (!$model->save())
             {
+                var_dump($model->errors);die();
                 throw new Exception('保存申请信息失败');
             }
 
