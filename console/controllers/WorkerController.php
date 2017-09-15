@@ -34,6 +34,11 @@ class WorkerController extends Controller
                 }else{
                     $relateActivityRecord->votes       = $num>$relateActivityRecord->votes ? $num : $relateActivityRecord->votes;
                     $relateActivityRecord->updated_at  = time();
+
+                    if ($relateActivityRecord->votes>$num)
+                    {
+                        $redis->set('vote_apply_'.$relateActivityRecord->apply_id,$relateActivityRecord->votes);
+                    }
                 }
 
                 $relateActivityRecord->save();
