@@ -48,6 +48,7 @@ class ApplyRecordSearch extends ApplyRecord
         $query->from(['ar'=>ApplyRecord::tableName()]);
         $query->leftJoin(['ab'=>ActivityBase::tableName()],'ab.id=ar.activity_id');
 
+        echo $query->createCommand()->getRawSql();
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

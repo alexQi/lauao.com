@@ -18,9 +18,4 @@ return [
             ],
         ],
     ],
-    'on beforeRequest' => function($event) {
-        \yii\base\Event::on(\yii\db\BaseActiveRecord::className(), \yii\db\BaseActiveRecord::EVENT_AFTER_UPDATE, ['common\components\AdminLog', 'write']);
-        \yii\base\Event::on(\yii\db\BaseActiveRecord::className(), \yii\db\BaseActiveRecord::EVENT_AFTER_DELETE, ['common\components\AdminLog', 'write']);
-        \yii\base\Event::on(\yii\db\BaseActiveRecord::className(), \yii\db\BaseActiveRecord::EVENT_AFTER_INSERT, ['common\components\AdminLog', 'write']);
-    },
 ];

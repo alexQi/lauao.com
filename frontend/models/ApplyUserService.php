@@ -7,8 +7,9 @@
  */
 namespace frontend\models;
 
-use common\models\ActivityAdvert;
+
 use Yii;
+use common\models\ActivityAdvert;
 use common\models\ApplyRecord;
 use common\models\ActivityBase;
 use common\models\RelateActivityApply;

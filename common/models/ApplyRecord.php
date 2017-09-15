@@ -16,6 +16,7 @@ use Yii;
  * @property string $self_media
  * @property string $recommend
  * @property integer $status
+ * @property string  $wechat_uid
  * @property integer $created_at
  * @property integer $updated_at
  */

@@ -2,11 +2,12 @@
 
 namespace frontend\modules\ajax\controllers;
 
+
 use yii;
 use frontend\models\ApplyUserService;
 use yii\base\Exception;
-use yii\web\UploadedFile;
 use common\components\MyQiniu;
+use common\models\ApplyRecord;
 
 /**
  * Default controller for the `module` module
@@ -52,8 +53,6 @@ class DefaultController extends BaseController
             }
             $uploadFile = $_FILES['file'];
 
-			
-			
             $bucket = 'apply-user';
             $qiniu = new MyQiniu($bucket);
             $key = 'QB'.time().rand(1000,9999);
@@ -101,7 +100,8 @@ class DefaultController extends BaseController
                 throw new Exception('微信id不能为空');
             }
 
-            $model = new ApplyUserService();
+            $model = new ApplyRecord();
+
             $model->apply_name = yii::$app->request->post('apply_name');
             $model->gender = yii::$app->request->post('gender');
             $model->phone = yii::$app->request->post('phone');
@@ -110,13 +110,13 @@ class DefaultController extends BaseController
             $model->self_media = yii::$app->request->post('self_media');
             $model->recommend = yii::$app->request->post('recommend');
             $model->weichat_uid = yii::$app->request->post('weichat_uid');
-            $model->status     = 1;
-            $model->created_at = time();
-            $model->updated_at = time();
+            $model->activity_id = 2;
+            $model->status      = 1;
+            $model->created_at  = time();
+            $model->updated_at  = time();
 
             if (!$model->save())
             {
-                var_dump($model->errors);die();
                 throw new Exception('保存申请信息失败');
             }
 
