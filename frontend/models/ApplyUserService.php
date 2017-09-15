@@ -38,6 +38,18 @@ class ApplyUserService extends ApplyRecord
         return $data;
     }
 
+    public function getApplyUserInfo($ApplyId)
+    {
+        $query = self::find();
+        $query->select('ar.id,ar.apply_name,ar.self_desc,ar.self_picture,ar.self_media,raa.votes');
+        $query->from(['ar'=>ApplyRecord::tableName()]);
+        $query->leftJoin(['ab'=>ActivityBase::tableName()],'ar.activity_id=ab.id');
+        $query->leftJoin(['raa'=>RelateActivityApply::tableName()],'raa.apply_id=ar.id');
+        $query->where('ar.status=2');
+        $query->andWhere(['ar.id'=>$ApplyId]);
+        return $query->asArray()->one();
+    }
+
 
     public static function getAdvertList($postion=1)
     {
