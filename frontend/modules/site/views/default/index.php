@@ -323,11 +323,11 @@ use yii\helpers\Url;
 </div>
 
 <div class="myvote" style="	bottom:120px;">
-    <a href="about.html">活动介绍</a>
+    <a href="<?php echo Url::to(['about']); ?>">活动介绍</a>
 </div>
 
 <div class="myvote" style="	bottom:50px;">
-    <a href="join.html">我要报名</a>
+    <a href="<?php echo Url::to(['join']); ?>">我要报名</a>
 </div>
 <footer class="my-footer">本次活动最终解释权归宣城宛聆音乐</footer>
 <script type="text/template" id="water">
