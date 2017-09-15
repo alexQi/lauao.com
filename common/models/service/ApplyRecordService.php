@@ -12,7 +12,7 @@ use common\models\ActivityBase;
 
 class ApplyRecordService extends ApplyRecord
 {
-    public static function getAllApplyUserList()
+    public function getAllApplyUserList()
     {
         $query = self::find();
         $query->select('ar.*,ab.title');

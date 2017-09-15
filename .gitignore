@@ -14,7 +14,8 @@ Thumbs.db
 
 # composer vendor dir
 /vendor
-
+/backend/web/assets
+/frontend/web/assets
 # Mac DS_Store Files
 .DS_Store
 

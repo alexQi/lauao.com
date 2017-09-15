@@ -24,6 +24,7 @@ class DefaultController extends BaseController
 
         $dataList['cnt']  = $list['allPage'];
         $dataList['list'] = [];
+        $redis = yii::$app->redis;
         foreach ($list['list'] as $item)
         {
             $value['id']     = $item['id'];
@@ -33,7 +34,7 @@ class DefaultController extends BaseController
             $value['icon']   = $item['self_picture'];
             $value['width']  = '200';
             $value['music']  = $item['self_media'];
-            $value['votes'] = $item['votes'] ? $item['votes'] : 0;
+            $value['votes']  = $redis->get('vote_apply_'.$item['id'])?$redis->get('vote_apply_'.$item['id']):0;
 
             $dataList['list'][] = $value;
         }

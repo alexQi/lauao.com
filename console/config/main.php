@@ -33,15 +33,6 @@ return [
                 ],
             ],
         ],
-        'db' => [
-            'class' => 'yii\db\Connection',
-            'dsn'   => 'mysql:host=www.oliu.online;dbname=zcg;port=3306',
-            'username' => 'alex',
-            'password' => 'woshishei',
-            'charset'  => 'utf8',
-            'tablePrefix' => 'pre_',
-            'commandClass'=> "common\components\Command",
-        ],
     ],
     'params' => $params,
 ];
