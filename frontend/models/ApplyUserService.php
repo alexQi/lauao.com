@@ -78,7 +78,7 @@ class ApplyUserService extends ApplyRecord
         $query->leftJoin(['ab'=>ActivityBase::tableName()],'ar.activity_id=ab.id');
         $query->leftJoin(['raa'=>RelateActivityApply::tableName()],'raa.apply_id=ar.id');
         $query->where('ar.status=2');
-        $query->orderBy(['raa.votes'=>SORT_DESC,'ar.created_at'=>SORT_ASC]);
+        $query->orderBy(['raa.votes'=>SORT_DESC]);
         $query->limit(3);
         $result['TopThree'] = $query->asArray()->all();
 

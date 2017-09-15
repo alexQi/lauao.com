@@ -34,8 +34,8 @@ class DefaultController extends BaseController
             $value['icon']   = $item['self_picture'];
             $value['width']  = '200';
             $value['music']  = $item['self_media'];
-            $value['votes']  = $redis->get('vote_apply_'.$item['id'])?$redis->get('vote_apply_'.$item['id']):0;
-
+            $votes  = $redis->get('vote_apply_'.$item['id'])?$redis->get('vote_apply_'.$item['id']):0;
+            $value['votes'] = $item['votes']>$votes ? $item['votes'] : $votes;
             $dataList['list'][] = $value;
         }
 
@@ -84,10 +84,17 @@ class DefaultController extends BaseController
             {
                 throw new Exception('参数不正确');
             }
+            $redis = yii::$app->redis;
             $ApplyUserService = new ApplyUserService();
             $ApplyUserInfo = $ApplyUserService->getApplyUserInfo($this->getData['apply_id']);
+            if (!empty($ApplyUserInfo))
+            {
+                $votes = $redis->get('vote_apply_'.$ApplyUserInfo['id'])?$redis->get('vote_apply_'.$ApplyUserInfo['id']):0;
+                $ApplyUserInfo['votes'] = $ApplyUserInfo['votes']>$votes ? $ApplyUserInfo['votes'] : $votes;
+            }
 
             $this->ajaxReturn['state']   = 1;
+            $this->ajaxReturn['message'] = '搜索成功';
             $this->ajaxReturn['data']    = $ApplyUserInfo;
         }catch (Exception $e){
             $this->ajaxReturn['message'] = $e->getMessage();
