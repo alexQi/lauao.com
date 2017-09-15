@@ -691,7 +691,7 @@ use yii\helpers\Url;
 //			}
 
     }
-    /*投票彈窗*/
+    /*活动倒计时*/
    
    var serverTime = 1505606400 * 1000; //服务器时间(时间戳)，毫秒数 
 $(function(){ 
