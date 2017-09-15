@@ -36,7 +36,7 @@
 		
 	</head>
 	<body>
-		<div class="aui-content-padded" style="height: 200px;background: #000080;" >
+		<div class="aui-content-padded" style="height: 200px;" >
 			
 		<div class="m">
 		<video id="my-video" class="video-js" controls preload="none"
