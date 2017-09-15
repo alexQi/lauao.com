@@ -12,7 +12,8 @@ class WorkerController extends Controller
 {
     public function actionIndex()
     {
-        $applyUserList = ApplyRecordService::getAllApplyUserList();
+        $ApplyRecordService = new ApplyRecordService();
+        $applyUserList = $ApplyRecordService->getAllApplyUserList();
         $redis = yii::$app->redis;
 
         if (!empty($applyUserList))
@@ -26,7 +27,7 @@ class WorkerController extends Controller
                 {
                     $relateActivityRecord = new RelateActivityApply();
                     $relateActivityRecord->activity_id = $user['activity_id'];
-                    $relateActivityRecord->apply_id    = $user['apply_id'];
+                    $relateActivityRecord->apply_id    = $user['id'];
                     $relateActivityRecord->votes       = $num;
                     $relateActivityRecord->created_at  = time();
                     $relateActivityRecord->updated_at  = time();
@@ -39,5 +40,6 @@ class WorkerController extends Controller
             }
         }
         yii::info('更新用户投票数完成');
+        echo "更新完成\n";
     }
 }
