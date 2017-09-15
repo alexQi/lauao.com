@@ -16,6 +16,11 @@
 			
 		}
 		
+			.mylogo img {
+				height: 180px;
+				width: 100%;
+			}
+		
 		.my-footer {
 				height: 30px;
 				background: #000000;
@@ -36,12 +41,18 @@
 		
 	</head>
 	<body>
+		
+			<div class="mylogo">
+			<img src="/images/apicloud-bg.png" />
+		</div>
+		
 		<div class="aui-content-padded" style="height: 200px;" >
 			
 		<div class="m">
-		<video id="my-video" class="video-js" controls preload="none"
-		  poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
-			<source src="/music/WeChat_20170913214431.mp4" type="video/mp4">
+			<!--poster="MY_VIDEO_POSTER.jpg"-->
+		<video id="my-video" class="video-js" controls preload="auto"
+		   data-setup="{}">
+			<source src="http://advert.ztwliot.com/QB1505033315" type="video/mp4">
 			<p class="vjs-no-js">
 			  To view this video please enable JavaScript, and consider upgrading to a web browser that
 			  <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
