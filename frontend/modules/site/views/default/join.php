@@ -17,10 +17,15 @@ use yii\helpers\Url;
 
 		<style>
 			.my-frm {
-				background: white;
+				
 				padding: 10px 35px 10px 20px;
 			}
 			
+			
+			.layui-form{
+				background: url(/images/joinbg.png);
+				background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;
+			}
 			.layui-form-radio i:hover,
 			.layui-form-radioed i {
 				color: #c2c2c2;
@@ -35,7 +40,7 @@ use yii\helpers\Url;
 			}
 			
 			.mylogo img {
-				height: 150px;
+				height: 180px;
 				width: 100%;
 			}
 			
