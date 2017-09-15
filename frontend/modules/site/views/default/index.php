@@ -207,17 +207,17 @@ use yii\helpers\Url;
                     <div class="aui-col-xs-4">
 
                         <div class="aui-badge">1</div>
-                        <i class="aui-iconfont aui-icon-home"></i>
+                        <img class="aui-img-round" src="<?php echo $activityInfo['TopThree'][0]['self_picture']; ?>" style="width: 50px;height: 50px;margin: 0 auto;"></img>
                         <div class="aui-grid-label"><?php echo $activityInfo['TopThree'][0]['apply_name']; ?></div>
                     </div>
                     <div class="aui-col-xs-4">
                         <div class="aui-badge">2</div>
-                        <i class="aui-iconfont aui-icon-gear"></i>
+                         <img class="aui-img-round" src="<?php echo $activityInfo['TopThree'][0]['self_picture']; ?>" style="width: 50px;height: 50px;margin: 0 auto;"></img>
                         <div class="aui-grid-label"><?php echo $activityInfo['TopThree'][1]['apply_name']; ?></div>
                     </div>
                     <div class="aui-col-xs-4">
                         <div class="aui-badge">3</div>
-                        <i class="aui-iconfont aui-icon-map"></i>
+                       <img class="aui-img-round" src="<?php echo $activityInfo['TopThree'][0]['self_picture']; ?>" style="width: 50px;height: 50px;margin: 0 auto;"></img>
                         <div class="aui-grid-label"><?php echo $activityInfo['TopThree'][2]['apply_name']; ?></div>
                     </div>
                 </div>
