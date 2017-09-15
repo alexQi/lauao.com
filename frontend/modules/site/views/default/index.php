@@ -102,10 +102,9 @@ use yii\helpers\Url;
    		 
    		 .noMore{
           display: none;
-          font-size: 10px;
-         
-          color:#DDDDDD;
-          width: 90px;
+          font-size: 12px;
+          color:#ddd;
+          width: 75px;
           margin: 0 auto;
           
    		 }
