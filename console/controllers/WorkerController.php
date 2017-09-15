@@ -4,12 +4,12 @@
 namespace console\controllers;
 
 use yii\console\Controller;
-use common\models\ApplyRecord;
+use common\models\service\ApplyRecordService;
 
 class WorkerController extends Controller
 {
     public function actionIndex()
     {
-        $applyUserList = aa;
+        $applyUserList = ApplyRecordService::getAllApplyUserList();
     }
 }

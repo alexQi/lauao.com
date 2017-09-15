@@ -22,8 +22,9 @@ class DefaultController extends BaseController
         $ApplyUserService = new ApplyUserService();
         $list = $ApplyUserService->getUserApplyList();
 
-        $dataList = [];
-        foreach ($list as $item)
+        $dataList['cnt']  = $list['allPage'];
+        $dataList['list'] = [];
+        foreach ($list['list'] as $item)
         {
             $value['id']     = $item['id'];
             $value['name']   = $item['apply_name'];
@@ -34,7 +35,7 @@ class DefaultController extends BaseController
             $value['music']  = $item['self_media'];
             $value['votes'] = $item['votes'] ? $item['votes'] : 0;
 
-            $dataList[] = $value;
+            $dataList['list'][] = $value;
         }
 
         $this->ajaxReturn = $dataList;
