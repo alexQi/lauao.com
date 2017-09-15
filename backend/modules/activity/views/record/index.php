@@ -30,7 +30,7 @@ Alert::widget();
                         'format' => 'html',
                         'value'=>function ($model) {
                             $html = '<div class="widget-user-image">
-                      <img class="img-circle"  style="width: 145px;height: 145px;" src="https://adminlte.io/themes/AdminLTE/dist/img/user1-128x128.jpg" alt="User Avatar">
+                      <img class="img-circle"  style="width: 145px;height: 145px;" src="'.$model->self_picture.'" alt="User Avatar">
                     </div>';
                             return $html;
                         },
