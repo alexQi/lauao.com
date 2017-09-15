@@ -105,7 +105,8 @@ class Helper
     {
         $config = Configs::instance();
         $r = static::normalizeRoute($route);
-        if ($user->loginUrl == $r)
+
+        if ('/site/default/login' == $r)
         {
             return true;
         }
