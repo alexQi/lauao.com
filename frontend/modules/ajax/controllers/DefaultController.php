@@ -3,6 +3,7 @@
 namespace frontend\modules\ajax\controllers;
 
 
+use common\models\ActivityBase;
 use yii;
 use frontend\models\ApplyUserService;
 use yii\base\Exception;
@@ -162,6 +163,11 @@ class DefaultController extends BaseController
     public function actionDoVote()
     {
         try{
+            $activityInfo = ActivityBase::find()->where(['status'=>2])->one();
+            if (time()>$activityInfo->end_time)
+            {
+                throw new Exception('活动已结束');
+            }
             if (!$this->getData['id'] || !$this->getData['vote_user'])
             {
                 throw new Exception('参数错误');
