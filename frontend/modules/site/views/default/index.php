@@ -462,7 +462,7 @@ use yii\helpers\Url;
 
     $(".voteyes").live("click", function () {
         var id = $(this).attr('data-id');
-        var user = '11';
+        var user = '13';
         $.get('<?php echo Url::to(['/ajax/default/do-vote'])?>?id=' + id + '&vote_user=' + user, function (data, status) {
 
             if (data.state == 1) {

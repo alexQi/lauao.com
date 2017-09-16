@@ -181,7 +181,7 @@ class DefaultController extends BaseController
                 {
                     $redis->incr('vote_user_'.date('Ymd',time()).'_'.$this->getData['vote_user']);
                 }else{
-                    throw new Exception('每人每天只能投三票,当前时间：');
+                    throw new Exception('每人每天只能投3票<br/>感谢你的参与');
                 }
             }else{
                 $redis->setex('vote_user_'.date('Ymd',time()).'_'.$this->getData['vote_user'],86400,1);
@@ -196,7 +196,7 @@ class DefaultController extends BaseController
             }
 
             $this->ajaxReturn['state'] = 1;
-            $this->ajaxReturn['message'] = '投票成功,感谢你的参与';
+            $this->ajaxReturn['message'] = "投票成功,感谢你的参与<br>今天還可以投".(2-$VoteNum).'票';
             $this->ajaxReturn['vote_num']= $redis->get('vote_apply_'.$this->getData['id']);
 
         }catch (Exception $e){
