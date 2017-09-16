@@ -164,6 +164,7 @@ use yii\helpers\Url;
             filter: Alpha(opacity=50);
             line-height: 2.8;
             font-size: 12px;
+            
         }
 
 
@@ -429,7 +430,7 @@ layui.use(['layer'], function () {
                                 type: 1,
                                 title: false,
                                 closeBtn: 0,
-                                content: '<div><img src="/images/qrcode.png"><br/>微信关注进行投票</div>'
+                                content: '<div style="padding:2px"><img src="/images/qrcode.png"><p style="text-align: center;font-size:12px">微信关注进行投票</p></div>'
                             });
                         }
                     }else{
