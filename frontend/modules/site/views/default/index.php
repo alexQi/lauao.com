@@ -425,8 +425,11 @@ layui.use(['layer'], function () {
                         {
                             $('#wechat_uid').val(data.data.openid);
                         }else{
-                            layer.open({
+                           var h= $(window).height();
+                           var w= $(window).width();
 
+                            layer.open({
+                                offset:[(h/2+196)+'px',(w/2+170)+'px'],
                                 type: 1,
                                 title: false,
                                 closeBtn: 0,
