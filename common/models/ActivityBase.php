@@ -38,7 +38,7 @@ class ActivityBase extends \yii\db\ActiveRecord
             [['title', 'activity_desc', 'activity_rules', 'start_time', 'end_time', 'user_id', 'created_at', 'updated_at'], 'required'],
             [['status', 'is_delete', 'user_id', 'created_at', 'updated_at'], 'integer'],
             [['title'], 'string', 'max' => 100],
-            [['activity_desc', 'activity_rules'], 'string', 'max' => 255],
+            [['activity_desc', 'activity_rules'], 'string', 'max' => 5000],
         ];
     }
 

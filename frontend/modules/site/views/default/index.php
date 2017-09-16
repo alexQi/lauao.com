@@ -406,7 +406,10 @@ use yii\helpers\Url;
 <script>
     //处理微信
     var wechatCode = '<?php echo yii::$app->request->get('code')?>';
+    $.get('<?php echo Url::to(['/ajax/default/get-wechat-token'])?>?wechatCode=' + wechatCode, function (data, status) {
 
+        console.log(data);
+    });
     /*加載Layer模塊*/
     layui.use(['layer'], function () {
         var layer = layui.layer

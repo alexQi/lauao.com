@@ -9,6 +9,7 @@ use frontend\models\ApplyUserService;
 use yii\base\Exception;
 use common\components\MyQiniu;
 use common\models\ApplyRecord;
+use common\components\Common;
 
 /**
  * Default controller for the `module` module
@@ -206,6 +207,40 @@ class DefaultController extends BaseController
             $this->ajaxReturn['message'] = $e->getMessage();
         }
 
+        return $this->ajaxReturn;
+    }
+
+    public function actionGetWechatToken(){
+        try{
+            if (!$this->getData['wechatCode'])
+            {
+                throw new Exception('wechat code 不存在');
+            }
+            $getWechatTokenUrl = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.yii::$app->params['wechat_appid'].'&secret='.yii::$app->params['wechat_secret'].'&code='.yii::$app->request->get('code').'&grant_type=authorization_code';
+            $wechatToken = Common::httpRequest($getWechatTokenUrl);
+            $this->ajaxReturn['data'] = json_decode($wechatToken,true);
+        }catch(Exception $e){
+            $this->ajaxReturn['message'] = $e->getMessage();
+        }
+        return $this->ajaxReturn;
+    }
+
+    public function actionGetWechatUserInfo(){
+        try{
+            if (!$this->getData['wechatToken'])
+            {
+                throw new Exception('wechatToken 不存在');
+            }
+            if (!$this->getData['openid'])
+            {
+                throw new Exception('openid 不存在');
+            }
+            $getWechatUserInfoUrl = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$this->getData['wechatToken'].'&openid='.$this->getData['openid'];
+            $wechatUserInfo = Common::httpRequest($getWechatUserInfoUrl);
+            $this->ajaxReturn['data'] = json_decode($wechatUserInfo,true);
+        }catch(Exception $e){
+            $this->ajaxReturn['message'] = $e->getMessage();
+        }
         return $this->ajaxReturn;
     }
 }
