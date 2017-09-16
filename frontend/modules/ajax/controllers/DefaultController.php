@@ -246,10 +246,6 @@ class DefaultController extends BaseController
             $getWechatUserInfoUrl = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$this->getData['wechatToken'].'&openid='.$this->getData['openid'].'&&lang=zh_CN';
             $wechatUserInfo = Common::httpRequest($getWechatUserInfoUrl);
             $wechatUserInfo = json_decode($wechatUserInfo,true);
-            if (isset($wechatUserInfo['errcode']))
-            {
-                throw new Exception($wechatUserInfo['errmsg'].'wechatUrl:'.$getWechatUserInfoUrl);
-            }
             $this->ajaxReturn['state'] = 1;
             $this->ajaxReturn['message'] = '获取成功';
             $this->ajaxReturn['data'] = json_decode($wechatUserInfo,true);
