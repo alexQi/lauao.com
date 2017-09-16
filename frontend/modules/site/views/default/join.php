@@ -11,7 +11,7 @@ use yii\helpers\Url;
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
 		<meta name="format-detection" content="telephone=no,email=no,date=no,aItemress=no">
-		<title>宛聆歌王报名通道</title>
+		<title>宛聆歌王报名</title>
 		<!--	<link rel="stylesheet" type="text/css" href="../css/aui.css" />-->
 		<link rel="stylesheet" type="text/css" href="/layui/css/layui.css">
 
