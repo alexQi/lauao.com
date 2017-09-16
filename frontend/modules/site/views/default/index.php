@@ -405,11 +405,14 @@ use yii\helpers\Url;
 
 <script>
     //处理微信
-    var wechatCode = '<?php echo yii::$app->request->get('code')?>';
-    $.get('<?php echo Url::to(['/ajax/default/get-wechat-token'])?>?wechatCode=' + wechatCode, function (data, status) {
+    function handleWechat(){
+        var wechatCode = '<?php echo yii::$app->request->get('code')?>';
+        $.get('<?php echo Url::to(['/ajax/default/get-wechat-token'])?>?wechatCode=' + wechatCode, function (data, status) {
 
-        console.log(data);
-    });
+            console.log(data);
+        });
+    }
+
     /*加載Layer模塊*/
     layui.use(['layer'], function () {
         var layer = layui.layer
@@ -673,6 +676,8 @@ use yii\helpers\Url;
     var activityTime = parseInt('<?php echo $activity['start_time'];?>') * 1000; //服务器时间(时间戳)，毫秒数
     var endTime = parseInt('<?php echo $activity['end_time'];?>') * 1000; //服务器时间(时间戳)，毫秒数
     $(function () {
+        //处理微信
+        handleWechat();
        // var dateTime = new Date();
        // var difference = dateTime.getTime() - serverTime; //客户端与服务器时间偏移量
 
