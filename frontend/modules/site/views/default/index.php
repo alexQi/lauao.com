@@ -422,7 +422,7 @@ use yii\helpers\Url;
                                 type: 1,
                                 title: false,
                                 closeBtn: 0,
-                                content: '<div id="qrcode" class="hide" style="display: none;"><img src="images/qrcode.png"></div>'
+                                content: '<div id="qrcode" class="hide" style="display: none;"><img src="/images/qrcode.png"></div>'
                             });
                         }
                     }else{
