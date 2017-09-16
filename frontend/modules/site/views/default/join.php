@@ -23,7 +23,7 @@ use yii\helpers\Url;
 			
 			
 			.layui-form{
-				background: url(/images/joinbg.png);
+				/* background: url(/images/joinbg.png); */
 				background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;
 			}
 			.layui-form-radio i:hover,
@@ -57,7 +57,10 @@ use yii\helpers\Url;
 			.my-btnmarg {
 				width: 110px;
 				margin: 0 auto;
+				margin-bottom: 20px;
 			}
+
+		
 			
 			.my-footer {
 				height: 30px;
@@ -128,12 +131,12 @@ use yii\helpers\Url;
 				</div>
 				
 				</div>
+
+
+				<div class="layui-container">
 				<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
 					<legend>上传展示资料</legend>
 				</fieldset>
-
-				<div class="layui-container">
-
 					<div class="layui-row ">
 						<div class="layui-col-xs6 ">
 							<div class="my-btnmarg">
