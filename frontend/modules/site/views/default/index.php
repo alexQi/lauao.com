@@ -419,6 +419,7 @@ use yii\helpers\Url;
                             $('#wechat_uid').val(data.data.openid);
                         }else{
                             layer.open({
+                                offset: ['0px', '100px'],
                                 type: 1,
                                 title: false,
                                 closeBtn: 0,
