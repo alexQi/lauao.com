@@ -1,4 +1,4 @@
 <?php
 return [
-    'weichat_appid' => 'wxcb2711060169adca'
+    'wechat_appid' => 'wxcb2711060169adca'
 ];
