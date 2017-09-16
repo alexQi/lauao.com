@@ -9,6 +9,7 @@ use frontend\models\ApplyUserService;
 use yii\base\Exception;
 use common\components\MyQiniu;
 use common\models\ApplyRecord;
+use common\components\Common;
 
 /**
  * Default controller for the `module` module
@@ -143,7 +144,7 @@ class DefaultController extends BaseController
             $model->self_media = yii::$app->request->post('self_media');
             $model->recommend = yii::$app->request->post('recommend');
             $model->weichat_uid = time().rand(1000,9999).'uid';
-            $model->activity_id = 2;
+            $model->activity_id = 8;
             $model->status      = 1;
             $model->created_at  = time();
             $model->updated_at  = time();
@@ -206,6 +207,70 @@ class DefaultController extends BaseController
             $this->ajaxReturn['message'] = $e->getMessage();
         }
 
+        return $this->ajaxReturn;
+    }
+
+    public function actionGetWechatToken(){
+        try{
+            if (!$this->getData['wechatCode'])
+            {
+                throw new Exception('wechat code 不存在');
+            }
+            $getWechatTokenUrl = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.yii::$app->params['wechat_appid'].'&secret='.yii::$app->params['wechat_secret'].'&code='.$this->getData['wechatCode'].'&grant_type=authorization_code';
+            $wechatToken = Common::httpRequest($getWechatTokenUrl);
+            $wechatToken = json_decode($wechatToken,true);
+
+            if (isset($wechatToken['errcode']))
+            {
+                throw new Exception($wechatToken['errmsg'].'wechatUrl:'.$getWechatTokenUrl);
+            }
+            $this->ajaxReturn['state'] = 1;
+            $this->ajaxReturn['message'] = '获取成功';
+            $this->ajaxReturn['data'] = $wechatToken;
+        }catch(Exception $e){
+            $this->ajaxReturn['message'] = $e->getMessage();
+        }
+        return $this->ajaxReturn;
+    }
+
+    public function actionGetWechatUserinfo(){
+        try{
+
+            if (!$this->getData['openid'])
+            {
+                throw new Exception('openid 不存在');
+            }
+            $tokenUrl = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.yii::$app->params['wechat_appid'].'&secret='.yii::$app->params['wechat_secret'];
+            $tokenInfo = Common::httpRequest($tokenUrl);
+            $tokenInfo = json_decode($tokenInfo,true);
+            if (isset($tokenInfo['errcode']))
+            {
+                throw new Exception($tokenInfo['errmsg']);
+            }
+
+            $getWechatUserInfoUrl = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$tokenInfo['access_token'].'&openid='.$this->getData['openid'].'&&lang=zh_CN';
+            $wechatUserInfo = Common::httpRequest($getWechatUserInfoUrl);
+            $wechatUserInfo = json_decode($wechatUserInfo,true);
+            $this->ajaxReturn['state'] = 1;
+            $this->ajaxReturn['message'] = '获取成功';
+            $this->ajaxReturn['data'] = $wechatUserInfo;
+        }catch(Exception $e){
+            $this->ajaxReturn['message'] = $e->getMessage();
+        }
+        return $this->ajaxReturn;
+    }
+
+    public function actionGetAccesstoken(){
+        try{
+            $tokenUrl = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.yii::$app->params['wechat_appid'].'&secret='.yii::$app->params['wechat_secret'];
+            $tokenInfo = Common::httpRequest($tokenUrl);
+            $tokenInfo = json_decode($tokenInfo,true);
+            $this->ajaxReturn['state'] = 1;
+            $this->ajaxReturn['message'] = '获取成功';
+            $this->ajaxReturn['data'] = $tokenInfo;
+        }catch(Exception $e){
+            $this->ajaxReturn['message'] = $e->getMessage();
+        }
         return $this->ajaxReturn;
     }
 }

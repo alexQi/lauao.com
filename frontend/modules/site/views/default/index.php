@@ -391,7 +391,7 @@ use yii\helpers\Url;
     <%}%>
 
 </script>
-
+<input type="hidden" id="wechat_uid" value="">
 </body>
 
 <!--<script src="script/template-web.js"></script>-->
@@ -404,7 +404,37 @@ use yii\helpers\Url;
 
 
 <script>
-    var wechatUrl = 'https://api.weixin.qq.com/sns/userinfo?access_token='+'<?php //echo $wechatToken['access_token'];?>'+'&openid='+'<?php //echo $wechatToken['openid'];?>';
+    //处理微信
+    function handleWechat(){
+        var wechatCode = '<?php echo yii::$app->request->get('code')?>';
+        $.get('<?php echo Url::to(['/ajax/default/get-wechat-token'])?>?wechatCode=' + wechatCode, function (data, status) {
+
+            if (data.state==1){
+                var wechatToken = data.data.access_token;
+                var openid      = data.data.openid;
+                $.get('<?php echo Url::to(['/ajax/default/get-wechat-userinfo'])?>?wechatToken=' + wechatToken+'&openid='+openid, function (data, status) {
+                    if (data.state==1){
+                        if (data.data.subscribe==1)
+                        {
+                            $('#wechat_uid').val(data.data.openid);
+                        }else{
+                            layer.open({
+                                type: 1,
+                                title: false,
+                                closeBtn: 0,
+                                content: '<div><img src="/images/qrcode.png"></div>'
+                            });
+                        }
+                    }else{
+                        window.location.href="/";
+                    }
+                });
+            }else{
+                window.location.href="/";
+            }
+        });
+    }
+
     /*加載Layer模塊*/
     layui.use(['layer'], function () {
         var layer = layui.layer
@@ -463,7 +493,7 @@ use yii\helpers\Url;
 
     $(".voteyes").live("click", function () {
         var id = $(this).attr('data-id');
-        var user = '15';
+        var user = $('#wechat_uid').val();
         $.get('<?php echo Url::to(['/ajax/default/do-vote'])?>?id=' + id + '&vote_user=' + user, function (data, status) {
 
             if (data.state == 1) {
@@ -668,6 +698,8 @@ use yii\helpers\Url;
     var activityTime = parseInt('<?php echo $activity['start_time'];?>') * 1000; //服务器时间(时间戳)，毫秒数
     var endTime = parseInt('<?php echo $activity['end_time'];?>') * 1000; //服务器时间(时间戳)，毫秒数
     $(function () {
+        //处理微信
+        handleWechat();
        // var dateTime = new Date();
        // var difference = dateTime.getTime() - serverTime; //客户端与服务器时间偏移量
 
