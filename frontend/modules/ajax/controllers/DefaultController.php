@@ -224,6 +224,8 @@ class DefaultController extends BaseController
             {
                 throw new Exception($wechatToken['errmsg'].'wechatUrl:'.$getWechatTokenUrl);
             }
+            $this->ajaxReturn['state'] = 1;
+            $this->ajaxReturn['message'] = '获取成功';
             $this->ajaxReturn['data'] = $wechatToken;
         }catch(Exception $e){
             $this->ajaxReturn['message'] = $e->getMessage();
