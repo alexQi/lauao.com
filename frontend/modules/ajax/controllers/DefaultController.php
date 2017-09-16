@@ -243,9 +243,12 @@ class DefaultController extends BaseController
             $tokenUrl = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.yii::$app->params['wechat_appid'].'&secret='.yii::$app->params['wechat_secret'];
             $tokenInfo = Common::httpRequest($tokenUrl);
             $tokenInfo = json_decode($tokenInfo,true);
-            var_dump($tokenInfo);die();
+            if (isset($tokenInfo['errcode']))
+            {
+                throw new Exception($tokenInfo['errmsg']);
+            }
 
-            $getWechatUserInfoUrl = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$this->getData['wechatToken'].'&openid='.$this->getData['openid'].'&&lang=zh_CN';
+            $getWechatUserInfoUrl = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$tokenInfo['access_token'].'&openid='.$this->getData['openid'].'&&lang=zh_CN';
             $wechatUserInfo = Common::httpRequest($getWechatUserInfoUrl);
             $wechatUserInfo = json_decode($wechatUserInfo,true);
             $this->ajaxReturn['state'] = 1;
