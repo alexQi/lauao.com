@@ -216,7 +216,7 @@ class DefaultController extends BaseController
             {
                 throw new Exception('wechat code 不存在');
             }
-            $getWechatTokenUrl = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.yii::$app->params['wechat_appid'].'&secret='.yii::$app->params['wechat_secret'].'&code='.yii::$app->request->get('code').'&grant_type=authorization_code';
+            $getWechatTokenUrl = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.yii::$app->params['wechat_appid'].'&secret='.yii::$app->params['wechat_secret'].'&code='.$this->getData['wechatCode'].'&grant_type=authorization_code';
             $wechatToken = Common::httpRequest($getWechatTokenUrl);
             $wechatToken = json_decode($wechatToken,true);
 
