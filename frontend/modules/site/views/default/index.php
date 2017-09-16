@@ -188,9 +188,6 @@ use yii\helpers\Url;
 </div>
 
 <div class="mychart">
-
-    <br/>
-
     <div style="margin: 0 auto; background:#FF6666;margin-bottom:8px;padding:10px;font-size: 15px;text-align: center;color: white;">
 
         <li id="chartouttime" style="padding:5px;"></li>
