@@ -404,6 +404,12 @@ use yii\helpers\Url;
 
 
 <script>
+/*加載Layer模塊*/
+layui.use(['layer'], function () {
+        var layer = layui.layer
+    });
+
+
     //处理微信
     function handleWechat(){
         var wechatCode = '<?php echo yii::$app->request->get('code')?>';
@@ -436,10 +442,7 @@ use yii\helpers\Url;
         });
     }
 
-    /*加載Layer模塊*/
-    layui.use(['layer'], function () {
-        var layer = layui.layer
-    });
+    
 
     var Hispalyer = null; //記錄只播放一個播放器.
 
