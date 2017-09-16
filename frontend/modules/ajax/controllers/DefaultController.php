@@ -243,6 +243,8 @@ class DefaultController extends BaseController
             }
             $getWechatUserInfoUrl = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$this->getData['wechatToken'].'&openid='.$this->getData['openid'];
             $wechatUserInfo = Common::httpRequest($getWechatUserInfoUrl);
+            $this->ajaxReturn['state'] = 1;
+            $this->ajaxReturn['message'] = '获取成功';
             $this->ajaxReturn['data'] = json_decode($wechatUserInfo,true);
         }catch(Exception $e){
             $this->ajaxReturn['message'] = $e->getMessage();
