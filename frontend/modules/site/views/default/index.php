@@ -409,7 +409,15 @@ use yii\helpers\Url;
         var wechatCode = '<?php echo yii::$app->request->get('code')?>';
         $.get('<?php echo Url::to(['/ajax/default/get-wechat-token'])?>?wechatCode=' + wechatCode, function (data, status) {
 
-            console.log(data);
+            if (data.state==1){
+                var wechatToken = data.data.access_token;
+                var openid      = data.data.openid;
+                $.get('<?php echo Url::to(['/ajax/default/get-wechat-userinfo'])?>?wechatToken=' + wechatToken+'&openid='+openid, function (data, status) {
+                    console.data;
+                });
+            }else{
+                window.location.href="/";
+            }
         });
     }
 

@@ -233,7 +233,7 @@ class DefaultController extends BaseController
         return $this->ajaxReturn;
     }
 
-    public function actionGetWechatUserInfo(){
+    public function actionGetWechatUserinfo(){
         try{
             if (!$this->getData['wechatToken'])
             {
