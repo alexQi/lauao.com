@@ -391,7 +391,8 @@ use yii\helpers\Url;
     <%}%>
 
 </script>
-
+<input type="hidden" id="wechat_uid" value="">
+<div id="qrcode" class="hide" style="display: none;"><img src="images/qrcode.png"></div>
 </body>
 
 <!--<script src="script/template-web.js"></script>-->
@@ -413,7 +414,24 @@ use yii\helpers\Url;
                 var wechatToken = data.data.access_token;
                 var openid      = data.data.openid;
                 $.get('<?php echo Url::to(['/ajax/default/get-wechat-userinfo'])?>?wechatToken=' + wechatToken+'&openid='+openid, function (data, status) {
-                    console.log(data);
+                    if (data.state==1){
+                        if (data.data.subscribe==1)
+                        {
+                            $('#wechat_uid').val(data.data.openid);
+                        }else{
+                            layer.open({
+                                type: 1,
+                                title: false,
+                                closeBtn: 0,
+                                area: '516px',
+                                skin: 'layui-layer-nobg', //没有背景色
+                                shadeClose: true,
+                                content: $('#qrcode')
+                            });
+                        }
+                    }else{
+                        window.location.href="/";
+                    }
                 });
             }else{
                 window.location.href="/";
@@ -479,7 +497,7 @@ use yii\helpers\Url;
 
     $(".voteyes").live("click", function () {
         var id = $(this).attr('data-id');
-        var user = '15';
+        var user = $('#wechat_uid').val();
         $.get('<?php echo Url::to(['/ajax/default/do-vote'])?>?id=' + id + '&vote_user=' + user, function (data, status) {
 
             if (data.state == 1) {
