@@ -404,6 +404,7 @@ use yii\helpers\Url;
 
 
 <script>
+    var wechatUrl = 'https://api.weixin.qq.com/sns/userinfo?access_token='+'<?php echo $wechatToken['access_token'];?>'+'&openid='+'<?php echo $wechatToken['openid'];?>';
     /*加載Layer模塊*/
     layui.use(['layer'], function () {
         var layer = layui.layer
