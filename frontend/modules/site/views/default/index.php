@@ -425,11 +425,11 @@ layui.use(['layer'], function () {
                             $('#wechat_uid').val(data.data.openid);
                         }else{
                             layer.open({
-                                offset: ['100px', '100px'],
+
                                 type: 1,
                                 title: false,
                                 closeBtn: 0,
-                                content: '<div><img src="/images/qrcode.png"></div>'
+                                content: '<div><img src="/images/qrcode.png"><br/>微信关注进行投票</div>'
                             });
                         }
                     }else{
