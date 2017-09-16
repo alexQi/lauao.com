@@ -56,7 +56,7 @@ use yii\helpers\Url;
 
         .mychart {
 
-            background: url(/images/mychart.jpg) no-repeat scroll -120px -10px;;
+            /* background: url(/images/mychart.jpg) no-repeat scroll -120px -10px;; */
             height: 100%;
 
         }
