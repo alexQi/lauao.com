@@ -664,7 +664,8 @@ use yii\helpers\Url;
     /*活动倒计时*/
     //服务器时间
     var serverTime = parseInt('<?php echo $serverTime;?>') * 1000; //服务器时间(时间戳)，毫秒数
-    var activityTime = parseInt('<?php echo $activity['end_time'];?>') * 1000; //服务器时间(时间戳)，毫秒数
+    var activityTime = parseInt('<?php echo $activity['start_time'];?>') * 1000; //服务器时间(时间戳)，毫秒数
+    var endTime = parseInt('<?php echo $activity['end_time'];?>') * 1000; //服务器时间(时间戳)，毫秒数
     $(function () {
        // var dateTime = new Date();
        // var difference = dateTime.getTime() - serverTime; //客户端与服务器时间偏移量
@@ -677,16 +678,35 @@ use yii\helpers\Url;
             //var nowTime = new Date();
             //var nMS=endTime.getTime() - nowTime.getTime() + difference;
             activityTime = activityTime-1000;
-            var nMS = activityTime-serverTime;
+            var nMS = activityTime-serverTime;//活动开始时间
+            
+            endTime=endTime-1000;
+            var nEND = endTime-serverTime;//活动结束时间
+            
             var myD = Math.floor(nMS / (1000 * 60 * 60 * 24)); //天
+            
+               var myE = Math.floor(nEND / (1000 * 60 * 60 * 24)); //天
+            
             var myH = Math.floor(nMS / (1000 * 60 * 60)) % 24; //小时
             var myM = Math.floor(nMS / (1000 * 60)) % 60; //分钟
             var myS = Math.floor(nMS / 1000) % 60; //秒
             //var myMS = Math.floor(nMS / 100) % 10; //拆分秒
+            
+            
+            
             if (myD >= 0) {
-                var str = "活动倒计时:"+myD + "天" + myH + "小时" + myM + "分" + myS + "秒";
+            	
+                var str = "距活动倒计时:"+myD + "天" + myH + "小时" + myM + "分" + myS + "秒";
+                
             } else {
-                var str = "活动已结束!";
+            	if(myE>=0)
+            	{
+                var str = "活动正在进行中...";
+               }
+               else
+               {
+               	 var str = "活动已经结束.";
+               }
             }
             
             
