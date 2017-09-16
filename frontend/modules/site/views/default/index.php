@@ -425,8 +425,8 @@ layui.use(['layer'], function () {
                         {
                             $('#wechat_uid').val(data.data.openid);
                         }else{
-                            var lefts=($(window).width() - $('#qrcode').outerWidth())/2,
-                            var tops=($(window).height() - $('#qrcode').outerHeight())/2 + $(document).scrollTop()
+                            var lefts=($(window).width() - $('#qrcode').outerWidth())/2;
+                            var tops=($(window).height() - $('#qrcode').outerHeight())/2 + $(document).scrollTop();
 
                             layer.open({
                                 offset:[tops+'px',lefts+'px'],
