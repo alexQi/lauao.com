@@ -24,6 +24,7 @@ class DefaultController extends BaseController
         $activityInfo = ApplyUserService::getActivityInfo();
         $serverTime   = time();
         $activity     = ActivityBase::find()->where(['status'=>2])->asArray()->one();
+        var_dump(yii::$app->request->get('code'));die();
         return $this->render('index',[
             'advertList' => $advertList,
             'activityInfo' => $activityInfo,
