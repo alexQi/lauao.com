@@ -413,7 +413,7 @@ use yii\helpers\Url;
                 var wechatToken = data.data.access_token;
                 var openid      = data.data.openid;
                 $.get('<?php echo Url::to(['/ajax/default/get-wechat-userinfo'])?>?wechatToken=' + wechatToken+'&openid='+openid, function (data, status) {
-                    console.data;
+                    console.log(data);
                 });
             }else{
                 window.location.href="/";

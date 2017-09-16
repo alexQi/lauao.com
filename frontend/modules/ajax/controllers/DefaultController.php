@@ -243,7 +243,7 @@ class DefaultController extends BaseController
             {
                 throw new Exception('openid 不存在');
             }
-            $getWechatUserInfoUrl = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$this->getData['wechatToken'].'&openid='.$this->getData['openid'];
+            $getWechatUserInfoUrl = 'https://api.weixin.qq.com/sns/info?access_token='.$this->getData['wechatToken'].'&openid='.$this->getData['openid'].'&&lang=zh_CN';
             $wechatUserInfo = Common::httpRequest($getWechatUserInfoUrl);
             $this->ajaxReturn['state'] = 1;
             $this->ajaxReturn['message'] = '获取成功';
