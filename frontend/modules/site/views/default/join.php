@@ -257,8 +257,6 @@ use yii\helpers\Url;
                           //上面2个地址都不是空的话,就写入数据库
                          if(self.field["self_picture"]!=undefined && self.field["self_media"]!=undefined)
                          {
-                         	self.field["weichat_uid"]="12165465465";
-                         	
                          	$.post('/ajax/default/save-user',self.field,function(res){
      
     						  

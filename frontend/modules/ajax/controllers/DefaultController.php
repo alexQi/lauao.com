@@ -127,9 +127,10 @@ class DefaultController extends BaseController
             {
                 throw new Exception('照片不能为空');
             }
-            if (!yii::$app->request->post('weichat_uid'))
+            $recordInfo = ApplyRecord::find()->where(['phone'=>yii::$app->request->post('phone')])->one();
+            if ($recordInfo)
             {
-                throw new Exception('微信id不能为空');
+                throw new Exception('当前手机号码已申请过该活动');
             }
 
             $model = new ApplyRecord();
@@ -141,7 +142,7 @@ class DefaultController extends BaseController
             $model->self_picture = yii::$app->request->post('self_picture');
             $model->self_media = yii::$app->request->post('self_media');
             $model->recommend = yii::$app->request->post('recommend');
-            $model->weichat_uid = yii::$app->request->post('weichat_uid');
+            $model->weichat_uid = time().rand(1000,9999).'uid';
             $model->activity_id = 2;
             $model->status      = 1;
             $model->created_at  = time();
