@@ -49,8 +49,13 @@ class BaseController extends Controller
 
     public function beforeAction($action)
     {
-        $realUrl = yii::$app->request->hostInfo.'/'.$action->getUniqueId();
-        $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.urlencode($realUrl).'&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect';
-        return $this->redirect($url);
+        if (yii::$app->request->get())
+        {
+            return true;
+        }else{
+            $realUrl = yii::$app->request->hostInfo.'/'.$action->getUniqueId();
+            $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.urlencode($realUrl).'&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect';
+            return $this->redirect($url);
+        }
     }
 }
