@@ -425,15 +425,15 @@ layui.use(['layer'], function () {
                         {
                             $('#wechat_uid').val(data.data.openid);
                         }else{
-                           var h= $(window).height();
-                           var w= $(window).width();
+                            var lefts=($(window).width() - $('#qrcode').outerWidth())/2,
+                            var tops=($(window).height() - $('#qrcode').outerHeight())/2 + $(document).scrollTop()
 
                             layer.open({
-                                offset:[(h/2+196)+'px',(w/2+170)+'px'],
+                                offset:[tops+'px',lefts+'px'],
                                 type: 1,
                                 title: false,
                                 closeBtn: 0,
-                                content: '<div style="padding:2px"><img src="/images/qrcode.png"><p style="text-align: center;font-size:12px">微信关注进行投票</p></div>'
+                                content: '<div id="qrcode" style="padding:2px"><img src="/images/qrcode.png"><p style="text-align: center;font-size:12px">微信关注进行投票</p></div>'
                             });
                         }
                     }else{
