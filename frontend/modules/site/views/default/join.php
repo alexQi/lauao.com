@@ -261,12 +261,24 @@ use yii\helpers\Url;
                          	
                          	$.post('/ajax/default/save-user',self.field,function(res){
      
-    						  layer.alert(res.message);
+    						  
      						  //res就是返回的结果
 							  // console.log(JSON.stringify(self.field));
 							  if(res.state==1)
 							  {
-							  	window.location.href="index.html";
+							  	layer.alert(res.message,{
+							  	 title:'报名结果',
+ 								 icon:1,
+ 								 closeBtn: 0
+ 								 ,anim: 4 //动画类型
+								}, function(){
+ 								    
+ 								    window.location.href="index.html";
+									
+								}
+								);
+							  	
+							  
 							  }
 							  
 							  passimages=false;

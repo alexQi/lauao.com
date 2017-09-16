@@ -149,11 +149,11 @@ class DefaultController extends BaseController
 
             if (!$model->save())
             {
-                throw new Exception('保存申请信息失败');
+                throw new Exception('很遗憾报名失败');
             }
 
             $this->ajaxReturn['state']   = 1;
-            $this->ajaxReturn['message'] = '申请成功';
+            $this->ajaxReturn['message'] = '恭喜你,报名成功<br/>请耐心等待工作人员审核';
         }catch(Exception $e){
             $this->ajaxReturn['message'] = $e->getMessage();
         }
