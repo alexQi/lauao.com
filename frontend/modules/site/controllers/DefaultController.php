@@ -30,7 +30,6 @@ class DefaultController extends BaseController
         $wechatToken = Common::httpRequest($getWechatTokenUrl);
         $wechatToken = json_decode($wechatToken,true);
 
-        var_dump($wechatToken);die();
         return $this->render('index',[
             'advertList' => $advertList,
             'activityInfo' => $activityInfo,
