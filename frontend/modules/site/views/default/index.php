@@ -120,8 +120,8 @@ use yii\helpers\Url;
             border-bottom-left-radius: 25px;
             border-top-left-radius: 25px;
             background: #FF6666;
-            height: 50px;
-            width: 120px;
+            height: 40px;
+            width: 100px;
             opacity: 0.9;
             filter: Alpha(opacity=90);
             /* IE8 以及更早的浏览器 */
@@ -131,7 +131,7 @@ use yii\helpers\Url;
             color: white;
             position: absolute;
             right: 10px;
-            top: 15px;
+            top: 10px;
             font-size: 15px;
         }
 
@@ -191,7 +191,7 @@ use yii\helpers\Url;
 
     <br/>
 
-    <div style="margin: 0 auto; background:#FF6666;width:260px ;margin-bottom:8px;padding:10px;font-size: 15px;border-radius: 20px;text-align: center;color: white;">
+    <div style="margin: 0 auto; background:#FF6666;margin-bottom:8px;padding:10px;font-size: 15px;text-align: center;color: white;">
 
         <li id="chartouttime" style="padding:5px;"></li>
     </div>
