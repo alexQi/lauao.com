@@ -196,7 +196,7 @@ class DefaultController extends BaseController
             }
 
             $this->ajaxReturn['state'] = 1;
-            $this->ajaxReturn['message'] = "投票成功,感谢你的参与<br>今天還可以投".(2-$VoteNum).'票';
+            $this->ajaxReturn['message'] = "投票成功,感谢你的参与<br>今天还可以投".(2-$VoteNum).'票';
             $this->ajaxReturn['vote_num']= $redis->get('vote_apply_'.$this->getData['id']);
 
         }catch (Exception $e){
