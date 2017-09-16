@@ -392,7 +392,7 @@ use yii\helpers\Url;
 
 </script>
 <input type="hidden" id="wechat_uid" value="">
-<div id="qrcode" class="hide" style="display: none;"><img src="images/qrcode.png"></div>
+<div id="qrcode" class="hide" style="display: none;"><img src="/images/qrcode.png"></div>
 </body>
 
 <!--<script src="script/template-web.js"></script>-->
