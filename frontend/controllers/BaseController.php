@@ -7,6 +7,7 @@
  */
 namespace frontend\controllers;
 
+use yii;
 use yii\web\Controller;
 use common\components\MyBehavior;
 use yii\web\ForbiddenHttpException;
@@ -44,5 +45,12 @@ class BaseController extends Controller
     public function init()
     {
         parent::init(); // TODO: 继承父类
+    }
+
+    public function beforeAction($action)
+    {
+        $realUrl = yii::$app->request->hostInfo.'/'.$action->getUniqueId();
+        $url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid='.urlencode($realUrl).'&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect';
+        return $this->redirect($url);
     }
 }
