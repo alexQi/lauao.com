@@ -235,20 +235,36 @@ class DefaultController extends BaseController
 
     public function actionGetWechatUserinfo(){
         try{
-            if (!$this->getData['wechatToken'])
-            {
-                throw new Exception('wechatToken 不存在');
-            }
+
             if (!$this->getData['openid'])
             {
                 throw new Exception('openid 不存在');
             }
+            $tokenUrl = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.yii::$app->params['wechat_appid'].'&secret='.yii::$app->params['wechat_secret'];
+            $tokenInfo = Common::httpRequest($tokenUrl);
+            $tokenInfo = json_decode($tokenInfo,true);
+            var_dump($tokenInfo);die();
+
             $getWechatUserInfoUrl = 'https://api.weixin.qq.com/cgi-bin/user/info?access_token='.$this->getData['wechatToken'].'&openid='.$this->getData['openid'].'&&lang=zh_CN';
             $wechatUserInfo = Common::httpRequest($getWechatUserInfoUrl);
             $wechatUserInfo = json_decode($wechatUserInfo,true);
             $this->ajaxReturn['state'] = 1;
             $this->ajaxReturn['message'] = '获取成功';
             $this->ajaxReturn['data'] = $wechatUserInfo;
+        }catch(Exception $e){
+            $this->ajaxReturn['message'] = $e->getMessage();
+        }
+        return $this->ajaxReturn;
+    }
+
+    public function actionGetAccesstoken(){
+        try{
+            $tokenUrl = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.yii::$app->params['wechat_appid'].'&secret='.yii::$app->params['wechat_secret'];
+            $tokenInfo = Common::httpRequest($tokenUrl);
+            $tokenInfo = json_decode($tokenInfo,true);
+            $this->ajaxReturn['state'] = 1;
+            $this->ajaxReturn['message'] = '获取成功';
+            $this->ajaxReturn['data'] = $tokenInfo;
         }catch(Exception $e){
             $this->ajaxReturn['message'] = $e->getMessage();
         }
