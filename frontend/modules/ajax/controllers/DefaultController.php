@@ -248,7 +248,7 @@ class DefaultController extends BaseController
             $wechatUserInfo = json_decode($wechatUserInfo,true);
             $this->ajaxReturn['state'] = 1;
             $this->ajaxReturn['message'] = '获取成功';
-            $this->ajaxReturn['data'] = json_decode($wechatUserInfo,true);
+            $this->ajaxReturn['data'] = $wechatUserInfo;
         }catch(Exception $e){
             $this->ajaxReturn['message'] = $e->getMessage();
         }
