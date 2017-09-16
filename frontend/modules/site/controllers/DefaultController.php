@@ -2,6 +2,7 @@
 namespace frontend\modules\site\controllers;
 
 
+use common\components\Common;
 use common\models\ActivityBase;
 use Yii;
 use frontend\controllers\BaseController;
@@ -24,7 +25,10 @@ class DefaultController extends BaseController
         $activityInfo = ApplyUserService::getActivityInfo();
         $serverTime   = time();
         $activity     = ActivityBase::find()->where(['status'=>2])->asArray()->one();
-        var_dump(yii::$app->request->get('code'));die();
+
+        $getWechatTokenUrl = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.yii::$app->params['wechat_appid'].'&secret=SECRET&code='.yii::$app->request->get('code').'&grant_type=authorization_code';
+        $wechatToken = Common::httpRequest($getWechatTokenUrl);
+        var_dump($wechatToken);die();
         return $this->render('index',[
             'advertList' => $advertList,
             'activityInfo' => $activityInfo,
