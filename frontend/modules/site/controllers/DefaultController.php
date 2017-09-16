@@ -35,9 +35,9 @@ class DefaultController extends BaseController
 //            return $this->redirect(['/site/default/index']);
 //        }
 
-        $getWechatUserInfoUrl = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$wechatToken['access_token'].'&openid='.$wechatToken['openid'];
-        $wechatUserInfo = Common::httpRequest($getWechatUserInfoUrl);
-        var_dump($wechatUserInfo);
+//        $getWechatUserInfoUrl = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$wechatToken['access_token'].'&openid='.$wechatToken['openid'];
+//        $wechatUserInfo = Common::httpRequest($getWechatUserInfoUrl);
+//        var_dump($wechatUserInfo);
         return $this->render('index',[
             'advertList' => $advertList,
             'activityInfo' => $activityInfo,
