@@ -85,7 +85,7 @@ use yii\helpers\Url;
 		
 	<form class="layui-form" action="">
 		<div class="mylogo">
-			<img src="/images/apicloud-bg.png" />
+			<img src="/images/timg.jpg" />
 		</div>
 
 		<div class="my-frm">
