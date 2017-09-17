@@ -98,7 +98,7 @@ class ApplyUserService extends ApplyRecord
         $tmpQuery->select('sum(raa.votes) as count_votes');
         $tmpQuery->from(['raa'=>RelateActivityApply::tableName()]);
         $tmpQuery->leftJoin(['ar'=>ApplyRecord::tableName()],'raa.apply_id=ar.id');
-        $tmpQuery->leftJoin(['ab'=>ActivityBase::tableName()],'ar.activity_id=ab.id');
+        $tmpQuery->leftJoin(['ab'=>ActivityBase::tableName()],'raa.activity_id=ab.id');
         $tempQuery->where(['ar.status'=>2]);
         $tempQuery->andWhere(['ab.status'=>2]);
 
