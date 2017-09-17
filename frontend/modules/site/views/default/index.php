@@ -647,7 +647,7 @@ layui.use(['layer'], function () {
                     if (data.data) {
                         $('.search-apply-num').html(data.data.id + '号');
                         $('.search-apply-name').html('姓名:' + data.data.apply_name);
-                        $('.search-apply-desc').html('姓名:' + data.data.self_desc);
+                        $('.search-apply-desc').html('介紹:' + data.data.self_desc);
                         $('.search-apply-vote').html(data.data.votes);
                         $('.search-apply-image').attr('src', data.data.self_picture);
                         $('.search-apply-audio').attr('src', data.data.self_media);
