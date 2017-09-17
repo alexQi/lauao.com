@@ -88,7 +88,7 @@ use yii\helpers\Url;
 			<img src="/images/timg.jpg" />
 		</div>
 	   <div style="margin:5px">
-		<blockquote class="layui-elem-quote layui-quote-nm">由于苹果硬性条件无法上传音频文件<br>请大家统一前往电脑端进行报名<br/>报名地址:http://www.taozihu.com/site/default/join</blockquote>
+		<blockquote class="layui-elem-quote layui-quote-nm">由于报名需要上传个人作品的音频.<br/>苹果IOS系统硬性条件规定无法上传音频文件<br>请大家统一前往电脑端进行报名<br/>报名地址:http://www.taozihu.com/site/default/join</blockquote>
 		</div>
 		<div class="my-frm">
 			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
