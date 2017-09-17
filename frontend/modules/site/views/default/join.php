@@ -85,7 +85,7 @@ use yii\helpers\Url;
 		
 	<form class="layui-form" action="">
 		<div class="mylogo">
-			<img src="/images/timg.jpg" />
+			<img src="/images/joinbg.jpg" />
 		</div>
 	   <div style="margin:5px">
 		<blockquote class="layui-elem-quote layui-quote-nm">由于报名需要上传个人作品的音频.<br/>苹果IOS系统硬性条件规定无法上传音频文件<br>请大家统一前往电脑端进行报名<br/>报名地址:http://www.taozihu.com/site/default/join</blockquote>
