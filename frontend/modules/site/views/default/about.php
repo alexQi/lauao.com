@@ -11,16 +11,17 @@
 		<link rel="stylesheet" type="text/css" href="/css/video-js.css">
 		<style>
 		body{
-				background: url(/images/aboutbg.png);
-				background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%;
+			background:#040001;
+			
+				/* background-repeat:no-repeat; background-size:100% 100%;-moz-background-size:100% 100%; */
 			
 		}
 		
-			.mylogo img {
-				height: 180px;
-				width: 100%;
-			}
-		
+		.my-about img
+		{
+			width: 100%;
+		}
+
 		.my-footer {
 				height: 30px;
 				background: #000000;
@@ -42,8 +43,8 @@
 	</head>
 	<body>
 		
-			<div class="mylogo">
-			<img src="/images/apicloud-bg.png" />
+			<div class="my-about">
+			<img src="/images/about.jpg" />
 		</div>
 		
 		<div class="aui-content-padded" style="height: 200px;" >
@@ -65,7 +66,7 @@
 			
 			
 		</div>
-		<div style="height: 480px;"></div>
+		
 		
 		<footer class="my-footer">本次活动最终解释权归宣城宛聆音乐</footer>
 	</body>
