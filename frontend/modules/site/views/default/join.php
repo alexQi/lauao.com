@@ -283,6 +283,16 @@ use yii\helpers\Url;
 							  	
 							  
 							  }
+							  else
+							  {
+								layer.alert(res.message,{
+							  	 title:'报名结果',
+ 								 icon:2,
+ 								 closeBtn: 0
+ 								 ,anim: 4 //动画类型
+								});
+
+							  }
 							  
 							  passimages=false;
 						      passaudio=false;
