@@ -651,6 +651,9 @@ layui.use(['layer'], function () {
                         $('.search-apply-vote').html(data.data.votes);
                         $('.search-apply-image').prop('src', data.data.self_picture);
                         $('.search-apply-audio').prop('src', data.data.self_media);
+                        var midea=$('.search-apply-audio')[0];
+                        midea.currentSrc=data.data.self_media;
+                    
                         searchBarInput.blur();
                         $(".seachperson").css("display", 'block');
                     }
