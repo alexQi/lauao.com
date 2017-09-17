@@ -283,7 +283,7 @@ use yii\helpers\Url;
                 <img class="personimg search-apply-image" src="" alt="">
                 <span class="wlplayer">
                     <audio id="1" preload="none">
-                        <source class="search-apply-audio" src="http://apply-user.ztwliot.com/QB15056260118134" type="audio/mpeg">
+                        <source class="search-apply-audio" src="" type="audio/mpeg">
                     </audio>
                 </span>
             </div>
