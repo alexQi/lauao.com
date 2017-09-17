@@ -1,5 +1,5 @@
 <?php
 return [
-    'wechat_appid' => 'wxcb2711060169adca',
-    'wechat_secret' => '5d25144ef3458d13f407e54968fc6856'
+    'wechat_appid' => 'wx0ae46a213421e196',
+    'wechat_secret' => '8e9fb152446fd55a4f801a4556cb8397'
 ];
