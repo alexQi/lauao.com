@@ -736,7 +736,7 @@ layui.use(['layer'], function () {
             
             if (myD >= 0) {
             	
-                var str = "距活动倒计时:"+myD + "天" + myH + "小时" + myM + "分" + myS + "秒";
+                var str = "距活动开始还有:"+myD + "天" + myH + "小时" + myM + "分" + myS + "秒";
                 
             } else {
             	if(myE>=0)
