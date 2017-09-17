@@ -269,8 +269,8 @@ use yii\helpers\Url;
                 </div>
                 <div class="aui-card-list-content-padded aui-collapse-content">
                     <div class="aui-row aui-row-padded">
-                        <p class="search-apply-name">姓名:我是搜索来的</p>
-                        <p class="search-apply-desc">介绍:我是搜索得出来的</p>
+                        <p class="search-apply-name"></p>
+                        <p class="search-apply-desc"></p>
                     </div>
                 </div>
             </div>
