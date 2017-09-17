@@ -283,7 +283,7 @@ use yii\helpers\Url;
                 <img class="personimg search-apply-image" src="" alt="">
                 <span class="wlplayer">
                     <audio id="1" preload="none">
-                        <source class="search-apply-audio" src="http://apply-user.ztwliot.com/QB15056260118134" type="audio/mpeg">
+                        <source class="search-apply-audio" src="" type="audio/mpeg">
                     </audio>
                 </span>
             </div>
@@ -739,7 +739,7 @@ layui.use(['layer'], function () {
             
             if (myD >= 0) {
             	
-                var str = "距活动倒计时:"+myD + "天" + myH + "小时" + myM + "分" + myS + "秒";
+                var str = "距活动开始还有:"+myD + "天" + myH + "小时" + myM + "分" + myS + "秒";
                 
             } else {
             	if(myE>=0)
