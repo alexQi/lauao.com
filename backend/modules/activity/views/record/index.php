@@ -73,11 +73,11 @@ Alert::widget();
                         'format' => 'html',
                         'content'=>function ($model) {
                             $html ="<textarea class='form-control' style='height: 100px;resize:none;' disabled>$model->self_desc</textarea>";
-                            $html .='<audio src="'.$model->self_media.'" controls style="margin-top:30px;min-width: 530px;"></audio>';
+                            $html .='<audio src="'.$model->self_media.'" controls style="margin-top:30px;min-width: 450px;"></audio>';
                             return $html;
                         },
                         "headerOptions" => [
-                            "width" => "530",
+                            "width" => "450",
                         ],
                     ],
                     [
