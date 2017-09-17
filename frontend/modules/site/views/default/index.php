@@ -282,7 +282,7 @@ use yii\helpers\Url;
                 <div class="myvotenum search-apply-vote"></div>
                 <img class="personimg search-apply-image" src="" alt="">
                 <span class="wlplayer">
-                    <audio id="12" preload="none">
+                    <audio id="1" preload="none">
                         <source class="search-apply-audio" src="" type="audio/mpeg">
                     </audio>
                 </span>
