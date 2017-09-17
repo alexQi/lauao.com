@@ -514,7 +514,33 @@ layui.use(['layer'], function () {
         });
     });
 
-    $(".items,.seachperson").on("click", ".person", function (e) {
+
+
+$(".seachperson").on("click", ".person", function (e) {
+
+    if ($(e.target).hasClass("wlplayer")) {
+                var media = $(this).find("audio")[0]; //找到當前對象下的audio標籤
+                if (media.paused) {
+                        media.play();
+                        
+                        $(".wlplayer").addClass("btnplayer");
+
+                        $(e.target).removeClass("btnplayer");
+
+                        $(e.target).addClass("btnpause");
+
+                    } else {
+                        media.pause();
+                        $(e.target).removeClass("btnpause");
+
+                        $(e.target).addClass("btnplayer");
+                    }
+
+});
+
+
+
+    $(".items").on("click", ".person", function (e) {
             if ($(e.target).hasClass("wlplayer")) {
                 var media = $(this).find("audio")[0]; //找到當前對象下的audio標籤
                 /*判斷是否有來源文件*/
