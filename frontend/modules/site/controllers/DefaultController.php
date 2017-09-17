@@ -20,11 +20,11 @@ class DefaultController extends BaseController
     public function actionIndex()
     {
         $advertList   = ApplyUserService::getAdvertList();
-        $activityInfo = ApplyUserService::getActivityInfo();
-        $serverTime   = time();
         $activity     = ActivityBase::find()->where(['status'=>2])->asArray()->one();
+        $activityInfo = ApplyUserService::getActivityInfo($activity);
+        $serverTime   = time();
 
-	return $this->render('index',[
+	    return $this->render('index',[
             'advertList' => $advertList,
             'activityInfo' => $activityInfo,
             'serverTime' => $serverTime,

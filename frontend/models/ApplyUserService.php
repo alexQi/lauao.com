@@ -72,7 +72,7 @@ class ApplyUserService extends ApplyRecord
         return $query->asArray()->all();
     }
 
-    public static function getActivityInfo()
+    public static function getActivityInfo($activity)
     {
         $query = self::find();
         $tempQuery = clone $query;
@@ -83,6 +83,7 @@ class ApplyUserService extends ApplyRecord
         $query->leftJoin(['raa'=>RelateActivityApply::tableName()],'raa.apply_id=ar.id');
         $query->where(['ar.status'=>2]);
         $query->andWhere(['ab.status'=>2]);
+        $query->andWhere(['ab.id'=>$activity['id']]);
         $query->orderBy(['raa.votes'=>SORT_DESC]);
         $query->limit(3);
         $result['TopThree'] = $query->asArray()->all();
@@ -93,14 +94,16 @@ class ApplyUserService extends ApplyRecord
         $tempQuery->leftJoin(['raa'=>RelateActivityApply::tableName()],'raa.apply_id=ar.id');
         $tempQuery->where(['ar.status'=>2]);
         $tempQuery->andWhere(['ab.status'=>2]);
+        $tempQuery->andWhere(['ab.id'=>$activity['id']]);
         $result['countApply'] = $tempQuery->count();
 
         $tmpQuery->select('sum(raa.votes) as count_votes');
         $tmpQuery->from(['raa'=>RelateActivityApply::tableName()]);
         $tmpQuery->leftJoin(['ar'=>ApplyRecord::tableName()],'raa.apply_id=ar.id');
         $tmpQuery->leftJoin(['ab'=>ActivityBase::tableName()],'raa.activity_id=ab.id');
-        $tempQuery->where(['ar.status'=>2]);
-        $tempQuery->andWhere(['ab.status'=>2]);
+        $tmpQuery->where(['ar.status'=>2]);
+        $tmpQuery->andWhere(['ab.status'=>2]);
+        $tmpQuery->andWhere(['ab.id'=>$activity['id']]);
 
         $result['countVotes'] = $tmpQuery->asArray()->one();
 
