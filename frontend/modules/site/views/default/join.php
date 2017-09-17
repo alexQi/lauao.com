@@ -276,7 +276,7 @@ use yii\helpers\Url;
  								 ,anim: 4 //动画类型
 								}, function(){
  								    
- 								    window.location.href="index.html";
+ 								    window.location.href="/site/default/about";
 									
 								}
 								);
