@@ -134,6 +134,10 @@ class DefaultController extends BaseController
                 throw new Exception('当前手机号码已申请过该活动');
             }
 
+            $activity     = ActivityBase::find()->where(['status'=>2])->asArray()->one();
+            if (empty($activity)){
+                throw new Exception('未查找到有效活动');
+            }
             $model = new ApplyRecord();
 
             $model->apply_name = yii::$app->request->post('apply_name');
@@ -144,7 +148,7 @@ class DefaultController extends BaseController
             $model->self_media = yii::$app->request->post('self_media');
             $model->recommend = yii::$app->request->post('recommend');
             $model->weichat_uid = time().rand(1000,9999).'uid';
-            $model->activity_id = 8;
+            $model->activity_id = $activity['id'];
             $model->status      = 1;
             $model->created_at  = time();
             $model->updated_at  = time();
