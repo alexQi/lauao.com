@@ -40,7 +40,7 @@ use yii\helpers\Url;
 			}
 			
 			.mylogo img {
-				height: 180px;
+			
 				width: 100%;
 			}
 			
