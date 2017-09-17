@@ -649,8 +649,8 @@ layui.use(['layer'], function () {
                         $('.search-apply-name').html('姓名:' + data.data.apply_name);
                         $('.search-apply-desc').html('介紹:' + data.data.self_desc);
                         $('.search-apply-vote').html(data.data.votes);
-                        $('.search-apply-image').attr('src', data.data.self_picture);
-                        $('.search-apply-audio').attr('src', data.data.self_media);
+                        $('.search-apply-image').prop('src', data.data.self_picture);
+                        $('.search-apply-audio').prop('src', data.data.self_media);
                         searchBarInput.blur();
                         $(".seachperson").css("display", 'block');
                     }
