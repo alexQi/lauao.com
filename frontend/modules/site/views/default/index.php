@@ -650,9 +650,9 @@ layui.use(['layer'], function () {
                         $('.search-apply-desc').html('介紹:' + data.data.self_desc);
                         $('.search-apply-vote').html(data.data.votes);
                         $('.search-apply-image').prop('src', data.data.self_picture);
-                       // $('#search-apply-audio').prop('src', data.data.self_media);
-                        var midea=$('#search-apply-audio')[0];
-                        midea.currentSrc=data.data.self_media; //获取对象将值赋给对象
+                        $('#search-apply-audio').prop('src', data.data.self_media);
+                       // var midea=$('#search-apply-audio')[0];
+                       // midea.currentSrc=data.data.self_media; //获取对象将值赋给对象
                     
                         searchBarInput.blur();
                         $(".seachperson").css("display", 'block');
