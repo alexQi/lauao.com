@@ -64,23 +64,22 @@
 
 			<div class="my-about">
 					<img src="/images/about.jpg" />
-		    </div> 
-			<div id="myvideo" style="width:100%"   >	
+		    </div>
+            <?php foreach($advertList  as $key=>$advert):?>
+			<div class="myvideo" style="width:100%">
 					<div class="m">
 							  <!--poster="MY_VIDEO_POSTER.jpg"-->
 						  <video id="my-video" class="video-js" controls preload="auto"
 							 data-setup="{}">
-							  <source src="http://advert.ztwliot.com/QB1505033315" type="video/mp4">
+							  <source src="<?php echo $advert['file_url']; ?>" type="video/mp4">
 							  <p class="vjs-no-js">
 								To view this video please enable JavaScript, and consider upgrading to a web browser that
 								<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
 							  </p>
-							</video>	
-						  
-						  
-					  </div>
-				  
-					  </div>
+                          </video>
+                    </div>
+            </div>
+            <?php endforeach;?>
 	
 	<div class="aboutinfo">
 		<div class="aboutjs">
@@ -110,10 +109,6 @@
 				
 				</div>
 				</div>
-	
-	
-		
-		
 		<footer class="my-footer">本次活动最终解释权归宣城宛聆音乐</footer>
 	</body>
     <script src="/script/jquery.min.js"></script>
@@ -122,17 +117,12 @@
 			var myPlayer = videojs('my-video');
 			videojs("my-video").ready(function(){
 				var myPlayer = this;
-				//myPlayer.play();				
-				var playerH= $("#myvideo").outerHeight(true);
-				var playerW= $("#myvideo").outerWidth(true);
+				//myPlayer.play();
+				var playerH= $(".myvideo").outerHeight(true);
+				var playerW= $(".myvideo").outerWidth(true);
 				myPlayer.width(playerW);
 				myPlayer.height(playerH);
-
 			});
-			
-			
-			
-			
 		</script>
 	
 	

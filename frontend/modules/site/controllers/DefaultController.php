@@ -39,6 +39,11 @@ class DefaultController extends BaseController
 
     public function actionAbout()
     {
-        return $this->render('about');
+        $advertList   = ApplyUserService::getAdvertList(2);
+        $activity     = ActivityBase::find()->where(['status'=>2])->asArray()->one();
+        return $this->render('about',[
+            'advertList' => $advertList,
+            'activity' => $activity
+        ]);
     }
 }
