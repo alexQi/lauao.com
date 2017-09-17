@@ -430,7 +430,8 @@ layui.use(['layer'], function () {
                                 type: 1,
                                 title: false,
                                 closeBtn: 0,
-                                content: '<div id="qrcode" style="padding:2px"><img src="/images/qrcode.png"><p style="text-align: center;font-size:12px">微信关注后进行投票</p></div>'
+                                anim:1,
+                                content: '<div id="qrcode" style="padding:10px 10px 20px 10px"><img src="/images/qrcode.png"><p style="text-align: center;font-size:12px">微信关注后进行投票</p></div>'
                             });
                         }
                     }else{
