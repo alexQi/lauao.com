@@ -436,7 +436,7 @@ layui.use(['layer'], function () {
                             });
                         }
                     }else{
-//                        window.location.href="/";
+                        window.location.href="/";
                     }
                 });
             }else{
