@@ -108,6 +108,7 @@ class ActivityAdvertSearch extends ActivityAdvert
         $query->select('aa.*,ab.title');
         $query->from(['aa' => ActivityAdvert::tableName()]);
         $query->leftJoin(['ab' => ActivityBase::tableName()], 'aa.activity_id=ab.id');
+        $query->where(['aa.id'=>$id]);
         return $query->one();
     }
 }
