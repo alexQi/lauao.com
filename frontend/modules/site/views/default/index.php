@@ -205,19 +205,19 @@ use yii\helpers\Url;
                     <div class="aui-col-xs-4">
 
                         <div class="aui-badge">1</div>
-                        <img class="aui-img-round" src="<?php echo isset($activityInfo['TopThree'][0]['self_picture']) ? $activityInfo['TopThree'][0]['self_picture'] :'N/A'; ?>"
+                        <img class="aui-img-round" src="<?php echo isset($activityInfo['TopThree'][0]['self_picture']) ? $activityInfo['TopThree'][0]['self_picture'] :'/images/NA.png'; ?>"
                              style="width: 50px;height: 50px;margin: 0 auto;"></img>
                         <div class="aui-grid-label"><?php echo isset($activityInfo['TopThree'][0]['apply_name']) ? $activityInfo['TopThree'][0]['apply_name'] :'N/A'; ?></div>
                     </div>
                     <div class="aui-col-xs-4">
                         <div class="aui-badge">2</div>
-                        <img class="aui-img-round" src="<?php echo isset($activityInfo['TopThree'][1]['self_picture']) ? $activityInfo['TopThree'][1]['self_picture'] :'N/A'; ?>"
+                        <img class="aui-img-round" src="<?php echo isset($activityInfo['TopThree'][1]['self_picture']) ? $activityInfo['TopThree'][1]['self_picture'] :'/images/NA.png'; ?>"
                              style="width: 50px;height: 50px;margin: 0 auto;"></img>
                         <div class="aui-grid-label"><?php echo isset($activityInfo['TopThree'][1]['apply_name']) ? $activityInfo['TopThree'][1]['apply_name'] :'N/A'; ?></div>
                     </div>
                     <div class="aui-col-xs-4">
                         <div class="aui-badge">3</div>
-                        <img class="aui-img-round" src="<?php echo isset($activityInfo['TopThree'][2]['self_picture']) ? $activityInfo['TopThree'][2]['self_picture'] :'N/A'; ?>"
+                        <img class="aui-img-round" src="<?php echo isset($activityInfo['TopThree'][2]['self_picture']) ? $activityInfo['TopThree'][2]['self_picture'] :'/images/NA.png'; ?>"
                              style="width: 50px;height: 50px;margin: 0 auto;"></img>
                         <div class="aui-grid-label"><?php echo isset($activityInfo['TopThree'][2]['apply_name']) ? $activityInfo['TopThree'][2]['apply_name'] :'N/A'; ?></div>
                     </div>
