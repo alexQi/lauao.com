@@ -11,7 +11,7 @@ use yii\helpers\Url;
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
 		<meta name="format-detection" content="telephone=no,email=no,date=no,aItemress=no">
-		<title>宛聆歌王报名</title>
+		<title>宛聆歌王大赛报名</title>
 		<!--	<link rel="stylesheet" type="text/css" href="../css/aui.css" />-->
 		<link rel="stylesheet" type="text/css" href="/layui/css/layui.css">
 
@@ -87,7 +87,9 @@ use yii\helpers\Url;
 		<div class="mylogo">
 			<img src="/images/timg.jpg" />
 		</div>
-
+	   
+		<blockquote class="layui-elem-quote">由于苹果硬性条件无法上传音频文件<br>请大家统一前往电脑端进行报名<br/>报名地址:http://www.taozihu.com/site/default/join</blockquote>
+		
 		<div class="my-frm">
 			<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
 				<legend>输入基本信息</legend>
