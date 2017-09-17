@@ -417,6 +417,7 @@ layui.use(['layer'], function () {
                 var wechatToken = data.data.access_token;
                 var openid      = data.data.openid;
                 $.get('<?php echo Url::to(['/ajax/default/get-wechat-userinfo'])?>?wechatToken=' + wechatToken+'&openid='+openid, function (data, status) {
+                    console.log(data);
                     if (data.state==1){
                         if (data.data.subscribe==1)
                         {
@@ -435,7 +436,7 @@ layui.use(['layer'], function () {
                             });
                         }
                     }else{
-                        window.location.href="/";
+//                        window.location.href="/";
                     }
                 });
             }else{
