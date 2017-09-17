@@ -56,7 +56,7 @@ use yii\helpers\Url;
 
         .mychart {
 
-            background: url(/images/mychart.jpg) no-repeat scroll -120px -10px;;
+            /* background: url(/images/mychart.jpg) no-repeat scroll -120px -10px;; */
             height: 100%;
 
         }
@@ -120,8 +120,8 @@ use yii\helpers\Url;
             border-bottom-left-radius: 25px;
             border-top-left-radius: 25px;
             background: #FF6666;
-            height: 50px;
-            width: 120px;
+            height: 40px;
+            width: 100px;
             opacity: 0.9;
             filter: Alpha(opacity=90);
             /* IE8 以及更早的浏览器 */
@@ -131,7 +131,7 @@ use yii\helpers\Url;
             color: white;
             position: absolute;
             right: 10px;
-            top: 15px;
+            top: 10px;
             font-size: 15px;
         }
 
@@ -164,6 +164,7 @@ use yii\helpers\Url;
             filter: Alpha(opacity=50);
             line-height: 2.8;
             font-size: 12px;
+            
         }
 
 
@@ -187,10 +188,7 @@ use yii\helpers\Url;
 </div>
 
 <div class="mychart">
-
-    <br/>
-
-    <div style="margin: 0 auto; background:#FF6666;width:260px ;margin-bottom:8px;padding:10px;font-size: 15px;border-radius: 20px;text-align: center;color: white;">
+    <div style="margin: 0 auto; background:#FF6666;margin-bottom:8px;padding:10px;font-size: 15px;text-align: center;color: white;">
 
         <li id="chartouttime" style="padding:5px;"></li>
     </div>
@@ -207,19 +205,19 @@ use yii\helpers\Url;
                     <div class="aui-col-xs-4">
 
                         <div class="aui-badge">1</div>
-                        <img class="aui-img-round" src="<?php echo isset($activityInfo['TopThree'][0]['self_picture']) ? $activityInfo['TopThree'][0]['self_picture'] :'N/A'; ?>"
+                        <img class="aui-img-round" src="<?php echo isset($activityInfo['TopThree'][0]['self_picture']) ? $activityInfo['TopThree'][0]['self_picture'] :'/images/NA.png'; ?>"
                              style="width: 50px;height: 50px;margin: 0 auto;"></img>
                         <div class="aui-grid-label"><?php echo isset($activityInfo['TopThree'][0]['apply_name']) ? $activityInfo['TopThree'][0]['apply_name'] :'N/A'; ?></div>
                     </div>
                     <div class="aui-col-xs-4">
                         <div class="aui-badge">2</div>
-                        <img class="aui-img-round" src="<?php echo isset($activityInfo['TopThree'][1]['self_picture']) ? $activityInfo['TopThree'][1]['self_picture'] :'N/A'; ?>"
+                        <img class="aui-img-round" src="<?php echo isset($activityInfo['TopThree'][1]['self_picture']) ? $activityInfo['TopThree'][1]['self_picture'] :'/images/NA.png'; ?>"
                              style="width: 50px;height: 50px;margin: 0 auto;"></img>
                         <div class="aui-grid-label"><?php echo isset($activityInfo['TopThree'][1]['apply_name']) ? $activityInfo['TopThree'][1]['apply_name'] :'N/A'; ?></div>
                     </div>
                     <div class="aui-col-xs-4">
                         <div class="aui-badge">3</div>
-                        <img class="aui-img-round" src="<?php echo isset($activityInfo['TopThree'][2]['self_picture']) ? $activityInfo['TopThree'][2]['self_picture'] :'N/A'; ?>"
+                        <img class="aui-img-round" src="<?php echo isset($activityInfo['TopThree'][2]['self_picture']) ? $activityInfo['TopThree'][2]['self_picture'] :'/images/NA.png'; ?>"
                              style="width: 50px;height: 50px;margin: 0 auto;"></img>
                         <div class="aui-grid-label"><?php echo isset($activityInfo['TopThree'][2]['apply_name']) ? $activityInfo['TopThree'][2]['apply_name'] :'N/A'; ?></div>
                     </div>
@@ -404,6 +402,12 @@ use yii\helpers\Url;
 
 
 <script>
+/*加載Layer模塊*/
+layui.use(['layer'], function () {
+        var layer = layui.layer
+    });
+
+
     //处理微信
     function handleWechat(){
         var wechatCode = '<?php echo yii::$app->request->get('code')?>';
@@ -418,11 +422,16 @@ use yii\helpers\Url;
                         {
                             $('#wechat_uid').val(data.data.openid);
                         }else{
+                            var lefts=($(window).width() - 170)/2;
+                            var tops=($(window).height() -196)/2 + $(document).scrollTop();
+
                             layer.open({
+                                offset:[tops+'px',lefts+'px'],
                                 type: 1,
                                 title: false,
                                 closeBtn: 0,
-                                content: '<div><img src="/images/qrcode.png"></div>'
+                                anim:1,
+                                content: '<div id="qrcode" style="padding:10px 10px 20px 10px"><img src="/images/qrcode.png"><p style="text-align: center;font-size:12px">微信关注后进行投票</p></div>'
                             });
                         }
                     }else{
@@ -435,10 +444,7 @@ use yii\helpers\Url;
         });
     }
 
-    /*加載Layer模塊*/
-    layui.use(['layer'], function () {
-        var layer = layui.layer
-    });
+    
 
     var Hispalyer = null; //記錄只播放一個播放器.
 
