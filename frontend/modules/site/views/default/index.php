@@ -535,6 +535,7 @@ $(".seachperson").on("click", ".person", function (e) {
 
                         $(e.target).addClass("btnplayer");
                     }
+    }
 
 });
 
