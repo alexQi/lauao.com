@@ -170,7 +170,10 @@ class DefaultController extends BaseController
     {
         try{
             $activityInfo = ActivityBase::find()->where(['status'=>2])->one();
-
+            if (time()<$activityInfo->start_time)
+            {
+                throw new Exception('活动已结束');
+            }
             if (time()>$activityInfo->end_time)
             {
                 throw new Exception('活动已结束');
