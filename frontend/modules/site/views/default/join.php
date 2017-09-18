@@ -201,8 +201,15 @@ use yii\helpers\Url;
 						form = layui.form,
 						
 						upload = layui.upload,
+
+						submitcount=0,
+
 						passimages=false,
+
 						passaudio=false;
+
+						
+
 						
 					var self=null;
 					 
@@ -219,20 +226,27 @@ use yii\helpers\Url;
                         choose: function(obj){
                         
                             files = obj.pushFile(); //将每次选择的文件追加到文件队列
-                           
+						   
+
+							//console.log(files);
+							submitcount++;
+							//console.log(submitcount);
+
                         	 obj.preview(function(index, file, result){
                         	 	
                         	 	
-                        	 	//判斷有選擇這兩個
-                        	 	if(file.type.split("/")[0]=="image")
-                        	 	{
-                        	 		passimages=true;
-                        	 	}
-                        	 	if(file.type.split("/")[0]=="audio")
-                        	 	{
-                        	 		passaudio=true;
-                        	 	}
-                        	 	
+                        	 	// //判斷有選擇這兩個
+                        	 	// if(file.type.split("/")[0]=="image")
+                        	 	// {
+                        	 	// 	passimages=true;
+                        	 	// }
+                        	 	// if(file.type.split("/")[0]=="audio")
+                        	 	// {
+                        	 	// 	passaudio=true;
+								 // }
+								 
+
+                        	 
                         	 	
                         	 	//console.log(index);
                         	 	//console.log(file);
@@ -241,7 +255,12 @@ use yii\helpers\Url;
                          });
                          },
                         before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
-                		 layer.load(1);
+                		 //加载层-风格4
+							var subm=layer.msg('正在提交报名资料..', {
+  								icon: 16
+  								, shade: [0.1,'#222'] //0.1透明度的白色背景
+								,time:0
+								});
                  	    },
                        done: function(res, index, upload){
                                       
@@ -294,12 +313,13 @@ use yii\helpers\Url;
 
 							  }
 							  
-							  passimages=false;
-						      passaudio=false;
+							  submitcount=0;//重置上傳文件內容
+
+							  //console.log(submitcount);
 
 							 });
                          	
-                         	 layer.closeAll('loading'); //关闭loading	
+                         	 layer.closeAll(); //关闭loading	
                          }
                          
                          delete files[index];
@@ -313,17 +333,24 @@ use yii\helpers\Url;
                             //监听提交
 			form.on('submit(commitinfo)',function(data){
 				
-		  if(!passaudio)
+		//   if(!passaudio)
+		// 	{
+		// 		layer.msg('请上传您的音频作品.', {icon: 5,shift: 6});
+				
+		// 	   return false;
+		// 	}
+		// 	if(!passimages)
+		// 	{
+				
+		// 		layer.msg('请上传您的个人照片.', {icon: 5,shift: 6});
+		// 	    return false;
+		// 	}
+
+			  if(submitcount<2)
 			{
-				layer.msg('请上传您的音频作品.', {icon: 5,shift: 6});
+				layer.msg('请上传您的图像和音频文件.', {icon: 5,shift: 6});
 				
 			   return false;
-			}
-			if(!passimages)
-			{
-				
-				layer.msg('请上传您的个人照片.', {icon: 5,shift: 6});
-			    return false;
 			}
 			
 			   self=data;
