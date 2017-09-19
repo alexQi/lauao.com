@@ -15,8 +15,8 @@ use yii\helpers\Url;
     <link rel="stylesheet" type="text/css" href="/css/aui.css"/>
     <link rel="stylesheet" type="text/css" href="/css/loader.css"/>
     <link rel="stylesheet" type="text/css" href="/css/aui-slide.css"/>
-	<div id='wx_pic' style='margin:0 auto;display:none;'>
-	<img src='/images/sharePG.jpg' />
+	<div style ='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
+	<img src='/images/pic300.jpg' />
 	</div>
     <style>
         * {
