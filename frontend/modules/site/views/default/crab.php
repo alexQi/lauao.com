@@ -246,8 +246,25 @@ layui.use(['jquery','layer'], function() {
 
     $=	layui.jquery;
 
-    
+    layer=layui.layer;
 
+
+
+//示范一个公告层
+layer.open({
+    type: 1
+    ,title: false //不显示标题栏
+    ,closeBtn: false
+    ,area: '300px;'
+    ,shade: 0.8
+    ,id: 'LAY_layuipro' //设定一个id，防止重复弹出
+    ,resize: false
+    ,btn: ['亲,我明白了']
+    ,btnAlign: 'c'
+    ,moveType: 0 //拖拽模式，0或者1
+    ,content: '<div style="padding: 20px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;">宣城市顺丰包邮啦！！<br/><br/>1.填写联系信息<br/>2.选择套餐<br/>3.套餐数量<br/>4.点击立即购买<br/><br/>如果遇到什么问题可以点击咨询!</div>'
+ 
+  });
 
 
 });
