@@ -46,4 +46,11 @@ class DefaultController extends BaseController
             'activity' => $activity
         ]);
     }
+
+    //螃蟹购买页面
+    public function actionCrab()
+    {
+        return $this->render('crab');
+    }
+
 }
