@@ -36,10 +36,15 @@ use yii\helpers\Url;
 </div> -->
 
 
- <!-- 1 begin -->
+ <!-- 1 begin 
+ 
+  <div class="aui-card-list aui-border-t aui-border-b">
+ -->
+
+
 <section class="aui-content">
 
-<div class="aui-card-list aui-border-t aui-border-b">
+<div class="aui-card-list">
     <div class="aui-card-list-header aui-card-list-user">
         <div class="aui-card-list-user-avatar">
             <img src="/images/NA.png">
@@ -81,13 +86,13 @@ use yii\helpers\Url;
             </div>
         </ul>
     </div>
-    <div class="aui-card-list-footer aui-border-t">
+    <!-- <div class="aui-card-list-footer aui-border-t">
         <div></div>
         <div>
             <div class="aui-btn aui-btn aui-btn-outlined aui-btn-info aui-margin-r-10">再来一单</div>
             <div class="aui-btn aui-btn aui-btn-outlined aui-btn-warning">评价得积分</div>
         </div>
-    </div>
+    </div> -->
 </div>
 </div>
 
@@ -98,7 +103,7 @@ use yii\helpers\Url;
 <!-- 2 begin -->
 <section class="aui-content">
 
-<div class="aui-card-list aui-border-t aui-border-b">
+<div class="aui-card-list">
     <div class="aui-card-list-header aui-card-list-user">
         <div class="aui-card-list-user-avatar">
             <img src="/images/NA.png">
@@ -140,13 +145,13 @@ use yii\helpers\Url;
             </div>
         </ul>
     </div>
-    <div class="aui-card-list-footer aui-border-t">
+    <!-- <div class="aui-card-list-footer aui-border-t">
         <div></div>
         <div>
             <div class="aui-btn aui-btn aui-btn-outlined aui-btn-info aui-margin-r-10">再来一单</div>
             <div class="aui-btn aui-btn aui-btn-outlined aui-btn-warning">评价得积分</div>
         </div>
-    </div>
+    </div> -->
 </div>
 </div>
 
@@ -158,7 +163,7 @@ use yii\helpers\Url;
 <!-- 1 begin -->
 <section class="aui-content" style="margin-bottom:50px;">
 
-<div class="aui-card-list aui-border-t aui-border-b">
+<div class="aui-card-list ">
     <div class="aui-card-list-header aui-card-list-user">
         <div class="aui-card-list-user-avatar">
             <img src="/images/NA.png">
@@ -200,13 +205,13 @@ use yii\helpers\Url;
             </div>
         </ul>
     </div>
-    <div class="aui-card-list-footer aui-border-t">
+    <!-- <div class="aui-card-list-footer aui-border-t">
         <div></div>
         <div>
             <div class="aui-btn aui-btn aui-btn-outlined aui-btn-info aui-margin-r-10">再来一单</div>
             <div class="aui-btn aui-btn aui-btn-outlined aui-btn-warning">评价得积分</div>
         </div>
-    </div>
+    </div> -->
 </div>
 </div>
 
