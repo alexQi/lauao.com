@@ -156,7 +156,7 @@ use yii\helpers\Url;
 
 
 <!-- 1 begin -->
-<section class="aui-content" style="margin-bottom: 60px;">
+<section class="aui-content" style="margin-bottom:50px;">
 
 <div class="aui-card-list aui-border-t aui-border-b">
     <div class="aui-card-list-header aui-card-list-user">
@@ -214,7 +214,7 @@ use yii\helpers\Url;
 
 <!-- 1 end  -->
 
-<footer class="aui-bar aui-bar-tab aui-margin-t-15 aui-margin-b-15">
+<footer class="aui-bar aui-bar-tab ">
         <div class="aui-bar-tab-item" tapmode style="width: 3rem;">
             <i class="aui-iconfont aui-icon-comment aui-text-info"></i>
             <div class="aui-bar-tab-label aui-text-info">咨询</div>
