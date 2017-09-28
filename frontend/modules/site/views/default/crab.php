@@ -9,7 +9,7 @@ use yii\helpers\Url;
     <meta name="viewport"
           content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <meta name="format-detection" content="telephone=no,email=no,date=no,aItemress=no">
-    <title>螃蟹购买</title>
+    <title>购买信息确认</title>
     <link rel="stylesheet" type="text/css" href="/css/aui.css"/>
 
     <style type="text/css">
@@ -266,7 +266,7 @@ layer.open({
     ,anim: 6
     ,isOutAnim: false 
     ,moveType: 0 //拖拽模式，0或者1
-    ,content: '<div style="padding: 40px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 180;font-size:0.75rem">宣城市顺丰包邮啦！！<br/><br/>1.填写联系信息<br/>2.选择套餐<br/>3.套餐数量<br/>4.点击立即购买<br/><br/>如果遇到什么问题可以点击咨询!</div>'
+    ,content: '<div style="padding: 40px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 180;font-size:0.75rem">宣城市顺丰包邮啦！！<br/><br/>1.填写联系信息<br/>2.选择套餐<br/>3.套餐数量<br/>4.点击立即购买<br/><br/>如果遇到什么问题可以点击咨询</div>'
  
   });
 
