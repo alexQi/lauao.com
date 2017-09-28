@@ -23,25 +23,49 @@ use yii\helpers\Url;
         .checklist{text-align:center;margin-top:30px}
 
         .layui-layer-btn0{font-size: 0.75rem;}
+
+      
+        .aui-bar-btn-item.aui-active {
+            background-color: transparent;
+            color: #212121; 
+        }
+
+        .aui-bar-btn {
+            min-height: 0.3rem;
+        }
+
+        .aui-btn.aui-btn.aui-btn-outlined.aui-btn-warning {
+    margin-left: 65px;
+    margin-top: 3px;
+}
+
+
+
+        .my-anim{ animation: twinkling 1.5s  infinite ease-in-out; }
+
+            @keyframes twinkling{ /*透明度由0到1*/
+             0%{opacity:0.4;透明度为0}
+            50%{opacity:0.7; /*透明度为0*/}
+            100%{opacity:1; /*透明度为1*/}
+            }
+
+
     </style>
 
 
 </head>
 
 <body>
-<!-- <div class="aui-tips aui-margin-b-15 aui-bg-danger aui-pull-right" id="tips-1"  style="height:50px">
+<div class="aui-tips aui-margin-b-15 aui-bg-danger" id="tips-1" >
 
     <i class="aui-iconfont aui-icon-info "></i>
-    <div class="aui-tips-title ">好消息:宣城本地享受15元包邮</div>
+   
+    <div class="aui-tips-title my-anim"> <small>好消息,当前渠道已经销售数量:</small>80
+    </div>
+    
     <i class="aui-iconfont aui-icon-close" tapmode onclick="closeTips()"></i>
    
-</div> -->
-
-
- <!-- 1 begin 
- 
-  <div class="aui-card-list aui-border-t aui-border-b">
- -->
+</div>
 
 
 <section class="aui-content">
@@ -88,13 +112,27 @@ use yii\helpers\Url;
             </div>
         </ul>
     </div>
-    <!-- <div class="aui-card-list-footer aui-border-t">
+   <div class="aui-card-list-footer aui-border-t">
         <div></div>
         <div>
-            <div class="aui-btn aui-btn aui-btn-outlined aui-btn-info aui-margin-r-10">再来一单</div>
-            <div class="aui-btn aui-btn aui-btn-outlined aui-btn-warning">评价得积分</div>
+            <div class="aui-btn aui-btn aui-btn-outlined aui-btn-warning"  >数量</div>
+            <!-- <div class="aui-btn aui-btn aui-btn-outlined aui-btn-warning">评价得积分</div> -->
+
+        <div class="aui-bar aui-bar-btn" style="width:50%;float:right;" type="count">
+        <div class="aui-bar-btn-item aui-font-size-20">
+            <i class="aui-iconfont aui-icon-minus"></i>
         </div>
-    </div> -->
+        <div class="aui-bar-btn-item">
+            <input type="number" readonly="readonly" class="aui-input aui-text-center" id="count" value="1">
+        </div>
+        <div class="aui-bar-btn-item aui-font-size-20">
+            <i class="aui-iconfont aui-icon-plus"></i>
+        </div>
+    </div>
+
+
+        </div>
+    </div>
 </div>
 </div>
 
@@ -120,7 +158,7 @@ use yii\helpers\Url;
 <div class="aui-row">
 
 <div class="aui-col-xs-3">
-<div class="checklist" > <input class="aui-radio" type="radio" name="radio" checked></div>
+<div class="checklist" > <input class="aui-radio" type="radio" name="radio" ></div>
 </div>
 
 <div class="aui-col-xs-9">
@@ -147,13 +185,27 @@ use yii\helpers\Url;
             </div>
         </ul>
     </div>
-    <!-- <div class="aui-card-list-footer aui-border-t">
-        <div></div>
-        <div>
-            <div class="aui-btn aui-btn aui-btn-outlined aui-btn-info aui-margin-r-10">再来一单</div>
-            <div class="aui-btn aui-btn aui-btn-outlined aui-btn-warning">评价得积分</div>
-        </div>
-    </div> -->
+    <div class="aui-card-list-footer aui-border-t">
+    <div></div>
+    <div>
+        <div class="aui-btn aui-btn aui-btn-outlined aui-btn-warning"  >数量</div>
+        <!-- <div class="aui-btn aui-btn aui-btn-outlined aui-btn-warning">评价得积分</div> -->
+
+    <div class="aui-bar aui-bar-btn" style="width:50%;float:right;" type="count">
+    <div class="aui-bar-btn-item aui-font-size-20">
+        <i class="aui-iconfont aui-icon-minus"></i>
+    </div>
+    <div class="aui-bar-btn-item">
+        <input type="number" readonly="readonly" class="aui-input aui-text-center" id="count" value="1">
+    </div>
+    <div class="aui-bar-btn-item aui-font-size-20">
+        <i class="aui-iconfont aui-icon-plus"></i>
+    </div>
+</div>
+
+
+    </div>
+</div>
 </div>
 </div>
 
@@ -180,7 +232,7 @@ use yii\helpers\Url;
 <div class="aui-row">
 
 <div class="aui-col-xs-3">
-<div class="checklist" > <input class="aui-radio" type="radio" name="radio" checked></div>
+<div class="checklist" > <input class="aui-radio" type="radio" name="radio" ></div>
 </div>
 
 <div class="aui-col-xs-9">
@@ -207,13 +259,27 @@ use yii\helpers\Url;
             </div>
         </ul>
     </div>
-    <!-- <div class="aui-card-list-footer aui-border-t">
-        <div></div>
-        <div>
-            <div class="aui-btn aui-btn aui-btn-outlined aui-btn-info aui-margin-r-10">再来一单</div>
-            <div class="aui-btn aui-btn aui-btn-outlined aui-btn-warning">评价得积分</div>
-        </div>
-    </div> -->
+    <div class="aui-card-list-footer aui-border-t">
+    <div></div>
+    <div>
+        <div class="aui-btn aui-btn aui-btn-outlined aui-btn-warning"  >数量</div>
+        <!-- <div class="aui-btn aui-btn aui-btn-outlined aui-btn-warning">评价得积分</div> -->
+
+    <div class="aui-bar aui-bar-btn" style="width:50%;float:right;" type="count">
+    <div class="aui-bar-btn-item aui-font-size-20">
+        <i class="aui-iconfont aui-icon-minus"></i>
+    </div>
+    <div class="aui-bar-btn-item">
+        <input type="number" readonly="readonly" class="aui-input aui-text-center" id="count" value="1">
+    </div>
+    <div class="aui-bar-btn-item aui-font-size-20">
+        <i class="aui-iconfont aui-icon-plus"></i>
+    </div>
+</div>
+
+
+    </div>
+</div>
 </div>
 </div>
 
@@ -238,8 +304,9 @@ use yii\helpers\Url;
 
 
 </body>
-<!-- <script type="text/javascript" src="/script/jquery.min.js"></script> -->
+<script type="text/javascript" src="/script/aui-tab.js"></script>
 <script type="text/javascript" src="/layui/layui.js"></script>
+
 
 <script>
 
@@ -277,6 +344,52 @@ layer.open({
 function closeTips()
     {
         $('#tips-1').remove();
+    }
+
+//数量控件
+    var bar = document.querySelectorAll(".aui-bar-btn");
+    if(bar){
+        for(var i=0; i<bar.length;i++){
+            var d = bar[i];
+            var tab = new auiTab({
+                element:bar[i],
+                repeatClick:true
+            },function(ret){
+                if(ret.dom.parentNode.getAttribute("type") && ret.dom.parentNode.getAttribute("type")=="count"){
+                    var count = parseInt(document.getElementById("count").value);
+                    if(ret.index==2)return;
+                    if(ret.index==1){
+                        //Po Add 限制最少1份
+                        if(count>1)
+                        {
+                          document.getElementById("count").value = count-1;
+                        }
+                        else
+                        {
+                            layer.msg('数量不能为'+(count-1), {
+                             offset: 'c',
+                             anim: 6
+                                  });
+                        }
+                    }
+                    if(ret.index==3){
+                         //Po Add 限制最多10份
+                         if(count<30)
+                        {
+                        document.getElementById("count").value = count+1;
+                        }
+                        else
+                        {
+                            layer.msg('每人最多可以购买'+count, {
+                             offset: 'c',
+                             anim: 6
+                                  });
+                        }
+                    }
+                }
+            });
+
+        }
     }
 
 
