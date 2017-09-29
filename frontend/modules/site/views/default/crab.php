@@ -25,6 +25,15 @@ use yii\helpers\Url;
 
         .layui-layer-btn0{font-size: 0.75rem;}
 
+
+
+        /* 订单确认样式 */
+        body .confim-class .layui-layer-title{background:#c00; color:#fff; border: none;}
+        body .confim-class .layui-layer-btn{border-top:1px solid #E9E7E7}
+        body .confim-class .layui-layer-btn a{background:#333;}
+        body .confim-class .layui-layer-btn .layui-layer-btn1{background:#999;}
+
+
       
         .aui-bar-btn-item.aui-active {
             background-color: transparent;
@@ -96,7 +105,7 @@ use yii\helpers\Url;
 </div>
 
 
-<section class="aui-content">
+<section id="crab_1" class="aui-content">
 
 <div class="aui-card-list">
     <div class="aui-card-list-header aui-card-list-user">
@@ -113,7 +122,7 @@ use yii\helpers\Url;
 <div class="aui-row">
 
 <div class="aui-col-xs-3">
-<div class="checklist" > <input class="aui-radio" type="radio" name="radio" checked></div>
+<div class="checklist" > <input class="aui-radio" type="radio" name="radio" value="1" checked></div>
 </div>
 
 <div class="aui-col-xs-9">
@@ -169,7 +178,7 @@ use yii\helpers\Url;
 <!-- 1 end  -->
 
 <!-- 2 begin -->
-<section class="aui-content">
+<section id="crab_2" class="aui-content">
 
 <div class="aui-card-list">
     <div class="aui-card-list-header aui-card-list-user">
@@ -186,7 +195,7 @@ use yii\helpers\Url;
 <div class="aui-row">
 
 <div class="aui-col-xs-3">
-<div class="checklist" > <input class="aui-radio" type="radio" name="radio" ></div>
+<div class="checklist" > <input class="aui-radio" type="radio" value="2" name="radio" ></div>
 </div>
 
 <div class="aui-col-xs-9">
@@ -239,11 +248,11 @@ use yii\helpers\Url;
 
 </section>
 
-<!-- 1 end  -->
+<!-- 2 end  -->
 
 
-<!-- 1 begin -->
-<section class="aui-content" style="margin-bottom:50px;">
+<!-- 3 begin -->
+<section id="crab_3" class="aui-content" style="margin-bottom:50px;">
 
 <div class="aui-card-list ">
     <div class="aui-card-list-header aui-card-list-user">
@@ -260,7 +269,7 @@ use yii\helpers\Url;
 <div class="aui-row">
 
 <div class="aui-col-xs-3">
-<div class="checklist" > <input class="aui-radio" type="radio" name="radio" ></div>
+<div class="checklist" > <input class="aui-radio" type="radio" value="3" name="radio" ></div>
 </div>
 
 <div class="aui-col-xs-9">
@@ -313,7 +322,7 @@ use yii\helpers\Url;
 
 </section>
 
-<!-- 1 end  -->
+<!-- 3 end  -->
 
 <footer class="aui-bar aui-bar-tab ">
         <div class="aui-bar-tab-item" tapmode onclick="crabmessage()" style="width: 3rem;">
@@ -322,7 +331,7 @@ use yii\helpers\Url;
         </div>
         <div class="aui-bar-tab-item aui-bg-warning aui-text-white " tapmode onclick="crabaddress()" style="width: 6rem;">
             <i class="aui-iconfont aui-icon-location aui-text-white"></i>
-            <div class="aui-bar-tab-label aui-text-white" >收货地址</div>
+            <div class="aui-bar-tab-label aui-text-white" >我的收货地址</div>
         </div>
         <!-- <div class="aui-bar-tab-item aui-bg-warning aui-icon-location aui-text-white" tapmode style="width: auto;"></div> -->
         <div class="aui-bar-tab-item aui-bg-danger aui-text-white" tapmode onclick="crabwxplay();" style="width: auto;">立即购买</div>
@@ -338,7 +347,10 @@ use yii\helpers\Url;
 <script type="text/javascript" src="/layui/layui.js"></script>
 <script type="text/javascript" src="/script/aui-slide.js"></script>
 <!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> 使用微信的时候启用-->
+<script type="text/template" id="payconfim">
 
+
+</script>
 
 <script>
 
@@ -349,7 +361,15 @@ apiready = function(){
 }
 
 
-var $;
+var $,
+userName, //收货人
+postalCode, //邮编
+provinceName, //省
+cityName, //城市
+countryName,//区
+detailInfo,//详细地址
+telNumber;//手机号码
+
 layui.use(['jquery','layer'], function() {
 
     $=	layui.jquery;
@@ -372,7 +392,7 @@ layer.open({
     ,anim: 6
     ,isOutAnim: false 
     ,moveType: 0 //拖拽模式，0或者1
-    ,content: '<div style="padding: 40px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 180;font-size:0.75rem">宣城市顺丰包邮啦！！<br/>其他地区+15元顺丰包邮<br/><br/>1.填写联系信息<br/>2.选择套餐<br/>3.套餐数量<br/>4.点击立即购买<br/><br/>如果遇到什么问题可以点击咨询</div>'
+    ,content: '<div style="padding: 40px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 180;font-size:0.75rem">宣城市顺丰包邮啦！！<br/>其他地区+15元顺丰包邮<br/><br/>1.选择或新增我的收货地址<br/>2.选择套餐<br/>3.选择套餐数量<br/>4.点击立即购买<br/><br/>如果遇到什么问题可以点击咨询</div>'
  
   });
 
@@ -383,10 +403,82 @@ layer.open({
 //支付
 function crabwxplay()
 {
-    layer.msg('发起支付', {
-                offset: 'c',
-                anim: 1
-            });
+  
+
+
+
+var item = $(":radio:checked"); 
+var len=item.length; 
+if(len>0){ 
+
+//如果这2个信息是空的说明没有找到收货人和联系方式
+if(userName==undefined &&telNumber==undefined)
+{
+   //自定页
+layer.open({
+  type: 1,
+  title:'感蟹有您温馨提示',
+  skin: 'confim-class', //样式类名
+  //closeBtn: 0, //不显示关闭按钮
+  anim:6,
+  shadeClose: true, //开启遮罩关闭
+  content: '<div style="padding: 25px; line-height: 30px;color:#737372">请点击底部我的收货地址<br/>选择或新增收货地址</div>'
+
+
+
+});
+}
+else{
+
+//自定页
+layer.open({
+  type: 1,
+  title:'支付前信息确认',
+  skin: 'confim-class', //样式类名
+  closeBtn: 0, //不显示关闭按钮
+  anim: 2,
+  shadeClose: true, //开启遮罩关闭
+  content: $('#crab_'+ $(":radio:checked").val())
+
+
+
+});
+
+}
+
+//     layer.open({
+//   type: 1,
+//   shade: false,
+//   title: false, //不显示标题
+//   content: $('#crab_'+ $(":radio:checked").val()), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+//   cancel: function(){
+//     layer.msg('捕获就是从页面已经存在的元素上，包裹layer的结构', {time: 5000, icon:6});
+//   }
+//});
+
+
+   
+    // layer.msg(, {
+    //             offset: 'c',
+    //             anim: 1
+    //         });
+
+
+
+
+
+
+
+
+} 
+
+
+
+// layer.msg('发起支付', {
+//                 offset: 'c',
+//                 anim: 1
+//             });
+
 }
 
 
@@ -398,14 +490,14 @@ function crabaddress()
 
 //     wx.openAddress({
 //     success: function (res) {
-//         var userName = res.userName; // 收货人姓名
-//         var postalCode = res.postalCode; // 邮编
-//         var provinceName = res.provinceName; // 国标收货地址第一级地址（省）
-//         var cityName = res.cityName; // 国标收货地址第二级地址（市）
-//         var countryName = res.countryName; // 国标收货地址第三级地址（国家）
-//         var detailInfo = res.detailInfo; // 详细收货地址信息
-//         var nationalCode = res.nationalCode; // 收货地址国家码
-//         var telNumber = res.telNumber; // 收货人手机号码
+//          userName = res.userName; // 收货人姓名
+//          postalCode = res.postalCode; // 邮编
+//          provinceName = res.provinceName; // 国标收货地址第一级地址（省）
+//          cityName = res.cityName; // 国标收货地址第二级地址（市）
+//          countryName = res.countryName; // 国标收货地址第三级地址（国家）
+//          detailInfo = res.detailInfo; // 详细收货地址信息
+//          nationalCode = res.nationalCode; // 收货地址国家码
+//          telNumber = res.telNumber; // 收货人手机号码
 //     }
 // });
 
