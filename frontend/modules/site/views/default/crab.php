@@ -589,6 +589,18 @@ function closeTips()
 
 
 
+    var myPlayer = videojs('my-video');
+			videojs("my-video").ready(function(){
+				var myPlayer = this;
+				//myPlayer.play();
+				var playerH= $(".aui-slide-node.bg-dark").outerHeight(true);
+				var playerW= $(".aui-slide-node.bg-dark").outerWidth(true);
+				myPlayer.width(playerW);
+				myPlayer.height(playerH);
+            });
+            
+
+
     /*广告轮播*/
     var slide2 = new auiSlide({
         container: document.getElementById("aui-slide3"),
