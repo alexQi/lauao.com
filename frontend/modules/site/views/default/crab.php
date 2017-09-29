@@ -422,7 +422,7 @@ layer.open({
   //closeBtn: 0, //不显示关闭按钮
   anim:6,
   shadeClose: true, //开启遮罩关闭
-  content: '<div style="padding: 25px; line-height: 30px;color:#737372;font-size:0.75rem">请点击底部我的收货地址<br/>选择或新增收货地址</div>'
+  content: '<div style="padding: 25px; line-height: 30px;color:#737372;font-size:0.70rem">请点击底部我的收货地址<br/>选择或新增收货地址</div>'
 
 
 
