@@ -6,10 +6,9 @@ use yii\helpers\Url;
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport"
-          content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <meta name="format-detection" content="telephone=no,email=no,date=no,aItemress=no">
-    <title>感蟹有您购买确认</title>
+    <title>美女与螃蟹中秋大抢购</title>
     <link rel="stylesheet" type="text/css" href="/css/aui.css"/>
     <link rel="stylesheet" type="text/css" href="/css/aui-slide.css" />
     <link rel="stylesheet" type="text/css" href="/css/video-js.css">
@@ -54,10 +53,7 @@ use yii\helpers\Url;
             min-height: 0.3rem;
         }
 
-        .aui-btn.aui-btn.aui-btn-outlined.aui-btn-warning {
-    margin-left: 65px;
-    margin-top: 5px;
-}
+        .aui-btn.aui-btn.aui-btn-outlined.aui-btn-warning {margin-left: 65px;margin-top: 5px;}
 
 
 
@@ -136,14 +132,13 @@ use yii\helpers\Url;
             <img src="/images/crab.png">
         </div>
         <div class="aui-card-list-user-name">
-            <div class="aui-font-size-16">家庭装 <i class="aui-iconfont aui-icon-right aui-font-size-12"></i></div>
+            <div class="aui-font-size-16">A.家庭装<i class="aui-iconfont aui-icon-right aui-font-size-12"></i></div>
             <small class="aui-font-size-14 aui-text-danger">￥188</small>
         </div>
-        <div class="aui-card-list-user-info">这里需要描述点什么</div>
+        <div class="aui-card-list-user-info">舌尖美味 餐桌必备</div>
     </div>
 
 <div class="aui-row">
-
 <div class="aui-col-xs-3">
 <div class="checklist" > <input class="aui-radio" type="radio" name="radio" value="1" checked></div>
 </div>
@@ -209,10 +204,10 @@ use yii\helpers\Url;
             <img src="/images/crab.png">
         </div>
         <div class="aui-card-list-user-name">
-            <div class="aui-font-size-16">尊享装 <i class="aui-iconfont aui-icon-right aui-font-size-12"></i></div>
+            <div class="aui-font-size-16">B.尊享装 <i class="aui-iconfont aui-icon-right aui-font-size-12"></i></div>
             <small class="aui-font-size-14 aui-text-danger">￥298</small>
         </div>
-        <div class="aui-card-list-user-info">这里需要描述点什么</div>
+        <div class="aui-card-list-user-info">吃的健康,购的安心送礼的不二选择</div>
     </div>
 
 <div class="aui-row">
@@ -248,7 +243,7 @@ use yii\helpers\Url;
     <div class="aui-card-list-footer aui-border-t">
     <div></div>
     <div>
-        <div class="aui-btn aui-btn aui-btn-outlined aui-btn-warning"  >数量</div>
+        <div class="aui-btn aui-btn aui-btn-outlined aui-btn-warning">数量</div>
         <!-- <div class="aui-btn aui-btn aui-btn-outlined aui-btn-warning">评价得积分</div> -->
 
     <div class="aui-bar aui-bar-btn" style="width:50%;float:right;" type="count">
@@ -283,10 +278,10 @@ use yii\helpers\Url;
             <img src="/images/crab.png">
         </div>
         <div class="aui-card-list-user-name">
-            <div class="aui-font-size-16">豪华装 <i class="aui-iconfont aui-icon-right aui-font-size-12"></i></div>
+            <div class="aui-font-size-16">C.豪华装 <i class="aui-iconfont aui-icon-right aui-font-size-12"></i></div>
             <small class="aui-font-size-14 aui-text-danger">￥468</small>
         </div>
-        <div class="aui-card-list-user-info">这里需要描述点什么</div>
+        <div class="aui-card-list-user-info">原生态,高品质.送亲朋送好友<br/><span style="margin-left:2.5rem">吃的健康,购的安心送礼的不二选择</span></div>
     </div>
 
 <div class="aui-row">
@@ -420,6 +415,9 @@ countryName,//区
 detailInfo,//详细地址
 telNumber;//手机号码
 
+
+
+
 layui.use(['jquery','layer'], function() {
 
    // $=	layui.jquery;
@@ -442,7 +440,7 @@ layer.open({
     ,anim: 6
     ,isOutAnim: false 
     ,moveType: 0 //拖拽模式，0或者1
-    ,content: '<div style="padding: 30px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 180;font-size:0.75rem">宣城市顺丰包邮啦！！<br/>其他地区+15元顺丰包邮<br/><br/>1.选择或新增我的收货地址<br/>2.选择套餐<br/>3.选择套餐数量<br/>4.点击立即购买<br/><br/>如果遇到什么问题可以点击咨询</div>'
+    ,content: '<div style="padding: 30px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 180;font-size:0.75rem">江浙沪皖顺丰包邮<br/>其他地区+15元顺丰包邮<br/><br/>1.选择或新增我的收货地址<br/>2.选择套餐<br/>3.选择套餐数量<br/>4.点击立即购买<br/><br/>如果遇到什么问题可以点击咨询</div>'
  
   });
 
@@ -460,7 +458,8 @@ if(len>0){
 
     //测试信息
     userName='Pozm',
-    telNumber=13712841283
+    telNumber=13712841283,
+    provinceName='上海市'
     //测试信息
 
 //如果这2个信息是空的说明没有找到收货人和联系方式
@@ -480,8 +479,35 @@ layer.open({
 }
 else{
 
+
+var money=0;
+
     //获取选择的数据的值进行转换
-    var count = parseInt(document.getElementById("count"+$(":radio:checked").val()).value);
+var count = parseInt(document.getElementById("count"+$(":radio:checked").val()).value);
+
+
+
+//江浙沪皖包邮,其他另外+15元
+var postal=new Array("江苏省","浙江省","上海市","安徽省");
+
+var ispostal=$.inArray(provinceName, postal);//判断选择的省份是否在定义的包邮列表中
+//返回-1表示不在包邮列表中
+if(ispostal==-1)
+{
+    money=money+15;
+    postalstr='<div>快递费:￥15</div>';
+}
+else
+{
+    postalstr='<div>快递费:￥0</div>';
+}
+
+
+
+
+
+
+
 
 //这里说明有地址有联系方式,可以进行支付动作了.
 layer.open({
@@ -493,6 +519,11 @@ layer.open({
   shadeClose: true, //开启遮罩关闭
   content: $('#crab_'+ $(":radio:checked").val())
 });
+
+
+
+
+
 }
 } 
 
