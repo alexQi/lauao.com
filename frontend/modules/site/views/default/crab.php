@@ -15,6 +15,15 @@ use yii\helpers\Url;
     <link rel="stylesheet" type="text/css" href="/css/video-js.css">
 
     <style type="text/css">
+
+
+        .video-js .vjs-big-play-button{
+			margin: 0 auto;
+           top: 40%;
+		   position: inherit;
+		}
+
+
         .goods-title {
             color: #757575 !important;
         }
@@ -433,7 +442,7 @@ layer.open({
     ,anim: 6
     ,isOutAnim: false 
     ,moveType: 0 //拖拽模式，0或者1
-    ,content: '<div style="padding: 40px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 180;font-size:0.75rem">宣城市顺丰包邮啦！！<br/>其他地区+15元顺丰包邮<br/><br/>1.选择或新增我的收货地址<br/>2.选择套餐<br/>3.选择套餐数量<br/>4.点击立即购买<br/><br/>如果遇到什么问题可以点击咨询</div>'
+    ,content: '<div style="padding: 30px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 180;font-size:0.75rem">宣城市顺丰包邮啦！！<br/>其他地区+15元顺丰包邮<br/><br/>1.选择或新增我的收货地址<br/>2.选择套餐<br/>3.选择套餐数量<br/>4.点击立即购买<br/><br/>如果遇到什么问题可以点击咨询</div>'
  
   });
 
