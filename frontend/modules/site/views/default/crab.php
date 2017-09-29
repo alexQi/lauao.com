@@ -79,21 +79,7 @@ use yii\helpers\Url;
 
 <div id="aui-slide3">
     <div class="aui-slide-wrap">
-      
-            <div class="aui-slide-node bg-dark">
-                <img src="/images/banner2.jpg"/>
-             
-            </div>
-            <div class="aui-slide-node bg-dark">
-            <img src="/images/banner3.jpg"/>
-             
-            </div>
-            <div class="aui-slide-node bg-dark">
-            <img src="/images/banner1.jpg"/>
-             
-            </div>
-
-            <div class="aui-slide-node bg-dark">
+    <div class="aui-slide-node bg-dark">
           
 					<div class="m">
 							
@@ -107,6 +93,20 @@ use yii\helpers\Url;
                           </video>
                     </div>
             </div>
+            <div class="aui-slide-node bg-dark">
+                <img src="/images/banner2.jpg"/>
+             
+            </div>
+            <div class="aui-slide-node bg-dark">
+            <img src="/images/banner3.jpg"/>
+             
+            </div>
+            <div class="aui-slide-node bg-dark">
+            <img src="/images/banner1.jpg"/>
+             
+            </div>
+
+       
             
    
     </div>
