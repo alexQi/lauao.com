@@ -9,7 +9,7 @@ use yii\helpers\Url;
     <meta name="viewport"
           content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <meta name="format-detection" content="telephone=no,email=no,date=no,aItemress=no">
-    <title>购买信息确认</title>
+    <title>感蟹有您购买确认</title>
     <link rel="stylesheet" type="text/css" href="/css/aui.css"/>
     <link rel="stylesheet" type="text/css" href="/css/aui-slide.css" />
 
