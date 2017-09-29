@@ -316,19 +316,24 @@ use yii\helpers\Url;
 <!-- 1 end  -->
 
 <footer class="aui-bar aui-bar-tab ">
-        <div class="aui-bar-tab-item" tapmode style="width: 6rem;">
+        <div class="aui-bar-tab-item" tapmode onlick="message()" style="width: 3rem;">
             <i class="aui-iconfont aui-icon-comment aui-text-info"></i>
             <div class="aui-bar-tab-label aui-text-info">咨询</div>
         </div>
-
-        <div class="aui-bar-tab-item aui-bg-danger aui-text-white" tapmode style="width: auto;">立即购买</div>
+        <div class="aui-bar-tab-item aui-bg-warning aui-text-white " tapmode style="width: 6rem;">
+            <i class="aui-iconfont aui-icon-location aui-text-white"></i>
+            <div class="aui-bar-tab-label aui-text-white" tapmode onlick="address()">收货地址</div>
+        </div>
+        <!-- <div class="aui-bar-tab-item aui-bg-warning aui-icon-location aui-text-white" tapmode style="width: auto;"></div> -->
+        <div class="aui-bar-tab-item aui-bg-danger aui-text-white" tapmode onlick="wxplay()" style="width: auto;">立即购买</div>
     </footer>
 
 
 
 
 </body>
-<script type="text/javascript" src="/script/jquery.min.js"></script>
+<script type="text/javascript" src="/script/api.js"></script>
+<!-- <script type="text/javascript" src="/script/jquery.min.js"></script> -->
 <script type="text/javascript" src="/script/aui-tab.js"></script>
 <script type="text/javascript" src="/layui/layui.js"></script>
 <script type="text/javascript" src="/script/aui-slide.js"></script>
@@ -337,16 +342,23 @@ use yii\helpers\Url;
 
 <script>
 
-//var $;
+//触摸
+
+apiready = function(){
+        api.parseTapmode();
+}
+
+
+var $;
 layui.use(['jquery','layer'], function() {
 
-    //$=	layui.jquery;
+    $=	layui.jquery;
 
     layer=layui.layer;
 
 
 
-//示范一个公告层
+//公告层
 layer.open({
     type: 1
     ,title: false //不显示标题栏
@@ -360,7 +372,7 @@ layer.open({
     ,anim: 6
     ,isOutAnim: false 
     ,moveType: 0 //拖拽模式，0或者1
-    ,content: '<div style="padding: 40px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 180;font-size:0.75rem">宣城市顺丰包邮啦！！<br/><br/>1.填写联系信息<br/>2.选择套餐<br/>3.套餐数量<br/>4.点击立即购买<br/><br/>如果遇到什么问题可以点击咨询</div>'
+    ,content: '<div style="padding: 40px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 180;font-size:0.75rem">宣城市顺丰包邮啦！！<br/>其他地区+15元顺丰包邮<br/><br/>1.填写联系信息<br/>2.选择套餐<br/>3.套餐数量<br/>4.点击立即购买<br/><br/>如果遇到什么问题可以点击咨询</div>'
  
   });
 
@@ -368,6 +380,50 @@ layer.open({
 });
 
 
+//支付
+function wxplay()
+{
+    layer.msg('发起支付');
+}
+
+
+
+//发起访问微信地址,简易输入,调用共享收货地址接口
+
+function address()
+{
+
+//     wx.openAddress({
+//     success: function (res) {
+//         var userName = res.userName; // 收货人姓名
+//         var postalCode = res.postalCode; // 邮编
+//         var provinceName = res.provinceName; // 国标收货地址第一级地址（省）
+//         var cityName = res.cityName; // 国标收货地址第二级地址（市）
+//         var countryName = res.countryName; // 国标收货地址第三级地址（国家）
+//         var detailInfo = res.detailInfo; // 详细收货地址信息
+//         var nationalCode = res.nationalCode; // 收货地址国家码
+//         var telNumber = res.telNumber; // 收货人手机号码
+//     }
+// });
+
+layer.msg('发起访问微信地址接口.添加地址信息');
+
+}
+
+
+//发起咨询
+function message()
+{
+    //https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140547
+    
+layer.msg('发送一个客服消息');
+
+}
+
+
+
+
+//关闭消息
 function closeTips()
     {
         $('#tips-1').remove();
