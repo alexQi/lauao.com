@@ -12,6 +12,7 @@ use yii\helpers\Url;
     <title>感蟹有您购买确认</title>
     <link rel="stylesheet" type="text/css" href="/css/aui.css"/>
     <link rel="stylesheet" type="text/css" href="/css/aui-slide.css" />
+    <link rel="stylesheet" type="text/css" href="/css/video-js.css">
 
     <style type="text/css">
         .goods-title {
@@ -83,9 +84,22 @@ use yii\helpers\Url;
              
             </div>
 
-           
-                
-      
+            <div class="aui-slide-node bg-dark">
+          
+					<div class="m">
+							
+						  <video id="my-video" class="video-js" controls preload="auto"  poster="/images/banner2.jpg" height="210"
+							 data-setup="{}">
+							  <source src="http://advert.ztwliot.com/QB1505583886" type="video/mp4">
+							  <p class="vjs-no-js">
+								To view this video please enable JavaScript, and consider upgrading to a web browser that
+								<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+							  </p>
+                          </video>
+                    </div>
+            </div>
+            
+   
     </div>
     <div class="aui-slide-page-wrap">
         <!--分页容器-->
@@ -160,7 +174,7 @@ use yii\helpers\Url;
             <i class="aui-iconfont aui-icon-minus"></i>
         </div>
         <div class="aui-bar-btn-item">
-            <input type="number" readonly="readonly" class="aui-input aui-text-center" id="count" value="1">
+            <input type="number" readonly="readonly" class="aui-input aui-text-center" id="count1" value="1">
         </div>
         <div class="aui-bar-btn-item aui-font-size-20">
             <i class="aui-iconfont aui-icon-plus"></i>
@@ -233,7 +247,7 @@ use yii\helpers\Url;
         <i class="aui-iconfont aui-icon-minus"></i>
     </div>
     <div class="aui-bar-btn-item">
-        <input type="number" readonly="readonly" class="aui-input aui-text-center" id="count" value="1">
+        <input type="number" readonly="readonly" class="aui-input aui-text-center" id="count2" value="1">
     </div>
     <div class="aui-bar-btn-item aui-font-size-20">
         <i class="aui-iconfont aui-icon-plus"></i>
@@ -307,7 +321,7 @@ use yii\helpers\Url;
         <i class="aui-iconfont aui-icon-minus"></i>
     </div>
     <div class="aui-bar-btn-item">
-        <input type="number" readonly="readonly" class="aui-input aui-text-center" id="count" value="1">
+        <input type="number" readonly="readonly" class="aui-input aui-text-center" id="count3" value="1">
     </div>
     <div class="aui-bar-btn-item aui-font-size-20">
         <i class="aui-iconfont aui-icon-plus"></i>
@@ -342,12 +356,40 @@ use yii\helpers\Url;
 
 </body>
 <script type="text/javascript" src="/script/api.js"></script>
-<!-- <script type="text/javascript" src="/script/jquery.min.js"></script> -->
+ <script type="text/javascript" src="/script/jquery.min.js"></script>
 <script type="text/javascript" src="/script/aui-tab.js"></script>
 <script type="text/javascript" src="/layui/layui.js"></script>
 <script type="text/javascript" src="/script/aui-slide.js"></script>
+<script type="text/javascript" src="/script/video.min.js"></script>	
 <!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> 使用微信的时候启用-->
-<script type="text/template" id="payconfim">
+<script type="text/template" id="payconf">
+
+<div class="aui-card-list-content aui-border-t" >
+
+        <ul class="aui-list aui-list-noborder">
+   
+        
+            <div class="aui-list-item aui-padded-l-0">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title aui-font-size-14 goods-title">套餐:家庭装</div>
+
+                </div>
+            </div>
+            <div class="aui-list-item aui-padded-l-0">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title aui-font-size-14 goods-title">数量:3</div>
+           
+                </div>
+            </div>
+            <div class="aui-list-item aui-padded-l-0">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title aui-font-size-14 goods-title">金额:￥468</div>
+                </div>
+            </div>
+        </ul>
+    </div>
+<div class="aui-bar-tab-item aui-bg-danger aui-text-white" style="width:auto;margin:0 auto">立即付款</div>
+
 
 
 </script>
@@ -361,8 +403,7 @@ apiready = function(){
 }
 
 
-var $,
-userName, //收货人
+var userName, //收货人
 postalCode, //邮编
 provinceName, //省
 cityName, //城市
@@ -372,7 +413,7 @@ telNumber;//手机号码
 
 layui.use(['jquery','layer'], function() {
 
-    $=	layui.jquery;
+   // $=	layui.jquery;
 
     layer=layui.layer;
 
@@ -404,12 +445,14 @@ layer.open({
 function crabwxplay()
 {
   
-
-
-
 var item = $(":radio:checked"); 
 var len=item.length; 
 if(len>0){ 
+
+    //测试信息
+    userName='Pozm',
+    telNumber=13712841283
+    //测试信息
 
 //如果这2个信息是空的说明没有找到收货人和联系方式
 if(userName==undefined &&telNumber==undefined)
@@ -424,13 +467,14 @@ layer.open({
   shadeClose: true, //开启遮罩关闭
   content: '<div style="padding: 25px; line-height: 30px;color:#737372;font-size:0.70rem">请点击底部我的收货地址<br/>选择或新增收货地址</div>'
 
-
-
 });
 }
 else{
 
-//自定页
+    //获取选择的数据的值进行转换
+    var count = parseInt(document.getElementById("count"+$(":radio:checked").val()).value);
+
+//这里说明有地址有联系方式,可以进行支付动作了.
 layer.open({
   type: 1,
   title:'支付前信息确认',
@@ -439,52 +483,15 @@ layer.open({
   anim: 2,
   shadeClose: true, //开启遮罩关闭
   content: $('#crab_'+ $(":radio:checked").val())
-
-
-
 });
-
 }
-
-//     layer.open({
-//   type: 1,
-//   shade: false,
-//   title: false, //不显示标题
-//   content: $('#crab_'+ $(":radio:checked").val()), //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
-//   cancel: function(){
-//     layer.msg('捕获就是从页面已经存在的元素上，包裹layer的结构', {time: 5000, icon:6});
-//   }
-//});
-
-
-   
-    // layer.msg(, {
-    //             offset: 'c',
-    //             anim: 1
-    //         });
-
-
-
-
-
-
-
-
 } 
-
-
-
-// layer.msg('发起支付', {
-//                 offset: 'c',
-//                 anim: 1
-//             });
 
 }
 
 
 
 //发起访问微信地址,简易输入,调用共享收货地址接口
-
 function crabaddress()
 {
 
@@ -540,13 +547,14 @@ function closeTips()
                 repeatClick:true
             },function(ret){
                 if(ret.dom.parentNode.getAttribute("type") && ret.dom.parentNode.getAttribute("type")=="count"){
-                    var count = parseInt(document.getElementById("count").value);
+                    var count = parseInt(document.getElementById("count"+$(":radio:checked").val()).value);
                     if(ret.index==2)return;
                     if(ret.index==1){
                         //Po Add 限制最少1份
                         if(count>1)
                         {
-                          document.getElementById("count").value = count-1;
+                         // document.getElementById("count"+$(":radio:checked").val()).value = count-1;
+                         $('#count'+$(":radio:checked").val()).val(count-1);
                         }
                         else
                         {
@@ -560,7 +568,10 @@ function closeTips()
                          //Po Add 限制最多10份
                          if(count<30)
                         {
-                        document.getElementById("count").value = count+1;
+                        //document.getElementById("count").value = count+1;
+
+                        $('#count'+$(":radio:checked").val()).val(count+1);
+
                         }
                         else
                         {
@@ -584,9 +595,9 @@ function closeTips()
         // "width":300,
         "height": 210,
         "speed": 300,
-        "autoPlay": 3000, //自动播放
+        "autoPlay": 0, //自动播放
         "pageShow": true,
-        "loop": true,
+        "loop": false,
         "pageStyle": 'dot'
     
     });
