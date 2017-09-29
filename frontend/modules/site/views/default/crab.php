@@ -11,6 +11,7 @@ use yii\helpers\Url;
     <meta name="format-detection" content="telephone=no,email=no,date=no,aItemress=no">
     <title>购买信息确认</title>
     <link rel="stylesheet" type="text/css" href="/css/aui.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/aui-slide.css" />
 
     <style type="text/css">
         .goods-title {
@@ -36,7 +37,7 @@ use yii\helpers\Url;
 
         .aui-btn.aui-btn.aui-btn-outlined.aui-btn-warning {
     margin-left: 65px;
-    margin-top: 3px;
+    margin-top: 5px;
 }
 
 
@@ -56,7 +57,34 @@ use yii\helpers\Url;
 </head>
 
 <body>
-<div class="aui-tips aui-margin-b-15 aui-bg-danger" id="tips-1" >
+
+<div id="aui-slide3">
+    <div class="aui-slide-wrap">
+      
+            <div class="aui-slide-node bg-dark">
+                <img src="/images/banner2.jpg"/>
+             
+            </div>
+            <div class="aui-slide-node bg-dark">
+            <img src="/images/banner3.jpg"/>
+             
+            </div>
+            <div class="aui-slide-node bg-dark">
+            <img src="/images/banner1.jpg"/>
+             
+            </div>
+
+           
+                
+      
+    </div>
+    <div class="aui-slide-page-wrap">
+        <!--分页容器-->
+    </div>
+</div>
+
+
+<div class="aui-tips aui-margin-b-2 aui-margin-t-2 aui-bg-danger" id="tips-1" >
 
     <i class="aui-iconfont aui-icon-info "></i>
    
@@ -73,7 +101,7 @@ use yii\helpers\Url;
 <div class="aui-card-list">
     <div class="aui-card-list-header aui-card-list-user">
         <div class="aui-card-list-user-avatar">
-            <img src="/images/NA.png">
+            <img src="/images/crab.png">
         </div>
         <div class="aui-card-list-user-name">
             <div class="aui-font-size-16">家庭装 <i class="aui-iconfont aui-icon-right aui-font-size-12"></i></div>
@@ -146,7 +174,7 @@ use yii\helpers\Url;
 <div class="aui-card-list">
     <div class="aui-card-list-header aui-card-list-user">
         <div class="aui-card-list-user-avatar">
-            <img src="/images/NA.png">
+            <img src="/images/crab.png">
         </div>
         <div class="aui-card-list-user-name">
             <div class="aui-font-size-16">尊享装 <i class="aui-iconfont aui-icon-right aui-font-size-12"></i></div>
@@ -220,7 +248,7 @@ use yii\helpers\Url;
 <div class="aui-card-list ">
     <div class="aui-card-list-header aui-card-list-user">
         <div class="aui-card-list-user-avatar">
-            <img src="/images/NA.png">
+            <img src="/images/crab.png">
         </div>
         <div class="aui-card-list-user-name">
             <div class="aui-font-size-16">豪华装 <i class="aui-iconfont aui-icon-right aui-font-size-12"></i></div>
@@ -288,15 +316,11 @@ use yii\helpers\Url;
 <!-- 1 end  -->
 
 <footer class="aui-bar aui-bar-tab ">
-        <div class="aui-bar-tab-item" tapmode style="width: 3rem;">
+        <div class="aui-bar-tab-item" tapmode style="width: 6rem;">
             <i class="aui-iconfont aui-icon-comment aui-text-info"></i>
             <div class="aui-bar-tab-label aui-text-info">咨询</div>
         </div>
-        <div class="aui-bar-tab-item" tapmode style="width: 3rem;">
-            <i class="aui-iconfont aui-icon-star aui-text-warning"></i>
-            <div class="aui-bar-tab-label aui-text-warning">收藏</div>
-        </div>
-        <div class="aui-bar-tab-item aui-bg-warning aui-text-white" tapmode style="width: auto;">加入购物车</div>
+
         <div class="aui-bar-tab-item aui-bg-danger aui-text-white" tapmode style="width: auto;">立即购买</div>
     </footer>
 
@@ -304,16 +328,19 @@ use yii\helpers\Url;
 
 
 </body>
+<script type="text/javascript" src="/script/jquery.min.js"></script>
 <script type="text/javascript" src="/script/aui-tab.js"></script>
 <script type="text/javascript" src="/layui/layui.js"></script>
+<script type="text/javascript" src="/script/aui-slide.js"></script>
+<!-- <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script> 使用微信的时候启用-->
 
 
 <script>
 
-var $;
+//var $;
 layui.use(['jquery','layer'], function() {
 
-    $=	layui.jquery;
+    //$=	layui.jquery;
 
     layer=layui.layer;
 
@@ -391,6 +418,21 @@ function closeTips()
 
         }
     }
+
+
+
+    /*广告轮播*/
+    var slide2 = new auiSlide({
+        container: document.getElementById("aui-slide3"),
+        // "width":300,
+        "height": 210,
+        "speed": 300,
+        "autoPlay": 3000, //自动播放
+        "pageShow": true,
+        "loop": true,
+        "pageStyle": 'dot'
+    
+    });
 
 
 </script>
