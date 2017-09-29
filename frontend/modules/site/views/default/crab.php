@@ -83,7 +83,7 @@ use yii\helpers\Url;
           
 					<div class="m">
 							
-						  <video id="my-video" class="video-js" controls preload="auto"  poster="/images/banner2.jpg" height="210"
+						  <video id="my-video" class="video-js" controls preload="auto"  poster="/images/banner2.jpg" height="210"  x5-playsinline="" playsinline="" webkit-playsinline=""
 							 data-setup="{}">
 							  <source src="http://advert.ztwliot.com/QB1505583886" type="video/mp4">
 							  <p class="vjs-no-js">
