@@ -316,16 +316,16 @@ use yii\helpers\Url;
 <!-- 1 end  -->
 
 <footer class="aui-bar aui-bar-tab ">
-        <div class="aui-bar-tab-item" tapmode onlick="message()" style="width: 3rem;">
+        <div class="aui-bar-tab-item" tapmode onclick="crabmessage()" style="width: 3rem;">
             <i class="aui-iconfont aui-icon-comment aui-text-info"></i>
             <div class="aui-bar-tab-label aui-text-info">咨询</div>
         </div>
-        <div class="aui-bar-tab-item aui-bg-warning aui-text-white " tapmode style="width: 6rem;">
+        <div class="aui-bar-tab-item aui-bg-warning aui-text-white " tapmode onclick="crabaddress()" style="width: 6rem;">
             <i class="aui-iconfont aui-icon-location aui-text-white"></i>
-            <div class="aui-bar-tab-label aui-text-white" tapmode onlick="address()">收货地址</div>
+            <div class="aui-bar-tab-label aui-text-white" >收货地址</div>
         </div>
         <!-- <div class="aui-bar-tab-item aui-bg-warning aui-icon-location aui-text-white" tapmode style="width: auto;"></div> -->
-        <div class="aui-bar-tab-item aui-bg-danger aui-text-white" tapmode onlick="wxplay()" style="width: auto;">立即购买</div>
+        <div class="aui-bar-tab-item aui-bg-danger aui-text-white" tapmode onclick="crabwxplay();" style="width: auto;">立即购买</div>
     </footer>
 
 
@@ -381,16 +381,19 @@ layer.open({
 
 
 //支付
-function wxplay()
+function crabwxplay()
 {
-    layer.msg('发起支付');
+    layer.msg('发起支付', {
+                offset: 'c',
+                anim: 1
+            });
 }
 
 
 
 //发起访问微信地址,简易输入,调用共享收货地址接口
 
-function address()
+function crabaddress()
 {
 
 //     wx.openAddress({
@@ -406,17 +409,23 @@ function address()
 //     }
 // });
 
-layer.msg('发起访问微信地址接口.添加地址信息');
+layer.msg('发起访问微信共享地址', {
+                offset: 'c',
+                anim: 1
+            });
 
 }
 
 
 //发起咨询
-function message()
+function crabmessage()
 {
     //https://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140547
     
-layer.msg('发送一个客服消息');
+    layer.msg('发起咨询', {
+                offset: 'c',
+                anim: 1
+            });
 
 }
 
