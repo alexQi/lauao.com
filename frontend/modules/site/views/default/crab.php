@@ -621,7 +621,7 @@ use yii\helpers\Url;
                 $('#name').val(res.userName);
                 $('#tel').val(res.telNumber);
                 $('#address').val(res.provinceName+res.cityName+res.countryName+res.detailInfo);
-                console.log($('#address').val());
+                alert($('#address').val());
 //                userName = res.userName; // 收货人姓名
 //                postalCode = res.postalCode; // 邮编
 //                provinceName = res.provinceName; // 国标收货地址第一级地址（省）
