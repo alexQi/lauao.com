@@ -170,7 +170,7 @@ use yii\helpers\Url;
    <div class="aui-card-list-footer aui-border-t">
         <div></div>
         <div>
-            <div class="aui-btn aui-btn aui-btn-outlined aui-btn-warning"  >数量</div>
+            <div class="aui-btn aui-btn aui-btn-outlined aui-btn-warning">数量</div>
             <!-- <div class="aui-btn aui-btn aui-btn-outlined aui-btn-warning">评价得积分</div> -->
 
         <div class="aui-bar aui-bar-btn" style="width:50%;float:right;" type="count">
@@ -207,7 +207,7 @@ use yii\helpers\Url;
             <div class="aui-font-size-16">B.尊享装 <i class="aui-iconfont aui-icon-right aui-font-size-12"></i></div>
             <small class="aui-font-size-14 aui-text-danger">￥298</small>
         </div>
-        <div class="aui-card-list-user-info">吃的健康,购的安心送礼的不二选择</div>
+        <div class="aui-card-list-user-info">吃的健康 购的安心送礼的不二选择</div>
     </div>
 
 <div class="aui-row">
@@ -281,7 +281,7 @@ use yii\helpers\Url;
             <div class="aui-font-size-16">C.豪华装 <i class="aui-iconfont aui-icon-right aui-font-size-12"></i></div>
             <small class="aui-font-size-14 aui-text-danger">￥468</small>
         </div>
-        <div class="aui-card-list-user-info">原生态,高品质.送亲朋送好友<br/><span style="margin-left:2.5rem">吃的健康,购的安心送礼的不二选择</span></div>
+        <div class="aui-card-list-user-info">原生态 高品质 送亲朋送好友<br/><span style="margin-left:2.5rem">吃的健康 购的安心送礼的不二选择</span></div>
     </div>
 
 <div class="aui-row">
@@ -456,11 +456,11 @@ var item = $(":radio:checked");
 var len=item.length; 
 if(len>0){ 
 
-    //测试信息
+    //测试數據
     userName='Pozm',
     telNumber=13712841283,
     provinceName='上海市'
-    //测试信息
+    //测试數據
 
 //如果这2个信息是空的说明没有找到收货人和联系方式
 if(userName==undefined &&telNumber==undefined)
@@ -479,13 +479,9 @@ layer.open({
 }
 else{
 
-
 var money=0;
-
-    //获取选择的数据的值进行转换
+//获取选择的数据的值进行转换
 var count = parseInt(document.getElementById("count"+$(":radio:checked").val()).value);
-
-
 
 //江浙沪皖包邮,其他另外+15元
 var postal=new Array("江苏省","浙江省","上海市","安徽省");
@@ -501,9 +497,6 @@ else
 {
     postalstr='<div>快递费:￥0</div>';
 }
-
-
-
 
 
 
