@@ -556,7 +556,7 @@ use yii\helpers\Url;
                     },
                     success:function(data){
                         alert(data);
-                    }
+                    },
                     error:function(e){
                         alert(e);
                     }
