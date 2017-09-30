@@ -11,8 +11,7 @@ $config = [
             'appId' => 'wxcb2711060169adca',
             'appSecret' => '5d25144ef3458d13f407e54968fc6856',
             'token' => ' ',
-            'partnerId' => '1330023601',
-            'partnerKey' => '5f08z69d8bfc1b99a608fv8ea6969a10',
+            'partnerId' => '1446794902',
         ],
     ],
     'modules' => [
