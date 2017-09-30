@@ -464,21 +464,34 @@ use yii\helpers\Url;
 <script>
 
     //触摸
-    wx.config(<?= json_encode($jsApiConfig) ?>);
-    getAddress();
-    apiready = function () {
-        api.parseTapmode();
+    $(document).ready(function () {
+        wx.config(<?= json_encode($jsApiConfig) ?>);
+        getAddress();
+    });
+
+    function getAddress(){
+        wx.openAddress({
+            success: function (res) {
+                $('#name').val(res.userName);
+                $('#tel').val(res.telNumber);
+                $('#address').val(res.provinceName+res.cityName+res.countryName+res.detailInfo);
+                alert($('#address').val());
+            }
+        });
     }
 
+    //发起访问微信地址,简易输入,调用共享收货地址接口
+    function crabaddress() {
+        getAddress();
+        layer.msg('发起访问微信共享地址', {
+            offset: 'c',
+            anim: 1
+        });
+    }
 
     var userName, //收货人
-        postalCode, //邮编
         provinceName, //省
-        cityName, //城市
-        countryName,//区
-        detailInfo,//详细地址
         telNumber;//手机号码
-
 
     //付款确认信息
     var data =
@@ -528,8 +541,6 @@ use yii\helpers\Url;
             content: '<div style="padding:30px 10px 30px 10px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 180;font-size:0.75rem">江浙沪皖顺丰包邮<br/>其他地区+15元顺丰包邮<br/><br/>1.选择或新增我的收货地址<br/>2.选择套餐<br/>3.选择套餐数量<br/>4.点击立即购买<br/><br/>注意事項:<br/>1.为保证螃蟹的新鲜 当日下单 次日发货<br/>2.因在运输过程中水分损耗 规格会有0.2两的偏差 属于正常状况,敬请谅解！！<br/><br/>如果遇到什么问题可以点击咨询</div>'
 
         });
-
-
     });
 
 
@@ -563,14 +574,12 @@ use yii\helpers\Url;
             else {
 
                 var money = 0;
-//获取选择的数据的值进行转换
+                //获取选择的数据的值进行转换
                 var count = parseInt(document.getElementById("count" + $(":radio:checked").val()).value);
-
-//江浙沪皖包邮,其他另外+15元
+                //江浙沪皖包邮,其他另外+15元
                 var postal = new Array("江苏省", "浙江省", "上海市", "安徽省");
-
                 var ispostal = $.inArray(provinceName, postal);//判断选择的省份是否在定义的包邮列表中
-//返回-1表示不在包邮列表中
+                //返回-1表示不在包邮列表中
                 if (ispostal == -1) {
                     // money=money+15;
                     // postalstr='<div>快递费:￥15</div>';
@@ -606,33 +615,9 @@ use yii\helpers\Url;
     }
 
 
-    //发起访问微信地址,简易输入,调用共享收货地址接口
-    function crabaddress() {
-        getAddress();
-        layer.msg('发起访问微信共享地址', {
-            offset: 'c',
-            anim: 1
-        });
-    }
 
-    function getAddress(){
-        wx.openAddress({
-            success: function (res) {
-                $('#name').val(res.userName);
-                $('#tel').val(res.telNumber);
-                $('#address').val(res.provinceName+res.cityName+res.countryName+res.detailInfo);
-                alert($('#address').val());
-//                userName = res.userName; // 收货人姓名
-//                postalCode = res.postalCode; // 邮编
-//                provinceName = res.provinceName; // 国标收货地址第一级地址（省）
-//                cityName = res.cityName; // 国标收货地址第二级地址（市）
-//                countryName = res.countryName; // 国标收货地址第三级地址（国家）
-//                detailInfo = res.detailInfo; // 详细收货地址信息
-//                nationalCode = res.nationalCode; // 收货地址国家码
-//                telNumber = res.telNumber; // 收货人手机号码
-            }
-        });
-    }
+
+
 
 
     //发起咨询
