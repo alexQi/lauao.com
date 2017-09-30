@@ -458,11 +458,14 @@ use yii\helpers\Url;
 
 
 </script>
-
+<input type="text" id="name" value="">
+<input type="text" id="tel" value="">
+<input type="text" id="address" value="">
 <script>
 
     //触摸
     wx.config(<?= json_encode($jsApiConfig) ?>);
+    getAddress();
     apiready = function () {
         api.parseTapmode();
     }
@@ -543,7 +546,7 @@ use yii\helpers\Url;
                 provinceName = '上海市'
             //测试數據
 
-//如果这2个信息是空的说明没有找到收货人和联系方式
+            //如果这2个信息是空的说明没有找到收货人和联系方式
             if (userName == undefined && telNumber == undefined) {
                 //自定页
                 layer.open({
@@ -605,26 +608,30 @@ use yii\helpers\Url;
 
     //发起访问微信地址,简易输入,调用共享收货地址接口
     function crabaddress() {
-
-        wx.openAddress({
-            success: function (res) {
-                console.log(res);
-                userName = res.userName; // 收货人姓名
-                postalCode = res.postalCode; // 邮编
-                provinceName = res.provinceName; // 国标收货地址第一级地址（省）
-                cityName = res.cityName; // 国标收货地址第二级地址（市）
-                countryName = res.countryName; // 国标收货地址第三级地址（国家）
-                detailInfo = res.detailInfo; // 详细收货地址信息
-                nationalCode = res.nationalCode; // 收货地址国家码
-                telNumber = res.telNumber; // 收货人手机号码
-            }
-        });
-
+        getAddress();
         layer.msg('发起访问微信共享地址', {
             offset: 'c',
             anim: 1
         });
+    }
 
+    function getAddress(){
+        wx.openAddress({
+            success: function (res) {
+                $('#name').val(res.userName);
+                $('#tel').val(res.telNumber);
+                $('#address').val(res.provinceName+res.cityName+res.countryName+res.detailInfo);
+                console.log($('#address').val());
+//                userName = res.userName; // 收货人姓名
+//                postalCode = res.postalCode; // 邮编
+//                provinceName = res.provinceName; // 国标收货地址第一级地址（省）
+//                cityName = res.cityName; // 国标收货地址第二级地址（市）
+//                countryName = res.countryName; // 国标收货地址第三级地址（国家）
+//                detailInfo = res.detailInfo; // 详细收货地址信息
+//                nationalCode = res.nationalCode; // 收货地址国家码
+//                telNumber = res.telNumber; // 收货人手机号码
+            }
+        });
     }
 
 

@@ -58,11 +58,9 @@ class DefaultController extends BaseController
             'token'=>yii::$app->params['c_wechat_token'],
         ]);
         $jsApiConfig = $wechat->jsApiConfig();
-        $addressStr = $wechat->addressParameters();
 
         return $this->render('crab',[
             'jsApiConfig' => $jsApiConfig,
-            'addressStr' => $addressStr
         ]);
     }
 
