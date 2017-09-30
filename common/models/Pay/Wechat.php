@@ -213,7 +213,8 @@ class Wechat extends \callmez\wechat\sdk\Wechat
                 'openProductSpecificView',
                 'addCard',
                 'chooseCard',
-                'openCard'
+                'openCard',
+                'openAddress'
             ]
         ], $config);
     }
