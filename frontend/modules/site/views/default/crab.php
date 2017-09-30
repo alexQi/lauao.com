@@ -511,6 +511,9 @@ use yii\helpers\Url;
             var telNumber    = $('#tel').val();
             var provinceName = $('#provinceName').val();
 
+            var userName     = 'alex';
+            var telNumber    = '18368182313';
+            var provinceName = '杭州市西湖区望月公寓';
             //如果这2个信息是空的说明没有找到收货人和联系方式
             if (!userName || !telNumber) {
                 //自定页
