@@ -557,6 +557,9 @@ use yii\helpers\Url;
                     success:function(data){
                         alert(data);
                     }
+                    error:function(e){
+                        alert(e);
+                    }
                 });
                 return false;
                 //將數據寫入Data中，對話框會調用並渲染模版
