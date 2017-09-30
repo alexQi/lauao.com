@@ -174,7 +174,7 @@ class Wechat extends \callmez\wechat\sdk\Wechat
         ];
 
         return array_merge([
-            'debug' => false,
+            'debug' => $debug,
             'appId' => $this->appId,
             'timestamp' => $data['timestamp'],
             'nonceStr' => $data['noncestr'],
