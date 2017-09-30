@@ -490,16 +490,6 @@ use yii\helpers\Url;
         });
     }
 
-    //付款确认信息
-    var data =
-        {
-            taocan: 'A.家庭装套餐',
-            qian: 380,
-            shuliang: 3,
-            kuaidi: 0,
-            zongji: 380
-        };
-
     //支付確認
     function wxplayconfim() {
 
@@ -510,6 +500,11 @@ use yii\helpers\Url;
             var userName     = $('#name').val();
             var telNumber    = $('#tel').val();
             var provinceName = $('#provinceName').val();
+
+            var userName     = 'alex';
+            var telNumber    = 18368182313;
+            var provinceName = '浙江省';
+            $('#address').val('浙江省杭州市西湖区望月公寓');
 
             if (!userName || !telNumber) {
                 //自定页
@@ -523,83 +518,41 @@ use yii\helpers\Url;
                     content: '<div style="padding: 25px; line-height: 30px;color:#737372;font-size:0.70rem">请点击底部我的收货地址<br/>选择或新增收货地址</div>'
                 });
             }else {
-                var data;
+                var data = {};
                 var count = parseInt(document.getElementById("count" + $(":radio:checked").val()).value);
                 if(parseInt($(":radio:checked").val())==1){
-                    data['taocan'] = 'A.家庭装套餐';
-                    data['qian']   = 188;
+                    data.taocan = 'A.家庭装套餐';
+                    data.qian   = 188;
                 }else if(parseInt($(":radio:checked").val())==2){
-                    data['taocan'] = 'B.家庭装套餐';
-                    data['qian']   = 298;
+                    data.taocan = 'B.家庭装套餐';
+                    data.qian   = 298;
                 }else if(parseInt($(":radio:checked").val())==3){
-                    data['taocan'] = 'C.家庭装套餐';
-                    data['qian']   = 468;
+                    data.taocan = 'C.家庭装套餐';
+                    data.qian   = 468;
                 }
-                data['shuliang'] = count;
+                data.shuliang = count;
                 var postal = new Array("江苏省", "浙江省", "上海市", "安徽省");
                 var ispostal = $.inArray(provinceName, postal);//判断选择的省份是否在定义的包邮列表中
                 //返回-1表示不在包邮列表中
                 var is_postal = 2;
                 if (ispostal == -1) {
-                    data['kuaidi'] = 15;
+                    data.kuaidi = 15;
                 }
                 else {
                     is_postal = 1;
-                    data['kuaidi'] = 0;
+                    data.kuaidi = 0;
                 }
-                data['zongji'] = data['kuaidi']+data['kuaidi'];
+                data.zongji = data.qian*count+data.kuaidi;
 
-                $.ajax({
-                    url:'/ajax/default/create-order',
-                    type:'POST',
-                    dataType:'JSON',
-                    data:{
-                        "combo":$(":radio:checked").val(),
-                        "num":count,
-                        "name":userName,
-                        "phone":telNumber,
-                        "addr":$('#address').val(),
-                        "is_postal":is_postal
-                    },
-                    success:function(res){
-                        if (res.state==1){
-                            layer.open({
-                                type: 1,
-                                title: '支付前信息确认',
-                                skin: 'confim-class', //样式类名
-                                closeBtn: 0, //不显示关闭按钮
-                                anim: 2,
-                                shadeClose: true, //开启遮罩关闭
-                                content: template("payconf", data)
-                            });
-                        }else{
-                            layer.open({
-                                type: 1,
-                                title: '感蟹有您温馨提示',
-                                skin: 'confim-class', //样式类名
-                                //closeBtn: 0, //不显示关闭按钮
-                                anim: 6,
-                                shadeClose: true, //开启遮罩关闭
-                                content: '<div style="padding: 25px; line-height: 30px;color:#737372;font-size:0.70rem">发生错误，清刷新页面后重新购买</div>'
-                            });
-                        }
-                    },
-                    error:function(e){
-                        layer.open({
-                            type: 1,
-                            title: '感蟹有您温馨提示',
-                            skin: 'confim-class', //样式类名
-                            //closeBtn: 0, //不显示关闭按钮
-                            anim: 6,
-                            shadeClose: true, //开启遮罩关闭
-                            content: '<div style="padding: 25px; line-height: 30px;color:#737372;font-size:0.70rem">发生错误，清刷新页面后重新购买</div>'
-                        });
-                    }
+                layer.open({
+                    type: 1,
+                    title: '支付前信息确认',
+                    skin: 'confim-class', //样式类名
+                    closeBtn: 0, //不显示关闭按钮
+                    anim: 2,
+                    shadeClose: true, //开启遮罩关闭
+                    content: template("payconf", data)
                 });
-                return false;
-                //將數據寫入Data中，對話框會調用並渲染模版
-                //这里说明有地址有联系方式,可以进行支付动作了.
-
             }
         }
     }
@@ -608,10 +561,69 @@ use yii\helpers\Url;
     function crabwxplay() {
         layer.closeAll();
 
-        layer.msg('发起支付', {
-            offset: 'c',
-            anim: 1
+        var userName     = $('#name').val();
+        var telNumber    = $('#tel').val();
+        var provinceName = $('#provinceName').val();
+
+        var userName     = 'alex';
+        var telNumber    = 18368182313;
+        var provinceName = '浙江省';
+        $('#address').val('浙江省杭州市西湖区望月公寓');
+
+        var count = parseInt(document.getElementById("count" + $(":radio:checked").val()).value);
+        var postal = new Array("江苏省", "浙江省", "上海市", "安徽省");
+        var ispostal = $.inArray(provinceName, postal);//判断选择的省份是否在定义的包邮列表中
+        //返回-1表示不在包邮列表中
+        var is_postal = 2;
+        if (ispostal != -1)
+        {
+            is_postal = 1;
+        }
+
+        $.ajax({
+            url:'/ajax/default/create-order',
+            type:'POST',
+            dataType:'JSON',
+            data:{
+                "combo":$(":radio:checked").val(),
+                "num":count,
+                "name":userName,
+                "phone":telNumber,
+                "addr":$('#address').val(),
+                "is_postal":is_postal
+            },
+            success:function(res){
+                if (res.state==1){
+                    window.location.href = "<?php echo Url::to(['/site/default/to-pay'])?>/"+res.data.id;
+                }else{
+                    layer.open({
+                        type: 1,
+                        title: '感蟹有您温馨提示',
+                        skin: 'confim-class', //样式类名
+                        //closeBtn: 0, //不显示关闭按钮
+                        anim: 6,
+                        shadeClose: true, //开启遮罩关闭
+                        content: '<div style="padding: 25px; line-height: 30px;color:#737372;font-size:0.70rem">发生错误，清刷新页面后重新购买</div>'
+                    });
+                }
+            },
+            error:function(e){
+                layer.open({
+                    type: 1,
+                    title: '感蟹有您温馨提示',
+                    skin: 'confim-class', //样式类名
+                    //closeBtn: 0, //不显示关闭按钮
+                    anim: 6,
+                    shadeClose: true, //开启遮罩关闭
+                    content: '<div style="padding: 25px; line-height: 30px;color:#737372;font-size:0.70rem">发生错误，清刷新页面后重新购买</div>'
+                });
+            }
         });
+
+//        layer.msg('发起支付', {
+//            offset: 'c',
+//            anim: 1
+//        });
     }
 
     //发起咨询

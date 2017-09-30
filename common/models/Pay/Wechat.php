@@ -257,7 +257,6 @@ class Wechat extends \callmez\wechat\sdk\Wechat
         $input->SetOpenid($openId);
         $order = WxPayApi::unifiedOrder($input);
         $jsApiParameters = $tools->GetJsApiParameters($order);
-        ApiService::pay_log("微信支付参数",$jsApiParameters,$out_trade_no,'wxpay');
         return $jsApiParameters;
     }
 

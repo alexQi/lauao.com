@@ -50,7 +50,8 @@ return [
                 "<controller:\w+>/<id:\d+>.html"=>"<controller>/view",
                 "<controller:\w+>/<action:\w+>.html"=>"<controller>/<action>",
                 "<module:\w+>/<controller:\w+>/<id:\d+>.html"=>"<module>/<controller>/view",
-                "<module:\w+>/<controller:\w+>/<action:\w+>.html"=>"<module>/<controller>/<action>"
+                "<module:\w+>/<controller:\w+>/<action:\w+>.html"=>"<module>/<controller>/<action>",
+                'site/default/to-pay/<id:\d+>' => 'site/default/to-pay', //去支付
             ],
         ],
     ],
