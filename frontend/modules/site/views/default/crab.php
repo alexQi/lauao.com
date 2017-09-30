@@ -116,13 +116,25 @@ use yii\helpers\Url;
 
     <i class="aui-iconfont aui-icon-info "></i>
    
-    <div class="aui-tips-title my-anim"> <small>好消息,当前渠道已经销售数量:</small>80
+    <div class="aui-tips-title my-anim"> <small>当前渠道总销售数量:</small>80 <span style="margin-left:5px;"></span><samll>总销售额:</small>￥5000
     </div>
     
-    <i class="aui-iconfont aui-icon-close" tapmode onclick="closeTips()"></i>
+    <i class="aui-iconfont aui-icon-close" tapmode onclick="closeTips('tips-1')"></i>
    
 </div>
 
+<section class="aui-content" style="margin:5px 0px 10px 0px">
+<div class="aui-tips aui-margin-b-2 aui-margin-t-2 aui-bg-warning" id="tips-2" style="height:120px">
+   
+    <div >
+    选择下面任意套餐
+    我们贴心的为大家准备了工具包
+    里面有紫苏包、养胃姜茶、洗手茶还有剪刀一把另配专门的蟹醋一瓶.</div>
+    
+    <i class="aui-iconfont aui-icon-close" tapmode onclick="closeTips('tips-2')"></i>
+   
+</div>
+</section>
 
 <section id="crab_1" class="aui-content">
 
@@ -440,7 +452,7 @@ layer.open({
     ,anim: 6
     ,isOutAnim: false 
     ,moveType: 0 //拖拽模式，0或者1
-    ,content: '<div style="padding: 30px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 180;font-size:0.75rem">江浙沪皖顺丰包邮<br/>其他地区+15元顺丰包邮<br/><br/>1.选择或新增我的收货地址<br/>2.选择套餐<br/>3.选择套餐数量<br/>4.点击立即购买<br/><br/>如果遇到什么问题可以点击咨询</div>'
+    ,content: '<div style="padding:30px 10px 30px 10px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 180;font-size:0.75rem">江浙沪皖顺丰包邮<br/>其他地区+15元顺丰包邮<br/><br/>1.选择或新增我的收货地址<br/>2.选择套餐<br/>3.选择套餐数量<br/>4.点击立即购买<br/><br/>注意事項:<br/>1.为保证螃蟹的新鲜 当日下单 次日发货<br/>2.因在运输过程中水分损耗 规格会有0.2两的偏差 属于正常状况,敬请谅解！！<br/><br/>如果遇到什么问题可以点击咨询</div>'
  
   });
 
@@ -565,9 +577,9 @@ function crabmessage()
 
 
 //关闭消息
-function closeTips()
+function closeTips(s)
     {
-        $('#tips-1').remove();
+        $('#'+s).remove();
     }
 
 //数量控件
