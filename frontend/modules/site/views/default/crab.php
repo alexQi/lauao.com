@@ -405,7 +405,6 @@ use yii\helpers\Url;
 
 
 </body>
-<script type="text/javascript" src="/script/api.js"></script>
 <script type="text/javascript" src="/script/jquery.min.js"></script>
 <script type="text/javascript" src="/script/template-native.js"></script>
 <script type="text/javascript" src="/script/aui-tab.js"></script>
