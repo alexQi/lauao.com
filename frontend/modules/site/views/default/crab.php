@@ -144,7 +144,8 @@ use yii\helpers\Url;
     <i class="aui-iconfont aui-icon-info "></i>
 
     <div class="aui-tips-title my-anim">当前渠道总销售数量:80 <span style="margin-left:5px;"></span>
-        <small>总销售额:</small>￥5000
+        <small>总销售额:</small>
+        ￥5000
     </div>
 
     <i class="aui-iconfont aui-icon-close" tapmode onclick="closeTips('tips-1')"></i>
@@ -575,11 +576,8 @@ use yii\helpers\Url;
                     //postalstr='<div>快递费:￥0</div>';
                 }
 
-
-//將數據寫入Data中，對話框會調用並渲染模版
-
-
-//这里说明有地址有联系方式,可以进行支付动作了.
+                //將數據寫入Data中，對話框會調用並渲染模版
+                //这里说明有地址有联系方式,可以进行支付动作了.
                 layer.open({
                     type: 1,
                     title: '支付前信息确认',
@@ -589,11 +587,8 @@ use yii\helpers\Url;
                     shadeClose: true, //开启遮罩关闭
                     content: template("payconf", data)
                 });
-
-
             }
         }
-
     }
 
 
