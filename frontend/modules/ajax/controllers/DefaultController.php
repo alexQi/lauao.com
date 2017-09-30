@@ -280,4 +280,9 @@ class DefaultController extends BaseController
         }
         return $this->ajaxReturn;
     }
+
+    public function actionCreateOrder()
+    {
+
+    }
 }

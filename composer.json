@@ -25,6 +25,7 @@
         "kartik-v/bootstrap-fileinput": "dev-master",
         "udokmeci/yii2-beanstalk": "dev-master",
         "crazyfd/yii2-qiniu": "dev-master",
+        "callmez/yii2-wechat-sdk": "dev-master",
         "yiisoft/yii2-redis": "^2.0"
     },
     "require-dev": {
