@@ -4,6 +4,7 @@ namespace frontend\modules\ajax\controllers;
 
 
 use common\models\ActivityBase;
+use common\models\Orders;
 use yii;
 use frontend\models\ApplyUserService;
 use yii\base\Exception;
@@ -283,6 +284,62 @@ class DefaultController extends BaseController
 
     public function actionCreateOrder()
     {
+        try{
+            $channel = $this->getData['channel'];
 
+            $combo = $this->postData['combo'];
+            $num   = $this->postData['num'];
+            $name  = $this->postData['name'];
+            $phone = $this->postData['combo'];
+            $addr  = $this->postData['addr'];
+            $isPostal  = $this->postData['is_postal'];
+
+            switch ($combo)
+            {
+                case 1:
+                    $price = 188;
+                    break;
+                case 2:
+                    $price = 298;
+                    break;
+                case 3:
+                    $price = 468;
+                    break;
+                default:
+                    $price = 10000;
+                    break;
+            }
+            if ($isPostal==1){
+                $total_money = $price*$num;
+            }else{
+                $total_money = $price*$num+15;
+            }
+
+            $orders = new Orders();
+            $orders->order_id    = 'OL'.time().rand(1000,9999);
+            $orders->combo       = $combo;
+            $orders->num         = $num;
+            $orders->pay_method  = 1;
+            $orders->total_money = $total_money;
+            $orders->channel     = $channel;
+            $orders->name        = $name;
+            $orders->phone       = $phone;
+            $orders->address     = $addr;
+            $orders->is_postal   = $isPostal;
+            $orders->status      = 1;
+            $orders->create_time = time();
+            $orders->pay_time    = time();
+
+            if (!$orders->save())
+            {
+                throw new Exception('生成订单失败');
+            }
+            $this->ajaxReturn['state'] = 1;
+            $this->ajaxReturn['message'] = '生成订单成功';
+            $this->ajaxReturn['data'] = $orders->toArray();
+        }catch(Exception $e){
+            $this->ajaxReturn['message'] = $e->getMessage();
+        }
+        return $this->ajaxReturn;
     }
 }

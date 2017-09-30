@@ -110,7 +110,7 @@ use yii\helpers\Url;
                 <video id="my-video" class="video-js" controls preload="auto" poster="/images/banner2.jpg" height="210"
                        x5-playsinline="" playsinline="" webkit-playsinline=""
                        data-setup="{}">
-                    <source src="http://advert.ztwliot.com/QB1505583886" type="video/mp4">
+                    <source src="http://advert.ztwliot.com/QB1506764582" type="video/mp4">
                     <p class="vjs-no-js">
                         To view this video please enable JavaScript, and consider upgrading to a web browser that
                         <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
