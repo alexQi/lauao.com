@@ -144,7 +144,7 @@ use yii\helpers\Url;
     <i class="aui-iconfont aui-icon-info "></i>
 
     <div class="aui-tips-title my-anim">当前渠道总销售数量:80 <span style="margin-left:5px;"></span>
-        <samll>总销售额:</small>￥5000
+        <small>总销售额:</small>￥5000
     </div>
 
     <i class="aui-iconfont aui-icon-close" tapmode onclick="closeTips('tips-1')"></i>
@@ -412,7 +412,7 @@ use yii\helpers\Url;
 <script type="text/javascript" src="/layui/layui.js"></script>
 <script type="text/javascript" src="/script/aui-slide.js"></script>
 <script type="text/javascript" src="/script/video.min.js"></script>
-<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script type="text/template" id="payconf">
 
     <div class="aui-card-list-content aui-border-t aui-padded-15" style="margin:10px;width:250px">
