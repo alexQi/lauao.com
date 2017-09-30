@@ -285,7 +285,7 @@ class DefaultController extends BaseController
     public function actionCreateOrder()
     {
         try{
-            $channel = $this->getData['channel'] ? $this->getData['channel'] : 'unkown';
+            $channel = isset($this->getData['channel']) ? $this->getData['channel'] : 'unkown';
 
             $combo = $this->postData['combo'];
             $num   = $this->postData['num'];
