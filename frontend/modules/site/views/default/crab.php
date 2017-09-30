@@ -524,22 +524,30 @@ use yii\helpers\Url;
                 });
             }else {
                 var data;
-                var money = 0;
-                //获取选择的数据的值进行转换
                 var count = parseInt(document.getElementById("count" + $(":radio:checked").val()).value);
-                //江浙沪皖包邮,其他另外+15元
+                if(parseInt($(":radio:checked").val())==1){
+                    data['taocan'] = 'A.家庭装套餐';
+                    data['qian']   = 188;
+                }else if(parseInt($(":radio:checked").val())==2){
+                    data['taocan'] = 'B.家庭装套餐';
+                    data['qian']   = 298;
+                }else if(parseInt($(":radio:checked").val())==3){
+                    data['taocan'] = 'C.家庭装套餐';
+                    data['qian']   = 468;
+                }
+                data['shuliang'] = count;
                 var postal = new Array("江苏省", "浙江省", "上海市", "安徽省");
                 var ispostal = $.inArray(provinceName, postal);//判断选择的省份是否在定义的包邮列表中
                 //返回-1表示不在包邮列表中
                 var is_postal = 2;
                 if (ispostal == -1) {
-                    // money=money+15;
-                    // postalstr='<div>快递费:￥15</div>';
+                    data['kuaidi'] = 15;
                 }
                 else {
                     is_postal = 1;
-                    //postalstr='<div>快递费:￥0</div>';
+                    data['kuaidi'] = 0;
                 }
+                data['zongji'] = data['kuaidi']+data['kuaidi'];
 
                 $.ajax({
                     url:'/ajax/default/create-order',
@@ -553,25 +561,45 @@ use yii\helpers\Url;
                         "addr":$('#address').val(),
                         "is_postal":is_postal
                     },
-                    success:function(data){
-                        alert(data);
+                    success:function(res){
+                        if (res.state==1){
+                            layer.open({
+                                type: 1,
+                                title: '支付前信息确认',
+                                skin: 'confim-class', //样式类名
+                                closeBtn: 0, //不显示关闭按钮
+                                anim: 2,
+                                shadeClose: true, //开启遮罩关闭
+                                content: template("payconf", data)
+                            });
+                        }else{
+                            layer.open({
+                                type: 1,
+                                title: '感蟹有您温馨提示',
+                                skin: 'confim-class', //样式类名
+                                //closeBtn: 0, //不显示关闭按钮
+                                anim: 6,
+                                shadeClose: true, //开启遮罩关闭
+                                content: '<div style="padding: 25px; line-height: 30px;color:#737372;font-size:0.70rem">发生错误，清刷新页面后重新购买</div>'
+                            });
+                        }
                     },
                     error:function(e){
-                        alert(e);
+                        layer.open({
+                            type: 1,
+                            title: '感蟹有您温馨提示',
+                            skin: 'confim-class', //样式类名
+                            //closeBtn: 0, //不显示关闭按钮
+                            anim: 6,
+                            shadeClose: true, //开启遮罩关闭
+                            content: '<div style="padding: 25px; line-height: 30px;color:#737372;font-size:0.70rem">发生错误，清刷新页面后重新购买</div>'
+                        });
                     }
                 });
                 return false;
                 //將數據寫入Data中，對話框會調用並渲染模版
                 //这里说明有地址有联系方式,可以进行支付动作了.
-                layer.open({
-                    type: 1,
-                    title: '支付前信息确认',
-                    skin: 'confim-class', //样式类名
-                    closeBtn: 0, //不显示关闭按钮
-                    anim: 2,
-                    shadeClose: true, //开启遮罩关闭
-                    content: template("payconf", data)
-                });
+
             }
         }
     }

@@ -332,7 +332,6 @@ class DefaultController extends BaseController
 
             if (!$orders->save())
             {
-                var_dump($orders->getErrors());die();
                 throw new Exception('生成订单失败');
             }
             $this->ajaxReturn['state'] = 1;
