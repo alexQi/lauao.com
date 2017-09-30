@@ -143,11 +143,8 @@ use yii\helpers\Url;
 
     <i class="aui-iconfont aui-icon-info "></i>
 
-    <div class="aui-tips-title my-anim">
-        <small>当前渠道总销售数量:</small>
-        80 <span style="margin-left:5px;"></span>
-        <small>总销售额:</small>
-        ￥5000
+    <div class="aui-tips-title my-anim">当前渠道总销售数量:80 <span style="margin-left:5px;"></span>
+        <samll>总销售额:</small>￥5000
     </div>
 
     <i class="aui-iconfont aui-icon-close" tapmode onclick="closeTips('tips-1')"></i>
@@ -155,12 +152,13 @@ use yii\helpers\Url;
 </div>
 
 <section class="aui-content" style="margin:5px 0px 10px 0px">
-    <div class="aui-tips aui-margin-b-2 aui-margin-t-2 aui-bg-warning" id="tips-2" style="height:120px">
+    <div class="aui-tips aui-margin-b-2 aui-margin-t-2 aui-bg-warning" id="tips-2" style="height:100px">
 
-        <div>
-            选择下面任意套餐
-            我们贴心的为大家准备了工具包
-            里面有紫苏包、养胃姜茶、洗手茶还有剪刀一把另配专门的蟹醋一瓶.
+        <div style="line-height:25px;">
+            <small>选择下面任意套餐
+                我们贴心的为大家准备了工具包
+                里面有紫苏包、养胃姜茶、洗手茶还有剪刀一把另配专门的蟹醋一瓶.
+            </small>
         </div>
 
         <i class="aui-iconfont aui-icon-close" tapmode onclick="closeTips('tips-2')"></i>
@@ -400,7 +398,7 @@ use yii\helpers\Url;
         <div class="aui-bar-tab-label aui-text-white">我的收货地址</div>
     </div>
     <!-- <div class="aui-bar-tab-item aui-bg-warning aui-icon-location aui-text-white" tapmode style="width: auto;"></div> -->
-    <div class="aui-bar-tab-item aui-bg-danger aui-text-white" tapmode onclick="crabwxplay();" style="width: auto;">
+    <div class="aui-bar-tab-item aui-bg-danger aui-text-white" tapmode onclick="wxplayconfim();" style="width: auto;">
         立即购买
     </div>
 </footer>
@@ -409,48 +407,65 @@ use yii\helpers\Url;
 </body>
 <script type="text/javascript" src="/script/api.js"></script>
 <script type="text/javascript" src="/script/jquery.min.js"></script>
+<script type="text/javascript" src="/script/template-native.js"></script>
 <script type="text/javascript" src="/script/aui-tab.js"></script>
 <script type="text/javascript" src="/layui/layui.js"></script>
 <script type="text/javascript" src="/script/aui-slide.js"></script>
 <script type="text/javascript" src="/script/video.min.js"></script>
-<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 <script type="text/template" id="payconf">
 
-    <div class="aui-card-list-content aui-border-t">
+    <div class="aui-card-list-content aui-border-t aui-padded-15" style="margin:10px;width:250px">
 
         <ul class="aui-list aui-list-noborder">
 
 
             <div class="aui-list-item aui-padded-l-0">
                 <div class="aui-list-item-inner">
-                    <div class="aui-list-item-title aui-font-size-14 goods-title">套餐:家庭装</div>
+                    <div class="aui-list-item-title aui-font-size-14 goods-title">套餐:<%=taocan%></div>
 
                 </div>
             </div>
             <div class="aui-list-item aui-padded-l-0">
                 <div class="aui-list-item-inner">
-                    <div class="aui-list-item-title aui-font-size-14 goods-title">数量:3</div>
+                    <div class="aui-list-item-title aui-font-size-14 goods-title">数量:<%=shuliang%></div>
 
                 </div>
             </div>
             <div class="aui-list-item aui-padded-l-0">
                 <div class="aui-list-item-inner">
-                    <div class="aui-list-item-title aui-font-size-14 goods-title">金额:￥468</div>
+                    <div class="aui-list-item-title aui-font-size-14 goods-title">金额:￥<%=qian%></div>
                 </div>
             </div>
+            <div class="aui-list-item aui-padded-l-0">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title aui-font-size-14 goods-title">快递费:￥<%=kuaidi%></div>
+                </div>
+            </div>
+            <div class="aui-list-item aui-padded-l-0">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title aui-font-size-14 goods-title">合计:￥<%=zongji%></div>
+                </div>
+            </div>
+
         </ul>
+
+        <div style="width:100px;margin:0 auto;background-color: red;text-align: center; margin-top: 10px;padding: 5px;color: white;"
+             tapmode onclick="crabwxplay();">立即付款
+        </div>
+
     </div>
-    <div class="aui-bar-tab-item aui-bg-danger aui-text-white" style="width:auto;margin:0 auto">立即付款</div>
 
 
 </script>
 
 <script>
-    wx.config(<?= json_encode($jsApiConfig) ?>);
+
     //触摸
+    wx.config(<?= json_encode($jsApiConfig) ?>);
     apiready = function () {
         api.parseTapmode();
-    };
+    }
 
 
     var userName, //收货人
@@ -460,6 +475,18 @@ use yii\helpers\Url;
         countryName,//区
         detailInfo,//详细地址
         telNumber;//手机号码
+
+
+    //付款确认信息
+    var data =
+        {
+            taocan: 'A.家庭装套餐',
+            qian: 380,
+            shuliang: 3,
+            kuaidi: 0,
+            zongji: 380
+
+        }
 
 
     layui.use(['jquery', 'layer'], function () {
@@ -503,8 +530,8 @@ use yii\helpers\Url;
     });
 
 
-    //支付
-    function crabwxplay() {
+    //支付確認
+    function wxplayconfim() {
 
         var item = $(":radio:checked");
         var len = item.length;
@@ -542,12 +569,15 @@ use yii\helpers\Url;
                 var ispostal = $.inArray(provinceName, postal);//判断选择的省份是否在定义的包邮列表中
 //返回-1表示不在包邮列表中
                 if (ispostal == -1) {
-                    money = money + 15;
-                    postalstr = '<div>快递费:￥15</div>';
+                    // money=money+15;
+                    // postalstr='<div>快递费:￥15</div>';
                 }
                 else {
-                    postalstr = '<div>快递费:￥0</div>';
+                    //postalstr='<div>快递费:￥0</div>';
                 }
+
+
+//將數據寫入Data中，對話框會調用並渲染模版
 
 
 //这里说明有地址有联系方式,可以进行支付动作了.
@@ -558,7 +588,7 @@ use yii\helpers\Url;
                     closeBtn: 0, //不显示关闭按钮
                     anim: 2,
                     shadeClose: true, //开启遮罩关闭
-                    content: $('#crab_' + $(":radio:checked").val())
+                    content: template("payconf", data)
                 });
 
 
@@ -568,11 +598,22 @@ use yii\helpers\Url;
     }
 
 
+    //發起支付
+    function crabwxplay() {
+        layer.closeAll();
+
+        layer.msg('发起支付', {
+            offset: 'c',
+            anim: 1
+        });
+    }
+
+
     //发起访问微信地址,简易输入,调用共享收货地址接口
     function crabaddress() {
-         console.log(wx);
-         wx.openAddress({
-             success: function (res) {
+
+        wx.openAddress({
+            success: function (res) {
                 console.log(res);
                 userName = res.userName; // 收货人姓名
                 postalCode = res.postalCode; // 邮编
@@ -582,8 +623,8 @@ use yii\helpers\Url;
                 detailInfo = res.detailInfo; // 详细收货地址信息
                 nationalCode = res.nationalCode; // 收货地址国家码
                 telNumber = res.telNumber; // 收货人手机号码
-             }
-         });
+            }
+        });
 
         layer.msg('发起访问微信共享地址', {
             offset: 'c',
@@ -601,6 +642,7 @@ use yii\helpers\Url;
             offset: 'c',
             anim: 1
         });
+
     }
 
 
