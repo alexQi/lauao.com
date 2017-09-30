@@ -461,6 +461,7 @@ use yii\helpers\Url;
 <input type="text" id="name" value="">
 <input type="text" id="tel" value="">
 <input type="text" id="address" value="">
+<input type="text" id="provinceName" value="">
 <script>
 
     //触摸
@@ -474,8 +475,8 @@ use yii\helpers\Url;
             success: function (res) {
                 $('#name').val(res.userName);
                 $('#tel').val(res.telNumber);
+                $('#provinceName').val(res.provinceName);
                 $('#address').val(res.provinceName+res.cityName+res.countryName+res.detailInfo);
-                alert($('#address').val());
             }
         });
     }
@@ -489,10 +490,6 @@ use yii\helpers\Url;
         });
     }
 
-    var userName, //收货人
-        provinceName, //省
-        telNumber;//手机号码
-
     //付款确认信息
     var data =
         {
@@ -501,48 +498,7 @@ use yii\helpers\Url;
             shuliang: 3,
             kuaidi: 0,
             zongji: 380
-
-        }
-
-
-    layui.use(['jquery', 'layer'], function () {
-
-        // $=	layui.jquery;
-
-        layer = layui.layer;
-
-
-//公告层
-        layer.open({
-            type: 1
-            ,
-            title: false //不显示标题栏
-            ,
-            closeBtn: false
-            ,
-            area: '300px;'
-            ,
-            shade: 0.8
-            ,
-            id: 'LAY_layuipro' //设定一个id，防止重复弹出
-            ,
-            resize: false
-            ,
-            btn: ['亲,我明白了']
-            ,
-            btnAlign: 'c'
-            ,
-            anim: 6
-            ,
-            isOutAnim: false
-            ,
-            moveType: 0 //拖拽模式，0或者1
-            ,
-            content: '<div style="padding:30px 10px 30px 10px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 180;font-size:0.75rem">江浙沪皖顺丰包邮<br/>其他地区+15元顺丰包邮<br/><br/>1.选择或新增我的收货地址<br/>2.选择套餐<br/>3.选择套餐数量<br/>4.点击立即购买<br/><br/>注意事項:<br/>1.为保证螃蟹的新鲜 当日下单 次日发货<br/>2.因在运输过程中水分损耗 规格会有0.2两的偏差 属于正常状况,敬请谅解！！<br/><br/>如果遇到什么问题可以点击咨询</div>'
-
-        });
-    });
-
+        };
 
     //支付確認
     function wxplayconfim() {
@@ -551,14 +507,12 @@ use yii\helpers\Url;
         var len = item.length;
         if (len > 0) {
 
-            //测试數據
-            userName = 'Pozm',
-                telNumber = 13712841283,
-                provinceName = '上海市'
-            //测试數據
+            var userName     = $('#name').val();
+            var telNumber    = $('#tel').val();
+            var provinceName = $('#provinceName').val();
 
             //如果这2个信息是空的说明没有找到收货人和联系方式
-            if (userName == undefined && telNumber == undefined) {
+            if (!userName || !telNumber) {
                 //自定页
                 layer.open({
                     type: 1,
@@ -568,11 +522,9 @@ use yii\helpers\Url;
                     anim: 6,
                     shadeClose: true, //开启遮罩关闭
                     content: '<div style="padding: 25px; line-height: 30px;color:#737372;font-size:0.70rem">请点击底部我的收货地址<br/>选择或新增收货地址</div>'
-
                 });
-            }
-            else {
-
+            }else {
+                var data;
                 var money = 0;
                 //获取选择的数据的值进行转换
                 var count = parseInt(document.getElementById("count" + $(":radio:checked").val()).value);
@@ -580,14 +532,33 @@ use yii\helpers\Url;
                 var postal = new Array("江苏省", "浙江省", "上海市", "安徽省");
                 var ispostal = $.inArray(provinceName, postal);//判断选择的省份是否在定义的包邮列表中
                 //返回-1表示不在包邮列表中
+                var is_postal = 2;
                 if (ispostal == -1) {
                     // money=money+15;
                     // postalstr='<div>快递费:￥15</div>';
                 }
                 else {
+                    is_postal = 1;
                     //postalstr='<div>快递费:￥0</div>';
                 }
 
+                $.ajax({
+                    url:'/ajax/default/create-order',
+                    type:'POST',
+                    dataType:'JSON',
+                    data:{
+                        "combo":$(":radio:checked").val(),
+                        "num":count,
+                        "name":userName,
+                        "phone":telNumber,
+                        "addr":$('#address').val(),
+                        "is_postal":is_postal
+                    },
+                    success:function(data){
+                        alert(data);
+                    }
+                });
+                return false;
                 //將數據寫入Data中，對話框會調用並渲染模版
                 //这里说明有地址有联系方式,可以进行支付动作了.
                 layer.open({
@@ -603,7 +574,6 @@ use yii\helpers\Url;
         }
     }
 
-
     //發起支付
     function crabwxplay() {
         layer.closeAll();
@@ -613,12 +583,6 @@ use yii\helpers\Url;
             anim: 1
         });
     }
-
-
-
-
-
-
 
     //发起咨询
     function crabmessage() {
@@ -706,6 +670,44 @@ use yii\helpers\Url;
         "loop": false,
         "pageStyle": 'dot'
 
+    });
+
+    layui.use(['jquery', 'layer'], function () {
+
+        // $=	layui.jquery;
+
+        layer = layui.layer;
+
+
+//公告层
+        layer.open({
+            type: 1
+            ,
+            title: false //不显示标题栏
+            ,
+            closeBtn: false
+            ,
+            area: '300px;'
+            ,
+            shade: 0.8
+            ,
+            id: 'LAY_layuipro' //设定一个id，防止重复弹出
+            ,
+            resize: false
+            ,
+            btn: ['亲,我明白了']
+            ,
+            btnAlign: 'c'
+            ,
+            anim: 6
+            ,
+            isOutAnim: false
+            ,
+            moveType: 0 //拖拽模式，0或者1
+            ,
+            content: '<div style="padding:30px 10px 30px 10px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 180;font-size:0.75rem">江浙沪皖顺丰包邮<br/>其他地区+15元顺丰包邮<br/><br/>1.选择或新增我的收货地址<br/>2.选择套餐<br/>3.选择套餐数量<br/>4.点击立即购买<br/><br/>注意事項:<br/>1.为保证螃蟹的新鲜 当日下单 次日发货<br/>2.因在运输过程中水分损耗 规格会有0.2两的偏差 属于正常状况,敬请谅解！！<br/><br/>如果遇到什么问题可以点击咨询</div>'
+
+        });
     });
 
 
