@@ -16,6 +16,7 @@ use yii\web\ForbiddenHttpException;
 class DefaultController extends BaseController
 {
     public $layout = false;
+    public $enableCsrfValidation = false;
     /**
      * Displays homepage.
      *
@@ -100,7 +101,6 @@ class DefaultController extends BaseController
      * @param string $flag   支付类型  付款|充值
      */
     public function actionNotify(){
-        $this->enableCsrfValidation = false;
         $api    = new ApiService();
 
         $wechat = \Yii::$app->wechat;
