@@ -72,7 +72,7 @@ class ApiService
 
         if(!empty($orderInfo)&&$orderInfo->status==1)
         {
-            $orderInfo->state = 2;
+            $orderInfo->status = 2;
             $orderInfo->pay_time = time();
             return $orderInfo->save();
         }else{
