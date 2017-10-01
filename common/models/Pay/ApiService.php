@@ -48,7 +48,7 @@ class ApiService
             $attach = serialize($attach);
         }
         $goods_tag = ($goods_tag=='')?'':$goods_tag;
-        $total_fee  = '0.01';
+//        $total_fee  = '0.01';
 
         return $wechat->unifiedOrder($out_trade_no,$total_fee,$notify_url,$body,$attach,$goods_tag,$code_url);
     }

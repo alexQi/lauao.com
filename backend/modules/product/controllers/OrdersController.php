@@ -105,7 +105,7 @@ class OrdersController extends Controller
         header('Content-Type : application/vnd.ms-excel');
 
         //设置输出文件名及格式
-        header('Content-Disposition:attachment;filename="学生资金表更记录'.date("YmdHis").'.xls"');
+        header('Content-Disposition:attachment;filename="有效订单-'.date("YmdHis").'.xls"');
 
         //导出.xls格式的话使用Excel5,若是想导出.xlsx需要使用Excel2007
         $objWriter= \PHPExcel_IOFactory::createWriter($objectPHPExcel,'Excel5');

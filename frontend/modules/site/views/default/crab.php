@@ -143,8 +143,8 @@ use yii\helpers\Url;
 
     <i class="aui-iconfont aui-icon-info "></i>
 
-    <div class="aui-tips-title my-anim">当前渠道总销售数量:<?php echo $res['total_num']; ?> <span style="margin-left:5px;"></span>
-        总销售额:￥<?php echo $res['all_money']; ?>
+    <div class="aui-tips-title my-anim">当前渠道总销售数量:<?php echo isset($res['total_num']) ? $res['total_num'] : 0; ?> <span style="margin-left:5px;"></span>
+        总销售额:￥<?php echo isset($res['all_money']) ? $res['all_money'] : 0; ?>
         
     </div>
 
