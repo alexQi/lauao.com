@@ -87,7 +87,7 @@ class DefaultController extends BaseController
 
         $api = new ApiService();
         if ($jsApiParameters = $api->wxpayCreateOrder($orderInfo)){
-            die();
+            var_dump($jsApiParameters);die();
             return $this->render($this->view .'do-wechat',['payConfig'=>$jsApiParameters]);
         }else{
             throw new ForbiddenHttpException('生成微信订单失败');
