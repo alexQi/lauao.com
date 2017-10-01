@@ -95,7 +95,7 @@ return [
         'class' => 'backend\modules\admin\components\AccessControl',
         'allowActions' => [
             //这里是允许访问的action
-//            '*'
+            '*'
         ],
     ],
     'params' => $params,

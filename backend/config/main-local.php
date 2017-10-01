@@ -19,13 +19,13 @@ if (!YII_ENV_TEST) {
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
-        'allowedIPs' => ['127.0.0.1', '172.17.0.*'],
+        'allowedIPs' => ['127.0.0.1'],
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
-        'allowedIPs' => ['127.0.0.1', '172.17.0.*'],
+        'allowedIPs' => ['127.0.0.1'],
         'generators' => [
             'crud' => [ //生成器名称
                 'class' => 'yii\gii\generators\crud\Generator',
