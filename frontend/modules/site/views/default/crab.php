@@ -144,8 +144,8 @@ use yii\helpers\Url;
     <i class="aui-iconfont aui-icon-info "></i>
 
     <div class="aui-tips-title my-anim">当前渠道总销售数量:80 <span style="margin-left:5px;"></span>
-        <small>总销售额:</small>
-        ￥5000
+        总销售额:￥5000
+        
     </div>
 
     <i class="aui-iconfont aui-icon-close" tapmode onclick="closeTips('tips-1')"></i>
@@ -473,8 +473,8 @@ use yii\helpers\Url;
     
         wx.onMenuShareAppMessage({
             title: '[感蟹有你] 买蟹进来看!', // 分享标题
-            desc: '原生态 高品质 送亲朋送好友', // 分享描述
-            link: 'http://www.taozihu.com/site/default/crab', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            desc: '原生态 高品质 送亲朋送好友 吃的健康 购的安心送礼的不二选择', // 分享描述
+            link: 'http://www.taozihu.com/site/default/crab?channel='+'<?php echo $channel?>', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: 'http://www.taozihu.com/images/shareimg.jpg', // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
@@ -486,24 +486,20 @@ use yii\helpers\Url;
             }
         });
 
-        // wx.onMenuShareTimeline({
-        //     title: 'test',
-        //     link: 'http://www.baidu.com',
-        //     imgUrl: 'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=3852561242,1416741773&fm=58',
-        //     trigger: function (res) {
-        //         // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
-        //         // alert('用户点击分享到朋友圈');
-        //     },
-        //     success: function (res) {
-        //          alert('已分享');
-        //     },
-        //     cancel: function (res) {
-        //          alert('已取消');
-        //     },
-        //     fail: function (res) {
-        //          alert(JSON.stringify(res));
-        //     }
-        // });
+        wx.onMenuShareTimeline({
+            title: '[感蟹有你] 买蟹进来看!',
+            link: '原生态 高品质 送亲朋送好友 吃的健康 购的安心送礼的不二选择',
+            link: 'http://www.taozihu.com/site/default/crab?channel='+'<?php echo $channel?>', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'http://www.taozihu.com/images/shareimg.jpg', // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () { 
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () { 
+                // 用户取消分享后执行的回调函数
+            }
+        });
     });
 
 
@@ -775,7 +771,7 @@ use yii\helpers\Url;
             ,
             moveType: 0 //拖拽模式，0或者1
             ,
-            content: '<div style="padding:30px 10px 30px 10px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 180;font-size:0.75rem">江浙沪皖顺丰包邮<br/>其他地区+15元顺丰包邮<br/><br/>1.选择或新增我的收货地址<br/>2.选择套餐<br/>3.选择套餐数量<br/>4.点击立即购买<br/><br/>注意事項:<br/>1.为保证螃蟹的新鲜 当日下单 次日发货<br/>2.因在运输过程中水分损耗 规格会有0.2两的偏差 属于正常状况,敬请谅解！！<br/><br/>如果遇到什么问题可以点击咨询</div>'
+            content: '<div style="padding:30px 10px 30px 10px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 180;font-size:0.75rem">江浙沪皖顺丰包邮<br/>其他地区+15元顺丰包邮<br/><br/>1.选择或新增我的收货地址<br/>2.选择套餐<br/>3.选择套餐数量<br/>4.点击立即购买<br/><br/>注意事項:<br/>1.为保证螃蟹的新鲜 当日下单 次日发货<br/>2.因在运输过程中水分损耗 规格会有0.2两的偏差 属于正常状况 敬请谅解！！<br/><br/>如果遇到什么问题可以点击咨询</div>'
 
         });
     });
