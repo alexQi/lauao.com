@@ -104,6 +104,8 @@ class DefaultController extends BaseController
 
         $wechat = \Yii::$app->wechat;
         $notify_data = $wechat->notifyData();
+
+        yii::info(json_encode($notify_data));
         if (!$notify_data) {
             die($wechat->notifyMsg(false));
         }
