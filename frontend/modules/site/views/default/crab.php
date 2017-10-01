@@ -474,7 +474,7 @@ use yii\helpers\Url;
         wx.onMenuShareAppMessage({
             title: '[感蟹有你] 买蟹进来看!', // 分享标题
             desc: '原生态 高品质 送亲朋送好友', // 分享描述
-            link: 'http://taozihu.com/site/default/crab', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            link: 'http://www.taozihu.com/site/default/crab', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: 'http://www.taozihu.com/images/shareimg.jpg', // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
@@ -504,9 +504,7 @@ use yii\helpers\Url;
         //          alert(JSON.stringify(res));
         //     }
         // });
-
-
-    })
+    });
 
 
 
