@@ -458,10 +458,10 @@ use yii\helpers\Url;
 
 
 </script>
-<input type="text" id="name" value="">
-<input type="text" id="tel" value="">
-<input type="text" id="address" value="">
-<input type="text" id="provinceName" value="">
+<input type="hidden" id="name" value="">
+<input type="hidden" id="tel" value="">
+<input type="hidden" id="address" value="">
+<input type="hidden" id="provinceName" value="">
 <script>
 
     //触摸
