@@ -467,8 +467,6 @@ use yii\helpers\Url;
     //触摸
     $(document).ready(function () {
         wx.config(<?= json_encode($jsApiConfig) ?>);
-        //getAddress();
-       
     });
 
     wx.ready(function(){
