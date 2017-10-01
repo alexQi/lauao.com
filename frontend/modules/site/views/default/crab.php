@@ -414,11 +414,36 @@ use yii\helpers\Url;
 <script type="text/javascript" src="/script/video.min.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script type="text/template" id="payconf">
+    
 
-    <div class="aui-card-list-content aui-border-t aui-padded-15" style="margin:10px;width:250px">
+
+    <div class="aui-card-list-content aui-border-b aui-padded-15" style="margin:10px;width:250px">
+    
 
         <ul class="aui-list aui-list-noborder">
+        <div style="border:1px solid #222;text-align:left">
+        <div class="aui-list-item aui-padded-l-0">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title aui-font-size-14 goods-title">联系人:<%=lianxiren%></div>
+                        
+                </div>
+            </div>
+        
+            <div class="aui-list-item aui-padded-l-0">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title aui-font-size-14 goods-title">电话:<%=dianhua%></div>
+                        
+                </div>
+            </div>
+        
+        <div class="aui-list-item aui-padded-l-0">
+                <div class="aui-list-item-inner">
+                    <div class="aui-list-item-title aui-font-size-14 goods-title">收货地址:<%=dizhi%></div>
 
+                </div>
+            </div>
+
+        </div>
 
             <div class="aui-list-item aui-padded-l-0">
                 <div class="aui-list-item-inner">
@@ -472,7 +497,7 @@ use yii\helpers\Url;
     wx.ready(function(){
     
         wx.onMenuShareAppMessage({
-            title: '[感蟹有你] 买蟹进来看!', // 分享标题
+            title: '[感蟹有您] 买蟹进来看!', // 分享标题
             desc: '原生态 高品质 送亲朋送好友 吃的健康 购的安心送礼的不二选择', // 分享描述
             link: 'http://www.taozihu.com/site/default/crab?channel='+'<?php echo $channel?>', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: 'http://www.taozihu.com/images/shareimg.jpg', // 分享图标
@@ -487,7 +512,7 @@ use yii\helpers\Url;
         });
 
         wx.onMenuShareTimeline({
-            title: '[感蟹有你] 买蟹进来看!',
+            title: '[感蟹有您] 买蟹进来看!',
             link: '原生态 高品质 送亲朋送好友 吃的健康 购的安心送礼的不二选择',
             link: 'http://www.taozihu.com/site/default/crab?channel='+'<?php echo $channel?>', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: 'http://www.taozihu.com/images/shareimg.jpg', // 分享图标
@@ -549,15 +574,20 @@ use yii\helpers\Url;
                 });
             } else {
                 var data = {};
+                data.lianxiren= userName;
+                data.dianhua=telNumber;
+                data.dizhi= $('#address').val();
+
+
                 var count = parseInt(document.getElementById("count" + $(":radio:checked").val()).value);
                 if (parseInt($(":radio:checked").val()) == 1) {
-                    data.taocan = 'A.家庭装套餐';
+                    data.taocan = ' A.家庭装';
                     data.qian = 188;
                 } else if (parseInt($(":radio:checked").val()) == 2) {
-                    data.taocan = 'B.家庭装套餐';
+                    data.taocan = ' B.尊享装';
                     data.qian = 298;
                 } else if (parseInt($(":radio:checked").val()) == 3) {
-                    data.taocan = 'C.家庭装套餐';
+                    data.taocan = ' C.豪华装';
                     data.qian = 468;
                 }
                 data.shuliang = count;
@@ -572,6 +602,9 @@ use yii\helpers\Url;
                     is_postal = 1;
                     data.kuaidi = 0;
                 }
+
+
+
                 data.zongji = data.qian * count + data.kuaidi;
 
                 layer.open({
