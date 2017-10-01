@@ -539,11 +539,6 @@ use yii\helpers\Url;
             var telNumber = $('#tel').val();
             var provinceName = $('#provinceName').val();
 
-            var userName = 'alex';
-            var telNumber = 18368182313;
-            var provinceName = '浙江省';
-            $('#address').val('浙江省杭州市西湖区望月公寓');
-
             if (!userName || !telNumber) {
                 //自定页
                 layer.open({
@@ -602,11 +597,6 @@ use yii\helpers\Url;
         var userName = $('#name').val();
         var telNumber = $('#tel').val();
         var provinceName = $('#provinceName').val();
-
-        var userName = 'alex';
-        var telNumber = 18368182313;
-        var provinceName = '浙江省';
-        $('#address').val('浙江省杭州市西湖区望月公寓');
 
         var count = parseInt(document.getElementById("count" + $(":radio:checked").val()).value);
         var postal = new Array("江苏省", "浙江省", "上海市", "安徽省");
