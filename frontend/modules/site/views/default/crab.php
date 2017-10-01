@@ -414,36 +414,25 @@ use yii\helpers\Url;
 <script type="text/javascript" src="/script/video.min.js"></script>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
 <script type="text/template" id="payconf">
-    
-
-
-    <div class="aui-card-list-content aui-border-b aui-padded-15" style="margin:10px;width:250px">
-    
-
-        <ul class="aui-list aui-list-noborder">
-        <div style="border:1px solid #222;text-align:left">
+    <div class="aui-card-list-content aui-border-b aui-padded-15" style="margin:10px;width:270px">
+        <ul class="aui-list aui-list-noborder"> 
         <div class="aui-list-item aui-padded-l-0">
                 <div class="aui-list-item-inner">
-                    <div class="aui-list-item-title aui-font-size-14 goods-title">联系人:<%=lianxiren%></div>
-                        
+                    <div class="aui-list-item-title aui-font-size-14 goods-title">联系人:<%=lianxiren%></div>                       
                 </div>
             </div>
         
             <div class="aui-list-item aui-padded-l-0">
                 <div class="aui-list-item-inner">
-                    <div class="aui-list-item-title aui-font-size-14 goods-title">电话:<%=dianhua%></div>
-                        
+                    <div class="aui-list-item-title aui-font-size-14 goods-title">电话:<%=dianhua%></div>                      
                 </div>
             </div>
         
         <div class="aui-list-item aui-padded-l-0">
                 <div class="aui-list-item-inner">
                     <div class="aui-list-item-title aui-font-size-14 goods-title">收货地址:<%=dizhi%></div>
-
                 </div>
             </div>
-
-        </div>
 
             <div class="aui-list-item aui-padded-l-0">
                 <div class="aui-list-item-inner">
@@ -480,9 +469,11 @@ use yii\helpers\Url;
         </div>
 
     </div>
-
-
 </script>
+
+
+
+
 <input type="hidden" id="name" value="">
 <input type="hidden" id="tel" value="">
 <input type="hidden" id="address" value="">
