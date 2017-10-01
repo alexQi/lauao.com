@@ -100,6 +100,7 @@ class DefaultController extends BaseController
      * @param string $flag   支付类型  付款|充值
      */
     public function actionNotify(){
+        $this->enableCsrfValidation = false;
         $api    = new ApiService();
 
         $wechat = \Yii::$app->wechat;
