@@ -467,7 +467,12 @@ use yii\helpers\Url;
     //触摸
     $(document).ready(function () {
         wx.config(<?= json_encode($jsApiConfig) ?>);
-        getAddress();
+        //getAddress();
+       
+    });
+
+    wx.ready(function(){
+    
         wx.onMenuShareAppMessage({
             title: 'test',
             desc: 'this is a test',
@@ -506,7 +511,12 @@ use yii\helpers\Url;
                  alert(JSON.stringify(res));
             }
         });
-    });
+
+
+    })
+
+
+
 
     function getAddress() {
         wx.openAddress({
