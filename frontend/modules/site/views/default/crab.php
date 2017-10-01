@@ -474,43 +474,38 @@ use yii\helpers\Url;
     wx.ready(function(){
     
         wx.onMenuShareAppMessage({
-            title: 'test',
-            desc: 'this is a test',
-            link: 'http://www.baidu.com',
-            imgUrl: 'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=3852561242,1416741773&fm=58',
-            trigger: function (res) {
-                // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
-                // alert('用户点击发送给朋友');
+            title: '[感蟹有你] 买蟹进来看!', // 分享标题
+            desc: '原生态 高品质 送亲朋送好友', // 分享描述
+            link: 'http://taozihu.com/site/default/crab', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'http://www.taozihu.com/images/shareimg.jpg', // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () { 
+                // 用户确认分享后执行的回调函数
             },
-            success: function (res) {
-                 alert('已分享');
-            },
-            cancel: function (res) {
-                 alert('已取消');
-            },
-            fail: function (res) {
-                 alert(JSON.stringify(res));
+            cancel: function () { 
+                // 用户取消分享后执行的回调函数
             }
         });
 
-        wx.onMenuShareTimeline({
-            title: 'test',
-            link: 'http://www.baidu.com',
-            imgUrl: 'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=3852561242,1416741773&fm=58',
-            trigger: function (res) {
-                // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
-                // alert('用户点击分享到朋友圈');
-            },
-            success: function (res) {
-                 alert('已分享');
-            },
-            cancel: function (res) {
-                 alert('已取消');
-            },
-            fail: function (res) {
-                 alert(JSON.stringify(res));
-            }
-        });
+        // wx.onMenuShareTimeline({
+        //     title: 'test',
+        //     link: 'http://www.baidu.com',
+        //     imgUrl: 'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=3852561242,1416741773&fm=58',
+        //     trigger: function (res) {
+        //         // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+        //         // alert('用户点击分享到朋友圈');
+        //     },
+        //     success: function (res) {
+        //          alert('已分享');
+        //     },
+        //     cancel: function (res) {
+        //          alert('已取消');
+        //     },
+        //     fail: function (res) {
+        //          alert(JSON.stringify(res));
+        //     }
+        // });
 
 
     })
