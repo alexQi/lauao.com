@@ -629,7 +629,7 @@ use yii\helpers\Url;
         }
 
         $.ajax({
-            url: '/ajax/default/create-order',
+            url: '/ajax/default/create-order?channel='+'<?php echo $channel;?>',
             type: 'POST',
             dataType: 'JSON',
             data: {
