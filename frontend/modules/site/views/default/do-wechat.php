@@ -6,7 +6,7 @@
             <?= $payConfig; ?>,
             function(res){
                 if(res.err_msg=='get_brand_wcpay_request:ok'){
-                    window.location.href = "<?php echo $rtnUrl.'/site/default/crab'?>";
+                    window.location.href = "<?php echo \yii\helpers\Url::to(['/site/default/crab'])?>";
                 }else{
                     alert('支付已取消');
                 }
