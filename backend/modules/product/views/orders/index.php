@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h3 class="box-title"><?= Html::encode($this->title) ?></h3>
 
                 <div class="box-tools">
-        <?= Html::a('导出Excel', ['import'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('导出Excel', ['data-to-excel'], ['class' => 'btn btn-success']) ?>
                 </div>
             </div>
             <div class="box-body">
