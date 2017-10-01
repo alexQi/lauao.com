@@ -62,7 +62,7 @@ class DefaultController extends BaseController
         ]);
         $jsApiConfig = $wechat->jsApiConfig();
 
-        $channel = isset(yii::$app->params['channel']) ? yii::$app->params['channel'] : 'xczb';
+        $channel = yii::$app->request->get('channel') ? yii::$app->request->get('channel') : 'xczb';
         $order   = Orders::find();
         $order->select('count(id) as total_num,sum(total_money) as all_money');
         $order->where(['channel'=>$channel]);
