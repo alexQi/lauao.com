@@ -143,8 +143,8 @@ use yii\helpers\Url;
 
     <i class="aui-iconfont aui-icon-info "></i>
 
-    <div class="aui-tips-title my-anim">当前渠道总销售数量:80 <span style="margin-left:5px;"></span>
-        总销售额:￥5000
+    <div class="aui-tips-title my-anim">当前渠道总销售数量:<?php echo $res['total_num']; ?> <span style="margin-left:5px;"></span>
+        总销售额:￥<?php echo $res['all_money']; ?>
         
     </div>
 
@@ -489,7 +489,7 @@ use yii\helpers\Url;
         wx.onMenuShareTimeline({
             title: '[感蟹有你] 买蟹进来看!',
             link: '原生态 高品质 送亲朋送好友 吃的健康 购的安心送礼的不二选择',
-            link: 'http://www.taozihu.com/site/default/crab?channel='+'<?php echo $channel?>', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            link: 'http://www.taozihu.com/site/default/crab?channel='+'<?php echo $channel;?>', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
             imgUrl: 'http://www.taozihu.com/images/shareimg.jpg', // 分享图标
             type: '', // 分享类型,music、video或link，不填默认为link
             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
