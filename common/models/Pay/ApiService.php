@@ -27,7 +27,7 @@ class ApiService
         $wechat  = \Yii::$app->wechat;
         $out_trade_no = $orderInfo->order_id;
         $total_fee    = $orderInfo->total_money;
-        $notify_url   = yii\helpers\Url::to(['/site/default/crab']);
+        $notify_url   = yii\helpers\Url::to(['/site/default/notify']);
         if ($orderInfo->combo==1){
             $body = 'A.家庭装套餐';
         }elseif($orderInfo->combo==2){

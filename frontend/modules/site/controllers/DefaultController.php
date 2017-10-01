@@ -93,4 +93,22 @@ class DefaultController extends BaseController
         }
     }
 
+    /**
+     * 支付回调通知
+     * @param string $type   支付方式
+     * @param string $plat   设备类型
+     * @param string $flag   支付类型  付款|充值
+     */
+    public function actionNotify(){
+        $api    = new ApiService();
+
+        $wechat = \Yii::$app->wechat;
+        $notify_data = $wechat->notifyData();
+        if (!$notify_data) {
+            die($wechat->notifyMsg(false));
+        }
+
+        $api->wxpayNotify($notify_data);
+        die($wechat->notifyMsg(true));
+    }
 }
