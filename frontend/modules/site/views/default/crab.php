@@ -603,8 +603,6 @@ use yii\helpers\Url;
         var telNumber = $('#tel').val();
         var provinceName = $('#provinceName').val();
 
-        alert(telNumber);
-
         var count = parseInt(document.getElementById("count" + $(":radio:checked").val()).value);
         var postal = new Array("江苏省", "浙江省", "上海市", "安徽省");
         var ispostal = $.inArray(provinceName, postal);//判断选择的省份是否在定义的包邮列表中

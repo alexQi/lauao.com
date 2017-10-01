@@ -164,7 +164,7 @@ class Wechat extends \callmez\wechat\sdk\Wechat
      * @return array
      * @throws HttpException
      */
-    public function jsApiConfig(array $config = [], $debug = true)
+    public function jsApiConfig(array $config = [], $debug = false)
     {
         $data = [
             'jsapi_ticket' => $this->getJsApiTicket(),

@@ -290,7 +290,7 @@ class DefaultController extends BaseController
             $combo = $this->postData['combo'];
             $num   = $this->postData['num'];
             $name  = $this->postData['name'];
-            $phone = $this->postData['combo'];
+            $phone = $this->postData['tel'];
             $addr  = $this->postData['addr'];
             $isPostal  = $this->postData['is_postal'];
 
