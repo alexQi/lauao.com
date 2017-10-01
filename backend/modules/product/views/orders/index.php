@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $string;
                 },
                 "headerOptions" => [
-                    "width" => "150"
+                    "width" => "120"
                 ],
             ],
             [
