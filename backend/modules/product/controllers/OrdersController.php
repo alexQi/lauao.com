@@ -78,11 +78,11 @@ class OrdersController extends Controller
             $objectPHPExcel->getActiveSheet()->setCellValue('B'.($n) ,$v["order_id"]);
             $combo = '';
             if ($v['combo']==1){
-                $combo = 'A.家庭装套餐';
+                $combo = 'A.家庭装';
             }else if($v['combo']==2){
-                $combo = 'B.家庭装套餐';
+                $combo = 'B.尊享装';
             }else if($v['combo']==3){
-                $combo = 'C.家庭装套餐';
+                $combo = 'C.豪华装';
             }
             $objectPHPExcel->getActiveSheet()->setCellValue('C'.($n) ,$combo);
             $objectPHPExcel->getActiveSheet()->setCellValue('D'.($n) ,$v['num']);

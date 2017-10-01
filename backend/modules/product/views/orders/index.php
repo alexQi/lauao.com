@@ -38,11 +38,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value'=>function ($model) {
                     $string = '';
                     if($model->combo==1){
-                        $string = "A.家庭装套餐";
+                        $string = "A.家庭装";
                     }elseif($model->combo==2){
-                        $string = "B.家庭装套餐";
+                        $string = "A.家庭装";
                     }elseif($model->combo==3){
-                        $string = "C.家庭装套餐";
+                        $string = "A.家庭装";
                     }
                     return $string;
                 },

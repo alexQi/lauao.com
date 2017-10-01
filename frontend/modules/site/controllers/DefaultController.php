@@ -64,7 +64,7 @@ class DefaultController extends BaseController
 
         $channel = yii::$app->request->get('channel') ? yii::$app->request->get('channel') : 'xczb';
         $order   = Orders::find();
-        $order->select('count(id) as total_num,sum(total_money) as all_money');
+        $order->select('sum(num) as total_num,sum(total_money) as all_money');
         $order->where(['channel'=>$channel]);
         $order->andWhere(['status'=>2]);
         $res = $order->asArray()->one();
