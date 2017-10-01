@@ -468,15 +468,53 @@ use yii\helpers\Url;
     $(document).ready(function () {
         wx.config(<?= json_encode($jsApiConfig) ?>);
         getAddress();
+        wx.onMenuShareAppMessage({
+            title: 'test',
+            desc: 'this is a test',
+            link: 'http://www.baidu.com',
+            imgUrl: 'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=3852561242,1416741773&fm=58',
+            trigger: function (res) {
+                // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+                // alert('用户点击发送给朋友');
+            },
+            success: function (res) {
+                 alert('已分享');
+            },
+            cancel: function (res) {
+                 alert('已取消');
+            },
+            fail: function (res) {
+                 alert(JSON.stringify(res));
+            }
+        });
+
+        wx.onMenuShareTimeline({
+            title: 'test',
+            link: 'http://www.baidu.com',
+            imgUrl: 'https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=3852561242,1416741773&fm=58',
+            trigger: function (res) {
+                // 不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回
+                // alert('用户点击分享到朋友圈');
+            },
+            success: function (res) {
+                 alert('已分享');
+            },
+            cancel: function (res) {
+                 alert('已取消');
+            },
+            fail: function (res) {
+                 alert(JSON.stringify(res));
+            }
+        });
     });
 
-    function getAddress(){
+    function getAddress() {
         wx.openAddress({
             success: function (res) {
                 $('#name').val(res.userName);
                 $('#tel').val(res.telNumber);
                 $('#provinceName').val(res.provinceName);
-                $('#address').val(res.provinceName+res.cityName+res.countryName+res.detailInfo);
+                $('#address').val(res.provinceName + res.cityName + res.countryName + res.detailInfo);
             }
         });
     }
@@ -497,12 +535,12 @@ use yii\helpers\Url;
         var len = item.length;
         if (len > 0) {
 
-            var userName     = $('#name').val();
-            var telNumber    = $('#tel').val();
+            var userName = $('#name').val();
+            var telNumber = $('#tel').val();
             var provinceName = $('#provinceName').val();
 
-            var userName     = 'alex';
-            var telNumber    = 18368182313;
+            var userName = 'alex';
+            var telNumber = 18368182313;
             var provinceName = '浙江省';
             $('#address').val('浙江省杭州市西湖区望月公寓');
 
@@ -517,18 +555,18 @@ use yii\helpers\Url;
                     shadeClose: true, //开启遮罩关闭
                     content: '<div style="padding: 25px; line-height: 30px;color:#737372;font-size:0.70rem">请点击底部我的收货地址<br/>选择或新增收货地址</div>'
                 });
-            }else {
+            } else {
                 var data = {};
                 var count = parseInt(document.getElementById("count" + $(":radio:checked").val()).value);
-                if(parseInt($(":radio:checked").val())==1){
+                if (parseInt($(":radio:checked").val()) == 1) {
                     data.taocan = 'A.家庭装套餐';
-                    data.qian   = 188;
-                }else if(parseInt($(":radio:checked").val())==2){
+                    data.qian = 188;
+                } else if (parseInt($(":radio:checked").val()) == 2) {
                     data.taocan = 'B.家庭装套餐';
-                    data.qian   = 298;
-                }else if(parseInt($(":radio:checked").val())==3){
+                    data.qian = 298;
+                } else if (parseInt($(":radio:checked").val()) == 3) {
                     data.taocan = 'C.家庭装套餐';
-                    data.qian   = 468;
+                    data.qian = 468;
                 }
                 data.shuliang = count;
                 var postal = new Array("江苏省", "浙江省", "上海市", "安徽省");
@@ -542,7 +580,7 @@ use yii\helpers\Url;
                     is_postal = 1;
                     data.kuaidi = 0;
                 }
-                data.zongji = data.qian*count+data.kuaidi;
+                data.zongji = data.qian * count + data.kuaidi;
 
                 layer.open({
                     type: 1,
@@ -561,12 +599,12 @@ use yii\helpers\Url;
     function crabwxplay() {
         layer.closeAll();
 
-        var userName     = $('#name').val();
-        var telNumber    = $('#tel').val();
+        var userName = $('#name').val();
+        var telNumber = $('#tel').val();
         var provinceName = $('#provinceName').val();
 
-        var userName     = 'alex';
-        var telNumber    = 18368182313;
+        var userName = 'alex';
+        var telNumber = 18368182313;
         var provinceName = '浙江省';
         $('#address').val('浙江省杭州市西湖区望月公寓');
 
@@ -575,27 +613,26 @@ use yii\helpers\Url;
         var ispostal = $.inArray(provinceName, postal);//判断选择的省份是否在定义的包邮列表中
         //返回-1表示不在包邮列表中
         var is_postal = 2;
-        if (ispostal != -1)
-        {
+        if (ispostal != -1) {
             is_postal = 1;
         }
 
         $.ajax({
-            url:'/ajax/default/create-order',
-            type:'POST',
-            dataType:'JSON',
-            data:{
-                "combo":$(":radio:checked").val(),
-                "num":count,
-                "name":userName,
-                "phone":telNumber,
-                "addr":$('#address').val(),
-                "is_postal":is_postal
+            url: '/ajax/default/create-order',
+            type: 'POST',
+            dataType: 'JSON',
+            data: {
+                "combo": $(":radio:checked").val(),
+                "num": count,
+                "name": userName,
+                "phone": telNumber,
+                "addr": $('#address').val(),
+                "is_postal": is_postal
             },
-            success:function(res){
-                if (res.state==1){
-                    window.location.href = "<?php echo Url::to(['/site/default/to-pay'])?>/"+res.data.id;
-                }else{
+            success: function (res) {
+                if (res.state == 1) {
+                    window.location.href = "<?php echo Url::to(['/site/default/to-pay'])?>/" + res.data.id;
+                } else {
                     layer.open({
                         type: 1,
                         title: '感蟹有您温馨提示',
@@ -607,7 +644,7 @@ use yii\helpers\Url;
                     });
                 }
             },
-            error:function(e){
+            error: function (e) {
                 layer.open({
                     type: 1,
                     title: '感蟹有您温馨提示',
