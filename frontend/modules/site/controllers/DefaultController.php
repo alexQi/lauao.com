@@ -105,7 +105,7 @@ class DefaultController extends BaseController
         $wechat = \Yii::$app->wechat;
         $notify_data = $wechat->notifyData();
 
-        yii::info(json_encode($notify_data));
+        yii::info(json_encode($notify_data),'payment.entryway');
         if (!$notify_data) {
             die($wechat->notifyMsg(false));
         }
