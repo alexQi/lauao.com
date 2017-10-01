@@ -62,8 +62,17 @@ class DefaultController extends BaseController
         ]);
         $jsApiConfig = $wechat->jsApiConfig();
 
+        $channel = isset($this->getData['channel']) ? $this->getData['channel'] : 'xczb';
+        $order   = Orders::find();
+        $order->select('count(id) as total_num,sum(total_money) as all_money');
+        $order->where(['channel'=>$channel]);
+        $order->andWhere(['status'=>2]);
+        $res = $order->asArray()->one();
+
         return $this->render('crab',[
             'jsApiConfig' => $jsApiConfig,
+            'channel' => $channel,
+            'res' => $res
         ]);
     }
 
