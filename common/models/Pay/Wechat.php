@@ -284,7 +284,7 @@ class Wechat extends \callmez\wechat\sdk\Wechat
         try {
             $result = WxPayResults::Init($xml,$plat);
         } catch (WxPayException $e){
-            \Yii::error($e->errorMessage());
+            \Yii::error($e->errorMessage(),'entryway_error');
             return false;
         }
         return $result;

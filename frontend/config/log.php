@@ -10,11 +10,19 @@ return [
         [
             'class' => 'yii\log\FileTarget',
             'levels' => ['info'],
-            'categories' => ['payment.entryway'],
+            'categories' => ['entryway'],
             'logFile' => '@frontend/runtime/logs/entryway.log',
             'maxFileSize' => 1024 * 2,
             'maxLogFiles' => 20,
-        ]
+        ],
+        [
+        'class' => 'yii\log\FileTarget',
+        'levels' => ['info'],
+        'categories' => ['entryway_error'],
+        'logFile' => '@frontend/runtime/logs/entryway_error.log',
+        'maxFileSize' => 1024 * 2,
+        'maxLogFiles' => 20,
+    ]
     ],
 ];
 
