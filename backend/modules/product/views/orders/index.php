@@ -40,9 +40,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     if($model->combo==1){
                         $string = "A.家庭装";
                     }elseif($model->combo==2){
-                        $string = "A.家庭装";
+                        $string = "B.尊享装";
                     }elseif($model->combo==3){
-                        $string = "A.家庭装";
+                        $string = "C.豪华装";
                     }
                     return $string;
                 },
