@@ -18,47 +18,78 @@ $this->params['breadcrumbs'][] = $this->title;
 
 $controllerId = $this->context->uniqueId . '/';
 ?>
-<div class="user-view">
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box box-info">
+            <div class="box-body">
+                <p>
+                    <?php
+                    if ($model->status == 0 && Helper::checkRoute($controllerId . 'activate')) {
+                        echo Html::a(Yii::t('rbac-admin', 'Activate'), ['activate', 'id' => $model->id], [
+                            'class' => 'btn btn-primary',
+                            'data' => [
+                                'confirm' => Yii::t('rbac-admin', 'Are you sure you want to activate this user?'),
+                                'method' => 'post',
+                            ],
+                        ]);
+                    }
+                    ?>
+                    <?php
+                    if (Helper::checkRoute($controllerId . 'delete')) {
+                        echo Html::a(Yii::t('rbac-admin', 'Delete'), ['delete', 'id' => $model->id], [
+                            'class' => 'btn btn-danger',
+                            'data' => [
+                                'confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
+                                'method' => 'post',
+                            ],
+                        ]);
+                    }
+                    ?>
+                </p>
 
-    <!-- <h1><?= Html::encode($this->title) ?></h1> -->
+                <?=
+                DetailView::widget([
+                    'model' => $model,
+                    'attributes' => [
+                        [
+                            'label' => '用户名',
+                            'attribute' => 'username',
+                            'format' => 'html',
+                            'value' => function($model) {
+                                return $model->username;
+                            }
+                        ],
+                        [
+                            'label' => '状态',
+                            'attribute' => 'status',
+                            'format' => 'html',
+                            'value' => function($model) {
+                                $string = $model->status==0 ? 'Forbid' : '正常';
+                                $class  = $model->status==10 ? 'danger': '禁用';
+                                $html   ='<span class="label label-'.$class.'">'.$string.'</span>';
+                                return $html;
+                            },
+                            'filter' => [
+                                0 => 'Inactive',
+                                10 => 'Active'
+                            ]
+                        ],
+                        [
+                            'label' => '创建时间',
+                            'attribute' => 'created_at',
+                            'format' => 'html',
+                            'value' => function($model) {
+                                return date('Y-m-d H:i:s',$model->created_at);
+                            }
+                        ],
+                    ],
+                ])
+                ?>
 
-    <p>
-        <?php
-        if ($model->status == 0 && Helper::checkRoute($controllerId . 'activate')) {
-            echo Html::a(Yii::t('rbac-admin', 'Activate'), ['activate', 'id' => $model->id], [
-                'class' => 'btn btn-primary',
-                'data' => [
-                    'confirm' => Yii::t('rbac-admin', 'Are you sure you want to activate this user?'),
-                    'method' => 'post',
-                ],
-            ]);
-        }
-        ?>
-        <?php
-        if (Helper::checkRoute($controllerId . 'delete')) {
-            echo Html::a(Yii::t('rbac-admin', 'Delete'), ['delete', 'id' => $model->id], [
-                'class' => 'btn btn-danger',
-                'data' => [
-                    'confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
-                    'method' => 'post',
-                ],
-            ]);
-        }
-        ?>
-    </p>
-
-    <?=
-    DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'username',
-            'email:email',
-            'created_at:date',
-            'status',
-        ],
-    ])
-    ?>
-
+            </div>
+        </div>
+        <!-- /.box-body -->
+    </div>
 </div>
 <?php
 /* @var $this yii\web\View */

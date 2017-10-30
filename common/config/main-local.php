@@ -4,8 +4,8 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn'   => 'mysql:host=www.ztwliot.com;dbname=zcg;port=3306',
-            'username' => 'oliu',
+            'dsn'   => 'mysql:host=localhost;dbname=oliu;port=3306',
+            'username' => 'root',
             'password' => 'woshishei',
             'charset'  => 'utf8',
             'tablePrefix' => 'pre_',
