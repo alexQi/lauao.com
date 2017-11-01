@@ -1,4 +1,11 @@
 <?php
+if (YII_ENV=='development')
+{
+    $director = 'development';
+}else{
+    $director = 'production';
+}
+
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
@@ -17,5 +24,9 @@ return [
                 ],
             ],
         ],
+        'db'       => require(__DIR__ . '/'.$director.'/config_db.php'),
+        'mailer'   => require(__DIR__ . '/'.$director.'/config_mail.php'),
+        'redis'    => require(__DIR__ . '/'.$director.'/config_redis.php'),
+        'beanstalk'=> require(__DIR__ . '/'.$director.'/config_beanstalk.php'),
     ],
 ];
