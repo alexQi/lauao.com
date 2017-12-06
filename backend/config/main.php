@@ -89,13 +89,7 @@ return [
             "defaultRoles" => ["guest"],
         ],
     ],
-    'as access' => [
-        'class' => 'backend\modules\admin\components\AccessControl',
-        'allowActions' => [
-            //这里是允许访问的action
-//            '*'
-        ],
-    ],
+
     'params' => $params,
     'name'=>'OLIU后台管理',
 ];

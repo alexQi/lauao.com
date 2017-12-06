@@ -8,19 +8,19 @@ use backend\modules\admin\models\form\PasswordResetRequest;
 use backend\modules\admin\models\form\ResetPassword;
 use backend\modules\admin\models\form\Signup;
 use backend\modules\admin\models\form\ChangePassword;
+use backend\modules\admin\models\Assignment;
+use backend\modules\admin\models\AuthAssignment;
 use backend\modules\admin\models\User;
+use common\models\UserExtend;
 use backend\modules\admin\models\searchs\User as UserSearch;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
 use yii\base\UserException;
 use yii\mail\BaseMailer;
 
-use backend\modules\admin\models\Assignment;
-use backend\modules\admin\models\searchs\Assignment as AssignmentSearch;
 
 /**
  * User controller
@@ -206,6 +206,14 @@ class UserController extends Controller
      */
     public function actionDelete($id)
     {
+        //清除用户基础信息
+        $userExtend = UserExtend::find()->where(['user_id'=>$id])->one();
+        if ($userExtend)
+        {
+            $userExtend->delete();
+        }
+        //清除用户权限授权记录
+        AuthAssignment::deleteAll(['user_id'=>$id]);
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -249,14 +257,29 @@ class UserController extends Controller
     public function actionSignup()
     {
         $model = new Signup();
+
         if ($model->load(Yii::$app->getRequest()->post())) {
+
             if ($user = $model->signup()) {
                 return $this->goHome();
             }
         }
 
+        $p1 = $p2 = '';
+        $sectionList = [
+            [
+                'id' => 0,
+                'sectionName' => 'All'
+            ]
+        ];
+        $model->gender = 1;
+        $model->status = 10;
+
         return $this->render('signup', [
-                'model' => $model,
+            'model' => $model,
+            'p1' => $p1,
+            'p2' => $p2,
+            'sectionList' => $sectionList
         ]);
     }
 

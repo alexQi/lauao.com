@@ -17,10 +17,10 @@ AdminLtePluginsICheckAsset::register($this);
     <div class="col-md-9">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Inbox</h3>
+                <h3 class="box-title">收件箱</h3>
 
                 <div class="box-tools">
-                    <div class="has-feedback input-group col-lg-2  pull-right">
+                    <div class="has-feedback input-group col-lg-3  pull-right">
                         <!-- /btn-group -->
                         <input type="text" id="mail-keyword" class="form-control input-sm" value="<?php echo isset($params['keyword']) ? $params['keyword'] :''; ?>" placeholder="Search Mail">
                         <div class="input-group-btn">

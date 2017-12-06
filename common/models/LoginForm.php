@@ -3,7 +3,7 @@ namespace common\models;
 
 use Yii;
 use yii\base\Model;
-
+use yii\base\InvalidConfigException;
 /**
  * Login form
  */
@@ -56,7 +56,21 @@ class LoginForm extends Model
     public function login()
     {
         if ($this->validate()) {
-            return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
+            Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
+            if (Yii::$app->user->isGuest==false)
+            {
+                $UserExtendModel = UserExtend::find()->where(['user_id'=>Yii::$app->user->identity->getId()])->one();
+                if ($UserExtendModel)
+                {
+                    $UserExtendModel->last_login_ip   = ip2long(Yii::$app->getRequest()->getUserIP());
+                    $UserExtendModel->last_login_time = time();
+                    $UserExtendModel->save(false);
+
+                    return true;
+                }else{
+                    throw new InvalidConfigException('用户数据异常');
+                }
+            }
         } else {
             return false;
         }

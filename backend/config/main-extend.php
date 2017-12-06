@@ -7,6 +7,14 @@ $config = [
             'cookieValidationKey' => '9ZAHp-HBXWXdXd03DukejzEDv0CAXrWk',
         ],
     ],
+    'as access' => [
+        'class' => 'backend\modules\admin\components\AccessControl',
+        'allowActions' => [
+            //这里是允许访问的action *代表所有
+            'debug/default/*',
+//            '*',
+        ],
+    ],
     'on beforeRequest' => function($event) {
         \yii\base\Event::on(\yii\db\BaseActiveRecord::className(), \yii\db\BaseActiveRecord::EVENT_AFTER_UPDATE, ['backend\components\AdminLog', 'write']);
         \yii\base\Event::on(\yii\db\BaseActiveRecord::className(), \yii\db\BaseActiveRecord::EVENT_AFTER_DELETE, ['backend\components\AdminLog', 'write']);
@@ -14,8 +22,9 @@ $config = [
     },
 ];
 
-if (!YII_ENV_TEST) {
+if (YII_ENV) {
     // configuration adjustments for 'dev' environment
+    $config['as access']['allowActions'][] = 'gii/*';
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',

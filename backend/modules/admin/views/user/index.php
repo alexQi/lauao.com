@@ -7,6 +7,7 @@ use backend\modules\admin\components\Helper;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\modules\admin\models\searchs\User */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $model \backend\modules\admin\models\User */
 
 $this->title = Yii::t('rbac-admin', 'Users');
 $this->params['breadcrumbs'][] = $this->title;
@@ -37,22 +38,95 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
-                        'username',
-                        'email:email',
-                        'created_at:date',
                         [
+                            'label' => '姓名',
+                            'attribute'=>'userExtend.real_name',
+                            'format' => 'raw',
+                            'value'  => 'userExtend.real_name',
+                            "headerOptions" => [
+                                "width" => "80"
+                            ],
+                        ],
+                        [
+                            'label' => '用户名',
+                            'attribute'=>'username',
+                            'format' => 'raw',
+                            'value'=>function ($model) {
+                                return $model->username;
+                            },
+                            "headerOptions" => [
+                                "width" => "80"
+                            ],
+                        ],
+                        [
+                            'label' => '部门',
+                            'attribute'=>'section',
+                            'format' => 'html',
+                            'value'  => function($model){
+                                return $model->userExtend['section'];
+                            },
+                            "headerOptions" => [
+                                "width" => "80"
+                            ],
+                        ],
+                        [
+                            'label' => '邮件',
+                            'attribute'=>'email',
+                            'format' => 'raw',
+                            'value'=>function ($model) {
+                                return $model->email;
+                            },
+                            "headerOptions" => [
+                                "width" => "150"
+                            ],
+                        ],
+                        [
+                            'label' => '创建时间',
+                            'attribute'=>'created_at',
+                            'format' => ['date', 'php:Y-m-d'],
+                            "headerOptions" => [
+                                "width" => "100"
+                            ],
+                        ],
+                        [
+                            'label' => '状态',
                             'attribute' => 'status',
                             'format' => 'html',
                             'value' => function($model) {
-                                $string = $model->status==1 ? 'Forbid' : 'Active';
+                                $string = $model->status==1 ? '禁用' : '启用';
                                 $class  = $model->status==1 ? 'danger' : 'success';
                                 $html   ='<span class="label label-'.$class.'">'.$string.'</span>';
                                 return $html;
                             },
                             'filter' => [
-                                0 => 'Inactive',
-                                10 => 'Active'
-                            ]
+                                0 => '禁用',
+                                10 => '启用'
+                            ],
+                            "headerOptions" => [
+                                "width" => "50"
+                            ],
+                        ],
+                        [
+                            'label' => '上次登录IP',
+                            'attribute'=>'last_login_ip',
+                            'format' => 'html',
+                            'value'  => function($model){
+                                return long2ip($model->userExtend['last_login_ip']);
+                            },
+                            "headerOptions" => [
+                                "width" => "100"
+                            ],
+                        ],
+                        [
+                            'label' => '上次登录时间',
+                            'attribute'=>'last_login_time',
+                            'format' => 'html',
+                            'value'  => function($model){
+                                return date('Y-m-d H:i:s',$model->userExtend['last_login_time']);
+                            },
+                            "headerOptions" => [
+                                "width" => "150"
+                            ],
                         ],
                         [
                             'class' => 'yii\grid\ActionColumn',

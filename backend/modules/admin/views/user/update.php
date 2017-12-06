@@ -3,7 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-$this->title = \Yii::t('app', 'USER PROFILE');
+$this->title = \Yii::t('app', '用户信息');
 $this->params['breadcrumbs'][] = $this->title;
 
 $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
@@ -22,12 +22,6 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed201
             <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
                     <b>Followers</b> <a class="pull-right">1,322</a>
-                </li>
-                <li class="list-group-item">
-                    <b>Following</b> <a class="pull-right">543</a>
-                </li>
-                <li class="list-group-item">
-                    <b>Friends</b> <a class="pull-right">13,287</a>
                 </li>
             </ul>
 

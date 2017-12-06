@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use backend\modules\admin\models\User as UserModel;
+use common\models\UserExtend;
 
 /**
  * User represents the model behind the search form about `backend\modules\admin\models\User`.
@@ -33,6 +34,14 @@ class User extends UserModel
     }
 
     /**
+     * userExtend relations
+     */
+    public function getUserExtend()
+    {
+        return $this->hasOne(UserExtend::className(), ['user_id' => 'id']);
+    }
+
+    /**
      * Creates data provider instance with search query applied
      *
      * @param array $params
@@ -41,7 +50,7 @@ class User extends UserModel
      */
     public function search($params)
     {
-        $query = UserModel::find();
+        $query = self::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -61,9 +70,6 @@ class User extends UserModel
         ]);
 
         $query->andFilterWhere(['like', 'username', $this->username])
-            ->andFilterWhere(['like', 'auth_key', $this->auth_key])
-            ->andFilterWhere(['like', 'password_hash', $this->password_hash])
-            ->andFilterWhere(['like', 'password_reset_token', $this->password_reset_token])
             ->andFilterWhere(['like', 'email', $this->email]);
 
         return $dataProvider;

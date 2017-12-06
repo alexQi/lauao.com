@@ -3,6 +3,7 @@
 namespace app\models;
 
 use common\models\User;
+use common\models\UserExtend;
 
 /**
  * ProductSearch represents the model behind the search form about `app\models\Product`.
@@ -14,7 +15,7 @@ class UserSearch extends User
         $query = self::find();
         if (!empty($param))
         {
-
+            //.....
         }
         $userList = $query->asArray()->all();
 

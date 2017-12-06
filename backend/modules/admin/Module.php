@@ -176,7 +176,7 @@ class Module extends \yii\base\Module
             $view = $action->controller->getView();
 
             $view->params['breadcrumbs'][] = [
-                'label' => ($this->defaultUrlLabel ?: Yii::t('rbac-admin', 'Admin')),
+                'label' => ($this->defaultUrlLabel ?: Yii::t('rbac-admin', '管理员')),
                 'url' => ['/' . ($this->defaultUrl ?: $this->uniqueId)]
             ];
             return true;

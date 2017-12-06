@@ -16,6 +16,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Admin' => '管理员',
     'Assignments' => '分配',
     'Users' => '用户列表',
     'User' => '用户',
@@ -56,10 +57,10 @@ return [
     'Search' => '查询',
     'Reset' => '重置',
     'Update Menu' => '更新菜单',
-    'Menus' => '菜单列表',
     'Order' => '排序',
     'Class Name' => '类名',
     'Assignment' => '分配',
+    'Signup' => '新增用户',
     'Role' => '角色',
     'Rule' => '规则',
     'Menu' => '菜单',
