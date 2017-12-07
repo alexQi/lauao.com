@@ -23,5 +23,5 @@ $config = yii\helpers\ArrayHelper::merge(
 );
 
 $application = new yii\web\Application($config);
-$application->language = isset($_COOKIE['language']) ? ($_COOKIE['language']) : 'zh-CN';
+$application->language = isset($_COOKIE['language']) ? ($_COOKIE['language']) : 'en';
 $application->run();
