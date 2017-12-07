@@ -22,6 +22,8 @@ class IndexController extends Controller
 
     public function actionIndex()
     {
+        echo $_GET['echostr'];
+        return ;
         $wechat = new Wechat();
 
         if($wechat->getMsg()){
