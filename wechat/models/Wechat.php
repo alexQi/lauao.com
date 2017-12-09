@@ -117,12 +117,17 @@ class Wechat extends Model{
             default:
                 break;
         }
-        $useId = preg_replace('/[_-]+/','F',$this->data['FromUserName']);
-        $this->api->userId = $useId;
 
-        // 获取API信息
-        $this->api->getApiInfo();
-        $this->msg = $this->api->run();
+        if ($this->data['Event'] !='subscribe')
+        {
+            $useId = preg_replace('/[_-]+/','F',$this->data['FromUserName']);
+            $this->api->userId = $useId;
+
+            // 获取API信息
+            $this->api->getApiInfo();
+            $this->msg = $this->api->run();
+        }
+
 
         $this->msgType = $this->msgType == 'event' || $this->msgType == 'voice' ? 'text':$this->msgType;
         $this->msgTpl  = yii::$app->params['wechat']['tpl'][$this->msgType];
