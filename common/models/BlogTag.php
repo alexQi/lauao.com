@@ -2,11 +2,6 @@
 
 namespace common\models;
 
-use Yii;
-use yii\behaviors\TimestampBehavior;
-use yii\db\Expression;
-use funson86\blog\Module;
-
 /**
  * This is the model class for table "blog_tag".
  *
@@ -60,9 +55,9 @@ class BlogTag extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Module::t('blog', 'ID'),
-            'name' => Module::t('blog', 'Name'),
-            'frequency' => Module::t('blog', 'Frequency'),
+            'id' => Yii::t('app', 'ID'),
+            'name' => Yii::t('app', 'Name'),
+            'frequency' => Yii::t('app', 'Frequency'),
         ];
     }
 

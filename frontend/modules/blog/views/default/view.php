@@ -1,7 +1,4 @@
 <?php
-use yii\helpers\Html;
-use yii\widgets\ListView;
-use funson86\blog\Module;
 
 $this->title = Yii::$app->params['blogTitle'] . ' - ' . Yii::$app->params['blogTitleSeo'];
 $this->params['breadcrumbs'][] = '文章';
@@ -22,7 +19,7 @@ echo $this->render('_view', [
 <div id="comments">
     <?php if($post->commentsCount >= 1): ?>
         <h3>
-            <?= $post->commentsCount . Module::t('blog', 'Unit comments'); ?>
+            <?= $post->commentsCount . Yii::t('app', 'Unit comments'); ?>
         </h3>
 
         <?=$this->render('_comments',array(
@@ -32,7 +29,7 @@ echo $this->render('_view', [
     <?php endif; ?>
 
     <div id='reply'>
-        <h3><?= Module::t('blog', 'Write comments'); ?></h3>
+        <h3><?= Yii::t('app', 'Write comments'); ?></h3>
         <?= $this->render('_form', [
             'model' => $comment,
         ]);?>

@@ -2,11 +2,8 @@
 
 namespace common\models;
 
-use common\models\User;
 use Yii;
 use yii\behaviors\TimestampBehavior;
-use yii\db\Expression;
-use funson86\blog\Module;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
@@ -76,20 +73,20 @@ class BlogPost extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Module::t('blog', 'ID'),
-            'catalog_id' => Module::t('blog', 'Catalog ID'),
-            'title' => Module::t('blog', 'Title'),
-            'brief' => Module::t('blog', 'Brief'),
-            'content' => Module::t('blog', 'Content'),
-            'tags' => Module::t('blog', 'Tags'),
-            'surname' => Module::t('blog', 'Surname'),
-            'banner' => Module::t('blog', 'Banner'),
-            'click' => Module::t('blog', 'Click'),
-            'user_id' => Module::t('blog', 'User ID'),
-            'status' => Module::t('blog', 'Status'),
-            'created_at' => Module::t('blog', 'Created At'),
-            'updated_at' => Module::t('blog', 'Updated At'),
-            'commentsCount' => Module::t('blog', 'Comments Count'),
+            'id' => Yii::t('app', 'ID'),
+            'catalog_id' => Yii::t('app', 'Catalog ID'),
+            'title' => Yii::t('app', 'Title'),
+            'brief' => Yii::t('app', 'Brief'),
+            'content' => Yii::t('app', 'Content'),
+            'tags' => Yii::t('app', 'Tags'),
+            'surname' => Yii::t('app', 'Surname'),
+            'banner' => Yii::t('app', 'Banner'),
+            'click' => Yii::t('app', 'Click'),
+            'user_id' => Yii::t('app', 'User ID'),
+            'status' => Yii::t('app', 'Status'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
+            'commentsCount' => Yii::t('app', 'Comments Count'),
         ];
     }
 

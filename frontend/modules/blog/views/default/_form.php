@@ -1,8 +1,6 @@
 <?php
 use yii\helpers\Html;
-use yii\helpers\StringHelper;
 use yii\widgets\ActiveForm;
-use funson86\blog\Module;
 ?>
 
 <div class="form">
@@ -22,7 +20,7 @@ use funson86\blog\Module;
 
     <div class="form-group">
         <label class="col-lg-1 control-label" for="">&nbsp;</label>
-        <?= Html::button(Module::t('blog', 'Add comments'), ['class' => 'btn btn-success']) ?>
+        <?= Html::button(Yii::t('app', 'Add comments'), ['class' => 'btn btn-success']) ?>
     </div>
 
 

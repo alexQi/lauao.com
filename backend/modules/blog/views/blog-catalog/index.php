@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use common\models\BlogCatalog;
+use common\models\Status;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\BlogCatalogSearch */
@@ -39,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <td><?= $item['sort_order']; ?></td>
             <td><?= $item['template']; ?></td>
             <td><?= BlogCatalog::getOneIsNavLabel($item['is_nav']); ?></td>
-            <td><?= \funson86\blog\models\Status::labels()[$item['status']]; ?></td>
+            <td><?= Status::labels()[$item['status']]; ?></td>
             <td>
                 <a href="<?= \Yii::$app->getUrlManager()->createUrl(['blog/blog-catalog/create','parent_id'=>$item['id']]); ?>" title="<?= Yii::t('app', 'Add Sub Catelog');?>" data-pjax="0"><span class="glyphicon glyphicon-plus-sign"></span></a>
                 <a href="<?= \Yii::$app->getUrlManager()->createUrl(['blog/blog-catalog/view','id'=>$item['id']]); ?>"" title="<?= Yii::t('app', 'View');?>" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a>

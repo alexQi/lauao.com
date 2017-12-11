@@ -75,19 +75,19 @@ class BlogCatalog extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Module::t('blog', 'ID'),
-            'parent_id' => Module::t('blog', 'Parent ID'),
-            'title' => Module::t('blog', 'Title'),
-            'surname' => Module::t('blog', 'Surname'),
-            'banner' => Module::t('blog', 'Banner'),
-            'is_nav' => Module::t('blog', 'Is Nav'),
-            'sort_order' => Module::t('blog', 'Sort Order'),
-            'page_size' => Module::t('blog', 'Page Size'),
-            'template' => Module::t('blog', 'Template'),
-            'redirect_url' => Module::t('blog', 'Redirect Url'),
-            'status' => Module::t('blog', 'Status'),
-            'created_at' => Module::t('blog', 'Created At'),
-            'updated_at' => Module::t('blog', 'Updated At'),
+            'id' => Yii::t('app', 'ID'),
+            'parent_id' => Yii::t('app', 'Parent ID'),
+            'title' => Yii::t('app', 'Title'),
+            'surname' => Yii::t('app', 'Surname'),
+            'banner' => Yii::t('app', 'Banner'),
+            'is_nav' => Yii::t('app', 'Is Nav'),
+            'sort_order' => Yii::t('app', 'Sort Order'),
+            'page_size' => Yii::t('app', 'Page Size'),
+            'template' => Yii::t('app', 'Template'),
+            'redirect_url' => Yii::t('app', 'Redirect Url'),
+            'status' => Yii::t('app', 'Status'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
         ];
     }
 
@@ -152,8 +152,8 @@ class BlogCatalog extends \yii\db\ActiveRecord
     public static function getArrayIsNav()
     {
         return [
-            self::IS_NAV_YES => Module::t('blog', 'YES'),
-            self::IS_NAV_NO => Module::t('blog', 'NO'),
+            self::IS_NAV_YES => Yii::t('app', 'YES'),
+            self::IS_NAV_NO => Yii::t('app', 'NO'),
         ];
     }
 
@@ -243,8 +243,8 @@ class BlogCatalog extends \yii\db\ActiveRecord
             if ($v['parent_id']==$parentId)
             {
                 $newArray[$v['id']]=array(
-                    'text'=>$v['title'].' 导航['.($v['is_nav'] ? Module::t('common', 'CONSTANT_YES') : Module::t('common', 'CONSTANT_NO')).'] 排序['.$v['sort_order'].
-                        '] 类型['.($v['page_type'] == 'list' ? Module::t('common', 'PAGE_TYPE_LIST') : Module::t('common', 'PAGE_TYPE_PAGE')).'] 状态['.
+                    'text'=>$v['title'].' 导航['.($v['is_nav'] ? Yii::t('common', 'CONSTANT_YES') : Yii::t('common', 'CONSTANT_NO')).'] 排序['.$v['sort_order'].
+                        '] 类型['.($v['page_type'] == 'list' ? Yii::t('common', 'PAGE_TYPE_LIST') : Yii::t('common', 'PAGE_TYPE_PAGE')).'] 状态['.
                         F::getStatus2($v['status']).'] [<a href="'.Yii::app()->createUrl('/catalog/update',array('id'=>$v['id'])).'">修改</a>][<a href="'
                         .Yii::app()->createUrl('/catalog/create',array('id'=>$v['id'])).'">增加子菜单</a>]&nbsp;&nbsp[<a href="'.
                         Yii::app()->createUrl('/catalog/delete',array('id'=>$v['id'])).'">删除</a>]',

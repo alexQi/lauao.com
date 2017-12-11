@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 use common\models\BlogCatalog;
+use common\models\Status;
 
 /* @var $this yii\web\View */
 /* @var $model funson86\blog\models\BlogCatalog */
@@ -43,7 +44,7 @@ unset($parentCatalog[$model->id]);
 
     <?= $form->field($model, 'redirect_url')->textInput(['maxlength' => 255]) ?>
 
-    <?= $form->field($model, 'status')->dropDownList(\funson86\blog\models\Status::labels()) ?>
+    <?= $form->field($model, 'status')->dropDownList(Status::labels()) ?>
 
     <div class="form-group">
         <label class="col-lg-2 control-label" for="">&nbsp;</label>

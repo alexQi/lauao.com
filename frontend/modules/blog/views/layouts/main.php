@@ -8,6 +8,7 @@ use frontend\widgets\TagCloud;
 use frontend\widgets\Links;
 use frontend\widgets\RecentComments;
 use frontend\widgets\SiteStat;
+use frontend\widgets\RecentPosts;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -65,7 +66,7 @@ BlogAsset::register($this);
                 'maxTags' => 5,
             ]) ?>
 
-            <?= \funson86\blog\widgets\RecentPosts::widget([
+            <?= RecentPosts::widget([
                 'title' => '<i class="icon-st"></i>最新博文',
                 'maxPosts' => 5,
             ]) ?>
