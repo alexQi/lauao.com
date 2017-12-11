@@ -118,7 +118,7 @@ class Wechat extends Model{
                 break;
         }
 
-        if ($this->data['Event'] !='subscribe')
+        if (!isset($this->data['Event']) || $this->data['Event'] !='subscribe')
         {
             $useId = preg_replace('/[_-]+/','F',$this->data['FromUserName']);
             $this->api->userId = $useId;

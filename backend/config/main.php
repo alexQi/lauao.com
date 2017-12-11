@@ -36,6 +36,11 @@ return [
         'log' => [
             'class' => 'backend\modules\log\Module',
         ],
+        'blog' => [
+            'class' => 'backend\modules\blog\Module',
+//            'class' => 'funson86\blog\Module',
+//            'controllerNamespace' => 'funson86\blog\controllers\backend'
+        ],
     ],
     'components' => [
         'request' => [

@@ -11,6 +11,12 @@ return [
     'controllerNamespace' => 'frontend\controllers',
     'language'=>'zh-CN',
     'homeUrl' => '/site/default/index',
+    'modules' => [
+        'blog' => [
+            'class' => 'funson86\blog\Module',
+            'controllerNamespace' => 'funson86\blog\controllers\frontend'
+        ],
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
