@@ -7,8 +7,8 @@
  */
 return [
     'class' => 'yii\db\Connection',
-    'dsn'   => 'mysql:host=www.lauao.com;dbname=lauao;port=3306',
-    'username' => 'lauao',
+    'dsn'   => 'mysql:host=localhost;dbname=lauao;port=3306',
+    'username' => 'root',
     'password' => 'woshishei',
     'charset'  => 'utf8',
     'tablePrefix' => 'pre_',

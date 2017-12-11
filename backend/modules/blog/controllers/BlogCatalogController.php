@@ -3,12 +3,11 @@
 namespace backend\modules\blog\controllers;
 
 use Yii;
-use funson86\blog\models\BlogCatalog;
-use funson86\blog\models\BlogCatalogSearch;
+use common\models\BlogCatalog;
+use backend\models\BlogCatalogSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 use yii\web\UploadedFile;
 
 /**
@@ -24,16 +23,7 @@ class BlogCatalogController extends Controller
                 'actions' => [
                     'delete' => ['post'],
                 ],
-            ],
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'roles' => ['@']
-                    ]
-                ]
-            ],
+            ]
         ];
     }
 
@@ -44,7 +34,6 @@ class BlogCatalogController extends Controller
     public function actionIndex()
     {
         //if(!Yii::$app->user->can('readPost')) throw new HttpException(403, 'No Auth');
-
         $searchModel = new BlogCatalogSearch();
         $dataProvider = BlogCatalog::get(0, BlogCatalog::find()->all());
 
