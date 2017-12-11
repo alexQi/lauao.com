@@ -18,7 +18,7 @@ use mihaildev\ckeditor\CKEditor;
     <?php $form = ActiveForm::begin([
         'options'=>['class' => 'form-horizontal', 'enctype'=>'multipart/form-data'],
         'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-5\">{error}</div>",
+            'template' => "{label}\n<div class=\"col-lg-8\">{input}</div>\n<div class=\"col-lg-5\">{error}</div>",
             'labelOptions' => ['class' => 'col-lg-2 control-label'],
         ],
     ]); ?>
