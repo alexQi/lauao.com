@@ -3,8 +3,8 @@
 namespace backend\modules\blog\controllers;
 
 use Yii;
-use funson86\blog\models\BlogTag;
-use funson86\blog\models\BlogTagSearch;
+use common\models\BlogTag;
+use backend\models\BlogTagSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

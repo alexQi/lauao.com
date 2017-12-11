@@ -1,15 +1,12 @@
 <?php
 
-use yii\helpers\Html;
-use funson86\blog\Module;
-
 /* @var $this yii\web\View */
 /* @var $model funson86\blog\models\BlogCatalog */
 
-$this->title = Module::t('blog', 'Update ') . Module::t('blog', 'Blog Catalog') . ' ' . $model->title;
-$this->params['breadcrumbs'][] = ['label' => Module::t('blog', 'Blog Catalogs'), 'url' => ['index']];
+$this->title = Yii::t('app', 'Update ') . Yii::t('app', 'Blog Catalog') . ' ' . $model->title;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Blog Catalogs'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = Module::t('blog', 'Update');
+$this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
 <div class="blog-catalog-update">
 

@@ -1,12 +1,11 @@
 <?php
 
 use yii\helpers\Html;
-use funson86\blog\Module;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model backend\modules\blog\models\BlogCommentSearch */
-/* @var $form yii\widgets\ActiveForm */
+/* @var $this   yii\web\View */
+/* @var @model  backend\models\BlogCommentSearch */
+/* @var $form   yii\widgets\ActiveForm */
 ?>
 
 <div class="blog-comment-search">
@@ -35,8 +34,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'update_time') ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Module::t('blog', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Module::t('blog', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton(yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

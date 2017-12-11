@@ -3,15 +3,14 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
-use \funson86\blog\models\BlogCatalog;
-use funson86\blog\Module;
+use common\models\BlogCatalog;
 
 /* @var $this yii\web\View */
 /* @var $model funson86\blog\models\BlogCatalog */
 /* @var $form yii\widgets\ActiveForm */
 
 //fix the issue that it can assign itself as parent
-$parentCatalog = ArrayHelper::merge([0 => Module::t('blog', 'Root Catalog')], ArrayHelper::map(BlogCatalog::get(0, BlogCatalog::find()->all()), 'id', 'str_label'));
+$parentCatalog = ArrayHelper::merge([0 => Yii::t('app', 'Root Catalog')], ArrayHelper::map(BlogCatalog::get(0, BlogCatalog::find()->all()), 'id', 'str_label'));
 unset($parentCatalog[$model->id]);
 
 ?>
@@ -48,7 +47,7 @@ unset($parentCatalog[$model->id]);
 
     <div class="form-group">
         <label class="col-lg-2 control-label" for="">&nbsp;</label>
-        <?= Html::submitButton($model->isNewRecord ? Module::t('blog', 'Create') : Module::t('blog', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

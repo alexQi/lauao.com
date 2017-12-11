@@ -3,8 +3,8 @@
 namespace backend\modules\blog\controllers;
 
 use Yii;
-use funson86\blog\models\BlogComment;
-use funson86\blog\models\BlogCommentSearch;
+use common\models\BlogComment;
+use backend\models\BlogCommentSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

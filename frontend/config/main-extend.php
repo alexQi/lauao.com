@@ -22,6 +22,9 @@ $config = [
         'ajax' => [
             'class' => 'frontend\modules\ajax\Module',
         ],
+        'blog' => [
+            'class' => 'frontend\modules\blog\Module',
+        ],
     ],
 ];
 

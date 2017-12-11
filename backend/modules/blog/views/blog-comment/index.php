@@ -1,16 +1,14 @@
 <?php
 
 use yii\helpers\Html;
-use funson86\blog\Module;
 use yii\grid\GridView;
-use yii\helpers\ArrayHelper;
-use funson86\blog\models\Status;
+use common\models\Status;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\modules\blog\models\BlogCommentSearch */
+/* @var $searchModel backend\models\BlogCommentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Module::t('blog', 'Blog Comments');
+$this->title = Yii::t('app','Blog Comments');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="blog-comment-index">
@@ -18,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Module::t('blog', 'Create ') . Module::t('blog', 'Blog Comment'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create ') . Yii::t('app', 'Blog Comment'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -36,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     $searchModel,
                     'post_id',
                     \funson86\blog\models\BlogPost::getArrayCatalog(),
-                    ['class' => 'form-control', 'prompt' => Module::t('blog', 'Please Filter')]
+                    ['class' => 'form-control', 'prompt' => Yii::t('app', 'Please Filter')]
                 )*/
             ],
             [
@@ -66,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     $searchModel,
                     'status',
                     Status::labels(),
-                    ['class' => 'form-control', 'prompt' => Module::t('blog', 'PROMPT_STATUS')]
+                    ['class' => 'form-control', 'prompt' => Yii::t('app', 'PROMPT_STATUS')]
                 )
             ],
 

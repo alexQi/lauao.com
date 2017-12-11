@@ -2,10 +2,10 @@
 
 namespace backend\modules\blog\controllers;
 
-use funson86\blog\models\Status;
+use common\models\Status;
 use Yii;
-use funson86\blog\models\BlogPost;
-use funson86\blog\models\BlogPostSearch;
+use common\models\BlogPost;
+use backend\models\BlogPostSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

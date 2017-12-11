@@ -1,15 +1,15 @@
 <?php
 
+
 use yii\helpers\Html;
-use funson86\blog\Module;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
-use funson86\blog\models\BlogCatalog;
-use kartik\markdown\MarkdownEditor;
+use common\models\BlogCatalog;
+use common\models\Status;
 use mihaildev\ckeditor\CKEditor;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\blog\models\BlogPost */
+/* @var $model common\models\BlogPost */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -44,11 +44,11 @@ use mihaildev\ckeditor\CKEditor;
 
     <?= $form->field($model, 'click')->textInput() ?>
 
-    <?= $form->field($model, 'status')->dropDownList(\funson86\blog\models\Status::labels()) ?>
+    <?= $form->field($model, 'status')->dropDownList(Status::labels()) ?>
 
     <div class="form-group">
         <label class="col-lg-2 control-label" for="">&nbsp;</label>
-        <?= Html::submitButton($model->isNewRecord ? Module::t('blog', 'Create') : Module::t('blog', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

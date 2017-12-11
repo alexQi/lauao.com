@@ -25,6 +25,13 @@ return [
                 ],
             ],
         ],
+        'formatter' => [ //for the showing of date datetime
+            'dateFormat' => 'yyyy-MM-dd',
+            'datetimeFormat' => 'yyyy-MM-dd HH:mm:ss',
+            'decimalSeparator' => ',',
+            'thousandSeparator' => ' ',
+            'currencyCode' => 'CNY',
+        ],
         'db'       => require(__DIR__ . '/'.$director.'/config_db.php'),
         'mailer'   => require(__DIR__ . '/'.$director.'/config_mail.php'),
         'redis'    => require(__DIR__ . '/'.$director.'/config_redis.php'),

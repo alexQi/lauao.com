@@ -1,11 +1,10 @@
 <?php
 
 use yii\helpers\Html;
-use funson86\blog\Module;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\blog\models\BlogTagSearch */
+/* @var $model backend\models\BlogTagSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -23,8 +22,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'frequency') ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Module::t('blog', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Module::t('blog', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

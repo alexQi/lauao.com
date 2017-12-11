@@ -1,10 +1,13 @@
 <?php
 return [
-    //音乐餐吧
-    'wechat_appid'    => 'wx0ae46a213421e196',
-    'wechat_secret'   => '8e9fb152446fd55a4f801a4556cb8397',
-    //宣城直播
-    'c_wechat_appid'  => 'wxcb2711060169adca',
-    'c_wechat_secret' => '5d25144ef3458d13f407e54968fc6856',
-    'c_wechat_token'  => '',
+    // blogTitle
+    'blogTitle' => 'GEEK BLOG -- 记录每一天',
+    'blogTitleSeo' => 'GEEK BLOG -- 记录每一天,极客日记，搞笑对话，技术教程',
+    'blogFooter' => 'Copyright &copy; ' . date('Y') . ' by alex on Yii2. All Rights Reserved.',
+    'blogPostPageCount' => '10',
+    'blogLinks' => [
+        'www.ccuui.com' => 'http://www.ccuui.com',
+        'www.github.com' => 'https://github.com/alexQi',
+    ],
+    'blogUploadPath' => 'upload/', //default to frontend/web/upload
 ];

@@ -10,13 +10,8 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'language'=>'zh-CN',
-    'homeUrl' => '/site/default/index',
-    'modules' => [
-        'blog' => [
-            'class' => 'funson86\blog\Module',
-            'controllerNamespace' => 'funson86\blog\controllers\frontend'
-        ],
-    ],
+    'homeUrl' => '/blog/default/index',
+    'defaultRoute' => 'blog',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',

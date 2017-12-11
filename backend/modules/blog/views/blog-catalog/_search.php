@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use funson86\blog\Module;
 
 /* @var $this yii\web\View */
 /* @var $model funson86\blog\models\BlogCatalogSearch */
@@ -43,8 +42,8 @@ use funson86\blog\Module;
     <?php // echo $form->field($model, 'update_time') ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Module::t('blog', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Module::t('blog', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

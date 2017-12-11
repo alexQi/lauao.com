@@ -2,15 +2,14 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\helpers\ArrayHelper;
-use funson86\blog\Module;
-use funson86\blog\models\Status;
+use common\models\Status;
+use common\models\BlogPost;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\modules\blog\models\BlogPostSearch */
+/* @var $searchModel backend\models\BlogPostSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Module::t('blog', 'Blog Posts');
+$this->title = Yii::t('app', 'Blog Posts');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="blog-post-index">
@@ -18,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Module::t('blog', 'Create ') . Module::t('blog', 'Blog Post'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create ') . Yii::t('app', 'Blog Post'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -35,8 +34,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'filter' => Html::activeDropDownList(
                         $searchModel,
                         'catalog_id',
-                        \funson86\blog\models\BlogPost::getArrayCatalog(),
-                        ['class' => 'form-control', 'prompt' => Module::t('blog', 'Please Filter')]
+                        BlogPost::getArrayCatalog(),
+                        ['class' => 'form-control', 'prompt' => Yii::t('app', 'Please Filter')]
                     )
             ],
             'title',
@@ -64,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         $searchModel,
                         'status',
                         Status::labels(),
-                        ['class' => 'form-control', 'prompt' => Module::t('blog', 'PROMPT_STATUS')]
+                        ['class' => 'form-control', 'prompt' => Yii::t('app', 'PROMPT_STATUS')]
                     )
             ],
             'created_at:date',
