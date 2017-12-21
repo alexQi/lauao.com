@@ -28,3 +28,4 @@ phpunit.phar
 /backend/runtime
 /console/runtime
 /frontend/runtime
+/wechat/runtime
