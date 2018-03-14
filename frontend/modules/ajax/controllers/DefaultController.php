@@ -26,6 +26,7 @@ class DefaultController extends BaseController
         $list = $ApplyUserService->getUserApplyList();
 
         $dataList['cnt']  = $list['allPage'];
+        $dataList['currPage']  = $list['currPage'];
         $dataList['list'] = [];
         $redis = yii::$app->redis;
         foreach ($list['list'] as $item)
