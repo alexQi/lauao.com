@@ -30,8 +30,8 @@ class ApplyUserService extends ApplyRecord
 
         $curr_page   = Yii::$app->request->get('page') ? Yii::$app->request->get('page') : 1;
 
-        $data['allPage'] = ceil($query->count() / $pageSize);
-
+        $data['allPage']  = ceil($query->count() / $pageSize);
+        $data['currPage'] = $curr_page;
         $data['list'] =  $query->offset(($curr_page-1)*$pageSize)
             ->limit($pageSize)
             ->asArray()
