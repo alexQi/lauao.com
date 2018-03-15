@@ -17,7 +17,8 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/public.js',
-        'js/bootbox.js'
+        'js/bootbox.js',
+        'js/site.js'
     ];
 
     public $jsOptions = [

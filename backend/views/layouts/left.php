@@ -52,7 +52,7 @@ use backend\modules\admin\components\MenuHelper;
         };
         //这里我们对一开始写的菜单menu进行了优化
         echo dmstr\widgets\Menu::widget( [
-            'options' => ['class' => 'sidebar-menu'],
+            'options' => ['class' => 'sidebar-menu tree','data-widget' => 'tree'],
             'items' => MenuHelper::getAssignedMenu(Yii::$app->user->id, null, $callback),
         ] ); ?>
     </section>
