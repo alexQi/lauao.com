@@ -42,3 +42,178 @@ Stack trace:
     'REQUEST_TIME_FLOAT' => 1512608730.7677
     'REQUEST_TIME' => 1512608730
 ]
+2018-03-15 08:00:22 [127.0.0.1][-][-][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [1045] Access denied for user 'lauao'@'localhost' (using password: YES) in /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Connection.php:687
+Stack trace:
+#0 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Connection.php(687): PDO->__construct('mysql:host=127....', 'lauao', 'woshishei', NULL)
+#1 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Connection.php(613): yii\db\Connection->createPdoInstance()
+#2 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Connection.php(996): yii\db\Connection->open()
+#3 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Connection.php(983): yii\db\Connection->getMasterPdo()
+#4 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Command.php(253): yii\db\Connection->getSlavePdo()
+#5 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Command.php(1143): yii\db\Command->prepare(true)
+#6 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Command.php(413): yii\db\Command->queryInternal('fetch', NULL)
+#7 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Query.php(274): yii\db\Command->queryOne()
+#8 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/ActiveQuery.php(292): yii\db\Query->one(NULL)
+#9 /Users/alex/wwwroot/www.lauao.com/common/models/service/ApiBaseService.php(40): yii\db\ActiveQuery->one()
+#10 /Users/alex/wwwroot/www.lauao.com/common/models/Api.php(109): common\models\service\ApiBaseService->getApi(Array)
+#11 /Users/alex/wwwroot/www.lauao.com/wechat/controllers/IndexController.php(34): common\models\Api->getApiInfo()
+#12 [internal function]: wechat\controllers\IndexController->actionTest()
+#13 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#14 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#15 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/base/Module.php(528): yii\base\Controller->runAction('test', Array)
+#16 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('index/test', Array)
+#17 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /Users/alex/wwwroot/www.lauao.com/wechat/web/index.php(18): yii\base\Application->run()
+#19 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [1045] Access denied for user 'lauao'@'localhost' (using password: YES) in /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Connection.php:624
+Stack trace:
+#0 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Connection.php(996): yii\db\Connection->open()
+#1 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Connection.php(983): yii\db\Connection->getMasterPdo()
+#2 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Command.php(253): yii\db\Connection->getSlavePdo()
+#3 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Command.php(1143): yii\db\Command->prepare(true)
+#4 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Command.php(413): yii\db\Command->queryInternal('fetch', NULL)
+#5 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Query.php(274): yii\db\Command->queryOne()
+#6 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/ActiveQuery.php(292): yii\db\Query->one(NULL)
+#7 /Users/alex/wwwroot/www.lauao.com/common/models/service/ApiBaseService.php(40): yii\db\ActiveQuery->one()
+#8 /Users/alex/wwwroot/www.lauao.com/common/models/Api.php(109): common\models\service\ApiBaseService->getApi(Array)
+#9 /Users/alex/wwwroot/www.lauao.com/wechat/controllers/IndexController.php(34): common\models\Api->getApiInfo()
+#10 [internal function]: wechat\controllers\IndexController->actionTest()
+#11 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#12 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#13 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/base/Module.php(528): yii\base\Controller->runAction('test', Array)
+#14 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('index/test', Array)
+#15 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#16 /Users/alex/wwwroot/www.lauao.com/wechat/web/index.php(18): yii\base\Application->run()
+#17 {main}
+Additional Information:
+
+2018-03-15 08:00:22 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'USER' => 'alex'
+    'HOME' => '/Users/alex'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'wechat.lauao.test'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'wechat.lauao.test'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '55085'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.13.6'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/Users/alex/wwwroot/www.lauao.com/wechat/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index/test'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/Users/alex/wwwroot/www.lauao.com/wechat/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1521100822.0631
+    'REQUEST_TIME' => 1521100822
+]
+2018-03-15 08:00:55 [127.0.0.1][-][-][error][yii\db\Exception] PDOException: SQLSTATE[HY000] [1045] Access denied for user 'lauao'@'localhost' (using password: YES) in /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Connection.php:687
+Stack trace:
+#0 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Connection.php(687): PDO->__construct('mysql:host=127....', 'lauao', 'woshishei', NULL)
+#1 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Connection.php(613): yii\db\Connection->createPdoInstance()
+#2 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Connection.php(996): yii\db\Connection->open()
+#3 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Connection.php(983): yii\db\Connection->getMasterPdo()
+#4 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Command.php(253): yii\db\Connection->getSlavePdo()
+#5 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Command.php(1143): yii\db\Command->prepare(true)
+#6 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Command.php(413): yii\db\Command->queryInternal('fetch', NULL)
+#7 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Query.php(274): yii\db\Command->queryOne()
+#8 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/ActiveQuery.php(292): yii\db\Query->one(NULL)
+#9 /Users/alex/wwwroot/www.lauao.com/common/models/service/ApiBaseService.php(40): yii\db\ActiveQuery->one()
+#10 /Users/alex/wwwroot/www.lauao.com/common/models/Api.php(109): common\models\service\ApiBaseService->getApi(Array)
+#11 /Users/alex/wwwroot/www.lauao.com/wechat/controllers/IndexController.php(34): common\models\Api->getApiInfo()
+#12 [internal function]: wechat\controllers\IndexController->actionTest()
+#13 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#14 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#15 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/base/Module.php(528): yii\base\Controller->runAction('test', Array)
+#16 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('index/test', Array)
+#17 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#18 /Users/alex/wwwroot/www.lauao.com/wechat/web/index.php(18): yii\base\Application->run()
+#19 {main}
+
+Next yii\db\Exception: SQLSTATE[HY000] [1045] Access denied for user 'lauao'@'localhost' (using password: YES) in /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Connection.php:624
+Stack trace:
+#0 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Connection.php(996): yii\db\Connection->open()
+#1 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Connection.php(983): yii\db\Connection->getMasterPdo()
+#2 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Command.php(253): yii\db\Connection->getSlavePdo()
+#3 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Command.php(1143): yii\db\Command->prepare(true)
+#4 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Command.php(413): yii\db\Command->queryInternal('fetch', NULL)
+#5 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/Query.php(274): yii\db\Command->queryOne()
+#6 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/db/ActiveQuery.php(292): yii\db\Query->one(NULL)
+#7 /Users/alex/wwwroot/www.lauao.com/common/models/service/ApiBaseService.php(40): yii\db\ActiveQuery->one()
+#8 /Users/alex/wwwroot/www.lauao.com/common/models/Api.php(109): common\models\service\ApiBaseService->getApi(Array)
+#9 /Users/alex/wwwroot/www.lauao.com/wechat/controllers/IndexController.php(34): common\models\Api->getApiInfo()
+#10 [internal function]: wechat\controllers\IndexController->actionTest()
+#11 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/base/InlineAction.php(57): call_user_func_array(Array, Array)
+#12 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/base/Controller.php(157): yii\base\InlineAction->runWithParams(Array)
+#13 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/base/Module.php(528): yii\base\Controller->runAction('test', Array)
+#14 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/web/Application.php(103): yii\base\Module->runAction('index/test', Array)
+#15 /Users/alex/wwwroot/www.lauao.com/vendor/yiisoft/yii2/base/Application.php(386): yii\web\Application->handleRequest(Object(yii\web\Request))
+#16 /Users/alex/wwwroot/www.lauao.com/wechat/web/index.php(18): yii\base\Application->run()
+#17 {main}
+Additional Information:
+
+2018-03-15 08:00:54 [127.0.0.1][-][-][info][application] $_GET = []
+
+$_POST = []
+
+$_FILES = []
+
+$_COOKIE = []
+
+$_SERVER = [
+    'USER' => 'alex'
+    'HOME' => '/Users/alex'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => 'wechat.lauao.test'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'wechat.lauao.test'
+    'SERVER_PORT' => '80'
+    'SERVER_ADDR' => '127.0.0.1'
+    'REMOTE_PORT' => '55085'
+    'REMOTE_ADDR' => '127.0.0.1'
+    'SERVER_SOFTWARE' => 'nginx/1.13.6'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/Users/alex/wwwroot/www.lauao.com/wechat/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index/test'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'SCRIPT_FILENAME' => '/Users/alex/wwwroot/www.lauao.com/wechat/web/index.php'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1521100854.896
+    'REQUEST_TIME' => 1521100854
+]

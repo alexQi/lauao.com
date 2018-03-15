@@ -9,10 +9,9 @@ require(__DIR__ . '/../config/bootstrap.php');
 
 $config = yii\helpers\ArrayHelper::merge(
     require(__DIR__ . '/../../common/config/main.php'),
+    require(__DIR__ . '/../../common/config/main-local.php'),
     require(__DIR__ . '/../config/main.php'),
-    require(__DIR__ . '/../config/main-extend.php')
+    require(__DIR__ . '/../config/main-local.php')
 );
 
-$application = new yii\web\Application($config);
-$application->language = isset($_COOKIE['language']) ? ($_COOKIE['language']) : 'en';
-$application->run();
+(new yii\web\Application($config))->run();
