@@ -10,7 +10,7 @@ use restful\controllers\BaseController;
 /**
  * Default controller for the `module` module
  */
-class UserController extends BaseController
+class ApplyUserController extends BaseController
 {
     /**
      * @return array

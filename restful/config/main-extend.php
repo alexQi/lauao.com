@@ -1,12 +1,12 @@
 <?php
-
 $config = [
     'modules' => [
         'system' => [
             'class' => 'restful\modules\system\Module',
         ]
-    ],
+    ]
 ];
+
 
 if (!YII_ENV_TEST) {
     // configuration adjustments for 'dev' environment

@@ -9,18 +9,18 @@ namespace restful\controllers;
 
 use yii\web\Response;
 use yii\rest\Controller;
-//use yii\filters\auth\CompositeAuth;
-//use yii\filters\auth\HttpBasicAuth;
-//use yii\filters\auth\HttpBearerAuth;
-//use yii\filters\auth\QueryParamAuth;
+use yii\filters\auth\CompositeAuth;
+use yii\filters\auth\HttpBasicAuth;
+use yii\filters\auth\HttpBearerAuth;
+use yii\filters\auth\QueryParamAuth;
 use yii\filters\ContentNegotiator;
 
 class BaseController extends Controller
 {
-//    public $serializer = [
-//        'class' => 'yii\rest\Serializer',
-//        'collectionEnvelope' => 'items',
-//    ];
+    public $serializer = [
+        'class' => 'yii\rest\Serializer',
+        'collectionEnvelope' => 'items',
+    ];
 
     public function behaviors(){
         $behaviors = parent::behaviors();

@@ -9,15 +9,22 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'restful\controllers',
-    'language'=>'zh-CN',
     'homeUrl' => '/system/user/user-list',
+    'defaultRoute' => 'system',
     'components' => [
         'log' => require 'log.php',
 //        'errorHandler' => [
 //            'errorAction' => '/site/site/error',
 //        ],
+        'user' => [
+            'identityClass' => 'common\models\User',
+            'enableAutoLogin' => true,
+
+            'enableSession' => false,
+            'loginUrl' => null,
+
+        ],
         "urlManager" => [
-            //用于表明urlManager是否启用URL美化功能，在Yii1.1中称为path格式URL，
             // Yii2.0中改称美化。
             // 默认不启用。但实际使用中，特别是产品环境，一般都会启用。
             "enablePrettyUrl" => true,
