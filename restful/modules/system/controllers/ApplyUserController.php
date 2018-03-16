@@ -34,7 +34,10 @@ class ApplyUserController extends BaseController
             $value['music']  = $item['self_media'];
             $dataList['list'][] = $value;
         }
-
+//        $error = Yii::$app->errorHandler->exception;
+//        var_dump($error);die();
+        $this->state   = 1;
+        $this->message = 'success';
         return $dataList;
     }
 
@@ -43,8 +46,9 @@ class ApplyUserController extends BaseController
      */
     public function actionSearchApplyUser()
     {
+        $data = [];
         try {
-            if (!$this->getData['apply_id'])
+            if (!isset($this->getData['apply_id']) )
             {
                 throw new Exception('参数不正确');
             }
@@ -57,13 +61,13 @@ class ApplyUserController extends BaseController
                 $ApplyUserInfo['votes'] = $ApplyUserInfo['votes']>$votes ? $ApplyUserInfo['votes'] : $votes;
             }
 
-            $this->ajaxReturn['state']   = 1;
-            $this->ajaxReturn['message'] = '搜索成功';
-            $this->ajaxReturn['data']    = $ApplyUserInfo;
+            $this->state   = 1;
+            $this->message = '搜索成功';
+            $data = $ApplyUserInfo;
         }catch (Exception $e){
-            $this->ajaxReturn['message'] = $e->getMessage();
+            $this->message = $e->getMessage();
         }
 
-        return $this->ajaxReturn;
+        return $data;
     }
 }
