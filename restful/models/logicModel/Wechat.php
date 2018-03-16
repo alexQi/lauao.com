@@ -6,7 +6,7 @@
  * Time: 下午12:25
  */
 
-namespace restful\models\logicModel\models;
+namespace restful\models\logicModel;
 
 use Yii;
 use yii\base\Model;

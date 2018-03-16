@@ -4,7 +4,7 @@ namespace restful\modules\system\controllers;
 
 use yii;
 use yii\base\Exception;
-use restful\models\logicModel\models\Wechat;
+use restful\models\logicModel\Wechat;
 use restful\controllers\BaseController;
 /**
  * Default controller for the `module` module
