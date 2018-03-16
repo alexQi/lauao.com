@@ -37,7 +37,7 @@ class AuthController extends BaseController
         return $data;
     }
 
-    public function actionDescyptData()
+    public function actionDescryptData()
     {
         $data = [];
         try{
