@@ -53,7 +53,7 @@ return [
                 ['class' => 'yii\rest\UrlRule',
                     'controller' => 'system/auth',
                     'extraPatterns' => [
-                        'GET session' => 'get-session',
+                        'POST session' => 'get-session',
                     ],
                 ],
             ],
