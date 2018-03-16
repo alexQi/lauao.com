@@ -56,6 +56,7 @@ class AuthController extends BaseController
             $wechat = new Wechat();
 
             $sessionData = $wechat->getAppSession($this->postData['js_code']);
+
             if (isset($sessionData->errcode))
             {
                 throw new Exception('获取session_key失败');
