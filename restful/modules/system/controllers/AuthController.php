@@ -17,6 +17,7 @@ class AuthController extends BaseController
         try{
             if (!isset($this->postData['js_code']))
             {
+                $data['postData'] = $this->postData;
                 throw new Exception('参数不正确');
             }
             $wechat = new Wechat();
@@ -42,7 +43,6 @@ class AuthController extends BaseController
         try{
             if (!isset($this->postData['js_code']))
             {
-                $data['postData'] = $this->postData;
                 throw new Exception('参数不正确');
             }
             if (!isset($this->postData['encryptedData']))
