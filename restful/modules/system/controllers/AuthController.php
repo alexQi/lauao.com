@@ -21,13 +21,13 @@ class AuthController extends BaseController
             }
             $wechat = new Wechat();
 
-            $this->state   = 1;
-            $this->message = 'success';
             $data = $wechat->getAppSession($this->postData['js_code']);
-            if (isset($data['errcode']))
+            if (isset($data->errcode))
             {
                 throw new Exception('获取session_key失败');
             }
+            $this->state   = 1;
+            $this->message = 'success';
         }
         catch (Exception $e)
         {
@@ -54,8 +54,6 @@ class AuthController extends BaseController
             }
             $wechat = new Wechat();
 
-            $this->state   = 1;
-            $this->message = 'success';
             $sessionData = $wechat->getAppSession($this->postData['js_code']);
             if (isset($sessionData['errcode']))
             {
@@ -66,6 +64,8 @@ class AuthController extends BaseController
             {
                 throw new Exception('解密数据失败');
             }
+            $this->state   = 1;
+            $this->message = 'success';
         }
         catch (Exception $e)
         {
