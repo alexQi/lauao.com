@@ -50,6 +50,12 @@ return [
                         'GET info' => 'search-apply-user',
                     ],
                 ],
+                ['class' => 'yii\rest\UrlRule',
+                    'controller' => 'system/auth',
+                    'extraPatterns' => [
+                        'GET session' => 'get-session',
+                    ],
+                ],
             ],
         ],
     ],
