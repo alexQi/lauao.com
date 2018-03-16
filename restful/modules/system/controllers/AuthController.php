@@ -61,7 +61,7 @@ class AuthController extends BaseController
             {
                 throw new Exception('获取session_key失败');
             }
-            $data = $wechat->decryptData($sessionData['session_key'],$this->postData['encryptedData'],$this->postData['iv']);
+            $data = $wechat->decryptData($sessionData->session_key,$this->postData['encryptedData'],$this->postData['iv']);
             if (isset($data->errcode))
             {
                 throw new Exception('解密数据失败');
