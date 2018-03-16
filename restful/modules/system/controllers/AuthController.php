@@ -53,7 +53,7 @@ class AuthController extends BaseController
             $this->state   = 1;
             $this->message = 'success';
             $sessionData = $wechat->getAppSession($this->postData['js_code']);
-            if (!$sessionData)
+            if (isset($sessionData['errcode']))
             {
                 throw new Exception('获取session_key失败');
             }
