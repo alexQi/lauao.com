@@ -54,6 +54,7 @@ return [
                     'controller' => 'system/auth',
                     'extraPatterns' => [
                         'POST session' => 'get-session',
+                        'POST descypt' => 'descrypt-data'
                     ],
                 ],
             ],
