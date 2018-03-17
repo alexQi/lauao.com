@@ -1,0 +1,171 @@
+/*@font-face {
+    font-family:"socialshare";src:url("http://www.xinpianchang.com/public/js/fonts/iconfont.eot");src:url("http://www.xinpianchang.com/public/js/fonts/iconfont.eot?#iefix") format("embedded-opentype"),url("http://www.xinpianchang.com/public/js/fonts/iconfont.woff") format("woff"),url("http://www.xinpianchang.com/public/js/fonts/iconfont.ttf") format("truetype"),url("http://www.xinpianchang.com/public/js/fonts/iconfont.svg#iconfont") format("svg");
+}*/
+.share-host{position: relative;}
+
+.social-share {
+    font-style: normal;
+    font-size: 16px;
+    font-family: "socialshare";
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    z-index: 1;
+    background: #fff;
+    position: relative;
+    z-index: 1;
+    font-size: 0;
+}
+
+.social-share * {
+    font-family: "socialshare";
+}
+
+.social-share .icon-tencent:before {
+    content: "\f07a";
+}
+
+.social-share .icon-qq:before {
+    /*content: "\f11a";*/
+}
+
+.social-share .icon-weibo:before {
+    /*content: "\f12a";*/
+}
+
+.social-share .icon-wechat:before {
+    /*content: "\f09a";*/
+}
+
+.social-share .icon-douban:before {
+    /*content: "\f10a";*/
+}
+
+.social-share .icon-heart:before {
+    content: "\f20a";
+}
+
+.social-share .icon-like:before {
+    content: "\f00a";
+}
+
+.social-share .icon-qzone:before {
+    /*content: "\f08a";*/
+}
+
+.social-share .icon-linkedin:before {
+    content: "\f01a";
+}
+
+.social-share .icon-diandian:before {
+    content: "\f05a";
+}
+
+.social-share .icon-facebook:before {
+    content: "\f03a";
+}
+
+.social-share .icon-google:before {
+    content: "\f04a";
+}
+
+.social-share .icon-twitter:before {
+    content: "\f06a";
+}
+
+.social-share a {
+    position: relative;
+    display: inline-block;
+    /*margin: 4px;*/
+    outline: none;
+    text-decoration: none;
+}
+
+.social-share .social-share-icon {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #999;
+    border-radius: 50%;
+    color: #333;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 16px;
+    line-height: 30px;
+    transition: .3s ease-in-out;
+    margin-right: 30px;
+}
+
+.social-share .social-share-icon:last-child{
+    margin-right: 0;
+}
+
+.social-share .social-share-icon:hover {
+    color:#ee7d78;
+    border-color: #ee7d78;
+}
+.wechat-wrap{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transition: .3s ease-in-out;
+    background: rgba(0,0,0,.5);
+    opacity: 0;
+    z-index: 100;
+}
+.wechat-wrap.open{
+    opacity: 1;
+}
+.wechat-qrcode{
+    background-color: #f7f8fa;
+    width: 280px;
+    padding: 30px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.wechat-qrcode h4{
+    line-height: 1;
+    text-align: left;
+}
+
+.wechat-qrcode .qrcode{
+    margin: 20px auto 0;
+    width: 240px;
+    height: 240px;
+    padding: 20px;
+    background-color: #fff;
+}
+.wechat-qrcode .qrcode canvas{
+    width: 100%;
+    height: 100%;
+}
+.wechat-qrcode .help{
+    margin-top: 15px;
+    text-align: left;
+}
+.wechat-qrcode .help span{
+    line-height: 1;
+    display: block;
+}
+.wechat-qrcode .help span:last-child{
+    padding-top: 8px;
+}
+.wechat-qrcode .icon-close{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}
+.wechat-qrcode .icon-close:before{
+    color: #333;
+    font-size: 17px;
+    transition: .3s ease-in-out;
+}
+.wechat-qrcode .icon-close:hover:before{
+    color: #666;
+}

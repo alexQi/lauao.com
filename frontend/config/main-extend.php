@@ -25,6 +25,9 @@ $config = [
         'blog' => [
             'class' => 'frontend\modules\blog\Module',
         ],
+        'movie' => [
+            'class' => 'frontend\modules\movie\Module',
+        ],
     ],
 ];
 

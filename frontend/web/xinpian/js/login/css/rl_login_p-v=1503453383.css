@@ -1,0 +1,11 @@
+.login_dialog{
+	position:fixed;width:600px;height:278px;z-index:10002;box-shadow:1px 2px 12px #BBB;border:1px solid #cdcdcd;background: #fff;
+}
+.xma_login_close{
+	position: absolute;right:17px;top:17px;text-decoration: none;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size:30px;line-height:18px;color: black;text-shadow: 0 1px 0 white;opacity: 0.2;filter: alpha(opacity=20);outline:none;
+}
+.login_close_footer{color: #fff;opacity: 1;}
+.xma_login_close:hover,.xma_login_close:focus{color: black;cursor: pointer;opacity: 0.4;filter: alpha(opacity=40);}
+.login_close_footer:hover{color: #fff;opacity: 0.4;filter: alpha(opacity=40);}
+.xma_overlay{position:fixed;top:0px;left:0px;z-index:10001;background-color:rgb(0,0,0);opacity:0.3;filter:alpha(opacity=30);}

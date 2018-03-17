@@ -1,5 +1,5 @@
 <?php
-namespace frontend\modules\site\controllers;
+namespace frontend\modules\movie\controllers;
 
 use common\models\Pay\ApiService;
 use common\models\Orders;
@@ -24,6 +24,18 @@ class DefaultController extends BaseController
      */
     public function actionIndex()
     {
-        echo 111;
+	    return $this->render('index',[
+
+        ]);
+    }
+
+    public function actionDiscover()
+    {
+        return $this->render('discover');
+    }
+
+    public function actionDetail()
+    {
+        return $this->render('detail');
     }
 }
