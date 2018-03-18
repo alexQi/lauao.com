@@ -8,7 +8,7 @@ return [
     'uploadPath'=>'../../upload/',
 
     'qiniu' =>  [
-        'uploadUrl' => 'ztwliot.com',
+        'uploadUrl' => 'sboyo.com',
         'AccessKey' => 'LiJibjRU035QFfsgqAR6nLbMCJx7xX3S1ffRvh5T',
         'SecretKey' => 'gXiK83RjjTluvOCjz4gG8fcojZUPMWXB63BzVwmF',
         'style' => [

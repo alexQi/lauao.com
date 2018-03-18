@@ -5,6 +5,8 @@ use common\models\Pay\ApiService;
 use common\models\Orders;
 use common\models\Pay\Wechat;
 use common\models\ActivityBase;
+use common\models\VideoCategory;
+use frontend\models\VideoService;
 use Yii;
 use frontend\controllers\BaseController;
 use frontend\models\ApplyUserService;
@@ -24,14 +26,25 @@ class DefaultController extends BaseController
      */
     public function actionIndex()
     {
+        $cateList = VideoCategory::find()->select(['id','cate_name'])->asArray()->all();
 	    return $this->render('index',[
-
+            'cateList' => $cateList
         ]);
     }
 
     public function actionDiscover()
     {
-        return $this->render('discover');
+        $isNew = Yii::$app->request->get('isNew') ? 1 : 0;
+        $video_cate_id = Yii::$app->request->get('video_cate_id') ? Yii::$app->request->get('video_cate_id') :false;
+        $cateList  = VideoCategory::find()->select(['id','cate_name'])->asArray()->all();
+        $videoList = VideoService::getVideoList();
+
+        return $this->render('discover',[
+            'cateList'  => $cateList,
+            'videoList' => $videoList,
+            'isNew'     => $isNew,
+            'video_cate_id'  => $video_cate_id
+        ]);
     }
 
     public function actionDetail()

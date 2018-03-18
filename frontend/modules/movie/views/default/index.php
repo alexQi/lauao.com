@@ -1,10 +1,8 @@
 <?php
 
 use yii\helpers\Url;
-
 ?>
 <!DOCTYPE html>
-<!DOCTYPE HTML>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -154,18 +152,20 @@ use yii\helpers\Url;
             </li>
             <li class="nav-item hover-elem">
                 <i class="icon-arrow-down"></i>
-                <a href="<?php echo Url::to(['/site/default/discover']) ?>">发现</a>
+                <a href="<?php echo Url::to(['default/discover']) ?>">发现</a>
                 <div class="common-hover-wrap issue-hover-wrap">
                     <div class="hover-box">
                         <ul class="list">
                             <li class="nav-dropdown-item">
-                                <a class="nav-sublist-title fs_14 fw_600 c_b_3" href="<?php echo Url::to(['/site/default/discover']) ?>">
+                                <a class="nav-sublist-title fs_14 fw_600 c_b_3" href="<?php echo Url::to(['default/discover']) ?>">
                                     作品<i class="icon-arrow-right"></i>
                                 </a>
                                 <ul class="nav-sublist">
-                                    <li class="nav-sublist-item">
-                                        <a href="<?php echo Url::to(['/site/default/discover','cate_id'=>1]) ?>">广告/宣传片</a>
-                                    </li>
+                                    <?php foreach($cateList  as $key=>$cate):?>
+                                        <li class="nav-sublist-item">
+                                            <a href="<?php echo Url::to(['default/discover','video_cate_id'=>$cate['id']]) ?>"><?php echo $cate['cate_name']; ?></a>
+                                        </li>
+                                    <?php endforeach;?>
                                 </ul>
                             </li>
                             <li class="line"></li>
@@ -465,15 +465,11 @@ use yii\helpers\Url;
                 <h4 class="level-title second-level-title float-elem float-down el-2">启发创作灵感</h4>
                 <p class="show-intro float-elem float-down el-3">海量国内外优质作品，涵盖各类影视创作领域<br>了解业内最新、最全作品动态，寻找启发你的创意灵感</p>
                 <ul class="show-btn-list float-elem float-down el-4" data-eventname="查看作品分类" data-key="分类">
-                    <li><a class="dplus-link disabled" >广告/宣传片</a>
+                    <?php foreach($cateList as $key=>$cate):?>
+                    <li>
+                        <a class="dplus-link" href="javascript:;" data-link="<?php echo Url::to(['default/discover','video_cate_id'=>$cate['id']]) ?>"><?php echo $cate['cate_name']; ?></a>
                     </li>
-                    <li><a class="dplus-link disabled" >剧情短片</a>
-                    </li>
-                    <li><a class="dplus-link disabled" >MV</a></li>
-                    <li><a class="dplus-link disabled">纪录片</a>
-                    </li>
-                    <li><a class="dplus-link disabled" >创意/实验</a>
-                    </li>
+                    <?php endforeach;?>
                     <li><a class="dplus-link disabled" >more</a></li>
                 </ul>
             </div>

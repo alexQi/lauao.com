@@ -18,15 +18,15 @@ use yii\web\View;
  */
 class AdminLtePluginsDatePickerAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/almasaeed2010/adminlte/plugins/datepicker';
+    public $sourcePath = '@vendor/almasaeed2010/adminlte/bower_components/bootstrap-datepicker/dist/';
 
     public $js = [
-        'bootstrap-datepicker.js',
-        'locales/bootstrap-datepicker.zh-CN.js'
+        'js/bootstrap-datepicker.js',
+        'locales/bootstrap-datepicker.zh-CN.min.js'
     ];
 
     public $css = [
-        'datepicker3.css'
+        'css/bootstrap-datepicker.min.css'
     ];
 
     public $jsOptions = [

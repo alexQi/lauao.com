@@ -23,7 +23,7 @@ class MyQiniu extends Qiniu
         $domain    = 'http://'.$bucket.'.'.yii::$app->params['qiniu']['uploadUrl'];
         $accessKey = yii::$app->params['qiniu']['AccessKey'];
         $secretKey = yii::$app->params['qiniu']['SecretKey'];
-        parent::__construct($accessKey, $secretKey, $domain, $bucket);
+        parent::__construct($accessKey, $secretKey, $domain, $bucket,'east_china');
     }
 
     /**
@@ -58,7 +58,7 @@ class MyQiniu extends Qiniu
             $data['key'] = $key;
         }
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, self::UP_HOST);
+        curl_setopt($ch, CURLOPT_URL, $this->up_host);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
@@ -66,6 +66,7 @@ class MyQiniu extends Qiniu
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
         $result = $this->response($result);
+
         if ($status == 200) {
             return $result;
         } else {

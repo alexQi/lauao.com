@@ -41,6 +41,9 @@ return [
 //            'class' => 'funson86\blog\Module',
 //            'controllerNamespace' => 'funson86\blog\controllers\backend'
         ],
+        'movie' => [
+            'class' => 'backend\modules\movie\Module',
+        ],
     ],
     'components' => [
         'request' => [
