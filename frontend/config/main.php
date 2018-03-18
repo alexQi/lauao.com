@@ -11,7 +11,7 @@ return [
     'controllerNamespace' => 'frontend\controllers',
     'language'=>'zh-CN',
     'homeUrl' => '/movie/default/index',
-    'defaultRoute' => 'blog',
+    'defaultRoute' => 'movie',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
