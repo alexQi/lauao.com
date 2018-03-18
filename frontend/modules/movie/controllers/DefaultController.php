@@ -49,6 +49,17 @@ class DefaultController extends BaseController
 
     public function actionDetail()
     {
-        return $this->render('detail');
+        if (!yii::$app->request->get('video_id')){
+            return $this->redirect('default/discover');
+        }
+        $videoDetail = VideoService::getVideoInfo(yii::$app->request->get('video_id'));
+        if (!$videoDetail){
+            return $this->redirect('default/discover');
+        }
+        $cateList  = VideoCategory::find()->select(['id','cate_name'])->asArray()->all();
+        return $this->render('detail',[
+            'cateList'  => $cateList,
+            'videoDetail' => $videoDetail
+        ]);
     }
 }
