@@ -10,7 +10,7 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'language'=>'zh-CN',
-    'homeUrl' => '/blog/default/index',
+    'homeUrl' => '/movie/default/index',
     'defaultRoute' => 'blog',
     'components' => [
         'request' => [
