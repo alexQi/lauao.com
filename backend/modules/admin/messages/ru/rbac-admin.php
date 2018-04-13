@@ -65,7 +65,7 @@ return [
     'Menu' => 'Меню',
     'Help' => 'Помощь',
     'Application' => 'Приложение',
-    'Search for avaliable' => 'Поиск по доступным',
+    'Search for available' => 'Поиск по доступным',
     'Search for assigned' => 'Поиск по присвоенным',
     'New route(s)' => 'Новый маршрут',
     'Add' => 'Добавить',

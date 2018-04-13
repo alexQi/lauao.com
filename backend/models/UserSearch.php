@@ -22,7 +22,7 @@ class UserSearch extends User
         $mailList = [];
         foreach ($userList as $val)
         {
-            $mailList['avaliable'][] = $val['email'];
+            $mailList['available'][] = $val['email'];
         }
         $mailList['assigned'] = [];
 

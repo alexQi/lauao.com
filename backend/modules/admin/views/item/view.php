@@ -21,6 +21,7 @@ YiiAsset::register($this);
 $opts = Json::htmlEncode([
     'items' => $model->getItems()
 ]);
+
 $this->registerJs("var _opts = {$opts};");
 $this->registerJs($this->render('_script.js'));
 $animateIcon = ' <i class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></i>';
@@ -54,15 +55,15 @@ $animateIcon = ' <i class="glyphicon glyphicon-refresh glyphicon-refresh-animate
     </div>
     <div class="row">
         <div class="col-sm-5">
-            <input class="form-control search" data-target="avaliable"
-                   placeholder="<?= Yii::t('rbac-admin', 'Search for avaliable') ?>">
-            <select multiple size="20" class="form-control list" data-target="avaliable"></select>
+            <input class="form-control search" data-target="available"
+                   placeholder="<?= Yii::t('rbac-admin', 'Search for available') ?>">
+            <select multiple size="20" class="form-control list" data-target="available"></select>
         </div>
         <div class="col-sm-1">
             <br><br>
             <?= Html::a('&gt;&gt;' . $animateIcon, ['assign', 'id' => $model->name], [
                 'class' => 'btn btn-success btn-assign',
-                'data-target' => 'avaliable',
+                'data-target' => 'available',
                 'title' => Yii::t('rbac-admin', 'Assign')
             ]) ?><br><br>
             <?= Html::a('&lt;&lt;' . $animateIcon, ['remove', 'id' => $model->name], [

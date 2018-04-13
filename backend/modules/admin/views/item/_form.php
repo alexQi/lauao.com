@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use backend\modules\admin\components\RouteRule;
 use backend\modules\admin\AutocompleteAsset;
 use yii\helpers\Json;
+use backend\modules\admin\components\Configs;
 
 /* @var $this yii\web\View */
 /* @var $model backend\modules\admin\models\AuthItem */
@@ -13,7 +14,7 @@ use yii\helpers\Json;
 
 $context = $this->context;
 $labels = $context->labels();
-$rules = Yii::$app->getAuthManager()->getRules();
+$rules = Configs::authManager()->getRules();
 unset($rules[RouteRule::RULE_NAME]);
 $source = Json::htmlEncode(array_keys($rules));
 

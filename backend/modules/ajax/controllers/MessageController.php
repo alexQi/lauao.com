@@ -128,10 +128,10 @@ class MessageController extends BaseController
         //处理未选中的项目
         foreach ($mails as $mail)
         {
-            $key = array_search($mail,$mailList['avaliable']);
+            $key = array_search($mail,$mailList['available']);
             if ($key!==false)
             {
-                array_splice($mailList['avaliable'], $key, 1);
+                array_splice($mailList['available'], $key, 1);
             }
         }
 
@@ -166,7 +166,7 @@ class MessageController extends BaseController
         }
 
         //处理选中项目
-        $mailList['avaliable'] = array_merge($mailList['avaliable'],$mails);
+        $mailList['available'] = array_merge($mailList['available'],$mails);
 
         //重新暂存数据
         $cache->set('mailList_'.yii::$app->user->identity->id, $mailList, 60*60);

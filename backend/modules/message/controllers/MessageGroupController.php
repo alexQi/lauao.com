@@ -92,17 +92,17 @@ class MessageGroupController extends Controller
         $model->members = json_decode($model->members);
 
         $result    = UserSearch::getUserMail();
-        $avaliable = array_flip($result['avaliable']);
+        $available = array_flip($result['available']);
 
         foreach($model->members as $member)
         {
-            if (isset($avaliable[$member]))
+            if (isset($available[$member]))
             {
-                unset($avaliable[$member]);
+                unset($available[$member]);
             }
         }
 
-        $mailList['avaliable'] = array_flip($avaliable);
+        $mailList['available'] = array_flip($available);
         $mailList['assigned']  = $model->members;
 
         //缓存用户数据

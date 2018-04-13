@@ -1,8 +1,8 @@
 $('i.glyphicon-refresh-animate').hide();
 function updateItems(r) {
-    _opts.items.avaliable = r.avaliable;
+    _opts.items.available = r.available;
     _opts.items.assigned = r.assigned;
-    search('avaliable');
+    search('available');
     search('assigned');
 }
 
@@ -36,6 +36,7 @@ function search(target) {
         permission: [$('<optgroup label="Permission">'), false],
         route: [$('<optgroup label="Routes">'), false],
     };
+    console.log(_opts.items[target])
     $.each(_opts.items[target], function (name, group) {
         if (name.indexOf(q) >= 0) {
             $('<option>').text(name).val(name).appendTo(groups[group][0]);
@@ -50,5 +51,5 @@ function search(target) {
 }
 
 // initial
-search('avaliable');
+search('available');
 search('assigned');

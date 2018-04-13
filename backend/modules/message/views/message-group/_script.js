@@ -1,8 +1,8 @@
 $('i.glyphicon-refresh-animate').hide();
 function updateRoutes(r) {
-    _opts.mailList.avaliable = r.avaliable;
+    _opts.mailList.available = r.available;
     _opts.mailList.assigned = r.assigned;
-    search('avaliable');
+    search('available');
     search('assigned');
 }
 
@@ -78,5 +78,5 @@ function search(target) {
 }
 
 // initial
-search('avaliable');
+search('available');
 search('assigned');

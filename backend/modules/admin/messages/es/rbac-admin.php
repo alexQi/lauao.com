@@ -66,7 +66,7 @@ return [
     'Create Menu' => 'Crear Menú',
     'Menus' => 'Menús',
     'Search' => 'Buscar',
-    'Search for avaliable' => 'Buscar Disponible',
+    'Search for available' => 'Buscar Disponible',
     'Search for assigned' => 'Buscar Asignado',
     'Reset' => 'Reiniciar',
     'Update Menu' => 'Actualizar Menú',
