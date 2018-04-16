@@ -18,6 +18,9 @@ return [
         "admin" => [
             "class" => "backend\modules\admin\Module",
         ],
+//        "admin" => [
+//            "class" => "mdm\admin\Module",
+//        ],
         'site' => [
             'class' => 'backend\modules\site\Module',
         ],

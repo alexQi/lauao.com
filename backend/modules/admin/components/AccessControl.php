@@ -48,6 +48,7 @@ class AccessControl extends \yii\base\ActionFilter
         if (!$this->_user instanceof User) {
             $this->_user = Instance::ensure($this->_user, User::className());
         }
+        $this->_user->loginUrl = '/site/default/login';
         return $this->_user;
     }
 
