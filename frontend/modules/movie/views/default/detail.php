@@ -773,37 +773,14 @@ use yii\helpers\Url;
                     <span class="v-center fs_14 c_b_3">用作品打动世界！</span>
                 </div>
                 <p class="fs_12 c_b_9 fw_300">
-                    新片场是国内专业的影视创作人社区，汇聚众多优秀创作人，提供作品展示、项目交流、拍摄制作机会等影视行业服务。在这里，你可以找到合适的创作人。在这里，用作品打动世界！</p>
-                <!-- <p class="record">京ICP备14003808号-1&nbsp;&nbsp;京公网安备11010802013821号</p> -->
+                    维尔斯是专业的影视制作团队，汇聚精通专项人才，我们只做自己最擅长的领域，创作优秀作品。</p>
             </div>
             <div class="right fr clearfix">
                 <div class="column-item fl">
                     <p class="title fs_16 c_b_3 fw_600">关于</p>
                     <ul class="list fs_12 fw_300">
                         <li><a target="_blank" class="disabled">关于我们</a></li>
-                        <li><a target="_blank" class="disabled">使用帮助</a></li>
                         <li><a target="_blank" class="disabled">加入我们</a></li>
-                        <li><a target="_blank" class="disabled">责任声明</a></li>
-                    </ul>
-                </div>
-                <div class="column-item fl">
-                    <p class="title fs_16 c_b_3 fw_600">活动</p>
-                    <ul class="list fs_12 fw_300">
-                        <li><a target="_blank" class="disabled">NEW ERA 青年电影季</a></li>
-                        <li><a target="_blank" class="disabled">创作吧少年</a>
-                        </li>
-                        <li><a target="_blank" class="disabled">V电影开放日</a>
-                        </li>
-                        <li><a target="_blank" class="disabled">更多活动</a></li>
-                    </ul>
-                </div>
-                <div class="column-item fl">
-                    <p class="title fs_16 c_b_3 fw_600">新片场集团</p>
-                    <ul class="list fs_12 fw_300">
-                        <li><a target="_blank" class="disabled">新片场社区</a></li>
-                        <li><a target="_blank" class="disabled">新片场影业</a></li>
-                        <li><a target="_blank" class="disabled">魔力短视频</a></li>
-                        <li><a target="_blank" class="disabled">魔力短视频营销</a></li>
                     </ul>
                 </div>
             </div>
@@ -819,36 +796,35 @@ use yii\helpers\Url;
     </div>
 </div>
 
-<script type="text/javascript">
-    function sns_conform(title, content, next_func) {
-        var conformDoText = arguments[3] ? arguments[3] : '确定';
-        $("#snsModalLabel").text(title);
-        $("#snsModalContent").text(content);
-        $("#conformDo").text(conformDoText);
-        $('#snsModal').modal('show');
-        $('#conformDo').bind('click', function () {
-            $('#snsModal').modal('hide');
-            next_func();
-        });
-
-    }
+<script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/jquery.cookie-v=1503453383.js"></script>
+<script>
+    $('.first').hover(function () {
+        $(this).parent().children().first().css({borderBottom: '7px solid #454545'});
+    }, function () {
+        $(this).parent().children().first().css({borderBottom: '7px solid #323232'});
+    });
 </script>
-<!-- <script src="/<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/common.js?v=1507725884" type="text/javascript"></script> -->
+<script>
+    var hideCode;
+    $('.follow-wx').hover(function () {
+        $(this).parent().parent().siblings('.wx-qr').css('display', 'block');
+        $(this).next(".follow-wx-tri").css('display', 'block');
+    }, function () {
+        $(this).parent().parent().siblings('.wx-qr').css('display', 'none');
+        $(this).next(".follow-wx-tri").css('display', 'none');
+    });
+    $('.followus').hover(function () {
+        $(this).siblings('.wx-qr-follow').css('display', 'block');
+    }, function () {
+        hideCode = setTimeout(function () {
+            $(".wx-qr-follow").hide();
+        }, 300);
+        $(this).siblings('.wx-qr-follow').css('display', 'none');
+    });
 
-<script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/app/js/extend.func-v=1504677663.js"
-        type="text/javascript"></script>
-<!--[if IE 6]>
-<script src="http://letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
-<![endif]-->
+</script>
 <script type="text/javascript">
     $(document).ready(function () {
-        /*
-        $('#wx2wm').hover(function(){
-             $(".erweima").show();
-        },function(){
-             $(".erweima").hide();
-        });
-        */
         $("#xma_search").bind("click", function () {
             var conVal = $('#search').val();
             if (conVal == '') {
@@ -879,27 +855,6 @@ use yii\helpers\Url;
     });
 
 </script>
-
-<script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/baidu_persona-v=1503453382.js"></script>
-<!-- 百度自动推送 -->
-<script>
-    (function () {
-        $(".disabled").attr("disabled", true);
-        $(".disabled").css("pointer-events", "none");
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        }
-        else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-
 <script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/artDialog/artDialog.min-v=1503453382.js"></script>
 <script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/artDialog/artDialog.plugins.min-v=1503453382.js"></script>
 </body>
