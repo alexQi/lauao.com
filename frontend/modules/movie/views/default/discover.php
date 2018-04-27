@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Url;
 use yii\widgets\LinkPager;
 $Uri = array(
@@ -140,15 +139,11 @@ if ($video_cate_id) {
             </li>
             <li class="nav-item hover-elem">
                 <i class="icon-arrow-down"></i>
-                <a href="<?php echo Url::to(['default/discover']) ?>">发现</a>
+                <a href="<?php echo Url::to(['default/discover']) ?>">作品</a>
                 <div class="common-hover-wrap issue-hover-wrap">
                     <div class="hover-box">
                         <ul class="list">
                             <li class="nav-dropdown-item">
-                                <a class="nav-sublist-title fs_14 fw_600 c_b_3"
-                                   href="<?php echo Url::to(['default/discover']) ?>">
-                                    作品<i class="icon-arrow-right"></i>
-                                </a>
                                 <ul class="nav-sublist">
                                     <?php foreach ($cateList as $key => $cate): ?>
                                         <li class="nav-sublist-item">
@@ -163,23 +158,11 @@ if ($video_cate_id) {
                 </div>
             </li>
             <li class="nav-item school ">
-                <a class="disabled" href="">学院</a>
+                <a class="disabled" href="">器械租赁</a>
             </li>
             <li class="nav-item resource hover-elem">
                 <i class="icon-arrow-down"></i>
                 <a class="resource-video disabled" href="#">素材</a>
-                <!--                <div class="common-hover-wrap issue-hover-wrap">-->
-                <!--                    <div class="hover-box">-->
-                <!--                        <ul class="list">-->
-                <!--                            <ul class="list">-->
-                <!--                                <li><a class="resource-video" href="https://resource.xinpianchang.com/video/list">视频</a></li>-->
-                <!--                                <li style="position: relative;">-->
-                <!--                                    <a href="https://resource.xinpianchang.com/audio/list">音乐</a>-->
-                <!--                                </li>-->
-                <!--                            </ul>-->
-                <!--                        </ul>-->
-                <!--                    </div>-->
-                <!--                </div>-->
             </li>
             <li class="nav-item">
                 <a class="disabled" href="" target="_blank">活动</a>
@@ -187,19 +170,12 @@ if ($video_cate_id) {
             <li class="nav-item">
                 <a class="disabled" href="" target="_blank">新片场影业</a>
             </li>
-            <li class="nav-item">
-                <a class="disabled" href="" target="_blank">魔力短视频</a>
-            </li>
+<!--            <li class="nav-item">-->
+<!--                <a class="disabled" href="" target="_blank">魔力短视频</a>-->
+<!--            </li>-->
             <li class="nav-item hover-elem">
                 <i class="icon-arrow-down"></i>
                 <a href="javascript:;">更多</a>
-                <!--                <div class="common-hover-wrap issue-hover-wrap">-->
-                <!--                    <div class="hover-box">-->
-                <!--                        <ul class="list">-->
-                <!--                            <li><a href="http://www.vmovier.com" target="_blank">V电影</a></li>-->
-                <!--                        </ul>-->
-                <!--                    </div>-->
-                <!--                </div>-->
             </li>
             <li class="nav-item newera">
                 <a class="disabled" href="" target="_blank">
@@ -530,6 +506,7 @@ if ($video_cate_id) {
         <div class="page-wrap">
             <?= LinkPager::widget([
                 'pagination' => $videoList['pages'],
+                'activePageCssClass'=>'current',
                 'nextPageLabel' => '下一页',
                 'prevPageLabel' => '上一页',
                 'options' => ['class'=>'page']
@@ -560,37 +537,14 @@ if ($video_cate_id) {
                     <span class="v-center fs_14 c_b_3">用作品打动世界！</span>
                 </div>
                 <p class="fs_12 c_b_9 fw_300">
-                    新片场是国内专业的影视创作人社区，汇聚众多优秀创作人，提供作品展示、项目交流、拍摄制作机会等影视行业服务。在这里，你可以找到合适的创作人。在这里，用作品打动世界！</p>
-                <!-- <p class="record">京ICP备14003808号-1&nbsp;&nbsp;京公网安备11010802013821号</p> -->
+                    维尔斯是专业的影视制作团队，汇聚精通专项人才，我们只做自己最擅长的领域，创作优秀作品。</p>
             </div>
             <div class="right fr clearfix">
                 <div class="column-item fl">
                     <p class="title fs_16 c_b_3 fw_600">关于</p>
                     <ul class="list fs_12 fw_300">
                         <li><a target="_blank" class="disabled">关于我们</a></li>
-                        <li><a target="_blank" class="disabled">使用帮助</a></li>
                         <li><a target="_blank" class="disabled">加入我们</a></li>
-                        <li><a target="_blank" class="disabled">责任声明</a></li>
-                    </ul>
-                </div>
-                <div class="column-item fl">
-                    <p class="title fs_16 c_b_3 fw_600">活动</p>
-                    <ul class="list fs_12 fw_300">
-                        <li><a target="_blank" class="disabled">NEW ERA 青年电影季</a></li>
-                        <li><a target="_blank" class="disabled">创作吧少年</a>
-                        </li>
-                        <li><a target="_blank" class="disabled">V电影开放日</a>
-                        </li>
-                        <li><a target="_blank" class="disabled">更多活动</a></li>
-                    </ul>
-                </div>
-                <div class="column-item fl">
-                    <p class="title fs_16 c_b_3 fw_600">新片场集团</p>
-                    <ul class="list fs_12 fw_300">
-                        <li><a target="_blank" class="disabled">新片场社区</a></li>
-                        <li><a target="_blank" class="disabled">新片场影业</a></li>
-                        <li><a target="_blank" class="disabled">魔力短视频</a></li>
-                        <li><a target="_blank" class="disabled">魔力短视频营销</a></li>
                     </ul>
                 </div>
             </div>
@@ -615,9 +569,6 @@ if ($video_cate_id) {
     });
 </script>
 <script>
-    var PASSPORT_ORIGIN = "https://passport.xinpianchang.com";
-</script>
-<script>
     var hideCode;
     $('.follow-wx').hover(function () {
         $(this).parent().parent().siblings('.wx-qr').css('display', 'block');
@@ -636,76 +587,8 @@ if ($video_cate_id) {
     });
 
 </script>
-<script>
-    var userid = 0;
-    if (userid) {
-        $('.needLogin').removeClass('needLogin');
-    }
-    ;
-    //evdata(userid);
-    $("#feedBack .feedback_icon").click(function () {
-        $(".feedback_post_bg").fadeIn(200);
-        $("#feedback_post_textarea_div textarea").focus(function () {
-            $(this).val('');
-        })
-        $("#feedback_action_btn_div").bind('click', function () {
-            var content = $.trim($("#feedback_post_textarea_div textarea").val());
-            if (content && content != '请提供你宝贵的建议，让我们做得更好！') {
-                $.post(siteUrl + 'index.php?app=aboutus&ac=feedback', {content: content}, function (re) {
-                    if (re.status) {
-                        $("#feedback_post_textarea_div").hide();
-                        $("#feedback_post_succeed_div").show();
-                        $("#feedback_action_btn_div").hide();
-                    }
-                }, 'json')
-                setTimeout(function () {
-                    $(".feedback_post_bg").hide();
-                    $("#feedback_post_textarea_div").show();
-                    $("#feedback_post_succeed_div").hide();
-                    $("#feedback_action_btn_div").show();
-                    $("#feedback_post_textarea_div textarea").val('');
-                }, 3000)
-            } else {
-
-            }
-        })
-    })
-    $(".login_close_footer").click(function () {
-        $(".login-guide").remove();
-        var date = new Date();
-        date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000)); //三天后的这个时候过期
-        $.cookie('login-guide', 1, {path: '/', expires: date});
-    })
-
-</script>
-<script type="text/javascript">
-    function sns_conform(title, content, next_func) {
-        var conformDoText = arguments[3] ? arguments[3] : '确定';
-        $("#snsModalLabel").text(title);
-        $("#snsModalContent").text(content);
-        $("#conformDo").text(conformDoText);
-        $('#snsModal').modal('show');
-        $('#conformDo').bind('click', function () {
-            $('#snsModal').modal('hide');
-            next_func();
-        });
-
-    }
-</script>
-<!-- <script src="/<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/common.js?v=1507725884" type="text/javascript"></script> -->
-
-<!--[if IE 6]>
-<script src="http://letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
-<![endif]-->
 <script type="text/javascript">
     $(document).ready(function () {
-        /*
-        $('#wx2wm').hover(function(){
-             $(".erweima").show();
-        },function(){
-             $(".erweima").hide();
-        });
-        */
         $("#xma_search").bind("click", function () {
             var conVal = $('#search').val();
             if (conVal == '') {
@@ -736,28 +619,8 @@ if ($video_cate_id) {
     });
 
 </script>
-
-<script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/baidu_persona-v=1503453382.js"></script>
-<!-- 百度自动推送 -->
-<script>
-    $(".disabled").attr("disabled", true);
-    $(".disabled").css("pointer-events", "none");
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        }
-        else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-
 <script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/artDialog/artDialog.min-v=1503453382.js"></script>
 <script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/artDialog/artDialog.plugins.min-v=1503453382.js"></script>
 </body>
 </html>
+

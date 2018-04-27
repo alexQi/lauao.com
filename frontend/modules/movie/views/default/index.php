@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Url;
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,30 +15,16 @@ use yii\helpers\Url;
     <meta name="keywords" content="新媒体电影,新媒体影视,互联网影视,互联网电影,发行,短片,微电影,原创视频,创作人"/>
     <meta name="description"
           content="新片场是国内专业的影视创作人社区，汇聚众多优秀创作人，提供作品展示、项目交流、拍摄制作机会等影视行业服务。在这里，你可以找到最合适的创作人；在这里，用作品打动世界！"/>
-    <style>.line-hide-1 {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-        }
-    </style>
     <link rel="stylesheet"
           href="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/css/new-web/font-icon-v=1519469245.css">
     <link rel="stylesheet"
           href="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/css/new-web/common-v=1520334715.css">
     <!-- <script src="/<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/wb.js" type="text/javascript" charset="utf-8"></script> -->
-    <script>if (top.location != location) {
+    <script>
+        if (top.location != location) {
             top.location.href = location.href;
-        }</script>
-    <script>var userid = 0;
-        var username = '';
-        var sex = '';
-        var year = '';
-        var isadmin = '';
-        var profession = '';
-        var province = '';
-        var entry_year = '';</script>
+        }
+    </script>
     <script>
         var _hmt = _hmt || [];
         (function () {
@@ -116,7 +103,7 @@ use yii\helpers\Url;
         ga('send', 'pageview');
 
     </script>
-    <script src = "<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/jquery-1.7.1.min.js" ></script>
+    <script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/jquery-1.7.1.min.js"></script>
 </head>
 <body>
 <div class="slide-bar">
@@ -152,20 +139,17 @@ use yii\helpers\Url;
             </li>
             <li class="nav-item hover-elem">
                 <i class="icon-arrow-down"></i>
-                <a href="<?php echo Url::to(['default/discover']) ?>">发现</a>
+                <a href="<?php echo Url::to(['default/discover']) ?>">作品</a>
                 <div class="common-hover-wrap issue-hover-wrap">
                     <div class="hover-box">
                         <ul class="list">
                             <li class="nav-dropdown-item">
-                                <a class="nav-sublist-title fs_14 fw_600 c_b_3" href="<?php echo Url::to(['default/discover']) ?>">
-                                    作品<i class="icon-arrow-right"></i>
-                                </a>
                                 <ul class="nav-sublist">
-                                    <?php foreach($cateList  as $key=>$cate):?>
+                                    <?php foreach ($cateList as $key => $cate): ?>
                                         <li class="nav-sublist-item">
-                                            <a href="<?php echo Url::to(['default/discover','video_cate_id'=>$cate['id']]) ?>"><?php echo $cate['cate_name']; ?></a>
+                                            <a href="<?php echo Url::to(['default/discover', 'video_cate_id' => $cate['id']]) ?>"><?php echo $cate['cate_name']; ?></a>
                                         </li>
-                                    <?php endforeach;?>
+                                    <?php endforeach; ?>
                                 </ul>
                             </li>
                             <li class="line"></li>
@@ -174,23 +158,11 @@ use yii\helpers\Url;
                 </div>
             </li>
             <li class="nav-item school ">
-                <a class="disabled" href="">学院</a>
+                <a class="disabled" href="">器械租赁</a>
             </li>
             <li class="nav-item resource hover-elem">
                 <i class="icon-arrow-down"></i>
                 <a class="resource-video disabled" href="#">素材</a>
-                <!--                <div class="common-hover-wrap issue-hover-wrap">-->
-                <!--                    <div class="hover-box">-->
-                <!--                        <ul class="list">-->
-                <!--                            <ul class="list">-->
-                <!--                                <li><a class="resource-video" href="https://resource.xinpianchang.com/video/list">视频</a></li>-->
-                <!--                                <li style="position: relative;">-->
-                <!--                                    <a href="https://resource.xinpianchang.com/audio/list">音乐</a>-->
-                <!--                                </li>-->
-                <!--                            </ul>-->
-                <!--                        </ul>-->
-                <!--                    </div>-->
-                <!--                </div>-->
             </li>
             <li class="nav-item">
                 <a class="disabled" href="" target="_blank">活动</a>
@@ -198,9 +170,9 @@ use yii\helpers\Url;
             <li class="nav-item">
                 <a class="disabled" href="" target="_blank">新片场影业</a>
             </li>
-            <li class="nav-item">
-                <a class="disabled" href="" target="_blank">魔力短视频</a>
-            </li>
+            <!--            <li class="nav-item">-->
+            <!--                <a class="disabled" href="" target="_blank">魔力短视频</a>-->
+            <!--            </li>-->
             <li class="nav-item hover-elem">
                 <i class="icon-arrow-down"></i>
                 <a href="javascript:;">更多</a>
@@ -311,12 +283,9 @@ use yii\helpers\Url;
 
     }
 </script>
-
-<script type="text/javascript" src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/new-web/common-v=1516708042.js"></script>
 <script type="text/javascript">
     var siteUrl = 'http://www.xinpianchang.com/',
-        hoverElem = $(".hover-elem"),
-        loginUserid = userid;
+        hoverElem = $(".hover-elem");
     $(function () {
         function setCookie(name, value) {
             var Days = 30;
@@ -421,7 +390,7 @@ use yii\helpers\Url;
 </style>
 <div class="wrappage-container">
     <div class="wrappage-cover-wrap banner-wrap">
-        <video src="http://qiniu-xpc0.xpccdn.com/5a9ce9df6bab2.mp4" loop muted autoplay preload
+        <video src="http://video.sboyo.com/background.mp4" loop muted autoplay preload
                class="need-though-play opacity0"></video>
         <div class="wrappage-cover-main">
             <div class="wrappage-cover-center">
@@ -431,7 +400,8 @@ use yii\helpers\Url;
                         <i class="incremental-counter" data-current="808610" data-value="848610">808,610</i> 位创作人已加入</p>
                 </div>
                 <div class="btn-wrap" data-key="位置">
-                    <a class="dplus-link join-btn bg-red" href="<?php echo Url::to(['/site/default/discover'])?>" >随便逛逛</a>
+                    <a class="dplus-link join-btn bg-red"
+                       href="<?php echo Url::to(['/site/default/discover']) ?>">随便逛逛</a>
                     <a class="dplus-link join-btn bg-transparent disabled" href="javascript:;"
                        data-link=""
                        data-value="头部">立即加入</a>
@@ -440,37 +410,18 @@ use yii\helpers\Url;
         </div>
     </div>
     <div class="article-set-box">
-        <div class="article-set-intro float-contaniner">
-            <h3 class="level-title first-level-title">创建影像作品集</h3>
-            <div class="article-set-con">
-                <div class="set-left float-elem float-down el-1">
-                    <video class="set-video" src="http://qiniu-xpc0.xpccdn.com/59c21cd10410f.mp4" loop muted autoplay
-                           preload></video>
-                </div>
-                <div class="set-right">
-                    <ul class="set-tip-list float-elem float-down el-2">
-                        <li>提供个性化展示空间</li>
-                        <li>高清 4K 原画播放体验</li>
-                        <li>无广告无水印视频</li>
-                    </ul>
-                    <div class="create-set-wrap float-elem float-down el-3">
-                        <a class="dplus-link create-set-btn bg-red disabled" href="javascript:;"
-                           data-link="">创建作品集</a>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="article-show-box float-contaniner">
             <div class="show-left select-list">
                 <h4 class="level-title second-level-title float-elem float-down el-2">启发创作灵感</h4>
-                <p class="show-intro float-elem float-down el-3">海量国内外优质作品，涵盖各类影视创作领域<br>了解业内最新、最全作品动态，寻找启发你的创意灵感</p>
+                <p class="show-intro float-elem float-down el-3">我们浏览海量国内外优质作品;职位创作更佳作品<br>高端快传直播广电技术发挥极致，只为打造精彩直播内容</p>
                 <ul class="show-btn-list float-elem float-down el-4" data-eventname="查看作品分类" data-key="分类">
-                    <?php foreach($cateList as $key=>$cate):?>
-                    <li>
-                        <a class="dplus-link" href="javascript:;" data-link="<?php echo Url::to(['default/discover','video_cate_id'=>$cate['id']]) ?>"><?php echo $cate['cate_name']; ?></a>
-                    </li>
-                    <?php endforeach;?>
-                    <li><a class="dplus-link disabled" >more</a></li>
+                    <?php foreach ($cateList as $key => $cate): ?>
+                        <li>
+                            <a class="dplus-link" href="javascript:;"
+                               data-link="<?php echo Url::to(['default/discover', 'video_cate_id' => $cate['id']]) ?>"><?php echo $cate['cate_name']; ?></a>
+                        </li>
+                    <?php endforeach; ?>
+                    <li><a class="dplus-link disabled">more</a></li>
                 </ul>
             </div>
             <ul class="show-right float-elem float-down el-1" data-eventname="查看作品" data-key="作品ID">
@@ -793,7 +744,7 @@ use yii\helpers\Url;
                     </a>
                 </li>
                 <li>
-                    <a class="dplus-link disabled"  data-link="/u10012712" data-value="10012712">
+                    <a class="dplus-link disabled" data-link="/u10012712" data-value="10012712">
                         <img class="avator"
                              src="https://cs.xinpianchang.com/Upload/user/2017/07/215971ab763afd4.jpeg@360w_360h_1e_1c">
                         <div class="cover">
@@ -866,18 +817,18 @@ use yii\helpers\Url;
                         </div>
                     </a>
                     <a class="dplus-link disabled data-link="/u10003065" data-value="10003065">
-                        <img class="avator"
-                             src="https://cs.xinpianchang.com/uploadfile/user/2017/06/29/5954718318c29.jpeg@360w_360h_1e_1c">
-                        <div class="cover">
-                            <div class="cover-inner">
-                                <div class="name-wrap">
-                                    <span class="fs_14 fw_600 name">邵航</span>
-                                    <span class="author-v yellow-v"></span>
-                                </div>
-                                <p class="fs_12 fw_300 roles">声音制作 / 北京</p>
-                                <p class="fs_12 fw_300 intro">两万里声音设计团队创始人</p>
+                    <img class="avator"
+                         src="https://cs.xinpianchang.com/uploadfile/user/2017/06/29/5954718318c29.jpeg@360w_360h_1e_1c">
+                    <div class="cover">
+                        <div class="cover-inner">
+                            <div class="name-wrap">
+                                <span class="fs_14 fw_600 name">邵航</span>
+                                <span class="author-v yellow-v"></span>
                             </div>
+                            <p class="fs_12 fw_300 roles">声音制作 / 北京</p>
+                            <p class="fs_12 fw_300 intro">两万里声音设计团队创始人</p>
                         </div>
+                    </div>
                     </a>
                 </li>
                 <li>
@@ -1135,28 +1086,28 @@ use yii\helpers\Url;
                     </div>
                 </li>
                 <li class="float-elem float-down el-2">
-                    <a class="dplus-link example-cover-wrap disabled"  target="_blank"
+                    <a class="dplus-link example-cover-wrap disabled" target="_blank"
                        data-value="创作吧少年">
                         <img class="example-img"
                              src="http://cs.vmovier.com/Uploads/Activity/2017-09-18/59bf9d6d08933.png@732w_460h_1e_1c">
                         <span class="example-icon creator"></span>
                     </a>
                     <div class="example-detail-wrap">
-                        <a class="dplus-link title disabled"  target="_blank"
+                        <a class="dplus-link title disabled" target="_blank"
                            data-value="创作吧少年">创作吧！少年短片征集大赛</a>
                         <p class="intro">创作吧！少年，是新片场社区主办的系列短视频主题征集活动，每期结合电影、商业品牌等主题，累计征集作品3000多部。</p>
                     </div>
                 </li>
                 <li class="float-elem float-down el-3">
                     <a class="dplus-link example-cover-wrap disabled"
-                         target="_blank"
+                       target="_blank"
                        data-value="V电影开放日">
                         <img class="example-img"
                              src="http://cs.vmovier.com/Uploads/Activity/2017-09-19/59c10d099b26e.png@732w_460h_1e_1c">
                         <span class="example-icon vmovier"></span>
                     </a>
                     <div class="example-detail-wrap">
-                        <a class="dplus-link title disabled"  target="_blank"
+                        <a class="dplus-link title disabled" target="_blank"
                            data-value="V电影开放日">V电影开放日</a>
                         <p class="intro">V电影开放日，是全国范围内的优质短片线下展映、行业交流活动，足迹已遍布国内20多座城市，累计参与人数超过5万，覆盖用户超过300万。</p>
                     </div>
@@ -1256,7 +1207,7 @@ use yii\helpers\Url;
                         <span class="example-icon music"></span>
                     </a>
                     <div class="example-detail-wrap">
-                        <a class="dplus-link title disabled"   target="_blank"
+                        <a class="dplus-link title disabled" target="_blank"
                            data-value="音乐素材">版权音乐素材</a>
                         <p class="intro">影视配乐专属的版权音乐曲库在线交易，根据项目用途提供多种报价方案。可下载正式授权书，并支持永久使用，避免版权纠纷。</p>
                     </div>
@@ -1269,7 +1220,7 @@ use yii\helpers\Url;
                         <span class="example-icon video"></span>
                     </a>
                     <div class="example-detail-wrap">
-                        <a class="dplus-link title disabled"  target="_blank"
+                        <a class="dplus-link title disabled" target="_blank"
                            data-value="视频素材">版权视频素材</a>
                         <p class="intro">百万量级免版税电影级视频素材，涵盖空镜头、人物、特效等多种类型。统一售价，更有多种套餐选择。官方授权，支持发票。</p>
                     </div>
@@ -1290,7 +1241,7 @@ use yii\helpers\Url;
         <div class="end-box float-contaniner">
             <h3 class="level-title first-level-title">在这里，用作品打动世界</h3>
             <div class="btn-wrap float-elem float-down el-1" data-key="位置">
-                <a class="dplus-link join-btn bg-red" href="<?php echo Url::to(['/site/default/discover'])?>">随便逛逛</a>
+                <a class="dplus-link join-btn bg-red" href="<?php echo Url::to(['/site/default/discover']) ?>">随便逛逛</a>
                 <a class="dplus-link join-btn bg-transparent">立即加入</a>
             </div>
         </div>
@@ -1413,37 +1364,14 @@ use yii\helpers\Url;
                     <span class="v-center fs_14 c_b_3">用作品打动世界！</span>
                 </div>
                 <p class="fs_12 c_b_9 fw_300">
-                    新片场是国内专业的影视创作人社区，汇聚众多优秀创作人，提供作品展示、项目交流、拍摄制作机会等影视行业服务。在这里，你可以找到合适的创作人。在这里，用作品打动世界！</p>
-                <!-- <p class="record">京ICP备14003808号-1&nbsp;&nbsp;京公网安备11010802013821号</p> -->
+                    维尔斯是专业的影视制作团队，汇聚精通专项人才，我们只做自己最擅长的领域，创作优秀作品。</p>
             </div>
             <div class="right fr clearfix">
                 <div class="column-item fl">
                     <p class="title fs_16 c_b_3 fw_600">关于</p>
                     <ul class="list fs_12 fw_300">
                         <li><a target="_blank" class="disabled">关于我们</a></li>
-                        <li><a target="_blank" class="disabled">使用帮助</a></li>
                         <li><a target="_blank" class="disabled">加入我们</a></li>
-                        <li><a target="_blank" class="disabled">责任声明</a></li>
-                    </ul>
-                </div>
-                <div class="column-item fl">
-                    <p class="title fs_16 c_b_3 fw_600">活动</p>
-                    <ul class="list fs_12 fw_300">
-                        <li><a target="_blank" class="disabled">NEW ERA 青年电影季</a></li>
-                        <li><a target="_blank" class="disabled">创作吧少年</a>
-                        </li>
-                        <li><a target="_blank" class="disabled">V电影开放日</a>
-                        </li>
-                        <li><a target="_blank" class="disabled">更多活动</a></li>
-                    </ul>
-                </div>
-                <div class="column-item fl">
-                    <p class="title fs_16 c_b_3 fw_600">新片场集团</p>
-                    <ul class="list fs_12 fw_300">
-                        <li><a target="_blank" class="disabled">新片场社区</a></li>
-                        <li><a target="_blank" class="disabled">新片场影业</a></li>
-                        <li><a target="_blank" class="disabled">魔力短视频</a></li>
-                        <li><a target="_blank" class="disabled">魔力短视频营销</a></li>
                     </ul>
                 </div>
             </div>
@@ -1468,9 +1396,6 @@ use yii\helpers\Url;
     });
 </script>
 <script>
-    var PASSPORT_ORIGIN = "https://passport.xinpianchang.com";
-</script>
-<script>
     var hideCode;
     $('.follow-wx').hover(function () {
         $(this).parent().parent().siblings('.wx-qr').css('display', 'block');
@@ -1489,76 +1414,8 @@ use yii\helpers\Url;
     });
 
 </script>
-<script>
-    var userid = 0;
-    if (userid) {
-        $('.needLogin').removeClass('needLogin');
-    }
-    ;
-    //evdata(userid);
-    $("#feedBack .feedback_icon").click(function () {
-        $(".feedback_post_bg").fadeIn(200);
-        $("#feedback_post_textarea_div textarea").focus(function () {
-            $(this).val('');
-        })
-        $("#feedback_action_btn_div").bind('click', function () {
-            var content = $.trim($("#feedback_post_textarea_div textarea").val());
-            if (content && content != '请提供你宝贵的建议，让我们做得更好！') {
-                $.post(siteUrl + 'index.php?app=aboutus&ac=feedback', {content: content}, function (re) {
-                    if (re.status) {
-                        $("#feedback_post_textarea_div").hide();
-                        $("#feedback_post_succeed_div").show();
-                        $("#feedback_action_btn_div").hide();
-                    }
-                }, 'json')
-                setTimeout(function () {
-                    $(".feedback_post_bg").hide();
-                    $("#feedback_post_textarea_div").show();
-                    $("#feedback_post_succeed_div").hide();
-                    $("#feedback_action_btn_div").show();
-                    $("#feedback_post_textarea_div textarea").val('');
-                }, 3000)
-            } else {
-
-            }
-        })
-    })
-    $(".login_close_footer").click(function () {
-        $(".login-guide").remove();
-        var date = new Date();
-        date.setTime(date.getTime() + (7 * 24 * 60 * 60 * 1000)); //三天后的这个时候过期
-        $.cookie('login-guide', 1, {path: '/', expires: date});
-    })
-
-</script>
-<script type="text/javascript">
-    function sns_conform(title, content, next_func) {
-        var conformDoText = arguments[3] ? arguments[3] : '确定';
-        $("#snsModalLabel").text(title);
-        $("#snsModalContent").text(content);
-        $("#conformDo").text(conformDoText);
-        $('#snsModal').modal('show');
-        $('#conformDo').bind('click', function () {
-            $('#snsModal').modal('hide');
-            next_func();
-        });
-
-    }
-</script>
-<!-- <script src="/<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/common.js?v=1507725884" type="text/javascript"></script> -->
-
-<!--[if IE 6]>
-<script src="http://letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
-<![endif]-->
 <script type="text/javascript">
     $(document).ready(function () {
-        /*
-        $('#wx2wm').hover(function(){
-             $(".erweima").show();
-        },function(){
-             $(".erweima").hide();
-        });
-        */
         $("#xma_search").bind("click", function () {
             var conVal = $('#search').val();
             if (conVal == '') {
@@ -1589,27 +1446,7 @@ use yii\helpers\Url;
     });
 
 </script>
-
-<script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/baidu_persona-v=1503453382.js"></script>
-<!-- 百度自动推送 -->
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        }
-        else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-
 <script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/artDialog/artDialog.min-v=1503453382.js"></script>
 <script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/artDialog/artDialog.plugins.min-v=1503453382.js"></script>
-<!-- <script type='text/javascript' src='http://getfirebug.com/releases/lite/1.2/firebug-lite-compressed.js'></script> -->
 </body>
 </html>

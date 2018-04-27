@@ -12,7 +12,14 @@ use yii\base\Component;
 use yii\base\Exception;
 
 class Common extends Component{
-
+    /**
+     * @param $url
+     * @param null $params
+     * @param string $type
+     * @param string $header
+     * @return bool|mixed
+     * @throws Exception
+     */
     public static function httpRequest($url, $params = null, $type = 'get',$header='')
     {
         $curl = curl_init();
@@ -28,9 +35,9 @@ class Common extends Component{
                 break;
             case 'post':
                 curl_setopt($curl, CURLOPT_POST, true);
-                if (!$params) {
-                    throw new Exception("Post data can not be empty.");
-                }
+//                if (!$params) {
+//                    throw new Exception("Post data can not be empty.");
+//                }
                 curl_setopt($curl, CURLOPT_POSTFIELDS, $params);
                 break;
             case 'raw':

@@ -7,9 +7,16 @@
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license http://www.yiiframework.com/license/
  */
+defined('YII_ENV') or define('YII_ENV', get_cfg_var('site_mode'));
 
-defined('YII_DEBUG') or define('YII_DEBUG', true);
-defined('YII_ENV') or define('YII_ENV', 'dev');
+if (YII_ENV=='development')
+{
+    defined('YII_DEBUG') or define('YII_DEBUG', true);
+    ini_set("display_errors", "On");
+    error_reporting(E_ALL);
+}else {
+    defined('YII_DEBUG') or define('YII_DEBUG', false);
+}
 
 require(__DIR__ . '/vendor/autoload.php');
 require(__DIR__ . '/vendor/yiisoft/yii2/Yii.php');
@@ -19,7 +26,7 @@ require(__DIR__ . '/console/config/bootstrap.php');
 $config = yii\helpers\ArrayHelper::merge(
     require(__DIR__ . '/common/config/main.php'),
     require(__DIR__ . '/console/config/main.php'),
-    require(__DIR__ . '/console/config/main-local.php')
+    require(__DIR__ . '/console/config/main-extend.php')
 );
 
 $application = new yii\console\Application($config);

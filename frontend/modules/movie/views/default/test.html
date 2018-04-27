@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="mod_player"><!-- 这个div是播放器准备输出的位置 --></div>
+
+<!-- 引入腾讯视频播放器组件 -->
+
+<script language="javascript" src="http://qzs.qq.com/tencentvideo_v1/js/tvp/tvp.player.js" charset="utf-8"></script>
+
+<script language="javascript">
+    var video = new tvp.VideoInfo();
+    //向视频对象传入直播频道id
+    video.setVid("a0510i0whou");
+    var player = new tvp.Player(600, 450);
+    //设置播放器初始化时加载的视频
+    player.setCurVideo(video);
+    //设置播放器为直播状态，1表示直播，2表示点播，默认为2
+    player.addParam("type", "2");
+    player.addParam("autoplay", 0);
+    player.addParam("wmode", "transparent");
+    player.addParam("showcfg", "0");
+    player.addParam("flashskin", "http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf");
+    player.addParam("showend", 0);
+    //输出播放器
+    player.write("mod_player");
+
+</script>
+</body>
+</html>
