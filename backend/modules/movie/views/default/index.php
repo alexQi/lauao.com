@@ -15,10 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="box box-info">
             <div class="box-header with-border">
                 <h3 class="box-title"><?= Html::encode($this->title) ?></h3>
-
-                <div class="box-tools">
-        <?= Html::a('新建记录', ['create'], ['class' => 'btn btn-success']) ?>
-                </div>
             </div>
             <div class="box-body">
             <?php Pjax::begin(); ?>
@@ -64,18 +60,18 @@ $this->params['breadcrumbs'][] = $this->title;
                                 "width" => "80"
                             ],
                         ],
-                        [
-                            'attribute'=>'uploader',
-                            "headerOptions" => [
-                                "width" => "80"
-                            ],
-                        ],
-                        [
-                            'attribute'=>'video_time',
-                            "headerOptions" => [
-                                "width" => "80"
-                            ],
-                        ],
+//                        [
+//                            'attribute'=>'uploader',
+//                            "headerOptions" => [
+//                                "width" => "80"
+//                            ],
+//                        ],
+//                        [
+//                            'attribute'=>'video_time',
+//                            "headerOptions" => [
+//                                "width" => "80"
+//                            ],
+//                        ],
                         'created_at',
                         [
                             'class' => 'yii\grid\ActionColumn',

@@ -30,7 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= DetailView::widget([
                         'model' => $model,
                         'attributes' => [
-                            'video_id',
                             [
                                 'label' => '视频分类',
                                 'attribute'=>'video_cate_id',
@@ -40,16 +39,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                 },
                             ],
                             'video_name',
-                            'video_url:url',
                             [
                                 'label' => '视频预览',
                                 'attribute'=>'video_url',
                                 'format' => 'raw',
                                 'value'=>function ($model) {
-                                    $html = '<video id="my-video" class="video-js" poster="'.$model->poster.'" controls preload="auto" width="300" height="200" data-setup="{}"><source src="'.$model->video_url.'" type="video/mp4"></video>';
+                                    $html = '<div id="my-video" data-id="'.$model->video_url.'" style="width: 300px;height: 300px"></div>';
                                     return $html;
                                 },
                             ],
+
                             [
                                 'label' => '播放次数',
                                 'attribute'=>'play_num',
@@ -67,7 +66,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                 },
                             ],
                             'uploader',
-                            'video_time',
                             'updated_at',
                         ],
                     ]) ?>
@@ -76,10 +74,26 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
-<script>
-    var myVideo = videojs('my-video');
+<script language="javascript" src="http://qzs.qq.com/tencentvideo_v1/js/tvp/tvp.player.js" charset="utf-8"></script>
 
-    myVideo.controls = false;
-    myVideo.autoplay = false;
-    myVideo.preload = "auto";
+<script language="javascript">
+    function playVideo(){
+        var id = $('#my-video').attr('data-id');
+        var video = new tvp.VideoInfo();
+        //向视频对象传入直播频道id
+        video.setVid(id);
+        var player = new tvp.Player(500, 300);
+        //设置播放器初始化时加载的视频
+        player.setCurVideo(video);
+        //设置播放器为直播状态，1表示直播，2表示点播，默认为2
+        player.addParam("type", "2");
+        player.addParam("autoplay", 0);
+        player.addParam("wmode", "transparent");
+        player.addParam("showcfg", "0");
+        player.addParam("flashskin", "http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf");
+        player.addParam("showend", 1);
+        //输出播放器
+        player.write('my-video');
+    }
+    playVideo();
 </script>

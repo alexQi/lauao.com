@@ -22,8 +22,10 @@ class AdminLog
                 $desc = substr($desc, 0, -1);
                 $pk = $event->sender->primaryKey()[0];
                 $description = Yii::$app->user->identity->username . '修改了 ' . $pk.'='.$event->sender->getAttribute($pk). ' 的 ' . $desc;
+                $operationType = 'update';
+            }else{
+                return true;
             }
-            $operationType = 'update';
         }elseif($event->name=='afterDelete'){
             $pk = $event->sender->primaryKey()[0];
             $description = Yii::$app->user->identity->username . '删除了 ' . $pk.'='.$event->sender->getAttribute($pk). ' 的记录';
@@ -35,10 +37,11 @@ class AdminLog
             $pk = $event->sender->primaryKey()[0];
             $description = Yii::$app->user->identity->username . '创建了 ' . $pk.'='.$event->sender->getAttribute($pk). ' 的记录';
             $operationType = 'create';
+        }else{
+            return true;
         }
 
         $tableName = $event->sender::tableName();
-
         //存储日志入库
         $route = Url::to();
         $userId = Yii::$app->user->id;

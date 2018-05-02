@@ -35,7 +35,7 @@ class VideoService extends Video
         $query->groupBy('v.video_id');
 
         $pages = new Pagination(['totalCount' => $query->count()]);
-        $pages->setPageSize(12);
+        $pages->setPageSize($pageSize);
         $list = $query->offset($pages->offset)->limit($pages->limit)->asArray()->all();
         $data['pages'] = $pages;
         $data['list']  = $list;

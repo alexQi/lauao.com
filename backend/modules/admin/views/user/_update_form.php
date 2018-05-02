@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\User */
+/* @var $model \backend\modules\admin\models\User */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'username')->textInput(['maxlength' => true])->label(false); ?>
 
-    <?= $form->field($model, 'passwd')->textInput(['maxlength' => true])->label(false); ?>
+    <?= $form->field($model, 'password_hash')->passwordInput(['maxlength' => true])->label(false); ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true])->label(false); ?>
 

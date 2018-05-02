@@ -2,16 +2,15 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
-use yii\helpers\Url;
+use mihaildev\ckeditor\CKEditor;
 use kartik\file\FileInput;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Video */
+/* @var $model common\models\VideoMember */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="video-form">
+<div class="video-member-form">
 
     <?php $form = ActiveForm::begin([
             'options' => ['class'=>'form-horizontal','enctype' => 'multipart/form-data'],
@@ -25,15 +24,11 @@ use kartik\file\FileInput;
     );?>
 
     <div class="row margin">
-        <?= $form->field($model, 'video_name',['labelOptions' => ['label' => '视频标题'],'template'=>'{label}<div class="col-xs-4">{input}</div><div class="col-xs-2">{error}</div>'])->textInput(['maxlength' => true,['id'=>'col-xs-4']]) ?>
-    </div>
-
-    <div class="row margin">
-        <?= $form->field($model, 'tempFileUrl',['labelOptions' => ['label' => '视频封面'],'template'=>"{label}\n<div class=\"col-lg-8\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>"])->widget(FileInput::classname(), [
+        <?= $form->field($model, 'tempFileUrl',['labelOptions' => ['label' => '头像'],'template'=>"{label}\n<div class=\"col-lg-8\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>"])->widget(FileInput::classname(), [
             'options' => ['multiple' => true],
             'pluginOptions' => [
                 // 需要预览的文件格式
-//                'previewFileType' => 'image',
+                //                'previewFileType' => 'image',
                 // 是否展示预览图
                 'initialPreview' => $p1,
                 // 需要展示的图片设置，比如图片的宽度等
@@ -43,7 +38,7 @@ use kartik\file\FileInput;
                 // 是否展示预览图
                 'initialPreviewAsData' => true,
                 // 异步上传的接口地址设置
-                'uploadUrl' => yii\helpers\Url::toRoute(['/ajax/upload-file/upload','fileClass'=>'Video','bucket'=>'image']),
+                'uploadUrl' => yii\helpers\Url::toRoute(['/ajax/upload-file/upload','fileClass'=>'VideoMember','bucket'=>'image']),
                 // 异步上传需要携带的其他参数，比如id等
                 'uploadExtraData' => [
                     'id' => $id,
@@ -76,7 +71,7 @@ use kartik\file\FileInput;
                 // 上传成功后的回调方法，需要的可查看data后再做具体操作，一般不需要设置
                 "fileuploaded" => "function (event, data, id, index) {
                 if(data.response.state==1){
-                    $(\"#video-poster\").val(data.response.data.file_url);
+                    $(\"#videomember-avatar_url\").val(data.response.data.file_url);
                 }else{
                     showAlert(data.response.message);
                 }
@@ -84,34 +79,17 @@ use kartik\file\FileInput;
             ],
         ]);?>
     </div>
-
     <div class="row margin">
-        <?= $form->field($model, 'video_cate_id',['labelOptions' => ['label' => '素材类型'],'template'=>'{label}<div class="col-xs-2">{input}</div><div class="col-xs-2">{error}</div>'])->dropDownList(ArrayHelper::map($vCate,'id','cate_name')) ?>
+        <?= $form->field($model, 'name',['labelOptions' => ['label' => '姓名'],'template'=>'{label}<div class="col-xs-4">{input}</div><div class="col-xs-2">{error}</div>'])->textInput(['maxlength' => true,['id'=>'col-xs-4']]) ?>
     </div>
 
     <div class="row margin">
-        <?= $form->field($model, 'video_url',['labelOptions' => ['label' => '视频id'],'template'=>'{label}<div class="col-xs-8">{input}</div><div class="col-xs-2">{error}</div>'])->textInput(['maxlength' => true,['id'=>'col-xs-4'],'readonly'=>true]) ?>
+        <?= $form->field($model, 'desc',['labelOptions' => ['label' => '简介'],'template'=>'{label}<div class="col-xs-8">{input}</div><div class="col-xs-2">{error}</div>'])->textInput(['maxlength' => true,['id'=>'col-xs-4']]) ?>
     </div>
 
     <div class="row margin">
-        <?= $form->field($model, 'play_num',['labelOptions' => ['label' => '播放量'],'template'=>'{label}<div class="col-xs-2">{input}</div><div class="col-xs-2">{error}</div>'])->textInput(['maxlength' => true,['id'=>'col-xs-2']]) ?>
-    </div>
-
-    <div class="row margin">
-        <?= $form->field($model, 'like_num',['labelOptions' => ['label' => '点赞数'],'template'=>'{label}<div class="col-xs-2">{input}</div><div class="col-xs-2">{error}</div>'])->textInput(['maxlength' => true,['id'=>'col-xs-2']]) ?>
-    </div>
-
-    <div class="row margin">
-        <?= $form->field($model, 'uploader',['labelOptions' => ['label' => '作者'],'template'=>'{label}<div class="col-xs-2">{input}</div><div class="col-xs-2">{error}</div>'])->textInput(['maxlength' => true,['id'=>'col-xs-4']]) ?>
-    </div>
-
-    <div class="row margin">
-        <?= $form->field($model, 'video_time',['labelOptions' => ['label' => '视频时长'],'template'=>'{label}<div class="col-xs-2">{input}</div><div class="col-xs-2">{error}</div>'])->textInput(['maxlength' => true,['id'=>'col-xs-4']]) ?>
-    </div>
-
-    <div class="row margin">
-        <?= $form->field($model, 'poster')->hiddenInput(['maxlength' => true])->label(false) ?>
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= $form->field($model, 'avatar_url')->hiddenInput(['maxlength' => true])->label(false)->error(false) ?>
+        <?= Html::submitButton($model->isNewRecord ? '添加' : '更新', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

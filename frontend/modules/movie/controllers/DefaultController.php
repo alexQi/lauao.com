@@ -6,6 +6,7 @@ use common\models\Orders;
 use common\models\Pay\Wechat;
 use common\models\ActivityBase;
 use common\models\VideoCategory;
+use common\models\VideoMember;
 use frontend\models\VideoService;
 use Yii;
 use frontend\controllers\BaseController;
@@ -26,10 +27,22 @@ class DefaultController extends BaseController
      */
     public function actionIndex()
     {
-        $cateList = VideoCategory::find()->select(['id','cate_name'])->asArray()->all();
-	    return $this->render('index',[
-            'cateList' => $cateList
-        ]);
+        if ($this->isMobile){
+            $viewName = 'mobile/index';
+            $videoList = VideoService::getVideoList(999999);
+            return $this->render($viewName,[
+                'videoList' => $videoList
+            ]);
+        }else{
+            $cateList = VideoCategory::find()->select(['id','cate_name'])->asArray()->all();
+            $memberList = VideoMember::find()->asArray()->all();
+            $viewName = "index";
+            return $this->render($viewName,[
+                'cateList' => $cateList,
+                'memberList' => $memberList
+            ]);
+        }
+
     }
 
     public function actionDiscover()
@@ -37,7 +50,7 @@ class DefaultController extends BaseController
         $isNew = Yii::$app->request->get('isNew') ? 1 : 0;
         $video_cate_id = Yii::$app->request->get('video_cate_id') ? Yii::$app->request->get('video_cate_id') :false;
         $cateList  = VideoCategory::find()->select(['id','cate_name'])->asArray()->all();
-        $videoList = VideoService::getVideoList();
+        $videoList = VideoService::getVideoList(12);
 
         return $this->render('discover',[
             'cateList'  => $cateList,
@@ -61,5 +74,16 @@ class DefaultController extends BaseController
             'cateList'  => $cateList,
             'videoDetail' => $videoDetail
         ]);
+    }
+
+    public function actionAbout(){
+        if (!$this->isMobile){
+            return $this->redirect(['index']);
+        }else{
+            $memberList = VideoMember::find()->asArray()->all();
+            return $this->render('mobile/about',[
+                'memberList' => $memberList
+            ]);
+        }
     }
 }

@@ -40,7 +40,6 @@ class Video extends \yii\db\ActiveRecord
             [['video_cate_id', 'video_name', 'video_url', 'poster', 'play_num', 'like_num', 'uploader', 'video_time', 'created_at', 'updated_at'], 'required'],
             [['video_cate_id', 'play_num', 'like_num'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['video_url'],'url'],
             [['video_name', 'video_url', 'poster', 'uploader','tempFileUrl'], 'string', 'max' => 255],
         ];
     }
