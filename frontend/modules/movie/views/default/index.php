@@ -278,7 +278,7 @@ use yii\helpers\Url;
 </style>
 <div class="wrappage-container">
     <div class="wrappage-cover-wrap banner-wrap">
-        <video src="http://video.sboyo.com/background.mp4" loop muted autoplay preload
+        <video src="http://video.sboyo.com/background-test.mp4" loop muted autoplay preload
                class="need-though-play opacity0"></video>
         <div class="wrappage-cover-main">
             <div class="wrappage-cover-center">
