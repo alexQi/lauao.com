@@ -30,9 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'avatar_url:url',
             'name',
-//            'desc',
+            'sort',
             'created_at',
-
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{view} {update} {delete}',
@@ -40,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     'class' => 'btn btn-sm bg-olive margin-r-5'
                 ],
                 "headerOptions" => [
-                    "width" => "200"
+                    "width" => "150"
                 ],
             ],
         ],

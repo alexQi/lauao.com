@@ -135,7 +135,7 @@ if ($video_cate_id) {
         </a>
         <ul class="fs_16 fw_300 nav-list clearfix v-center">
             <li class="nav-item select">
-                <a href="<?php echo Url::to(['default/index']) ?>">首页</a>
+                <a href="<?php echo Url::to(['/movie/default/index']) ?>">首页</a>
             </li>
             <li class="nav-item hover-elem">
                 <i class="icon-arrow-down"></i>
@@ -147,7 +147,7 @@ if ($video_cate_id) {
                                 <ul class="nav-sublist">
                                     <?php foreach ($cateList as $key => $cate): ?>
                                         <li class="nav-sublist-item">
-                                            <a href="<?php echo Url::to(['default/discover', 'video_cate_id' => $cate['id']]) ?>"><?php echo $cate['cate_name']; ?></a>
+                                            <a href="<?php echo Url::to(['/movie/default/discover', 'video_cate_id' => $cate['id']]) ?>"><?php echo $cate['cate_name']; ?></a>
                                         </li>
                                     <?php endforeach; ?>
                                 </ul>

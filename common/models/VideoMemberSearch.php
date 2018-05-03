@@ -67,6 +67,8 @@ class VideoMemberSearch extends VideoMember
             ->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'desc', $this->desc]);
 
+        $query->orderBy(['sort'=>SORT_ASC]);
+
         return $dataProvider;
     }
 }

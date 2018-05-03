@@ -38,44 +38,35 @@ $this->params['breadcrumbs'][] = $this->title;
                             },
                             'filter' => \common\models\Video::getCategoryList(), //筛选的数据
                             "headerOptions" => [
-                                "width" => "80"
+                                "width" => "150"
                             ],
                         ],
-//                        'video_name',
                         [
                             'attribute'=>'video_name',
                             "headerOptions" => [
-                                "width" => "200"
+                                "width" => "250"
                             ],
                         ],
                         [
-                            'attribute'=>'play_num',
+                            'label' => '状态',
+                            'attribute' => 'status',
+                            'format' => 'html',
+                            'value' => function($model) {
+                                $string = $model->status==1 ? '禁用' : '启用';
+                                $class  = $model->status==1 ? 'danger' : 'success';
+                                $html   ='<span class="label label-'.$class.'">'.$string.'</span>';
+                                return $html;
+                            },
+                            'filter' => [1=>'禁用',2=>'启用'], //筛选的数据
                             "headerOptions" => [
-                                "width" => "80"
+                                "width" => "120"
                             ],
                         ],
-                        [
-                            'attribute'=>'like_num',
-                            "headerOptions" => [
-                                "width" => "80"
-                            ],
-                        ],
-//                        [
-//                            'attribute'=>'uploader',
-//                            "headerOptions" => [
-//                                "width" => "80"
-//                            ],
-//                        ],
-//                        [
-//                            'attribute'=>'video_time',
-//                            "headerOptions" => [
-//                                "width" => "80"
-//                            ],
-//                        ],
                         'created_at',
+                        'uploader',
                         [
                             'class' => 'yii\grid\ActionColumn',
-                            'template' => '{view} {update} {delete}',
+                            'template' => '{view} {update}{delete}',
                             'buttonOptions' => [
                                 'class' => 'btn btn-sm bg-olive margin-r-5'
                             ],

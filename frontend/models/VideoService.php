@@ -27,6 +27,8 @@ class VideoService extends Video
             $query->where(['video_cate_id'=>Yii::$app->request->get('video_cate_id')]);
         }
 
+        $query->andWhere(['v.status'=>2]);
+
         if (Yii::$app->request->get('isNew') == '1')
         {
             $query->orderBy(['v.created_at'=>SORT_DESC]);

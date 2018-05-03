@@ -47,9 +47,9 @@ class DefaultController extends Controller
     }
 
     /**
-     * Displays a single Video model.
-     * @param integer $id
-     * @return mixed
+     * @param $id
+     * @return string
+     * @throws NotFoundHttpException
      */
     public function actionView($id)
     {
@@ -65,6 +65,7 @@ class DefaultController extends Controller
      * Creates a new Video model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
+     * @throws
      */
     public function actionCreate()
     {
@@ -93,10 +94,9 @@ class DefaultController extends Controller
     }
 
     /**
-     * Updates an existing Video model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
+     * @param $id
+     * @return string|\yii\web\Response
+     * @throws NotFoundHttpException
      */
     public function actionUpdate($id)
     {
@@ -133,10 +133,12 @@ class DefaultController extends Controller
     }
 
     /**
-     * Deletes an existing Video model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
+     * @param $id
+     * @return \yii\web\Response
+     * @throws NotFoundHttpException
+     * @throws \Exception
+     * @throws \Throwable
+     * @throws \yii\db\StaleObjectException
      */
     public function actionDelete($id)
     {

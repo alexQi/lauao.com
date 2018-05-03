@@ -86,6 +86,9 @@ use kartik\file\FileInput;
     <div class="row margin">
         <?= $form->field($model, 'desc',['labelOptions' => ['label' => '简介'],'template'=>'{label}<div class="col-xs-8">{input}</div><div class="col-xs-2">{error}</div>'])->textInput(['maxlength' => true,['id'=>'col-xs-4']]) ?>
     </div>
+    <div class="row margin">
+        <?= $form->field($model, 'sort',['labelOptions' => ['label' => '排序'],'template'=>'{label}<div class="col-xs-4">{input}</div><div class="col-xs-2">{error}</div>'])->textInput(['maxlength' => true,['id'=>'col-xs-4']]) ?>
+    </div>
 
     <div class="row margin">
         <?= $form->field($model, 'avatar_url')->hiddenInput(['maxlength' => true])->label(false)->error(false) ?>

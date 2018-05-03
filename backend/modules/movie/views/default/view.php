@@ -48,22 +48,18 @@ $this->params['breadcrumbs'][] = $this->title;
                                     return $html;
                                 },
                             ],
-
                             [
-                                'label' => '播放次数',
-                                'attribute'=>'play_num',
-                                'format' => 'raw',
+                                'attribute'=>'status',
+                                'format' => 'html',
                                 'value'=>function ($model) {
-                                    return $model->play_num.'次';
+                                    $string = $model->status==1 ? '禁用' : '启用';
+                                    $class  = $model->status==1 ? 'warning' : 'success';
+                                    $html   ='<span class="label label-'.$class.'">'.$string.'</span>';
+                                    return $html;
                                 },
-                            ],
-                            [
-                                'label' => '被赞数',
-                                'attribute'=>'like_num',
-                                'format' => 'raw',
-                                'value'=>function ($model) {
-                                    return $model->like_num.'次';
-                                },
+                                "headerOptions" => [
+                                    "width" => "100"
+                                ],
                             ],
                             'uploader',
                             'updated_at',

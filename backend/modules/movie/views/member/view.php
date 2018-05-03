@@ -32,6 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'avatar_url:image',
             'name',
             'desc',
+            'sort',
             'created_at',
         ],
     ]) ?>

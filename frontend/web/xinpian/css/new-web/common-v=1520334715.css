@@ -2078,7 +2078,7 @@ input {
 
 /* header */
 .header-common {
-    position: fixed;
+    position: absolute;
     width: 100%;
     background: #fff;
     min-width: 1180px;
@@ -2695,7 +2695,7 @@ input {
     position: absolute;
     width: 100%;
     bottom: 0;
-    height: 321px;
+    /*height: 321px;*/
 }
 
 .footer-wrap .footer-con {
@@ -2736,6 +2736,7 @@ input {
 
 .footer-wrap .right .column-item:last-child {
     width: 90px;
+    margin-right: 100px;
 }
 
 .footer-wrap .right .column-item .title {
@@ -2765,7 +2766,7 @@ input {
 
 .footer-wrap .footer-bottom .bottom-con {
     height: 56px;
-    width: 1140px;
+    width: 500px;
     margin: 0 auto;
     line-height: 56px;
     padding: 0 20px;

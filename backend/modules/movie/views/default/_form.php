@@ -94,19 +94,10 @@ use kartik\file\FileInput;
     </div>
 
     <div class="row margin">
-        <?= $form->field($model, 'play_num',['labelOptions' => ['label' => '播放量'],'template'=>'{label}<div class="col-xs-2">{input}</div><div class="col-xs-2">{error}</div>'])->textInput(['maxlength' => true,['id'=>'col-xs-2']]) ?>
-    </div>
-
-    <div class="row margin">
-        <?= $form->field($model, 'like_num',['labelOptions' => ['label' => '点赞数'],'template'=>'{label}<div class="col-xs-2">{input}</div><div class="col-xs-2">{error}</div>'])->textInput(['maxlength' => true,['id'=>'col-xs-2']]) ?>
-    </div>
-
-    <div class="row margin">
         <?= $form->field($model, 'uploader',['labelOptions' => ['label' => '作者'],'template'=>'{label}<div class="col-xs-2">{input}</div><div class="col-xs-2">{error}</div>'])->textInput(['maxlength' => true,['id'=>'col-xs-4']]) ?>
     </div>
-
     <div class="row margin">
-        <?= $form->field($model, 'video_time',['labelOptions' => ['label' => '视频时长'],'template'=>'{label}<div class="col-xs-2">{input}</div><div class="col-xs-2">{error}</div>'])->textInput(['maxlength' => true,['id'=>'col-xs-4']]) ?>
+        <?= $form->field($model, 'status',['labelOptions' => ['label' => '状态'],'template'=>'{label}<div class="col-xs-2">{input}</div><div class="col-xs-2">{error}</div>'])->dropDownList(['1'=>'禁用','2'=>'启用']) ?>
     </div>
 
     <div class="row margin">

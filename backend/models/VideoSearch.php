@@ -6,27 +6,25 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Video;
+
 /**
  * VideoSearch represents the model behind the search form about `common\models\Video`.
  */
-class VideoSearch extends Video
-{
+class VideoSearch extends Video {
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            [['video_id', 'video_cate_id', 'play_num', 'like_num', 'video_time'], 'integer'],
-            [['video_name','vCate', 'video_url', 'poster', 'uploader', 'created_at', 'updated_at'], 'safe'],
+            [['video_id', 'video_cate_id', 'play_num', 'like_num', 'video_time', 'status'], 'integer'],
+            [['video_name', 'vCate', 'video_url', 'poster', 'uploader', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -38,8 +36,7 @@ class VideoSearch extends Video
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = Video::find();
 
         // add conditions that should always apply here
@@ -58,13 +55,14 @@ class VideoSearch extends Video
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'video_id' => $this->video_id,
+            'video_id'      => $this->video_id,
             'video_cate_id' => $this->video_cate_id,
-            'play_num' => $this->play_num,
-            'like_num' => $this->like_num,
-            'video_time' => $this->video_time,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'play_num'      => $this->play_num,
+            'like_num'      => $this->like_num,
+            'video_time'    => $this->video_time,
+            'status'        => $this->status,
+            'created_at'    => $this->created_at,
+            'updated_at'    => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'video_name', $this->video_name])

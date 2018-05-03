@@ -11,6 +11,7 @@ use Yii;
  * @property string $avatar_url
  * @property string $name
  * @property string $desc
+ * @property int $sort
  * @property string $created_at
  */
 class VideoMember extends \yii\db\ActiveRecord
@@ -31,7 +32,7 @@ class VideoMember extends \yii\db\ActiveRecord
     {
         return [
             [['avatar_url', 'name', 'desc', 'created_at'], 'required'],
-            [['created_at'], 'safe'],
+            [['created_at','sort'], 'safe'],
             [['avatar_url', 'name', 'desc'], 'string', 'max' => 255],
         ];
     }
@@ -46,6 +47,7 @@ class VideoMember extends \yii\db\ActiveRecord
             'avatar_url' => '头像',
             'name' => '姓名',
             'desc' => '简介',
+            'sort' => '排序',
             'created_at' => '添加时间',
         ];
     }
