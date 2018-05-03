@@ -102,5 +102,5 @@ return [
     ],
 
     'params' => $params,
-    'name'=>'OLIU后台管理',
+    'name'=>'ECC',
 ];
