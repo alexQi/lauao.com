@@ -407,18 +407,18 @@ use yii\helpers\Url;
     (function (window, $) {
         $.fn.creatorchange = function () {
             return this.each(function () {
-                var random = Math.random() * 10; // 10s内随机开始
+                var random = Math.random() * 1; // 10s内随机开始
                 var firstShowIndex = Math.floor(Math.random() * 3);
                 $(this).find("a").eq(firstShowIndex).addClass("show");
                 setTimeout(function () {
-                    changeCreator(this);
+                   changeCreator(this);
                 }.bind(this), random * 1000);
             });
         };
 
         function changeCreator(elem) {
             elem.index = $(elem).find(".show").index();
-            var delay = 5000;  // 切换间隔时间5s
+            var delay = 1;  // 切换间隔时间5s
             nextShow(elem);
             elem.timer = setInterval(nextShow, delay, elem);
             $(elem).on("mouseover", function () {

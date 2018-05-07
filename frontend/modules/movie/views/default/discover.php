@@ -65,24 +65,24 @@ if ($video_cate_id) {
             }
         }(document, window.dplus || []), dplus.init("1262268826");</script><!-- end Dplus -->
 
-    <script>
-
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-        ga('create', 'UA-76608034-3', 'auto');
-        ga('send', 'pageview');
-
-    </script>
+<!--    <script>-->
+<!---->
+<!--        (function (i, s, o, g, r, a, m) {-->
+<!--            i['GoogleAnalyticsObject'] = r;-->
+<!--            i[r] = i[r] || function () {-->
+<!--                (i[r].q = i[r].q || []).push(arguments)-->
+<!--            }, i[r].l = 1 * new Date();-->
+<!--            a = s.createElement(o),-->
+<!--                m = s.getElementsByTagName(o)[0];-->
+<!--            a.async = 1;-->
+<!--            a.src = g;-->
+<!--            m.parentNode.insertBefore(a, m)-->
+<!--        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');-->
+<!---->
+<!--        ga('create', 'UA-76608034-3', 'auto');-->
+<!--        ga('send', 'pageview');-->
+<!---->
+<!--    </script>-->
     <script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/zhugeio-v=1503453383.js" type="text/javascript"
             charset="utf-8"></script>
     <script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/jquery-1.7.1.min.js"></script>
@@ -158,17 +158,17 @@ if ($video_cate_id) {
                 </div>
             </li>
             <li class="nav-item school ">
-                <a class="disabled" href="">器械租赁</a>
+                <a class="disabled" href="#">器械租赁</a>
             </li>
             <li class="nav-item resource hover-elem">
                 <i class="icon-arrow-down"></i>
                 <a class="resource-video disabled" href="#">素材</a>
             </li>
             <li class="nav-item">
-                <a class="disabled" href="" target="_blank">活动</a>
+                <a class="disabled" href="#" >活动</a>
             </li>
             <li class="nav-item">
-                <a class="disabled" href="" target="_blank">维尔斯影业</a>
+                <a class="disabled" href="#" >维尔斯影业</a>
             </li>
 <!--            <li class="nav-item">-->
 <!--                <a class="disabled" href="" target="_blank">魔力短视频</a>-->
@@ -177,11 +177,11 @@ if ($video_cate_id) {
                 <i class="icon-arrow-down"></i>
                 <a href="javascript:;">更多</a>
             </li>
-            <li class="nav-item newera">
-                <a class="disabled" href="" target="_blank">
-                    <img src="http://oss-xpc0.xpccdn.com/Upload/boss/2017/12/065a2769d0e9cf1.png">
-                </a>
-            </li>
+<!--            <li class="nav-item newera">-->
+<!--                <a class="disabled" href="" target="_blank">-->
+<!--                    <img src="http://oss-xpc0.xpccdn.com/Upload/boss/2017/12/065a2769d0e9cf1.png">-->
+<!--                </a>-->
+<!--            </li>-->
         </ul>
         <ul class="fr right-part no-login">
             <li class="search-btn icon-search"></li>
