@@ -15,10 +15,10 @@ use console\models\Tencent;
 use yii\console\Controller;
 
 class TencentController extends Controller {
+
     /**
-     * @throws \Exception
-     * @throws \Throwable
-     * @throws \yii\base\Exception
+     * @throws yii\base\Exception
+     * @throws yii\db\Exception
      */
     public function actionIndex() {
         $model       = new Tencent();
@@ -28,6 +28,7 @@ class TencentController extends Controller {
         $apiUrl      = "https://api.om.qq.com/article/clientlist?access_token=";
         $apiUrl      = $apiUrl . $accessToken;
         $page        = 1;
+        $tempIndex = [];
         while (true) {
             $requstUrl  = $apiUrl . "&page=$page&limit=10";
             $result     = Common::httpRequest($requstUrl);
@@ -38,12 +39,12 @@ class TencentController extends Controller {
             if ($remainder != 0) {
                 $totalPage += 1;
             }
-
             $data = [];
             foreach ($tempData['data']['articles'] as $key => $val) {
                 if (!isset($val['article_video_info']) || !isset($val['article_video_info']['vid']) || $val['article_video_info']['vid']==''){
                     continue;
                 }
+                $tempIndex[] = $val['article_video_info']['vid'];
                 $row = Video::findOne(['video_url'=>$val['article_video_info']['vid']]);
                 if ($row){
                     continue;
@@ -71,6 +72,7 @@ class TencentController extends Controller {
             }
             $page++;
         }
+        yii::$app->db->createCommand()->delete(Video::tableName(),['not in','video_url',$tempIndex])->execute();
 
         echo "handle data success";
     }
