@@ -34,6 +34,8 @@ class VideoService extends Video
             $query->orderBy(['v.created_at'=>SORT_DESC]);
         }
 
+        $query->orderBy(['v.video_id'=>SORT_DESC]);
+
         $query->groupBy('v.video_id');
 
         $pages = new Pagination(['totalCount' => $query->count()]);
