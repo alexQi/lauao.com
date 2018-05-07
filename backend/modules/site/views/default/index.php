@@ -11,7 +11,7 @@ use yii\bootstrap\Modal;
 use yii\widgets\LinkPager;
 $server = $_SERVER;
 
-$this->title = \Yii::t('app', 'SYSTEM INFORMATION');
+$this->title = \Yii::t('app', '系统信息');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -19,7 +19,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-md-8">
         <div class="box box-info">
             <div class="box-header">
-                <h3 class="box-title"><i class="glyphicon glyphicon-info-sign"></i>系统信息</h3>
+                <h6 class="box-title">
+                    <i class="glyphicon glyphicon-info-sign"></i>运行环境
+                </h6 class="header">
             </div>
             <!-- /.box-header -->
             <div class="box-body">

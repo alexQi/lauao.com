@@ -12,7 +12,7 @@ use yii\helpers\Url;
     <nav class="navbar navbar-static-top" role="navigation">
 
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-            <span class="sr-only">Toggle navigation</span>
+            <span class="sr-only">切换菜单</span>
         </a>
 
         <div class="navbar-custom-menu">

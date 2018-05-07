@@ -25,7 +25,7 @@ use yii\helpers\Url;
     <div class="pull-right hidden-xs">
         <b>Version</b> 2.0
     </div>
-    <strong>Copyright &copy; 2017-2020 <a href="http://almsaeedstudio.com">OLIU Studio</a>.</strong> All rights
+    <strong>Copyright &copy; 2017-2020 <a href="#">LAUAO ECC</a>.</strong> All rights
     reserved.
 </footer>
 
