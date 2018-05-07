@@ -39,7 +39,6 @@ class TencentController extends Controller {
             if ($remainder != 0) {
                 $totalPage += 1;
             }
-            var_dump($tempData);
             $data = [];
             foreach ($tempData['data']['articles'] as $key => $val) {
                 if (!isset($val['article_video_info']) || !isset($val['article_video_info']['vid']) || $val['article_video_info']['vid']==''){
