@@ -105,7 +105,7 @@ class DefaultController extends Controller
         $p1[] = $model->poster.'?'.yii::$app->params['qiniu']['style']['300x200'];
         $p2[] = [
             // 要删除商品图的地址
-            'url' => Url::toRoute('/ajax/upload-file/ajax-delete'),
+            'url' => Url::toRoute('/ajax/upload-file/delete'),
             'key' => substr($model->poster,strlen($model->poster)- 12,12),
         ];
         $poster = $model->poster;
