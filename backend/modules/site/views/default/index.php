@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             echo $info[0] . '&nbsp;'.'体积:' . str_replace("../","",$a[0]);
                             ?>
 
-                            <button type="button" class="btn bg-navy btn-flat margin" onclick="window.location.href='<?=\yii\helpers\Url::to(['/site/default/flush-cache'])?>'">清楚缓存</button>
+                            <button type="button" class="btn bg-navy btn-flat margin" onclick="window.location.href='<?=\yii\helpers\Url::to(['/site/default/flush-cache'])?>'">清除缓存</button>
                         </td>
                     </tr>
                     </tbody>
