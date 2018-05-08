@@ -65,7 +65,7 @@ class MyQiniu extends Qiniu
         $result = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
-        $result = $this->response($result);
+        $result = json_decode($result,true);
 
         if ($status == 200) {
             return $result;
