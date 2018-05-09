@@ -16,11 +16,15 @@ Thumbs.db
 /vendor*
 /backend/web/assets
 /frontend/web/assets
+/common/config
+
 # Mac DS_Store Files
 .DS_Store
 
 # phpunit itself is not needed
 phpunit.phar
+composer.lock
+composer.phar
 # local phpunit config
 /phpunit.xml
 
