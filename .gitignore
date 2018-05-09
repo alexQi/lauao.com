@@ -16,7 +16,7 @@ Thumbs.db
 /vendor*
 /backend/web/assets
 /frontend/web/assets
-/common/config
+/common/config*
 
 # Mac DS_Store Files
 .DS_Store
