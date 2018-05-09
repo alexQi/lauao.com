@@ -130,7 +130,7 @@ if ($video_cate_id) {
     <div class="header-con">
         <a class="logo v-center" href="<?php echo Url::to(['default/index']); ?>">
             <span class="logo-wrap">
-                <img src="./xinpian/images/logo40.png" width="120" height="40" style="margin-top:10px;">
+                <img src="./xinpian/images/blacklogo.png" width="120" height="40" style="margin-top:10px;">
             </span>
         </a>
         <ul class="fs_16 fw_300 nav-list clearfix v-center">
@@ -518,7 +518,7 @@ if ($video_cate_id) {
                 <div>
                     <a class="logo-wrap v-center disabled" href="#">
                         <span class="logo-wrap">
-                <img src="./xinpian/images/logo40.png" width="120" height="40" style="margin-top:10px;">
+                <img src="./xinpian/images/blacklogo.png" width="120" height="40" style="margin-top:10px;">
             </span>
                     </a>
                     <span class="v-center fs_14 c_b_3">用作品打动世界！</span>
