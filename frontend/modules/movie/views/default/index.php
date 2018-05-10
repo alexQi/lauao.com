@@ -297,7 +297,7 @@ use yii\helpers\Url;
 
                     <a  id="show-weixin" class="dplus-link join-btn bg-transparent " href="javascript:;"
                        data-link=""
-                       data-value="头部">立即加入</a>
+                       data-value="头部">联系我们</a>
 
 
                 </div>
@@ -322,7 +322,8 @@ use yii\helpers\Url;
          <ul class="show-right float-elem float-down el-1" data-eventname="查看作品" data-key="作品ID">
             <?php foreach ($videoList['list'] as $key=>$value):?>
                 <li>
-                    <a class="dplus-link video-cover disabled" data-value="108864">
+                    <a class="dplus-link video-cover " data-value="108864"
+                       data-link="<?php echo Url::to(['default/detail', 'video_id' => $value['video_id']])?>"/>
                         <img class="lazy-img1"
                              src="<?php echo $value['poster']; ?>">
                         <div class="video-cover-con">
@@ -385,7 +386,7 @@ use yii\helpers\Url;
         $("#show-weixin").click(
             function(){
                 layer.tips(
-                    '<img src="./xinpian/images/weixin.jpg" style="margin:0px" width="150px" height="150px"/>', '#show-weixin',
+                    '<img src="./xinpian/images/weixin.jpg"  width="150px" height="150px"/>', '#show-weixin',
                     {tips:[3,'#000'],
                     time:7000
                     });}
