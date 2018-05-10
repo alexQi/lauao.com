@@ -476,8 +476,8 @@ if ($video_cate_id) {
                 <li class="enter-filmplay" data-articleid="10178093" data-videourl="ArticleList">
                     <a class="video-cover" href="<?php echo Url::to(['default/detail', 'video_id' => $video['video_id']]); ?>">
                         <img class="" src="<?php echo $video['poster']; ?>">
-                        <span class="duration fs_12"><?php echo $video['video_time']; ?></span>
-                        <p class="fs_12"><?php echo $video['cate_name']; ?></p>
+<!--                        <span class="duration fs_12">--><?php //echo $video['video_time']; ?><!--</span>-->
+
                         <div class="video-hover-con">
                             <div class="fs_12 fw_300 c_w_f desc line-hide-3"></div>
                             <p class="fs_12"><?php echo $video['created_at']; ?> 发布</p>
@@ -487,6 +487,9 @@ if ($video_cate_id) {
                         <a href="<?php echo Url::to(['default/detail', 'video_id' => $video['video_id']]); ?>">
                             <p class="fs_14 fw_600 c_b_3 line-hide-1"><?php echo $video['video_name']; ?></p>
                         </a>
+                        <div class="video-view fs_12 fw_300 c_b_9">
+                            <p class="fs_12"><?php echo $video['cate_name']; ?></p>
+                        </div>>
                         <div class="video-view fs_12 fw_300 c_b_9"><span class="type">播放</span><span
                                     class="fw_600"><?php echo $video['play_num']; ?></span><span class="i-icon v-center"></span><span
                                     class="type">喜欢</span><span class="fw_600"><?php echo $video['like_num']; ?></span></div>
