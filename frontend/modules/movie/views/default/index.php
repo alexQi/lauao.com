@@ -381,21 +381,14 @@ use yii\helpers\Url;
 
     layui.use(['layer'], function(){
         var layer = layui.layer;
-
+        //show weixin images
         $("#show-weixin").click(
             function(){
-
-                layer.open({
-                    type: 4,
-                    time:10000,
-                    shade: 0,
-                    closeBtn: 0,
-                    tips:[3,'#000'],
-                    content: ['<img src="./xinpian/images/weixin.jpg" style="margin:0px" width="150px" height="150px"/>', '#show-weixin'] //数组第二项即吸附元素选择器或者DOM
-                });
-
-            }
-
+                layer.tips(
+                    '<img src="./xinpian/images/weixin.jpg" style="margin:0px" width="150px" height="150px"/>', '#show-weixin',
+                    {tips:[3,'#000'],
+                    time:7000
+                    });}
         );
 
 
