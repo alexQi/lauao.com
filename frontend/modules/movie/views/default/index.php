@@ -25,6 +25,7 @@ use yii\helpers\Url;
         }
     </script>
     <script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/jquery-1.7.1.min.js"></script>
+    <script src="./layui/layui.js"></script>
 </head>
 <body>
 <div class="slide-bar">
@@ -294,7 +295,7 @@ use yii\helpers\Url;
                     <a class="dplus-link join-btn bg-red"
                        href="<?php echo Url::to(['/movie/default/discover']) ?>">随便逛逛</a>
 
-                    <a class="dplus-link join-btn bg-transparent " href="javascript:;"
+                    <a  id="show-weixin" class="dplus-link join-btn bg-transparent " href="javascript:;"
                        data-link=""
                        data-value="头部">立即加入</a>
 
@@ -377,6 +378,29 @@ use yii\helpers\Url;
 <script type="text/javascript"
         src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/incrementalCounter-v=1520824610.js"></script>
 <script type="text/javascript">
+
+    layui.use(['layer'], function(){
+        var layer = layui.layer;
+
+        $("#show-weixin").click(
+            function(){
+
+                layer.open({
+                    type: 4,
+                    time:10000,
+                    shade: 0,
+                    closeBtn: 0,
+                    tips:[3,'#000'],
+                    content: ['<img src="./xinpian/images/weixin.jpg" style="margin:0px" width="150px" height="150px"/>', '#show-weixin'] //数组第二项即吸附元素选择器或者DOM
+                });
+
+            }
+
+        );
+
+
+
+    });
 
     $(".disabled").attr("disabled", true);
     $(".disabled").css("pointer-events", "none");
