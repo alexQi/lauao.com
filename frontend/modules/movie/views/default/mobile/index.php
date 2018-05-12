@@ -1,62 +1,122 @@
 <?php
 use yii\helpers\Url;
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>维尔斯</title>
+    <title>维尔斯社区 - 专业的影视创作人社区</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
-    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <script src="./layui/layui.js"></script>
 
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
+
+    <style type="text/css">
+        body{word-wrap: break-word;}
+
+      .logo{
+          position: absolute;
+          top: 80px;
+          left: 20px;
+      }
+
+      .banner-content{
+
+          position: absolute;
+          top: 160px;
+          left: 20px;
+      }
+
+      .fs_30_b{
+          line-height: 1.5;
+          -webkit-text-size-adjust: none;
+          font-family: "PingFang SC", "Microsoft YaHei", "微软雅黑", STHeiti, sans-serif;
+
+          font-size: 2rem;
+          font-weight: 600;
+          color: #;
+      }
+      .fs_16_l{
+          font-family: "PingFang SC", "Microsoft YaHei", "微软雅黑", STHeiti, sans-serif;
+          font-size: 1.3rem;font-weight: 380;}
+ .button-red{
+     display: block;
+     width: 142px;
+     height: 40px;
+     line-height: 40px;
+     border-radius: 2px;
+     background-color: #e74b3b;
+     text-align: center;
+     font-size: 14px;
+     color: #ffffff;
+     transition: background .2s;
+     margin-top: 100px;
+ }
+
+.c_w_1{color: #ffffff;}
+
+        .footer{
+           position: fixed;
+            bottom: 0px;
+            text-align: center;
+            color: #999;
+            font-size: 8px;
+            padding: 12px;
+            background-color: #f1f1f1;
+            margin-top: 25px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle pull-left" data-toggle="collapse"
-                    data-target="#example-navbar-collapse">
-                <span class="sr-only">切换导航</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand pull-right" href="#">维尔斯</a>
-        </div>
-        <div class="collapse navbar-collapse" id="example-navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="<?php echo Url::to(['/movie/default/index']) ?>">作品</a></li>
-                <li><a href="<?php echo Url::to(['/movie/default/about']) ?>">成员</a></li>
-            </ul>
-        </div>
+<div class="banner">
+
+    <img id="background" src="./xinpian/images/mbanner.png" style="width: 100%;height: auto"/>
+    <span class="lays"/>
+    <img class="logo" src="./xinpian/images/logo40.png"/>
+    <div class="banner-content c_w_1">
+    <h2 class="fs_30_b">用作品打动世界</h2>
+     <p class="fs_16_l">902401位粉丝已经加入</p>
+        <a class="button-red" href="javascript:;" data-link="https://passport.xinpianchang.com?callback=http%3A%2F%2Fwww.xinpianchang.com%2F" data-zg="新片场WAP-首页-点击未登录首页的马上加入按钮">马上加入</a>
     </div>
-</nav>
-<div class="row">
+</div>
+
+
+
+
+<div class="layui-row">
     <?php foreach ($videoList['list'] as $key => $video): ?>
-    <div class="col-md-12">
-        <div class="thumbnail" style="border: 0" >
-            <img class="img-rounded video-image" onclick="playVideo(this)" data-id="<?php echo trim($video['video_url']); ?>" style="width: 100%;height: 200px;" src="<?php echo $video['poster']; ?>">
-            <div class="video-mask" id="<?php echo trim($video['video_url']); ?>" style="display: none"></div>
-            <div class="caption">
-                <h4><?php echo $video['video_name']; ?></h4>
+        <div class="layui-col-xs12">
+            <div class="thumbnail" style="border: 0" >
+                <img class="img-rounded video-image" onclick="playVideo(this)" data-id="<?php echo trim($video['video_url']); ?>" style="width: 100%;height: 200px;" src="<?php echo $video['poster']; ?>">
+                <div class="video-mask" id="<?php echo trim($video['video_url']); ?>" style="display: none"></div>
+                <div class="layui-row">
+                    <div class="layui-col-xs9">
+                        <p  style="margin: 12px 15px;color:#888897"><?php echo $video['cate_name']; ?></p>
+                    </div>
+                </div>
+                <div class="layui-row">
+                    <div class="layui-col-xs10">
+                    <h4 class="fs_16_l" style="margin: 0px 0px 50px 15px"><?php echo $video['video_name']; ?></h4>
+                    </div>
+                    <div class="layui-col-xs2">
+                        <i class="layui-icon layui-icon-login-wechat" style="font-size: 30px;color:#86db47"></i>
+
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
     <?php endforeach;?>
 </div>
+
+<div class="footer">
+    <p>Copyright © 2017 - 2018 维尔斯. All rights reserved. </p>
+</div>
+
+
+
 <script language="javascript" src="http://qzs.qq.com/tencentvideo_v1/js/tvp/tvp.player.js" charset="utf-8"></script>
 
 <script language="javascript">
@@ -87,7 +147,14 @@ use yii\helpers\Url;
         player.addParam("showend", 0);
         //输出播放器
         player.write(id);
-    }
+
+}
+
+    layui.use(['layer','jquery'], function(){
+        var layer = layui.layer;
+        $=layui.jquery;
+        //layer.msg('Hello World');
+    });
 </script>
 </body>
 </html>
