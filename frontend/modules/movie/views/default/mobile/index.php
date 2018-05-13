@@ -22,6 +22,9 @@ use yii\helpers\Url;
           left: 20px;
       }
 
+      .background{width: 100%;height: auto;
+         }
+
       .banner-content{
 
           position: absolute;
@@ -84,10 +87,10 @@ use yii\helpers\Url;
 </head>
 <body>
 <div class="banner">
-    <i class="layui-icon layui-icon-spread-left" style="font-size: 30px;color:#fff; position: absolute;
+    <img id="nav_btn"  src="./xinpian/images/nav_wbtn.png" style="color:#fff; position: absolute; width: 20px;height: 20px;
           top: 20px;
-          left: 20px;"></i>
-    <img id="background" src="./xinpian/images/mbanner.png" style="width: 100%;height: auto"/>
+          left: 20px;"></img>
+    <img class="background" src="./xinpian/images/mbanner.png" />
     <span class="lays"/>
     <img class="logo" src="./xinpian/images/logo40.png"/>
     <div class="banner-content c_w_1">
@@ -173,7 +176,7 @@ use yii\helpers\Url;
         $=layui.jquery;
         //layer.msg('Hello World');
 
-        $('.layui-icon').click(
+        $('#nav_btn').click(
             function(){
               var w=  $(document.body).width();
                 layer.open({
@@ -183,7 +186,7 @@ use yii\helpers\Url;
                     offset:'lt',
                     closeBtn:0,
                     shadeClose:'yes',
-                    shift:4,
+                    shift:3,
                     area:w+'px',
                     isOutAnim: false
                 });

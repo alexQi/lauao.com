@@ -3,59 +3,80 @@
 use yii\helpers\Url;
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>维尔斯</title>
+    <title>维尔斯社区 - 专业的影视创作人社区</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>
-    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <script src="./layui/layui.js"></script>
 
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"></script>
+
+    <style type="text/css">
+        body{word-wrap: break-word;}
+        .img-rounded{ border-radius: 90px;width: 120px;height: 120px;margin-right: 20px}
+
+        .fs_30_b{
+            line-height: 1.5;
+            -webkit-text-size-adjust: none;
+            font-family: "PingFang SC", "Microsoft YaHei", "微软雅黑", STHeiti, sans-serif;
+
+            font-size: 1rem;
+            font-weight: 600;
+
+
+        }
+
+
+
+        .nav_li
+        {
+            padding: 18px 20px;
+            border-bottom:1px solid #F7F7F7;
+            margin-bottom: 100px;
+        }
+
+        .nav_li a:hover{
+            color: #e74b3b;
+            font-weight: bold;
+        }
+        .list_data{ border-bottom:1px solid #F7F7F7;padding: 20px;display: flex;}
+
+    </style>
 </head>
 <body>
-<nav class="navbar navbar-inverse" role="navigation" style="margin-bottom: 0">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle pull-left" data-toggle="collapse"
-                    data-target="#example-navbar-collapse">
-                <span class="sr-only">切换导航</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand pull-right" href="#">维尔斯</a>
+<div class="nav">
+    <div class="layui-row" style="margin: 10px 20px ">
+
+        <div class="layui-col-xs3">
+<img id="nav_btn"  src="./xinpian/images/nav_btn.png" style="color:#fff; position: absolute; width: 20px;height: 20px;top:10px
+         "/>
         </div>
-        <div class="collapse navbar-collapse" id="example-navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="<?php echo Url::to(['/movie/default/index']) ?>">作品</a></li>
-                <li class="active"><a href="<?php echo Url::to(['/movie/default/about']) ?>">成员</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+
+        <div class="layui-col-xs9 layui-col-xs-offset4">
+
+                <img id="nav_btn"  src="./xinpian/images/blacklogo.png"/>
+         </div>
+
+   </div>
+</div>
+
+
 <div class="row">
     <div class="col-md-12">
         <ul class="media-list">
             <?php foreach ($memberList as $key => $value): ?>
-                <li class="media" style="border-bottom: 1px solid #cecece;padding: 5px;display: flex">
+                <li class="list_data" >
                     <a class="media-left" href="#">
-                        <img class="media-object img-rounded" width="80" src="<?php echo $value['avatar_url'] ?>">
+                        <img class="img-rounded" src="<?php echo $value['avatar_url'] ?>">
                     </a>
-                    <div class="media-body" style="margin-right: 50px;">
-                        <h4 class="media-heading"><?php echo $value['name'] ?></h4>
+
+                    <div class="media-body" style="line-height: 25px;text-align:left; ">
+                        <h4 class="fs_30_b"><?php echo $value['name'] ?></h4>
                         <p><?php echo $value['desc'] ?></p>
                     </div>
                 </li>
@@ -63,5 +84,43 @@ use yii\helpers\Url;
         </ul>
     </div>
 </div>
+
+<script language="javascript">
+
+    layui.use(['layer','jquery'], function(){
+        var layer = layui.layer;
+        $=layui.jquery;
+        //layer.msg('Hello World');
+
+        $('#nav_btn').click(
+            function(){
+                var w=  $(document.body).width();
+                layer.open({
+                    type:1,
+                    title: false, //不显示标题
+                    content:$('.popup'),
+                    offset:'lt',
+                    closeBtn:0,
+                    shadeClose:'yes',
+                    shift:3,
+                    area:w+'px',
+                    isOutAnim: false
+                });
+            });
+
+    });
+</script>
 </body>
+<div class="popup" style="display: none">
+    <ul >
+        <li class="nav_li">
+            <a href="<?php echo Url::to(['/movie/default/index']) ?>">作品</a>
+        </li>
+        <li class="nav_li">
+            <a href="<?php echo Url::to(['/movie/default/about']) ?>">团队成员</a>
+        </li>
+        <div style="clear:both;"></div>
+    </ul>
+</div>
+
 </html>
