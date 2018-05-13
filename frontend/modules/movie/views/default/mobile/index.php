@@ -68,11 +68,25 @@ use yii\helpers\Url;
             margin-top: 25px;
             width: 100%;
         }
+
+        .nav_li
+        {
+            padding: 18px 20px;
+            border-bottom:1px solid #F7F7F7;
+        }
+
+        .nav_li a:hover{
+            color: #e74b3b;
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body>
 <div class="banner">
-
+    <i class="layui-icon layui-icon-spread-left" style="font-size: 30px;color:#fff; position: absolute;
+          top: 20px;
+          left: 20px;"></i>
     <img id="background" src="./xinpian/images/mbanner.png" style="width: 100%;height: auto"/>
     <span class="lays"/>
     <img class="logo" src="./xinpian/images/logo40.png"/>
@@ -84,7 +98,11 @@ use yii\helpers\Url;
 </div>
 
 
-
+<div class="layui-row">
+    <div class="layui-col-xs12">
+        <h2 class="fs_30_b" style="padding: 20px 15px">编辑精选</h2>
+    </div>
+</div>
 
 <div class="layui-row">
     <?php foreach ($videoList['list'] as $key => $video): ?>
@@ -102,7 +120,7 @@ use yii\helpers\Url;
                     <h4 class="fs_16_l" style="margin: 0px 0px 50px 15px"><?php echo $video['video_name']; ?></h4>
                     </div>
                     <div class="layui-col-xs2">
-                        <i class="layui-icon layui-icon-login-wechat" style="font-size: 30px;color:#86db47"></i>
+                        <i class="layui-icon layui-icon-login-wechat" style="font-size: 30px;color:#36b157"></i>
 
                     </div>
                 </div>
@@ -154,7 +172,42 @@ use yii\helpers\Url;
         var layer = layui.layer;
         $=layui.jquery;
         //layer.msg('Hello World');
+
+        $('.layui-icon').click(
+            function(){
+              var w=  $(document.body).width();
+                layer.open({
+                    type:1,
+                    title: false, //不显示标题
+                    content:$('.popup'),
+                    offset:'lt',
+                    closeBtn:0,
+                    shadeClose:'yes',
+                    shift:4,
+                    area:w+'px',
+                    isOutAnim: false
+                });
+            });
+
+
+
+
     });
 </script>
 </body>
+<div class="popup" style="display: none">
+ <ul >
+     <li class="nav_li">
+         <a href="<?php echo Url::to(['/movie/default/index']) ?>">作品</a>
+     </li>
+     <li class="nav_li">
+         <a href="<?php echo Url::to(['/movie/default/about']) ?>">团队成员</a>
+     </li>
+     <div style="clear:both;"></div>
+ </ul>
+    </div>
+
+</div>
+
+
 </html>
