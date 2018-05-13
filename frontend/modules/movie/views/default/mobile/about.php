@@ -37,7 +37,7 @@ use yii\helpers\Url;
         {
             padding: 18px 20px;
             border-bottom:1px solid #F7F7F7;
-            margin-bottom: 100px;
+
         }
 
         .nav_li a:hover{
@@ -46,6 +46,17 @@ use yii\helpers\Url;
         }
         .list_data{ border-bottom:1px solid #F7F7F7;padding: 20px;display: flex;}
 
+        .footer{
+
+        bottom: 0px;
+        text-align: center;
+        color: #999;
+        font-size: 8px;
+        padding: 12px;
+        background-color: #f1f1f1;
+        margin-top: 25px;
+        width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -84,7 +95,9 @@ use yii\helpers\Url;
         </ul>
     </div>
 </div>
-
+<div class="footer">
+    <p>Copyright © 2017 - 2018 维尔斯. All rights reserved. </p>
+</div>
 <script language="javascript">
 
     layui.use(['layer','jquery'], function(){
