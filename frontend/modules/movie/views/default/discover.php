@@ -25,7 +25,7 @@ if ($video_cate_id) {
     <meta name="author" content=""/>
     <meta name="Copyright" content=""/>
     <meta name="renderer" content="webkit">
-    <title>作品 - 维尔斯社区</title>
+    <title>作品 -  宣城直播创作团队</title>
     <meta name="keywords" content="原创短片,原创视频,微电影,原创作品,创作人,影人社区,影视社区,新媒体电影,新媒体影视,互联网影视,互联网电影,发行,短片,微电影,原创视频,创作人"/>
     <meta name="description" content="汇集维尔斯创作人短片原创作品,覆盖剧情片,动画,纪录片,广告短片,宣传片,MV,特殊摄影,混剪,配音,栏目,网剧,实验短片,预告片,花絮等丰富类型."/>
     <style>.line-hide-1 {

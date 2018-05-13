@@ -11,7 +11,7 @@ use yii\helpers\Url;
     <meta name="author" content=""/>
     <meta name="Copyright" content=""/>
     <meta name="renderer" content="webkit">
-    <title>维尔斯社区 - 专业的影视创作人社区</title>
+    <title> 宣城直播创作团队 - 专业的影视创作</title>
     <meta name="keywords" content="新媒体电影,新媒体影视,互联网影视,互联网电影,发行,短片,微电影,原创视频,创作人"/>
     <meta name="description"
           content="维尔斯是国内专业的影视创作人社区，汇聚众多优秀创作人，提供作品展示、项目交流、拍摄制作机会等影视行业服务。在这里，你可以找到最合适的创作人；在这里，用作品打动世界！"/>
