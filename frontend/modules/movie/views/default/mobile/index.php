@@ -75,7 +75,8 @@ use yii\helpers\Url;
         .nav_li
         {
             padding: 18px 20px;
-            border-bottom:1px solid #F7F7F7;
+            border-bottom:1px solid #e6e6e6;
+            margin: 0px 20px 0px 20px;
         }
 
         .nav_li a:hover{

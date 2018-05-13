@@ -11,68 +11,62 @@ use yii\helpers\Url;
     <title>维尔斯社区 - 专业的影视创作人社区</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-
     <link rel="stylesheet" href="./layui/css/layui.css">
     <script src="./layui/layui.js"></script>
 
-
     <style type="text/css">
-        body{word-wrap: break-word;}
-        .img-rounded{ border-radius: 90px;width: 120px;height: 120px;margin-right: 20px}
 
-        .fs_30_b{
+        .img-rounded{ border-radius: 90px;width: 120px;height: 120px;margin-right: 20px}
+        .fs_30_b {
             line-height: 1.5;
             -webkit-text-size-adjust: none;
             font-family: "PingFang SC", "Microsoft YaHei", "微软雅黑", STHeiti, sans-serif;
-
             font-size: 1rem;
             font-weight: 600;
 
-
         }
-
-
-
         .nav_li
         {
             padding: 18px 20px;
-            border-bottom:1px solid #F7F7F7;
-
+            border-bottom:1px solid #e6e6e6;
+            margin: 0px 20px 0px 20px;
         }
+
+        /*.list_data*/
+        /*{*/
+            /*padding: 18px 20px;*/
+            /*border-bottom:1px solid #e6e6e6;*/
+        /*}*/
 
         .nav_li a:hover{
             color: #e74b3b;
             font-weight: bold;
         }
-        .list_data{ border-bottom:1px solid #F7F7F7;padding: 20px;display: flex;}
-
+        .list_data{ border-bottom:1px solid #e6e6e6;padding: 20px;display: flex;}
         .footer{
-
         bottom: 0px;
         text-align: center;
         color: #999;
         font-size: 8px;
-        padding: 12px;
+        padding: 12px 0px 12px 0px;
         background-color: #f1f1f1;
         margin-top: 25px;
         width: 100%;
         }
+        #nav_btn{width: 20px;height: 20px;margin: 20px}
+
+        .media-list{margin: 15px;}
     </style>
 </head>
 <body>
 <div class="nav">
-    <div class="layui-row" style="margin: 10px 20px ">
-
+    <div class="layui-row" >
         <div class="layui-col-xs3">
-<img id="nav_btn"  src="./xinpian/images/nav_btn.png" style="color:#fff; position: absolute; width: 20px;height: 20px;top:10px
-         "/>
+        <img id="nav_btn"  src="./xinpian/images/nav_btn.png" />
         </div>
-
-        <div class="layui-col-xs9 layui-col-xs-offset4">
-
-                <img id="nav_btn"  src="./xinpian/images/blacklogo.png"/>
+        <div class="layui-col-xs9 ">
+         <img class="nav_logo"  src="./xinpian/images/blacklogo.png" style="margin:8px"/>
          </div>
-
    </div>
 </div>
 
@@ -132,7 +126,7 @@ use yii\helpers\Url;
         <li class="nav_li">
             <a href="<?php echo Url::to(['/movie/default/about']) ?>">团队成员</a>
         </li>
-        <div style="clear:both;"></div>
+
     </ul>
 </div>
 
