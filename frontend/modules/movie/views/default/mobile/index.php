@@ -210,7 +210,7 @@ use yii\helpers\Url;
          </li>
      <?php endforeach; ?>
      <li class="nav_li">
-         <a href="<?php echo Url::to(['/movie/default/about']) ?>">团队</a>
+         <a href="<?php echo Url::to(['/movie/default/about']) ?>">团队介绍</a>
      </li>
 
  </ul>
