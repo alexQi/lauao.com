@@ -14,7 +14,7 @@ use yii\helpers\Url;
 
 
     <style type="text/css">
-        body{word-wrap: break-word;}
+       body{margin-bottom: 35px}/* 解決屏幕低端的footer*/
 
       .logo{
           position: absolute;
@@ -187,7 +187,7 @@ use yii\helpers\Url;
                     offset:'lt',
                     closeBtn:0,
                     shadeClose:'yes',
-                    shift:3,
+                    shift:1,
                     area:w+'px',
                     isOutAnim: false
                 });
@@ -202,12 +202,17 @@ use yii\helpers\Url;
 <div class="popup" style="display: none">
  <ul >
      <li class="nav_li">
-         <a href="<?php echo Url::to(['/movie/default/index']) ?>">作品</a>
+         <a href="<?php echo Url::to(['/movie/default/index']) ?>">全部作品</a>
      </li>
+     <?php foreach ($cateList as $key => $cate): ?>
+         <li class="nav_li">
+             <a href="<?php echo Url::to(['/movie/default/index', 'video_cate_id' => $cate['id']]) ?>"><?php echo $cate['cate_name']; ?></a>
+         </li>
+     <?php endforeach; ?>
      <li class="nav_li">
-         <a href="<?php echo Url::to(['/movie/default/about']) ?>">团队成员</a>
+         <a href="<?php echo Url::to(['/movie/default/about']) ?>">团队</a>
      </li>
-     <div style="clear:both;"></div>
+
  </ul>
     </div>
 

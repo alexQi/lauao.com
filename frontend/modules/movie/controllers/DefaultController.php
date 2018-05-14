@@ -29,9 +29,11 @@ class DefaultController extends BaseController
     {
         if ($this->isMobile){
             $viewName = 'mobile/index';
+            $cateList = VideoCategory::find()->select(['id','cate_name'])->asArray()->all();
             $videoList = VideoService::getVideoList(999999);
             return $this->render($viewName,[
-                'videoList' => $videoList
+                'videoList' => $videoList,
+                'cateList' => $cateList,
             ]);
         }else{
             $cateList = VideoCategory::find()->select(['id','cate_name'])->asArray()->all();
@@ -83,8 +85,11 @@ class DefaultController extends BaseController
             return $this->redirect(['index']);
         }else{
             $memberList = VideoMember::find()->orderBy(['sort'=>SORT_ASC])->asArray()->all();
+            $cateList = VideoCategory::find()->select(['id','cate_name'])->asArray()->all();
             return $this->render('mobile/about',[
-                'memberList' => $memberList
+                'memberList' => $memberList,
+                'cateList' => $cateList,
+
             ]);
         }
     }

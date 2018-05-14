@@ -8,7 +8,7 @@ use yii\helpers\Url;
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title> 团队成员 - 宣城直播创作团队</title>
+    <title> 团队 - 宣城直播创作团队</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <link rel="stylesheet" href="./layui/css/layui.css">
@@ -37,6 +37,7 @@ use yii\helpers\Url;
             /*padding: 18px 20px;*/
             /*border-bottom:1px solid #e6e6e6;*/
         /*}*/
+        body{margin-bottom: 35px}/* 解決屏幕低端的footer*/
 
         .nav_li a:hover{
             color: #e74b3b;
@@ -44,6 +45,8 @@ use yii\helpers\Url;
         }
         .list_data{ border-bottom:1px solid #e6e6e6;padding: 20px;display: flex;}
         .footer{
+
+            position: fixed;
         bottom: 0px;
         text-align: center;
         color: #999;
@@ -109,7 +112,7 @@ use yii\helpers\Url;
                     offset:'lt',
                     closeBtn:0,
                     shadeClose:'yes',
-                    shift:3,
+                    shift:1,
                     area:w+'px',
                     isOutAnim: false
                 });
@@ -121,10 +124,15 @@ use yii\helpers\Url;
 <div class="popup" style="display: none">
     <ul >
         <li class="nav_li">
-            <a href="<?php echo Url::to(['/movie/default/index']) ?>">作品</a>
+            <a href="<?php echo Url::to(['/movie/default/index']) ?>">全部作品</a>
         </li>
+        <?php foreach ($cateList as $key => $cate): ?>
+            <li class="nav_li">
+                <a href="<?php echo Url::to(['/movie/default/index', 'video_cate_id' => $cate['id']]) ?>"><?php echo $cate['cate_name']; ?></a>
+            </li>
+        <?php endforeach; ?>
         <li class="nav_li">
-            <a href="<?php echo Url::to(['/movie/default/about']) ?>">团队成员</a>
+            <a href="<?php echo Url::to(['/movie/default/about']) ?>">团队</a>
         </li>
 
     </ul>
