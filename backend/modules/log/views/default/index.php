@@ -105,7 +105,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                 return $html;
                             },
                             "headerOptions" => [
-                                "width" => "80"
+                                "width" => "80",
+                                'class' => 'text-center'
+                            ],
+                            "contentOptions" => [
+                                'class' => 'text-center'
                             ],
                             'filter'        => [
                                 'create' => '添加',

@@ -38,15 +38,49 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     'columns' => [
                         ['class' => 'yii\grid\SerialColumn'],
-                        'name',
+                        [
+                            'label' => '图标',
+                            'attribute'     => 'data',
+                            'format'        => 'raw',
+                            'value'         => function ($model) {
+                                $data = json_decode($model->data, true);
+                                if (isset($data['icon'])){
+                                    $html = '<i class="fa fa-'.$data['icon'].'"></i>';
+                                }else{
+                                    $html = '<i class="fa fa-circle-o"></i>';
+                                }
+                                return $html;
+                            },
+                            "headerOptions" => [
+                                "width" => "50",
+                                'class' => 'text-center'
+                            ],
+                            "contentOptions" => [
+                                'class' => 'text-center'
+                            ]
+                        ],
+                        [
+                            'attribute'     => 'name',
+                            "headerOptions" => [
+                                "width" => "150"
+                            ],
+                        ],
                         [
                             'attribute' => 'menuParent.name',
                             'filter' => Html::activeTextInput($searchModel, 'parent_name', [
                                 'class' => 'form-control', 'id' => null
                             ]),
                             'label' => Yii::t('rbac-admin', 'Parent'),
+                            "headerOptions" => [
+                                "width" => "150"
+                            ],
                         ],
-                        'route',
+                        [
+                            'attribute'     => 'route',
+                            "headerOptions" => [
+                                "width" => "300"
+                            ],
+                        ],
                         'order',
                         [
                             'class' => 'yii\grid\ActionColumn',
