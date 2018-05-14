@@ -1,24 +1,28 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
 use Yii;
 
 /**
- * This is the model class for table "admin_log".
+ * This is the model class for table "{{%admin_log}}".
  *
- * @property integer $id
- * @property string $route
- * @property string $table_name
- * @property string $operation_type
- * @property string $description
- * @property integer $created_at
- * @property integer $user_id
+ * @property int $id ID
+ * @property string $module 模块
+ * @property string $controller 控制器
+ * @property string $action 方法
+ * @property string $table_name 数据表
+ * @property int $primary_key 记录ID
+ * @property string $operation_type 操作
+ * @property string $raw_data 原始数据
+ * @property string $current_data 真实数据
+ * @property int $user_id 执行人ID
+ * @property int $created_at 时间
  */
 class AdminLog extends \yii\db\ActiveRecord
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public static function tableName()
     {
@@ -26,33 +30,36 @@ class AdminLog extends \yii\db\ActiveRecord
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['route', 'table_name', 'operation_type', 'created_at'], 'required'],
-            [['description'], 'string'],
-            [['created_at', 'user_id'], 'integer'],
-            [['route'], 'string', 'max' => 255],
-            [['table_name'], 'string', 'max' => 50],
+            [['module', 'controller', 'action', 'table_name', 'primary_key', 'operation_type', 'created_at'], 'required'],
+            [['primary_key', 'user_id', 'created_at'], 'integer'],
+            [['raw_data','current_data'], 'string'],
+            [['module', 'controller', 'action', 'table_name'], 'string', 'max' => 50],
             [['operation_type'], 'string', 'max' => 20],
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
         return [
             'id' => 'ID',
-            'route' => '路由地址',
-            'table_name' => '表名',
+            'module' => '模块',
+            'controller' => '控制器',
+            'action' => '方法',
+            'table_name' => '数据表',
+            'primary_key' => '主键ID',
             'operation_type' => '操作',
-            'description' => '描述',
+            'raw_data' => '原始数据',
+            'current_data' => '真实数据',
+            'user_id' => '执行人ID',
             'created_at' => '时间',
-            'user_id' => 'User ID',
         ];
     }
 }

@@ -1,14 +1,12 @@
 <?php
 
-namespace app\models;
+namespace backend\models;
 
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\AdminLog;
 
 /**
- * AdminLogSearch represents the model behind the search form about `app\models\AdminLog`.
+ * AdminLogSearch represents the model behind the search form about `backend\models\AdminLog`.
  */
 class AdminLogSearch extends AdminLog
 {
@@ -18,8 +16,8 @@ class AdminLogSearch extends AdminLog
     public function rules()
     {
         return [
-            [['id', 'created_at', 'user_id'], 'integer'],
-            [['route', 'table_name', 'operation_type', 'description'], 'safe'],
+            [['id', 'primary_key', 'user_id', 'created_at'], 'integer'],
+            [['module', 'controller', 'action', 'table_name', 'operation_type', 'raw_data','current_data'], 'safe'],
         ];
     }
 
@@ -60,14 +58,18 @@ class AdminLogSearch extends AdminLog
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'created_at' => $this->created_at,
+            'primary_key' => $this->primary_key,
             'user_id' => $this->user_id,
+            'created_at' => $this->created_at,
         ]);
 
-        $query->andFilterWhere(['like', 'route', $this->route])
+        $query->andFilterWhere(['like', 'module', $this->module])
+            ->andFilterWhere(['like', 'controller', $this->controller])
+            ->andFilterWhere(['like', 'action', $this->action])
             ->andFilterWhere(['like', 'table_name', $this->table_name])
             ->andFilterWhere(['like', 'operation_type', $this->operation_type])
-            ->andFilterWhere(['like', 'description', $this->description]);
+            ->andFilterWhere(['like', 'raw_data', $this->raw_data])
+            ->andFilterWhere(['like', 'current_data', $this->current_data]);
 
         return $dataProvider;
     }

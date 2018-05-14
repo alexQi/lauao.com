@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        var socket;
+        var $ = function() {
+            return document.getElementById(arguments[0]);
+        };
+
+        var initWebSocket = function() {
+            if (window.WebSocket) {
+                socket = new WebSocket("ws://0.0.0.0:9501");
+                socket.onmessage = function(event) {
+                    console.log(event);
+                };
+                socket.onopen = function(event) {
+                    console.log(event);
+                };
+                socket.onclose = function(event) {
+                    console.log(event);
+                };
+                socket.onerror = function(event) {
+                    console.log(event);
+                };
+            } else {
+                log("Your browser does not support Web Socket.");
+            }
+        };
+
+        initWebSocket();
+
+        var send = function(params) {
+            var data = function(param) {
+                socket.send(param);
+            };
+            if (socket.readyState !== 1) {
+                socket.close();
+                initWebSocket();
+                setTimeout(function() {
+                    data(params);
+                }, 250);
+            } else {
+                data(params);
+            }
+        }
+    </script>
+</head>
+<body>
+<input  type="text" id="content">
+<button  onclick="send( document.getElementById('content').value )">发送</button>
+</body>
+</html>

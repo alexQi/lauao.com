@@ -3,62 +3,79 @@
 namespace backend\components;
 
 use Yii;
-use yii\helpers\Url;
+use yii\db\ActiveRecord;
 
-class AdminLog
-{
-    public static function write($event)
-    {
-        if ($event->name=='afterUpdate'){
-            // 具体要记录什么东西，自己来优化$description
-            if(!empty($event->changedAttributes)) {
-                $desc = '';
-                foreach($event->changedAttributes as $name => $value) {
-                    if ($value==$event->sender->getAttribute($name)){
-                        continue;
+/**
+ * Class AdminLog
+ *
+ * @package backend\components
+ */
+class AdminLog {
+    /**
+     * @param $event ActiveRecord
+     * @return bool
+     */
+    public static function write($event) {
+//        var_dump($event);die();
+        $raw_data     = [];
+        $current_data = [];
+        switch ($event->name) {
+            case 'afterUpdate':
+                if (!empty($event->changedAttributes)) {
+                    foreach ($event->changedAttributes as $name => $value) {
+                        if ($value == $event->sender->getAttribute($name)) {
+                            continue;
+                        }
+                        $raw_data[$name]     = $event->sender->getAttribute($name);
+                        $current_data[$name] = $value;
                     }
-                    $desc .= $name . ' 为 ' . $event->sender->getAttribute($name) . '  [ 原始数据: ' . $value . ' ],';
+                    if (empty($raw_data)) {
+                        return true;
+                    }
+                    $operationType = 'update';
+                } else {
+                    return true;
                 }
-                $desc = substr($desc, 0, -1);
-                $pk = $event->sender->primaryKey()[0];
-                $description = Yii::$app->user->identity->username . '修改了 ' . $pk.'='.$event->sender->getAttribute($pk). ' 的 ' . $desc;
-                $operationType = 'update';
-            }else{
-                return true;
-            }
-        }elseif($event->name=='afterDelete'){
-            $pk = $event->sender->primaryKey()[0];
-            $description = Yii::$app->user->identity->username . '删除了 ' . $pk.'='.$event->sender->getAttribute($pk). ' 的记录';
-            $operationType = 'delete';
-        }elseif ($event->name=='afterInsert'){
-            if ($event->sender::tableName()=='{{%admin_log}}'){
+                break;
+            case 'afterDelete':
+                $raw_data = $event->sender->attributes;
+                $operationType = 'delete';
+                break;
+            case 'afterInsert':
+                if ($event->sender::tableName() == '{{%admin_log}}') {
+                    return false;
+                }
+                $raw_data = $event->sender->attributes;
+                $operationType = 'create';
+                break;
+            default:
                 return false;
-            }
-            $pk = $event->sender->primaryKey()[0];
-            $description = Yii::$app->user->identity->username . '创建了 ' . $pk.'='.$event->sender->getAttribute($pk). ' 的记录';
-            $operationType = 'create';
-        }else{
-            return true;
         }
 
         $tableName = $event->sender::tableName();
+        preg_match('/[a-z_]+/', $tableName, $tableNameArr);
+        $tableName = reset($tableNameArr);
         //存储日志入库
-        $route = Url::to();
-        $userId = Yii::$app->user->id;
         $data = [
-            'route'          => $route,
+            'module'         => Yii::$app->controller->module->id,
+            'controller'     => Yii::$app->controller->id,
+            'action'         => Yii::$app->controller->action->id,
             'table_name'     => $tableName,
+            'primary_key'    => $event->sender->getAttribute($event->sender->primaryKey()[0]),
             'operation_type' => $operationType,
-            'description'    => $description,
-            'created_at'     => time(),
-            'user_id'        => $userId
+            'raw_data'       => json_encode($raw_data),
+            'current_data'   => empty($current_data) ? '' : json_encode($current_data),
+            'user_id'        => Yii::$app->user->id,
+            'created_at'     => time()
         ];
 
-        $model = new \app\models\AdminLog();
+        $model = new \backend\models\AdminLog();
         $model->setAttributes($data);
-        if ($model->save()){
+        $model->save();
+
+        if ($model->save()) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

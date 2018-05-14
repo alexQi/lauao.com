@@ -3,8 +3,8 @@
 namespace backend\modules\log\controllers;
 
 use Yii;
-use app\models\AdminLog;
-use app\models\AdminLogSearch;
+use backend\models\AdminLog;
+use backend\models\AdminLogSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
