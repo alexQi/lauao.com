@@ -67,11 +67,16 @@ $this->params['breadcrumbs'][] = $this->title;
                                 "width" => "80"
                             ]
                         ],
-                        'table_name',
+                        [
+                            'attribute'     => 'table_name',
+                            "headerOptions" => [
+                                "width" => "80"
+                            ],
+                        ],
                         [
                             'attribute'     => 'primary_key',
                             "headerOptions" => [
-                                "width" => "80"
+                                "width" => "70"
                             ],
                         ],
                         [
