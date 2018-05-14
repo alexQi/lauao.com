@@ -39,6 +39,7 @@ class AdminLog {
                 break;
             case 'afterDelete':
                 $raw_data = $event->sender->attributes;
+                unset($raw_data[$event->sender->primaryKey()[0]]);
                 $operationType = 'delete';
                 break;
             case 'afterInsert':
