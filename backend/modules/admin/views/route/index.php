@@ -19,6 +19,7 @@ $opts = Json::htmlEncode([
 $this->registerJs('var _opts = '.$opts.';');
 $this->registerJs($this->render('_script.js'));
 $animateIcon = ' <i class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></i>';
+
 ?>
 <div class="row">
     <div class="col-xs-12">

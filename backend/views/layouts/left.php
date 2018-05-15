@@ -8,7 +8,7 @@ use backend\modules\admin\components\MenuHelper;
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
+                <img src="<?= $directoryAsset ?>/img/user1-128x128.jpg" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
                 <p><?php echo isset(yii::$app->user->identity->username) ?yii::$app->user->identity->username :'' ; ?></p>

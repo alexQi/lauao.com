@@ -58,11 +58,8 @@ unset($rules[RouteRule::RULE_NAME]);
                             'label' => Yii::t('rbac-admin', 'Description'),
                         ],
                         [
-                            'class' => 'yii\grid\ActionColumn',
+                            'class' => 'backend\modules\admin\components\LauaoActionColumn',
                             'template' => '{view} {update} {delete}',
-                            'buttonOptions' => [
-                                'class' => 'btn btn-sm bg-olive margin-r-5'
-                            ],
                             "headerOptions" => [
                                 "width" => "200"
                             ],

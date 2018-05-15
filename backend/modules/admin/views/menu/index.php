@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 return $html;
                             },
                             "headerOptions" => [
-                                "width" => "50",
+                                "width" => "80",
                                 'class' => 'text-center'
                             ],
                             "contentOptions" => [
@@ -83,13 +83,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                         'order',
                         [
-                            'class' => 'yii\grid\ActionColumn',
+                            'class' => 'backend\modules\admin\components\LauaoActionColumn',
                             'template' => '{view} {update} {delete}',
-                            'buttonOptions' => [
-                                'class' => 'btn btn-sm bg-olive margin-r-5'
-                            ],
                             "headerOptions" => [
-                                "width" => "200"
+                                "width" => "150"
                             ],
                         ],
                     ],

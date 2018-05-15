@@ -70,11 +70,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             },
                         ],
                         [
-                            'class' => 'yii\grid\ActionColumn',
+                            'class' => 'backend\modules\admin\components\LauaoActionColumn',
                             'template' => '{view} {update} {delete}',
-                            'buttonOptions' => [
-                                'class' => 'btn btn-sm bg-olive margin-r-5'
-                            ],
                             "headerOptions" => [
                                 "width" => "200"
                             ],

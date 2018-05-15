@@ -21,7 +21,7 @@ $fieldOptions2 = [
 
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>Admin</b>OLIU</a>
+        <a href="#"><b>LAUAO</b>ECC</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -60,7 +60,7 @@ $fieldOptions2 = [
         </div>
         <!-- /.social-auth-links -->
 
-        <a href="#">我忘记了密码</a><br>
+<!--        <a href="#">我忘记了密码</a><br>-->
 <!--        <a href="register.html" class="text-center">Register a new membership</a>-->
 
     </div>

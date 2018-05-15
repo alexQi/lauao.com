@@ -10,8 +10,7 @@ use yii\web\View;
  */
 class AppAsset extends AssetBundle
 {
-    public $basePath = '@webroot';
-    public $baseUrl = '@web';
+    public $basePath = '@backend/web';
     public $css = [
         'css/site.css',
     ];
@@ -22,7 +21,7 @@ class AppAsset extends AssetBundle
     ];
 
     public $jsOptions = [
-        'position' => View::POS_BEGIN,
+        'position' => View::POS_END,
     ];
 
     public $depends = [

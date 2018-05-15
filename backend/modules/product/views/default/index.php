@@ -35,7 +35,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute'=>'create_time',
                 'format'=>['date', 'php:Y-m-d H:i:s']
             ],
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'backend\modules\admin\components\LauaoActionColumn',
+                'template' => '{view} {update} {delete}',
+                "headerOptions" => [
+                    "width" => "150"
+                ],
+            ],
         ],
     ]); ?>
 <?php Pjax::end(); ?>

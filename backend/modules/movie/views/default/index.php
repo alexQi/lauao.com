@@ -65,11 +65,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         'created_at',
                         'uploader',
                         [
-                            'class' => 'yii\grid\ActionColumn',
-                            'template' => '{view} {update}{delete}',
-                            'buttonOptions' => [
-                                'class' => 'btn btn-sm bg-olive margin-r-5'
-                            ],
+                            'class' => 'backend\modules\admin\components\LauaoActionColumn',
+                            'template' => '{view} {update} {delete}',
                             "headerOptions" => [
                                 "width" => "100"
                             ],

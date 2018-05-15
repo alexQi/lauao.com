@@ -27,8 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
             'cate_id',
             'cate_name',
             'create_time',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'backend\modules\admin\components\LauaoActionColumn',
+                'template' => '{view} {update} {delete}',
+                "headerOptions" => [
+                    "width" => "150"
+                ],
+            ],
         ],
     ]); ?>
 </div>
