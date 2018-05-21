@@ -5,6 +5,7 @@ use yii\widgets\DetailView;
 use yii\helpers\Json;
 use backend\modules\admin\AnimateAsset;
 use yii\web\YiiAsset;
+use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $model backend\modules\admin\models\AuthItem */
@@ -31,13 +32,32 @@ $animateIcon = ' <i class="glyphicon glyphicon-refresh glyphicon-refresh-animate
         <div class="box box-info">
             <div class="box-body">
                 <p>
-                    <?=Html::a(Yii::t('rbac-admin', 'Update'), ['update', 'id' => $model->name], ['class' => 'btn btn-primary'])?>
+                    <?=Html::a(
+                        Yii::t('rbac-admin', 'Update ' . $labels['Item']),
+                        ['update', 'id' => $model->name],
+                        [
+                            'class'       => 'btn bg-purple detail-link',
+                            'data-pjax'   => "0",
+                            'data-key'    => $model->name,
+                            'data-toggle' => 'modal',
+                            'data-target' => '#activity-modal',
+                        ]
+                    )?>
                     <?=Html::a(Yii::t('rbac-admin', 'Delete'), ['delete', 'id' => $model->name], [
                         'class'        => 'btn btn-danger',
                         'data-confirm' => Yii::t('rbac-admin', 'Are you sure to delete this item?'),
                         'data-method'  => 'post',
                     ]);?>
-                    <?=Html::a(Yii::t('rbac-admin', 'Create'), ['create'], ['class' => 'btn btn-success'])?>
+                    <?=Html::a(
+                        Yii::t('rbac-admin', 'Create ' . $labels['Item']),
+                        ['create'],
+                        [
+                            'class'       => 'btn btn-success detail-link',
+                            'data-key'    => '',
+                            'data-toggle' => 'modal',
+                            'data-target' => '#activity-modal',
+                        ]
+                    )?>
                 </p>
                 <?=
                 DetailView::widget([
@@ -85,3 +105,23 @@ $animateIcon = ' <i class="glyphicon glyphicon-refresh glyphicon-refresh-animate
         <!-- /.box-body -->
     </div>
 </div>
+<?php Modal::begin([
+    'id'     => 'activity-modal',
+    'header' => '<h4 class="modal-title"><i class="glyphicon glyphicon-transfer"></i> '.$labels['Item'].'</h4>',
+    'size'   => Modal::SIZE_LARGE,
+]);?>
+<?php Modal::end();?>
+<?php
+$this->registerJs(
+    "
+        $(document).on(\"click\",\".detail-link\",function() {
+            $.get($(this).attr(\"href\"),
+                function (data) {
+                    $('.modal-body').html(data);
+                    $('#activity-modal').modal();
+                }
+            );
+        });
+    "
+);
+?>

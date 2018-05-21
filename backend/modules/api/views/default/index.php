@@ -70,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             },
                         ],
                         [
-                            'class' => 'backend\modules\admin\components\LauaoActionColumn',
+                            'class' => 'backend\components\LauaoActionColumn',
                             'template' => '{view} {update} {delete}',
                             "headerOptions" => [
                                 "width" => "200"

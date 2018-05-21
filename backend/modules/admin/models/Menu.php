@@ -55,7 +55,7 @@ class Menu extends \yii\db\ActiveRecord
             [['name'], 'required'],
             [['parent_name'], 'in',
                 'range' => static::find()->select(['name'])->column(),
-                'message' => 'Menu "{value}" not found.'],
+                'message' => '未找到上级菜单"{value}"'],
             [['parent', 'route', 'data', 'order'], 'default'],
             [['parent'], 'filterParent', 'when' => function() {
                 return !$this->isNewRecord;
@@ -63,7 +63,7 @@ class Menu extends \yii\db\ActiveRecord
             [['order'], 'integer'],
             [['route'], 'in',
                 'range' => static::getSavedRoutes(),
-                'message' => 'Route "{value}" not found.']
+                'message' => '未找到路由"{value}"']
         ];
     }
 

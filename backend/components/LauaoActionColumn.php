@@ -5,7 +5,7 @@
  * Date: 2018/5/15
  * Time: 23:10
  */
-namespace backend\modules\admin\components;
+namespace backend\components;
 
 use Yii;
 use yii\grid\ActionColumn;
@@ -30,11 +30,11 @@ class LauaoActionColumn extends ActionColumn{
                 switch ($name) {
                     case 'view':
                         $title = Yii::t('yii', 'View');
-                        $class = "btn btn-sm margin-r-5 btn-primary";
+                        $class = "btn btn-sm margin-r-5 bg-maroon";
                         break;
                     case 'update':
                         $title = Yii::t('yii', 'Update');
-                        $class = "btn btn-sm margin-r-5 btn-warning";
+                        $class = "btn btn-sm margin-r-5 bg-purple";
                         break;
                     case 'delete':
                         $title = Yii::t('yii', 'Delete');

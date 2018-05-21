@@ -177,7 +177,7 @@ if (Yii::$app->controller->action->id === 'login') {
 //            initWebSocket();
         }
     </script>
-
+    <style type="text/css">.ui-autocomplete{z-index:99999;}</style>
     <?php $this->endBody() ?>
     </body>
     </html>

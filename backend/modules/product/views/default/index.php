@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format'=>['date', 'php:Y-m-d H:i:s']
             ],
             [
-                'class' => 'backend\modules\admin\components\LauaoActionColumn',
+                'class' => 'backend\components\LauaoActionColumn',
                 'template' => '{view} {update} {delete}',
                 "headerOptions" => [
                     "width" => "150"

@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'cate_name',
             'create_time',
             [
-                'class' => 'backend\modules\admin\components\LauaoActionColumn',
+                'class' => 'backend\components\LauaoActionColumn',
                 'template' => '{view} {update} {delete}',
                 "headerOptions" => [
                     "width" => "150"

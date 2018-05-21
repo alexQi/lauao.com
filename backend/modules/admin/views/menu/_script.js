@@ -31,11 +31,11 @@ $('#parent_name').autocomplete({
     }
 }).autocomplete("instance")._renderItem = function (ul, item) {
     return $("<li>")
-        .append($('<a>').append($('<b>').text(item.name)).append('<br>')
+        .append($('<a>').append($('<strong>').text(item.name)).append('<br>')
             .append($('<i>').text(item.parent_name + ' | ' + item.route)))
         .appendTo(ul);
 };
 
 $('#route').autocomplete({
-    source: _opts.routes,
+    source: _opts.routes
 });

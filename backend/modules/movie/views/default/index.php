@@ -65,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         'created_at',
                         'uploader',
                         [
-                            'class' => 'backend\modules\admin\components\LauaoActionColumn',
+                            'class' => 'backend\components\LauaoActionColumn',
                             'template' => '{view} {update} {delete}',
                             "headerOptions" => [
                                 "width" => "100"

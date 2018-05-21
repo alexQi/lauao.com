@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ArrayDataProvider;
 use backend\modules\admin\components\Configs;
+use yii\rbac\BaseManager;
 use yii\rbac\Item;
 
 /**
@@ -57,7 +58,7 @@ class AuthItem extends Model
      */
     public function search($params)
     {
-        /* @var \yii\rbac\Manager $authManager */
+        /* @var BaseManager $authManager */
         $authManager = Configs::authManager();
         if ($this->type == Item::TYPE_ROLE) {
             $items = $authManager->getRoles();

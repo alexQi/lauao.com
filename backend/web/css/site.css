@@ -2,6 +2,11 @@ html,
 body {
     height: 100%;
 }
+input{
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
 
 .wrap {
     min-height: 100%;
@@ -117,4 +122,10 @@ a.desc:after {
 
 .nav > li > form > button.logout:focus {
     outline: none;
+}
+
+.modal-dialog .modal-content{
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
