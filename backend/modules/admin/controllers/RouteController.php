@@ -45,6 +45,7 @@ class RouteController extends Controller {
      */
     public function actionGetRouteList(){
         $model = new Route();
+        Yii::$app->getResponse()->format = 'json';
         return $model->getRoutes();
     }
 
