@@ -15,13 +15,9 @@ AnimateAsset::register($this);
 YiiAsset::register($this);
 //$opts = Json::htmlEncode(['routes' => $routes]);
 //$this->registerJs("var _opts = {$opts};");
+$this->registerJs($this->render('_script.js'));
 $animateIcon = ' <i class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></i>';
-$opts        = json_encode(['routes' => $routes]);
 ?>
-<script>
-    var _opts = eval('(' + '<?php echo $opts;?>' + ')');
-</script>
-<?php $this->registerJs($this->render('_script.js'),\yii\web\View::POS_LOAD); ?>
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-info">

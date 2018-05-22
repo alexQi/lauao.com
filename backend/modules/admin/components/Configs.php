@@ -16,7 +16,7 @@ use yii\rbac\ManagerInterface;
  * ```
  * return [
  *
- *     'mdm.admin.configs' => [
+ *     'backend.admin.configs' => [
  *         'db' => 'customDb',
  *         'menuTable' => '{{%admin_menu}}',
  *         'cache' => [
@@ -41,7 +41,7 @@ use yii\rbac\ManagerInterface;
  */
 class Configs extends \yii\base\Object
 {
-    const CACHE_TAG = 'mdm.admin';
+    const CACHE_TAG = 'backend.admin';
 
     /**
      * @var ManagerInterface .
@@ -130,13 +130,13 @@ class Configs extends \yii\base\Object
     }
 
     /**
-     * Create instance of self
-     * @return static
+     * @return Configs|object
+     * @throws \yii\base\InvalidConfigException
      */
     public static function instance()
     {
         if (self::$_instance === null) {
-            $type = ArrayHelper::getValue(Yii::$app->params, 'mdm.admin.configs', []);
+            $type = ArrayHelper::getValue(Yii::$app->params, 'backend.admin.configs', []);
             if (is_array($type) && !isset($type['class'])) {
                 $type['class'] = static::className();
             }
@@ -147,6 +147,12 @@ class Configs extends \yii\base\Object
         return self::$_instance;
     }
 
+    /**
+     * @param $name
+     * @param $arguments
+     * @return mixed|null
+     * @throws \yii\base\InvalidConfigException
+     */
     public static function __callStatic($name, $arguments)
     {
         $instance = static::instance();

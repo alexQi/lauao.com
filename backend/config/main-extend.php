@@ -13,7 +13,7 @@ $config = [
             //这里是允许访问的action *代表所有
             'debug/default/*',
             'ajax/*',
-            '*',
+            '/*',
         ],
     ],
     'on beforeRequest' => function($event) {

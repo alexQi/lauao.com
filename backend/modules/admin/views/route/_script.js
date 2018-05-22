@@ -1,4 +1,12 @@
 $('i.glyphicon-refresh-animate').hide();
+var _opts = [];
+$.get("/admin/route/get-route-list", function (res) {
+    _opts['routes'] = res;
+    // initial
+    search('available');
+    search('assigned');
+});
+
 function updateRoutes(r) {
     _opts.routes.available = r.available;
     _opts.routes.assigned = r.assigned;
@@ -63,7 +71,3 @@ function search(target) {
         }
     });
 }
-
-// initial
-search('available');
-search('assigned');
