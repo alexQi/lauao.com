@@ -91,7 +91,7 @@ class DefaultController extends Controller {
             ]
         );
 
-        exec('git log --pretty=format:"%h@@@%an@@@%ar@@@%s@@@%ad" --date=short -10', $gitLog);
+        exec('git log --pretty=format:"%h@@@%an@@@%ar@@@%s@@@%ad" --date=short -5', $gitLog);
         $gitLogList = [];
         foreach ($gitLog as $val) {
             $row        = explode('@@@', $val);
@@ -103,11 +103,24 @@ class DefaultController extends Controller {
                 'date'   => $row[4]
             ];
         }
+        $bgColor = [
+            'bg-light-blue',
+            'bg-aqua',
+            'bg-green',
+            'bg-yellow',
+            'bg-red',
+            'bg-navy',
+            'bg-teal',
+            'bg-purple',
+            'bg-orange',
+            'bg-maroon'
+        ];
         return $this->render('index', [
             'mysqlInfo'     => $mysqlInfo,
             'mysqlInfoPage' => $mysqlInfoPage,
             'dataProvider'  => $dataProvider,
-            'gitLogList'    => $gitLogList
+            'gitLogList'    => $gitLogList,
+            'bgColor'       => $bgColor
         ]);
     }
 
