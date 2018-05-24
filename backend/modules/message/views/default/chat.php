@@ -2,7 +2,7 @@
 $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
 ?>
 <div class="box box-success direct-chat direct-chat-success">
-    <div class="box-header with-border">
+    <div class="box-header">
         <h3 class="box-title">Direct Chat</h3>
 
         <div class="box-tools pull-right">

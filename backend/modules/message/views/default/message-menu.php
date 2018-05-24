@@ -6,7 +6,7 @@ $actionId = Yii::$app->controller->action->id;
     <a href="<?php echo $actionId=='index'?Url::to(['create']):Url::to(['index']); ?>" class="btn btn-primary btn-block margin-bottom"><?php echo $actionId=='index'?'New Message':'Back to Box'; ?></a>
 
     <div class="box box-solid">
-        <div class="box-header with-border">
+        <div class="box-header">
             <h3 class="box-title">Folders</h3>
 
             <div class="box-tools">
@@ -49,7 +49,7 @@ $actionId = Yii::$app->controller->action->id;
     </div>
     <!-- /. box -->
     <div class="box box-solid collapsed-box">
-        <div class="box-header with-border">
+        <div class="box-header">
             <h3 class="box-title">Labels</h3>
 
             <div class="box-tools">

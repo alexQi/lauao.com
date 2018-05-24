@@ -17,12 +17,10 @@ if (Yii::$app->controller->action->id === 'login') {
         ['content' => $content]
     );
 } else {
-
+    dmstr\web\AdminLteAsset::register($this);
     if (class_exists('backend\assets\AppAsset')) {
         backend\assets\AppAsset::register($this);
     }
-
-    dmstr\web\AdminLteAsset::register($this);
 
     $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
     ?>
@@ -177,7 +175,9 @@ if (Yii::$app->controller->action->id === 'login') {
 //            initWebSocket();
         }
     </script>
-    <style type="text/css">.ui-autocomplete{z-index:99999;}</style>
+    <style type="text/css">
+        .ui-autocomplete{z-index:99999;}
+    </style>
     <?php $this->endBody() ?>
     </body>
     </html>

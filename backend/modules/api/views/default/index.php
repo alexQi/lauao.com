@@ -12,11 +12,11 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
     <div class="col-xs-12">
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title"><?= Html::encode($this->title) ?></h3>
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title"><i class="fa fa-fw fa-arrows"></i><?php echo Html::encode($this->title); ?></h3>
                 <div class="box-tools">
-                    <?php echo Html::a('Create Api Base', ['create'], ['class' => 'btn btn-sm btn-info']) ?>
+                    <?php echo Html::a('<i class="fa fa-plus"></i> 新增API', ['create'], ['class' => 'btn btn-sm btn-info']) ?>
                 </div>
             </div>
             <div class="box-body">
@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'attribute' => 'id',
                             "headerOptions" => [
-                                    "width" => "100"
+                                    "width" => "50"
                             ],
                         ],
                         [
@@ -54,13 +54,13 @@ $this->params['breadcrumbs'][] = $this->title;
                             'attribute'=>'status',
                             'format' => 'html',
                             'value'=>function ($model) {
-                                $string = $model->status==1 ? 'Forbid' : 'Active';
+                                $string = $model->status==1 ? '禁用' : '启用';
                                 $class  = $model->status==1 ? 'danger' : 'success';
                                 $html   ='<span class="label label-'.$class.'">'.$string.'</span>';
                                 return $html;
                             },
                             "headerOptions" => [
-                                "width" => "100"
+                                "width" => "80"
                             ],
                         ],
                         [
@@ -68,12 +68,15 @@ $this->params['breadcrumbs'][] = $this->title;
                             'value'=>function ($model) {
                                 return date('Y-m-d H:i:s',$model->created_at);
                             },
+                            "headerOptions" => [
+                                "width" => "150"
+                            ],
                         ],
                         [
                             'class' => 'backend\components\LauaoActionColumn',
                             'template' => '{view} {update} {delete}',
                             "headerOptions" => [
-                                "width" => "200"
+                                "width" => "150"
                             ],
                         ],
                     ],

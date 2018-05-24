@@ -139,3 +139,14 @@ a.desc:after {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
 }
+
+.box-body .table th > td ,.box-body .table tr > td{
+    vertical-align: middle;
+}
+.box > .box-header >.box-title{
+    font-size: 13px;
+    color: #616161;
+}
+.breadcrumb{
+    background-color: #e6e6e6;
+}

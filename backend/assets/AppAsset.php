@@ -8,16 +8,15 @@ use yii\web\View;
 /**
  * Main backend application asset bundle.
  */
-class AppAsset extends AssetBundle
-{
+class AppAsset extends AssetBundle {
     public $basePath = '@backend/web';
-    public $css = [
+    public $css      = [
         'css/site.css',
     ];
-    public $js = [
+    public $js       = [
         'js/public.js',
         'js/bootbox.js',
-        'js/site.js'
+        'js/site.js',
     ];
 
     public $jsOptions = [

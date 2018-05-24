@@ -16,7 +16,7 @@ AdminLtePluginsICheckAsset::register($this);
     <?php echo $this->render('message-menu',['params'=>$params]); ?>
     <div class="col-md-9">
         <div class="box box-primary">
-            <div class="box-header with-border">
+            <div class="box-header">
                 <h3 class="box-title">收件箱</h3>
 
                 <div class="box-tools">

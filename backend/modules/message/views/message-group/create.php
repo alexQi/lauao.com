@@ -24,8 +24,8 @@ $animateIcon = ' <i class="glyphicon glyphicon-refresh glyphicon-refresh-animate
 ?>
 <div class="row">
     <div class="col-xs-12">
-        <div class="box box-info">
-            <div class="box-header with-border">
+        <div class="box box-primary">
+            <div class="box-header">
                 <h3 class="box-title"><?= Html::encode($this->title) ?></h3>
             </div>
             <div class="box-body">

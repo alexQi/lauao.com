@@ -14,12 +14,12 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
     <div class="col-xs-12">
-        <div class="box box-info">
-            <div class="box-header with-border">
+        <div class="box box-primary">
+            <div class="box-header">
                 <h3 class="box-title"><?= Html::encode($this->title) ?></h3>
                 <div class="box-tools">
                     <?=Html::a(
-                        Yii::t('rbac-admin', 'Create Menu').' <i class="fa fa-plus"></i>',
+                        '<i class="fa fa-plus"></i> '.Yii::t('rbac-admin', 'Create Menu'),
                         ['create'],
                         [
                             'class'       => 'btn btn-sm btn-info detail-link',

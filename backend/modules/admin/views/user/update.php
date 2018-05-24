@@ -33,7 +33,7 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed201
 
     <!-- About Me Box -->
     <div class="box box-primary">
-        <div class="box-header with-border">
+        <div class="box-header">
             <h3 class="box-title">About Me</h3>
         </div>
         <!-- /.box-header -->

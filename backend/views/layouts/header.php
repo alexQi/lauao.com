@@ -1,6 +1,6 @@
 <?php
 use yii\helpers\Html;
-use yii\helpers\Url;
+use yii\bootstrap\Modal;
 /* @var $this \yii\web\View */
 /* @var $content string */
 ?>
@@ -113,11 +113,20 @@ use yii\helpers\Url;
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="/admin/user/change-password" class="btn btn-default btn-flat">Passwd</a>
+                                <?=Html::a(
+                                    '修改密码',
+                                    ['/admin/user/change-password'],
+                                    [
+                                        'class'       => 'btn btn-default btn-flat passwd-link',
+                                        'data-key'    => '',
+                                        'data-toggle' => 'modal',
+                                        'data-target' => '#passwd-modal',
+                                    ]
+                                )?>
                             </div>
                             <div class="pull-right">
                                 <?= Html::a(
-                                    'loginOut',
+                                    '退出',
                                     ['/site/default/logout'],
                                     ['data-method' => 'post', 'class' => 'btn btn-default btn-flat']
                                 ) ?>
@@ -134,3 +143,23 @@ use yii\helpers\Url;
         </div>
     </nav>
 </header>
+<?php Modal::begin([
+    'id'     => 'passwd-modal',
+    'header' => '<h5 class="modal-title">  <i class="fa fa-fw fa-warning"></i>修改密码</h5>',
+            'size'   => Modal::SIZE_SMALL,
+]);?>
+<?php Modal::end();?>
+<?php
+$this->registerJs(
+    "
+        $(document).on(\"click\",\".passwd-link\",function() {
+            $.get($(this).attr(\"href\"),
+                function (data) {
+                    $('#passwd-modal .modal-body').html(data);
+                    $('#passwd-modal').modal();
+                }
+            );
+        });
+    "
+);
+?>

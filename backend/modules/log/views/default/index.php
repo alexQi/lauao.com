@@ -12,8 +12,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
     <div class="col-xs-12">
-        <div class="box box-info">
-            <div class="box-header with-border">
+        <div class="box box-primary">
+            <div class="box-header">
                 <h3 class="box-title"><?=Html::encode($this->title)?></h3>
             </div>
             <div class="box-body">
@@ -119,6 +119,15 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                         [
                             'attribute'     => 'current_data',
+                            'format'        => 'raw',
+                            'value'         => function ($model) {
+                                $data = json_decode($model->current_data,true);
+                                if (empty($data)){
+                                    return false;
+                                }else{
+                                    return json_encode($data,64);
+                                }
+                            },
                             "headerOptions" => [
                                 "width" => "150"
                             ],

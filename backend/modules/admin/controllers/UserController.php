@@ -339,7 +339,7 @@ class UserController extends Controller
             return $this->goHome();
         }
 
-        return $this->render('change-password', [
+        return $this->renderAjax('change-password', [
                 'model' => $model,
         ]);
     }

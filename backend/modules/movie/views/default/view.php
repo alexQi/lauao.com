@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="row">
         <div class="col-xs-12">
-            <div class="box box-info">
+            <div class="box box-primary">
                 <div class="box-body">
                     <p>
                         <?= Html::a('更新', ['update', 'id' => $model->video_id], ['class' => 'btn btn-primary']) ?>

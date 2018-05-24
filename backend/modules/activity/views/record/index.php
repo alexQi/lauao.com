@@ -15,14 +15,24 @@ Alert::widget();
 <?= Alert::widget() ?>
 <div class="row">
     <div class="col-xs-12">
-        <div class="box box-info">
-            <div class="box-header with-border">
+        <div class="box box-primary">
+            <div class="box-header">
                 <h3 class="box-title"><?= Html::encode($this->title) ?></h3>
             </div>
             <?php echo $this->render('_search', ['model' => $searchModel]); ?>
             <div class="box-body">
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
+                'layout'       => "{items}{summary}{pager}",
+                'summary'      => "<span class='dataTables_info'>当前共有{totalCount}条数据,分为{pageCount}页,当前为第{page}页</span>",
+                'options'      => [
+                    'class' => 'col-sm-12 no-padding'
+                ],
+                'pager' => [
+                    'options'=>[
+                        'class' => 'pagination pull-right no-margin',
+                    ]
+                ],
                 'columns' => [
                     [
                         'label' => '照片',

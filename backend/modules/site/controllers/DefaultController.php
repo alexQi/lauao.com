@@ -1,4 +1,5 @@
 <?php
+
 namespace backend\modules\site\controllers;
 
 use Yii;
@@ -13,30 +14,28 @@ use common\models\LoginForm;
 /**
  * Site controller
  */
-class DefaultController extends Controller
-{
+class DefaultController extends Controller {
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
                         'actions' => ['login', 'error'],
-                        'allow' => true,
+                        'allow'   => true,
                     ],
                     [
-                        'actions' => ['logout', 'index','flush-cache'],
-                        'allow' => true,
-                        'roles' => ['@'],
+                        'actions' => ['logout', 'index', 'flush-cache'],
+                        'allow'   => true,
+                        'roles'   => ['@'],
                     ],
                 ],
             ],
-            'verbs' => [
-                'class' => VerbFilter::className(),
+            'verbs'  => [
+                'class'   => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post'],
                 ]
@@ -47,8 +46,7 @@ class DefaultController extends Controller
     /**
      * @inheritdoc
      */
-    public function actions()
-    {
+    public function actions() {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -61,12 +59,11 @@ class DefaultController extends Controller
      *
      * @return string
      */
-    public function actionIndex()
-    {
-        $query = Yii::$app->db->createCommand('show processlist');
+    public function actionIndex() {
+        $query       = Yii::$app->db->createCommand('show processlist');
         $mysqlStatus = $query->queryAll();
 
-        $mysqlInfo = new ArrayDataProvider(
+        $mysqlInfo     = new ArrayDataProvider(
             [
                 'allModels'  => $mysqlStatus,
                 'sort'       => [
@@ -75,13 +72,12 @@ class DefaultController extends Controller
                 'pagination' => ['pageSize' => 5],
             ]
         );
-        $mysqlInfoPage = new Pagination(["totalCount" => count($mysqlStatus),"defaultPageSize" => 5]);
+        $mysqlInfoPage = new Pagination(["totalCount" => count($mysqlStatus), "defaultPageSize" => 5]);
 
         $queue = yii::$app->beanstalk;
         $tubes = $queue->listTubes() ? $queue->listTubes() : array();
         $list  = [];
-        foreach ($tubes as $key=>$val)
-        {
+        foreach ($tubes as $key => $val) {
             $list[] = $queue->statsTube($val);
         }
 
@@ -95,14 +91,27 @@ class DefaultController extends Controller
             ]
         );
 
-        return $this->render('index',[
-            'mysqlInfo'    => $mysqlInfo,
+        exec('git log --pretty=format:"%h@@@%an@@@%ar@@@%s@@@%ad" --date=short -10', $gitLog);
+        $gitLogList = [];
+        foreach ($gitLog as $val) {
+            $row        = explode('@@@', $val);
+            $gitLogList[$row[4]][] = [
+                'hash'   => $row[0],
+                'author' => $row[1],
+                'time'   => $row[2],
+                'desc'   => $row[3],
+                'date'   => $row[4]
+            ];
+        }
+        return $this->render('index', [
+            'mysqlInfo'     => $mysqlInfo,
             'mysqlInfoPage' => $mysqlInfoPage,
-            'dataProvider' => $dataProvider
+            'dataProvider'  => $dataProvider,
+            'gitLogList'    => $gitLogList
         ]);
     }
 
-    public function actionFlushCache(){
+    public function actionFlushCache() {
         Yii::$app->cache->flush();
         return $this->goHome();
     }
@@ -112,8 +121,7 @@ class DefaultController extends Controller
      *
      * @return string
      */
-    public function actionLogin()
-    {
+    public function actionLogin() {
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -133,10 +141,8 @@ class DefaultController extends Controller
      *
      * @return string
      */
-    public function actionLogout()
-    {
-        if (Yii::$app->user->logout())
-        {
+    public function actionLogout() {
+        if (Yii::$app->user->logout()) {
             return $this->redirect(Url::to(['login']));
         }
 

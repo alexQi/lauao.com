@@ -29,7 +29,7 @@ $animateIcon = ' <i class="glyphicon glyphicon-refresh glyphicon-refresh-animate
 ?>
 <div class="row">
     <div class="col-xs-12">
-        <div class="box box-info">
+        <div class="box box-primary">
             <div class="box-body">
                 <p>
                     <?=Html::a(

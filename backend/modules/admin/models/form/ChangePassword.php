@@ -32,6 +32,18 @@ class ChangePassword extends Model
     }
 
     /**
+     * @return array
+     */
+    public function attributeLabels()
+    {
+        return [
+            'oldPassword' => '旧密码',
+            'newPassword' => '新密码',
+            'retypePassword' => '确认密码'
+        ];
+    }
+
+    /**
      * Validates the password.
      * This method serves as the inline validation for password.
      */
@@ -45,9 +57,7 @@ class ChangePassword extends Model
     }
 
     /**
-     * Change password.
-     *
-     * @return User|null the saved model or null if saving fails
+     * @return bool
      */
     public function change()
     {

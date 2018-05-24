@@ -17,6 +17,7 @@ Thumbs.db
 /backend/web/assets
 /frontend/web/assets
 /common/config/development
+/swoole_process/
 
 # Mac DS_Store Files
 .DS_Store

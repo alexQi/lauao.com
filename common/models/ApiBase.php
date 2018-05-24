@@ -52,8 +52,8 @@ class ApiBase extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('app', 'ID'),
             'api_name' => Yii::t('app', 'Api Name'),
-            'url' => Yii::t('app', 'Url'),
-            'url_path' => Yii::t('app', 'Url Path'),
+            'url' => Yii::t('app', 'URL地址'),
+            'url_path' => Yii::t('app', 'URI路径'),
             'request_method' => Yii::t('app', 'Request Method'),
             'query_string' => Yii::t('app', 'Query String'),
             'invoke_string' => Yii::t('app', 'Invoke String'),

@@ -13,8 +13,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="row">
     <div class="col-xs-12">
-        <div class="box box-info">
-            <div class="box-header with-border">
+        <div class="box box-primary">
+            <div class="box-header">
                 <h3 class="box-title"><?= Html::encode($this->title) ?></h3>
                 <div class="box-tools">
                     <?php echo Html::a('Create Api Base', ['create'], ['class' => 'btn btn-sm btn-info']) ?>

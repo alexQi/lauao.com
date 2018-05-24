@@ -12,8 +12,8 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
     <div class="col-xs-12">
-        <div class="box box-info">
-            <div class="box-header with-border">
+        <div class="box box-primary">
+            <div class="box-header">
                 <h3 class="box-title"><?= Html::encode($this->title) ?></h3>
 
                 <div class="box-tools">
@@ -24,6 +24,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php Pjax::begin(); ?>    <?= GridView::widget([
                         'dataProvider' => $dataProvider,
                         'filterModel' => $searchModel,
+                        'layout'       => "{items}{summary}{pager}",
+                        'summary'      => "<span class='dataTables_info'>当前共有{totalCount}条数据,分为{pageCount}页,当前为第{page}页</span>",
+                        'options'      => [
+                            'class' => 'col-sm-12 no-padding'
+                        ],
+                        'pager' => [
+                            'options'=>[
+                                'class' => 'pagination pull-right no-margin',
+                            ]
+                        ],
                         'columns' => [
                             'id',
                             [
@@ -31,20 +41,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'attribute'=>'type',
                                 'format' => 'html',
                                 'value'=>function ($model) {
-                                    switch ($model->type)
-                                    {
-                                        case 1:
-                                            $string = "作品";
-                                            $class  = "warning";
-                                            break;
-                                        case 1:
-                                            $string = "作品";
-                                            $class  = "success";
-                                            break;
-                                        default:
-                                            $string = "未知类型";
-                                            $class  = "danger";
-                                    }
                                     $string = $model->type==1 ? '作品' : '创作人';
                                     $class  = $model->type==1 ? 'danger' : 'success';
                                     $html   ='<span class="label label-'.$class.'">'.$string.'</span>';
@@ -62,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'class' => 'backend\components\LauaoActionColumn',
                                 'template' => '{view} {update} {delete}',
                                 "headerOptions" => [
-                                    "width" => "100"
+                                    "width" => "150"
                                 ],
                             ],
                         ],
