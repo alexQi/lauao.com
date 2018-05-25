@@ -140,6 +140,10 @@ a.desc:after {
     -webkit-border-radius: 5px;
 }
 
+.modal-dialog .modal-content .modal-header{
+    border: none;
+}
+
 .box-body .table th > td ,.box-body .table tr > td{
     vertical-align: middle;
 }

@@ -225,7 +225,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <?php echo '<code>' . $val['hash'] . '</code>：' . $val['desc']; ?>
                                     </div>
                                     <div class="timeline-footer">
-                                        <a class="btn btn-primary btn-xs">查看详情</a>
+                                        <?php echo Html::a('查看详情',
+                                            ["/site/default/git-log-detail", "hashCode" => $val['hash']],
+                                            [
+                                                'class'       => 'btn btn-primary btn-xs git-detail-link',
+                                                'data-pjax'   => "0",
+                                                'data-key'    => $val['hash'],
+                                                'data-toggle' => 'modal',
+                                                'data-target' => '#git-detail-modal',
+                                            ]); ?>
                                         <a class="btn btn-danger btn-xs">切换至当前版本</a>
                                     </div>
                                 </div>
@@ -239,14 +247,29 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
+<?php Modal::begin([
+    'id'     => 'git-detail-modal',
+    'header' => '<h5 class="modal-title"><i class="fa fa-fw fa-git-square"></i> GIT提交日志</h5>',
+    'footer' => '<a href="#" class="btn bg-olive btn-flat" data-dismiss="modal">关闭</a>',
+    'size'   => Modal::SIZE_LARGE,
+]); ?>
+<?php Modal::end(); ?>
 <?php
 $this->registerJs(
     "
         $(document).on(\"click\",\".detail-link\",function() {
             $.get($(this).attr(\"href\"),
                 function (data) {
-                    $('.modal-body').html(data);
+                    $('#activity-modal .modal-body').html(data);
                     $('#activity-modal').modal();
+                }
+            );
+        });
+        $(document).on(\"click\",\".git-detail-link\",function() {
+            $.get($(this).attr(\"href\"),
+                function (data) {
+                    $('#git-detail-modal .modal-body').html(data);
+                    $('#git-detail-modal').modal();
                 }
             );
         });

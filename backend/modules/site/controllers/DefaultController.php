@@ -28,7 +28,7 @@ class DefaultController extends Controller {
                         'allow'   => true,
                     ],
                     [
-                        'actions' => ['logout', 'index', 'flush-cache'],
+                        'actions' => ['logout', 'index','git-log-detail', 'flush-cache'],
                         'allow'   => true,
                         'roles'   => ['@'],
                     ],
@@ -124,6 +124,24 @@ class DefaultController extends Controller {
         ]);
     }
 
+    /**
+     * @param $hashCode
+     * @return string
+     */
+    public function actionGitLogDetail($hashCode){
+        exec('git show --name-only '.$hashCode, $gitLogDetail);
+        $info = '';
+        foreach($gitLogDetail as $row){
+            $info .= $row."\r\n";
+        }
+        return $this->renderAjax('git-log-detail',[
+            "info"=>$info
+        ]);
+    }
+
+    /**
+     * @return \yii\web\Response
+     */
     public function actionFlushCache() {
         Yii::$app->cache->flush();
         return $this->goHome();
