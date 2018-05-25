@@ -151,6 +151,9 @@ a.desc:after {
     font-size: 13px;
     color: #616161;
 }
+.box-solid .box-header >.box-title{
+    color: #fff;
+}
 .breadcrumb{
     background-color: #e6e6e6;
 }

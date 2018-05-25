@@ -136,7 +136,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <!-- /.box -->
             <div class="box box-primary box-solid">
                 <div class="box-header">
-                    <h3 class="box-title"><i class="glyphicon glyphicon-transfer"></i>队列运行信息</h3>
+                    <h3 class="box-title"><i class="glyphicon glyphicon-transfer"></i> 队列运行信息</h3>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
