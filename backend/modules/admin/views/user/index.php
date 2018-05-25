@@ -150,15 +150,15 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'view'     => function ($url, $model) {
                                     $options = [
                                         'class'      => 'btn btn-sm margin-r-5 bg-maroon',
-                                        'title'      => Yii::t('yii', 'View'),
-                                        'aria-label' => Yii::t('yii', 'View'),
+                                        'title'      => '分配权限',
+                                        'aria-label' => '分配权限',
                                         'data-pjax'  => '0',
                                     ];
                                     if ($model->status == \backend\modules\admin\models\User::STATUS_INACTIVE) {
                                         $url = "javascript:showAlert('该账户已被禁用,请先启用该账户')";
-                                        $aHtml = Html::a('<span class="glyphicon glyphicon-eye-open"></span>',$url , $options);
+                                        $aHtml = Html::a('<span class="glyphicon glyphicon-plus-sign"></span>',$url , $options);
                                     }else{
-                                        $aHtml = Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, $options);
+                                        $aHtml = Html::a('<span class="glyphicon glyphicon-plus-sign"></span>', $url, $options);
                                     }
 
                                     return $aHtml;

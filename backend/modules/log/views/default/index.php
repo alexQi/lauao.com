@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 return $model->module;
                             },
                             "headerOptions" => [
-                                "width" => "80"
+                                "width" => "50"
                             ]
                         ],
                         [
@@ -70,13 +70,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'attribute'     => 'table_name',
                             "headerOptions" => [
-                                "width" => "80"
+                                "width" => "110"
                             ],
                         ],
                         [
                             'attribute'     => 'primary_key',
                             "headerOptions" => [
-                                "width" => "70"
+                                "width" => "50"
                             ],
                         ],
                         [
@@ -119,13 +119,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                         [
                             'attribute'     => 'current_data',
-                            'format'        => 'raw',
+                            'format'        => 'html',
                             'value'         => function ($model) {
                                 $data = json_decode($model->current_data,true);
                                 if (empty($data)){
                                     return false;
                                 }else{
-                                    return json_encode($data,64);
+                                    return '<code>'.json_encode($data,64).'</code>';
                                 }
                             },
                             "headerOptions" => [
@@ -136,7 +136,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'attribute'     => 'created_at',
                             'format'        => ['date', 'php:Y-m-d H:i:s'],
                             "headerOptions" => [
-                                "width" => "150"
+                                "width" => "130"
                             ],
                         ],
                         // 'user_id',

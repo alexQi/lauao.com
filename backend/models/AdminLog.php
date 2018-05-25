@@ -54,7 +54,7 @@ class AdminLog extends \yii\db\ActiveRecord
             'controller' => '控制器',
             'action' => '方法',
             'table_name' => '数据表',
-            'primary_key' => '主键ID',
+            'primary_key' => '主键',
             'operation_type' => '操作',
             'raw_data' => '原始数据',
             'current_data' => '真实数据',

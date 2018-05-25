@@ -143,6 +143,7 @@ class UserController extends Controller
      */
     public function actionView($id)
     {
+
         $assModel = $this->findAssModel($id);
         return $this->render('view', [
                 'model' => $this->findModel($id),
@@ -189,6 +190,9 @@ class UserController extends Controller
      */
     public function actionDelete($id)
     {
+        if ($id==1){
+            return false;
+        }
         //清除用户基础信息
         $userExtend = UserExtend::find()->where(['user_id'=>$id])->one();
         if ($userExtend)
@@ -319,7 +323,7 @@ class UserController extends Controller
     {
         $model = new ChangePassword();
         if ($model->load(Yii::$app->getRequest()->post()) && $model->change()) {
-            return $this->goHome();
+            return $this->goBack();
         }
 
         return $this->renderAjax('change-password', [

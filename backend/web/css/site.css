@@ -146,6 +146,8 @@ a.desc:after {
 
 .box-body .table th > td ,.box-body .table tr > td{
     vertical-align: middle;
+    word-break: break-all;
+    word-wrap: break-word;
 }
 .box > .box-header >.box-title{
     font-size: 13px;
