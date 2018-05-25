@@ -375,7 +375,6 @@ class UserController extends Controller
     protected function findAssModel($id)
     {
         $class = $this->userClassName;
-        var_dump($class);
         if (($user = $class::findIdentity($id)) !== null) {
             return new Assignment($id, $user);
         } else {

@@ -77,15 +77,15 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                         ],
                         [
-                            'label'         => '邮件',
-                            'attribute'     => 'email',
-                            'format'        => 'raw',
-                            'value'         => function ($model) {
+                            'label'     => '邮件',
+                            'attribute' => 'email',
+                            'format'    => 'raw',
+                            'value'     => function ($model) {
                                 return $model->email;
                             },
-//                            "headerOptions" => [
-//                                "width" => "170"
-//                            ],
+                            //                            "headerOptions" => [
+                            //                                "width" => "170"
+                            //                            ],
                         ],
                         [
                             'label'         => '状态',
@@ -102,7 +102,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 10 => '启用'
                             ],
                             "headerOptions" => [
-                                "width" => "50"
+                                "width" => "70"
                             ],
                         ],
                         [
@@ -132,9 +132,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             'template'      => Helper::filterActionColumn(['view', 'update', 'activate', 'delete']),
                             'buttons'       => [
                                 'activate' => function ($url, $model) {
-                                    if ($model->status==\backend\modules\admin\models\User::STATUS_ACTIVE){
+                                    if ($model->status == \backend\modules\admin\models\User::STATUS_ACTIVE) {
                                         $message = "确认禁用当前用户吗？";
-                                    }else{
+                                    } else {
                                         $message = "确认启用当前用户吗？";
                                     }
                                     $options = [
@@ -146,6 +146,22 @@ $this->params['breadcrumbs'][] = $this->title;
                                         'data-pjax'    => '0',
                                     ];
                                     return Html::a('<span class="glyphicon glyphicon-retweet"></span>', $url, $options);
+                                },
+                                'view'     => function ($url, $model) {
+                                    $options = [
+                                        'class'      => 'btn btn-sm margin-r-5 bg-maroon',
+                                        'title'      => Yii::t('yii', 'View'),
+                                        'aria-label' => Yii::t('yii', 'View'),
+                                        'data-pjax'  => '0',
+                                    ];
+                                    if ($model->status == \backend\modules\admin\models\User::STATUS_INACTIVE) {
+                                        $url = "javascript:showAlert('该账户已被禁用,请先启用该账户')";
+                                        $aHtml = Html::a('<span class="glyphicon glyphicon-eye-open"></span>',$url , $options);
+                                    }else{
+                                        $aHtml = Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, $options);
+                                    }
+
+                                    return $aHtml;
                                 }
                             ],
                             "headerOptions" => [

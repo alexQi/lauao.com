@@ -15,10 +15,10 @@ yii.confirm = function (message, ok, cancel) {
             message: message,
             buttons: {
                 confirm: {
-                    label: "OK"
+                    label: "确定"
                 },
                 cancel: {
-                    label: "Cancel"
+                    label: "取消"
                 }
             },
             callback: function (confirmed) {
