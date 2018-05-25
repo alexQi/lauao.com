@@ -171,6 +171,8 @@ class Module extends \yii\base\Module
      */
     public function beforeAction($action)
     {
+        return true;
+        //关闭管理员模块面包屑
         if (parent::beforeAction($action)) {
             /* @var $action \yii\base\Action */
             $view = $action->controller->getView();
