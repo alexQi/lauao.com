@@ -234,7 +234,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                                 'data-toggle' => 'modal',
                                                 'data-target' => '#git-detail-modal',
                                             ]); ?>
-                                        <a class="btn btn-danger btn-xs">切换至当前版本</a>
+                                        <a class="btn btn-danger disabled btn-xs">切换至当前版本</a>
                                     </div>
                                 </div>
                             </li>
