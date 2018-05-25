@@ -65,17 +65,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                 "width" => "100"
                             ],
                         ],
-                        [
-                            'label'         => '部门',
-                            'attribute'     => 'section',
-                            'format'        => 'html',
-                            'value'         => function ($model) {
-                                return $model->userExtend['section'];
-                            },
-                            "headerOptions" => [
-                                "width" => "100"
-                            ],
-                        ],
+//                        [
+//                            'label'         => '部门',
+//                            'attribute'     => 'section',
+//                            'format'        => 'html',
+//                            'value'         => function ($model) {
+//                                return $model->userExtend['section'];
+//                            },
+//                            "headerOptions" => [
+//                                "width" => "100"
+//                            ],
+//                        ],
                         [
                             'label'     => '邮件',
                             'attribute' => 'email',
