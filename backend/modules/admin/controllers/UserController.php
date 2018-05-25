@@ -42,21 +42,6 @@ class UserController extends Controller
     public function behaviors()
     {
         return [
-//            'access' => [
-//                'class' => AccessControl::className(),
-//                'rules' => [
-//                    [
-//                        'actions' => ['signup', 'reset-password', 'login', 'request-password-reset'],
-//                        'allow' => true,
-//                        'roles' => ['?'],
-//                    ],
-//                    [
-//                        'actions' => ['logout', 'change-password', 'index', 'view', 'delete', 'activate'],
-//                        'allow' => true,
-//                        'roles' => ['@'],
-//                    ],
-//                ],
-//            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -65,7 +50,6 @@ class UserController extends Controller
                     'activate' => ['post'],
 
                     'assign' => ['post'],
-//                    'assign' => ['post'],
                     'revoke' => ['post'],
                 ],
             ],
@@ -79,7 +63,7 @@ class UserController extends Controller
     {
         parent::init();
         if ($this->userClassName === null) {
-            $this->userClassName = Yii::$app->getUser()->identityClass;
+//            $this->userClassName = Yii::$app->getUser()->identityClass;
             $this->userClassName = $this->userClassName ? : 'backend\modules\admin\models\User';
         }
     }
@@ -137,8 +121,8 @@ class UserController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) ) {
-            if($model->passwd!=''){
-                $model->setPassword($model->newPassword);
+            if($model->password_hash!=''){
+                $model->setPassword($model->password_hash);
                 $model->generateAuthKey();
             }
             if ($model->save())
@@ -160,7 +144,6 @@ class UserController extends Controller
     public function actionView($id)
     {
         $assModel = $this->findAssModel($id);
-
         return $this->render('view', [
                 'model' => $this->findModel($id),
                 'assModel'=>$assModel,
@@ -345,11 +328,10 @@ class UserController extends Controller
     }
 
     /**
-     * Activate new user
-     * @param integer $id
-     * @return type
-     * @throws UserException
+     * @param $id
+     * @return \yii\web\Response
      * @throws NotFoundHttpException
+     * @throws UserException
      */
     public function actionActivate($id)
     {
@@ -357,14 +339,14 @@ class UserController extends Controller
         $user = $this->findModel($id);
         if ($user->status == User::STATUS_INACTIVE) {
             $user->status = User::STATUS_ACTIVE;
-            if ($user->save()) {
-                return $this->goHome();
-            } else {
-                $errors = $user->firstErrors;
-                throw new UserException(reset($errors));
-            }
+        }else{
+            $user->status = User::STATUS_INACTIVE;
         }
-        return $this->goHome();
+        if (!$user->save()) {
+            $errors = $user->firstErrors;
+            throw new UserException(reset($errors));
+        }
+        return $this->redirect(['index']);
     }
 
     /**
@@ -393,6 +375,7 @@ class UserController extends Controller
     protected function findAssModel($id)
     {
         $class = $this->userClassName;
+        var_dump($class);
         if (($user = $class::findIdentity($id)) !== null) {
             return new Assignment($id, $user);
         } else {

@@ -23,7 +23,7 @@ use backend\modules\admin\components\Configs;
  * @property integer $updated_at
  * @property string $password write-only password
  *
- * @property UserProfile $profile
+ * @property $profile
  */
 class User extends ActiveRecord implements IdentityInterface
 {

@@ -40,6 +40,10 @@ class LauaoActionColumn extends ActionColumn{
                         $title = Yii::t('yii', 'Delete');
                         $class = "btn btn-sm margin-r-5 btn-danger";
                         break;
+                    case 'activate':
+                        $title = Yii::t('yii', 'Activate');
+                        $class = "btn btn-sm margin-r-5 btn-green";
+                        break;
                     default:
                         $title = ucfirst($name);
                 }
