@@ -10,7 +10,7 @@ use yii\web\View;
  */
 class VideoAsset extends AppAsset
 {
-    public $sourcePath = "@backend/web";
+    public $basePath = "@backend/web";
     public $css = [
         'plug-in/video6.2.5.js/css/video-js.css',
     ];

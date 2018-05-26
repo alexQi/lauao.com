@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use backend\assets\VideoAsset;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Video */
@@ -9,7 +10,7 @@ use yii\widgets\DetailView;
 $this->title = $model->video_name;
 $this->params['breadcrumbs'][] = ['label' => '视频列表', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-\backend\assets\VideoAsset::register($this);
+VideoAsset::register($this);
 ?>
 <div class="activity-advert-view">
 

@@ -54,7 +54,6 @@ class DefaultController extends Controller
     public function actionView($id)
     {
         $videoCategory = VideoCategorySearch::find()->select(['id','cate_name'])->asArray()->all();
-
         return $this->render('view', [
             'model' => $this->findModel($id),
             'vCate' => $videoCategory

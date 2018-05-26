@@ -159,3 +159,6 @@ a.desc:after {
 .breadcrumb{
     background-color: #e6e6e6;
 }
+.text-muted .label {
+    line-height: 30px;
+}

@@ -3,7 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-$this->title = \Yii::t('app', '用户信息');
+$this->title = \Yii::t('app', '用户信息').':'.$model->username;
 $this->params['breadcrumbs'][] = $this->title;
 
 $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
@@ -17,7 +17,17 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed201
 
             <h3 class="profile-username text-center"><?php echo $model->username; ?></h3>
 
-            <p class="text-muted text-center">Software Engineer</p>
+            <p class="text-muted">
+                <?php if ($model->id==2): ?>
+                <span class="label label-danger">PHP</span>
+                <span class="label label-success">Python</span>
+                <span class="label label-info">Javascript</span>
+                <span class="label label-warning">HTML</span>
+                <span class="label label-primary">LINUX</span>
+                <?php else: ?>
+                    The Black Rose shall bloom once more
+                <?php endif; ?>
+            </p>
 
             <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
@@ -26,47 +36,6 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed201
             </ul>
 
             <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
-        </div>
-        <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
-
-    <!-- About Me Box -->
-    <div class="box box-primary">
-        <div class="box-header">
-            <h3 class="box-title">About Me</h3>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-            <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
-
-            <p class="text-muted">
-                B.S. in Computer Science from the University of Tennessee at Knoxville
-            </p>
-
-            <hr>
-
-            <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
-
-            <p class="text-muted">Malibu, California</p>
-
-            <hr>
-
-            <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
-
-            <p>
-                <span class="label label-danger">UI Design</span>
-                <span class="label label-success">Coding</span>
-                <span class="label label-info">Javascript</span>
-                <span class="label label-warning">PHP</span>
-                <span class="label label-primary">Node.js</span>
-            </p>
-
-            <hr>
-
-            <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
         </div>
         <!-- /.box-body -->
     </div>
