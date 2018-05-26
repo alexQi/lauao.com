@@ -1,28 +1,27 @@
 <?php
+
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \backend\modules\admin\models\form\Signup */
+/* @var $extendModel \common\models\UserExtend */
 
-$this->title = Yii::t('rbac-admin', 'Signup');
+$this->title                   = Yii::t('rbac-admin', 'Signup');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-primary">
             <div class="box-header">
-                <h3 class="box-title"><?= Html::encode($this->title) ?></h3>
+                <h3 class="box-title"><?=Html::encode($this->title)?></h3>
             </div>
             <div class="box-body">
-                <?= $this->render('_form', [
-                    'model' => $model,
-                    'p1' => $p1,
-                    'p2' => $p2,
-                    'id' => '',
-                    'sectionList' => $sectionList
-                ]) ?>
+                <?=$this->render('_form', [
+                    'model'       => $model,
+                    'extendModel' => $extendModel
+                ])?>
             </div>
         </div>
     </div>

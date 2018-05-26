@@ -108,7 +108,7 @@ class MemberController extends Controller
 
             if ($model->avatar_url=='')
             {
-                $model->avatar_url = $avatar_url;
+                $model->avatar_url = $poster;
             }
             if ($model->save()){
                 return $this->redirect(['view', 'id' => $model->id]);

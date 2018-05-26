@@ -34,10 +34,11 @@ class UserExtend extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'real_name', 'nick_name', 'section', 'gender', 'birthday', 'avatar'], 'required'],
+            [['user_id', 'real_name', 'nick_name', 'section', 'gender', 'birthday'], 'required'],
             [['user_id', 'section', 'gender', 'last_login_ip', 'last_login_time'], 'integer'],
             [['real_name', 'nick_name', 'birthday'], 'string', 'max' => 255],
             [['avatar'], 'string', 'max' => 100],
+            [['avatar'],'safe']
         ];
     }
 
@@ -49,14 +50,14 @@ class UserExtend extends \yii\db\ActiveRecord
         return [
             'user_extend_id' => 'User Extend ID',
             'user_id' => 'User ID',
-            'real_name' => 'Real Name',
-            'nick_name' => 'Nick Name',
-            'section' => 'Section',
-            'gender' => 'Gender',
-            'birthday' => 'Birthday',
-            'avatar' => 'Avatar',
-            'last_login_ip' => 'Last Login Ip',
-            'last_login_time' => 'Last Login Time',
+            'real_name' => '姓名',
+            'nick_name' => '昵称',
+            'section' => '部门',
+            'gender' => '性别',
+            'birthday' => '生日',
+            'avatar' => '头像',
+            'last_login_ip' => '上次登陆IP',
+            'last_login_time' => '上次登陆时间',
         ];
     }
 }

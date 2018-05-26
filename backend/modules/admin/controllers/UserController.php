@@ -20,33 +20,32 @@ use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
 use yii\base\UserException;
 use yii\mail\BaseMailer;
+use yii\helpers\Url;
 
 
 /**
  * User controller
  */
-class UserController extends Controller
-{
+class UserController extends Controller {
     private $_oldMailPath;
 
     public $userClassName;
-    public $idField = 'id';
+    public $idField       = 'id';
     public $usernameField = 'username';
     public $fullnameField;
     public $searchClass;
-    public $extraColumns = [];
+    public $extraColumns  = [];
 
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class'   => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['post'],
-                    'logout' => ['post'],
+                    'delete'   => ['post'],
+                    'logout'   => ['post'],
                     'activate' => ['post'],
 
                     'assign' => ['post'],
@@ -59,11 +58,10 @@ class UserController extends Controller
     /**
      * @inheritdoc
      */
-    public function init()
-    {
+    public function init() {
         parent::init();
         if ($this->userClassName === null) {
-//            $this->userClassName = Yii::$app->getUser()->identityClass;
+            //            $this->userClassName = Yii::$app->getUser()->identityClass;
             $this->userClassName = $this->userClassName ? : 'backend\modules\admin\models\User';
         }
     }
@@ -71,8 +69,7 @@ class UserController extends Controller
     /**
      * @inheritdoc
      */
-    public function beforeAction($action)
-    {
+    public function beforeAction($action) {
         if (parent::beforeAction($action)) {
             if (Yii::$app->has('mailer') && ($mailer = Yii::$app->getMailer()) instanceof BaseMailer) {
                 /* @var $mailer BaseMailer */
@@ -87,8 +84,7 @@ class UserController extends Controller
     /**
      * @inheritdoc
      */
-    public function afterAction($action, $result)
-    {
+    public function afterAction($action, $result) {
         if ($this->_oldMailPath !== null) {
             Yii::$app->getMailer()->setViewPath($this->_oldMailPath);
         }
@@ -97,87 +93,93 @@ class UserController extends Controller
 
     /**
      * Lists all User models.
+     *
      * @return mixed
      */
-    public function actionIndex()
-    {
-        $searchModel = new UserSearch();
+    public function actionIndex() {
+        $searchModel  = new UserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-                'searchModel' => $searchModel,
-                'dataProvider' => $dataProvider,
+            'searchModel'  => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
      * Updates an existing ApiBase model.
      * If update is successful, the browser will be redirected to the 'view' page.
+     *
      * @param integer $id
      * @return mixed
      */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
+    public function actionUpdate($id) {
+        $model       = $this->findModel($id);
+        $extendModel = $this->findExtendModel($id);
+        $oldPassword = $model->password_hash;
+        if ($model->load(Yii::$app->request->post()) && $extendModel->load(Yii::$app->request->post())) {
 
-        if ($model->load(Yii::$app->request->post()) ) {
-            if($model->password_hash!=''){
+            if ($model->password_hash != '') {
                 $model->setPassword($model->password_hash);
                 $model->generateAuthKey();
+            } else {
+                $model->password_hash = $oldPassword;
             }
-            if ($model->save())
-            {
-                return $this->redirect(['view', 'id' => $model->id]);
+
+            if ($model->save() && $extendModel->save()) {
+                return $this->redirect(['index']);
             }
         } else {
+            $model->password_hash = '';
             return $this->render('update', [
-                'model' => $model,
+                'model'       => $model,
+                'extendModel' => $extendModel
             ]);
         }
     }
 
     /**
      * Displays a single User model.
+     *
      * @param integer $id
      * @return mixed
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
 
         $assModel = $this->findAssModel($id);
         return $this->render('view', [
-                'model' => $this->findModel($id),
-                'assModel'=>$assModel,
-                'idField' => $this->idField,
-                'usernameField' => $this->usernameField,
-                'fullnameField' => $this->fullnameField,
+            'model'         => $this->findModel($id),
+            'assModel'      => $assModel,
+            'idField'       => $this->idField,
+            'usernameField' => $this->usernameField,
+            'fullnameField' => $this->fullnameField,
         ]);
     }
 
     /**
      * Assign items
+     *
      * @param string $id
      * @return array
      */
-    public function actionAssign($id)
-    {
-        $items = Yii::$app->getRequest()->post('items', []);
-        $model = new Assignment($id);
-        $success = $model->assign($items);
+    public function actionAssign($id) {
+        $items                           = Yii::$app->getRequest()->post('items', []);
+        $model                           = new Assignment($id);
+        $success                         = $model->assign($items);
         Yii::$app->getResponse()->format = 'json';
         return array_merge($model->getItems(), ['success' => $success]);
     }
 
     /**
      * Assign items
+     *
      * @param string $id
      * @return array
      */
-    public function actionRevoke($id)
-    {
-        $items = Yii::$app->getRequest()->post('items', []);
-        $model = new Assignment($id);
-        $success = $model->revoke($items);
+    public function actionRevoke($id) {
+        $items                           = Yii::$app->getRequest()->post('items', []);
+        $model                           = new Assignment($id);
+        $success                         = $model->revoke($items);
         Yii::$app->getResponse()->format = 'json';
         return array_merge($model->getItems(), ['success' => $success]);
     }
@@ -185,20 +187,19 @@ class UserController extends Controller
     /**
      * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
+     *
      * @param integer $id
      * @return mixed
      */
-    public function actionDelete($id)
-    {
-        if ($id!=1){
+    public function actionDelete($id) {
+        if ($id != 1) {
             //清除用户基础信息
-            $userExtend = UserExtend::find()->where(['user_id'=>$id])->one();
-            if ($userExtend)
-            {
+            $userExtend = UserExtend::find()->where(['user_id' => $id])->one();
+            if ($userExtend) {
                 $userExtend->delete();
             }
             //清除用户权限授权记录
-            AuthAssignment::deleteAll(['user_id'=>$id]);
+            AuthAssignment::deleteAll(['user_id' => $id]);
             $this->findModel($id)->delete();
         }
 
@@ -208,10 +209,10 @@ class UserController extends Controller
 
     /**
      * Login
+     *
      * @return string
      */
-    public function actionLogin()
-    {
+    public function actionLogin() {
         if (!Yii::$app->getUser()->isGuest) {
             return $this->goHome();
         }
@@ -221,61 +222,47 @@ class UserController extends Controller
             return $this->goBack();
         } else {
             return $this->render('login', [
-                    'model' => $model,
+                'model' => $model,
             ]);
         }
     }
 
     /**
      * Logout
+     *
      * @return string
      */
-    public function actionLogout()
-    {
+    public function actionLogout() {
         Yii::$app->getUser()->logout();
 
         return $this->goHome();
     }
 
     /**
-     * Signup new user
-     * @return string
+     * @return string|\yii\web\Response
      */
-    public function actionSignup()
-    {
-        $model = new Signup();
-
+    public function actionSignup() {
+        $model       = new Signup();
+        $extendModel = &$model;
         if ($model->load(Yii::$app->getRequest()->post())) {
-
-            if ($user = $model->signup()) {
-                return $this->goHome();
+            if ($model->signup()) {
+                return $this->redirect(['index']);
             }
         }
-
-        $p1 = $p2 = '';
-        $sectionList = [
-            [
-                'id' => 0,
-                'sectionName' => 'All'
-            ]
-        ];
-        $model->gender = 1;
-        $model->status = 10;
-
+        $model->status       = 10;
+        $extendModel->gender = 1;
         return $this->render('signup', [
-            'model' => $model,
-            'p1' => $p1,
-            'p2' => $p2,
-            'sectionList' => $sectionList
+            'model'       => $model,
+            'extendModel' => $extendModel
         ]);
     }
 
     /**
      * Request reset password
+     *
      * @return string
      */
-    public function actionRequestPasswordReset()
-    {
+    public function actionRequestPasswordReset() {
         $model = new PasswordResetRequest();
         if ($model->load(Yii::$app->getRequest()->post()) && $model->validate()) {
             if ($model->sendEmail()) {
@@ -288,16 +275,16 @@ class UserController extends Controller
         }
 
         return $this->render('requestPasswordResetToken', [
-                'model' => $model,
+            'model' => $model,
         ]);
     }
 
     /**
      * Reset password
+     *
      * @return string
      */
-    public function actionResetPassword($token)
-    {
+    public function actionResetPassword($token) {
         try {
             $model = new ResetPassword($token);
         } catch (InvalidParamException $e) {
@@ -311,23 +298,23 @@ class UserController extends Controller
         }
 
         return $this->render('resetPassword', [
-                'model' => $model,
+            'model' => $model,
         ]);
     }
 
     /**
      * Reset password
+     *
      * @return string
      */
-    public function actionChangePassword()
-    {
+    public function actionChangePassword() {
         $model = new ChangePassword();
         if ($model->load(Yii::$app->getRequest()->post()) && $model->change()) {
             return $this->goBack();
         }
 
         return $this->renderAjax('change-password', [
-                'model' => $model,
+            'model' => $model,
         ]);
     }
 
@@ -337,14 +324,13 @@ class UserController extends Controller
      * @throws NotFoundHttpException
      * @throws UserException
      */
-    public function actionActivate($id)
-    {
+    public function actionActivate($id) {
         /* @var $user User */
         $user = $this->findModel($id);
         if ($user->status == User::STATUS_INACTIVE) {
             $user->status = User::STATUS_ACTIVE;
-        }else{
-            if ($id==1){
+        } else {
+            if ($id == 1) {
                 return $this->redirect(['index']);
             }
             $user->status = User::STATUS_INACTIVE;
@@ -359,13 +345,26 @@ class UserController extends Controller
     /**
      * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param integer $id
      * @return User the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id) {
         if (($model = User::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    /**
+     * @param $id
+     * @return array|null|\yii\db\ActiveRecord
+     * @throws NotFoundHttpException
+     */
+    protected function findExtendModel($id) {
+        if (($model = UserExtend::find()->where(['user_id' => $id])->one()) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
@@ -375,12 +374,13 @@ class UserController extends Controller
     /**
      * Finds the Assignment model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
+     *
      * @param  integer $id
      * @return Assignment the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findAssModel($id)
-    {
+    protected function findAssModel($id) {
+        /* @var $class User */
         $class = $this->userClassName;
         if (($user = $class::findIdentity($id)) !== null) {
             return new Assignment($id, $user);

@@ -54,8 +54,25 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE]],
+            ['username','required'],
+            [['status'], 'default', 'value' => self::STATUS_ACTIVE],
+            [['status'], 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE]],
+            ['email', 'filter', 'filter' => 'trim'],
+            ['email', 'required'],
+            ['email', 'email'],
+            ['password_hash','safe'],
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function attributeLabels()
+    {
+        return [
+            'status' => '账户状态',
+            'email' => 'Email',
+            'password_hash' => '密码'
         ];
     }
 
@@ -190,6 +207,9 @@ class User extends ActiveRecord implements IdentityInterface
         $this->password_reset_token = null;
     }
 
+    /**
+     * @return \yii\db\Connection
+     */
     public static function getDb()
     {
         return Configs::userDb();

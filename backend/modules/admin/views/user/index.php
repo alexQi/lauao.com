@@ -172,6 +172,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         'class'      => 'btn btn-sm margin-r-5 btn-danger',
                                         'title'      => '分配权限',
                                         'aria-label' => '分配权限',
+                                        'data-method'  => 'post',
                                         'data-pjax'  => '0',
                                     ];
                                     if ($model->id==1) {
