@@ -3,6 +3,7 @@
 namespace backend\models;
 
 use Yii;
+use common\models\UserExtend;
 
 /**
  * This is the model class for table "{{%admin_log}}".
@@ -61,5 +62,12 @@ class AdminLog extends \yii\db\ActiveRecord
             'user_id' => '执行人ID',
             'created_at' => '时间',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserExtend() {
+        return $this->hasOne(UserExtend::className(), ['user_id' => 'user_id']);
     }
 }

@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use backend\modules\admin\components\Helper;
+use yii\bootstrap\Modal;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\AdminLogSearch */
@@ -64,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 return $model->action;
                             },
                             "headerOptions" => [
-                                "width" => "80"
+                                "width" => "150"
                             ]
                         ],
                         [
@@ -80,9 +82,9 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                         ],
                         [
-                            'attribute'     => 'operation_type',
-                            'format'        => 'html',
-                            'value'         => function ($model) {
+                            'attribute'      => 'operation_type',
+                            'format'         => 'html',
+                            'value'          => function ($model) {
 
                                 switch ($model->operation_type) {
                                     case 'create':
@@ -104,32 +106,28 @@ $this->params['breadcrumbs'][] = $this->title;
                                 $html = '<span class="label label-' . $class . '">' . $string . '</span>';
                                 return $html;
                             },
-                            "headerOptions" => [
-                                "width" => "80",
+                            "headerOptions"  => [
+                                "width" => "70",
                                 'class' => 'text-center'
                             ],
                             "contentOptions" => [
                                 'class' => 'text-center'
                             ],
-                            'filter'        => [
+                            'filter'         => [
                                 'create' => '添加',
                                 'update' => '更新',
                                 'delete' => '删除'
                             ],
                         ],
                         [
-                            'attribute'     => 'current_data',
+                            'label'         => '操作者',
+                            'attribute'     => 'real_name',
                             'format'        => 'html',
                             'value'         => function ($model) {
-                                $data = json_decode($model->current_data,true);
-                                if (empty($data)){
-                                    return false;
-                                }else{
-                                    return '<code>'.json_encode($data,64).'</code>';
-                                }
+                                return $model->userExtend['real_name'];
                             },
                             "headerOptions" => [
-                                "width" => "150"
+                                "width" => "50"
                             ],
                         ],
                         [
@@ -139,10 +137,49 @@ $this->params['breadcrumbs'][] = $this->title;
                                 "width" => "130"
                             ],
                         ],
-                        // 'user_id',
+                        [
+                            'class'         => 'backend\components\LauaoActionColumn',
+                            'template'      => Helper::filterActionColumn(['view']),
+                            'buttons'       => [
+                                'view' => function ($url, $model) {
+                                    $options = [
+                                        'class'      => 'btn btn-sm margin-r-5 bg-maroon detail-link',
+                                        'title'      => '查看详情',
+                                        'data-pjax'  => '0',
+                                        'data-key'    => $model->id,
+                                        'data-toggle' => 'modal',
+                                        'data-target' => '#activity-modal',
+                                    ];
+                                    return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, $options);
+                                }
+                            ],
+                            "headerOptions" => [
+                                "width" => "50"
+                            ],
+                        ],
                     ],
                 ]);?>
+                <?php Modal::begin([
+                    'id'     => 'activity-modal',
+                    'header' => '<h4 class="modal-title"><i class="glyphicon glyphicon-random"></i> 操作日志详情</h4>',
+                    'size'   => Modal::SIZE_LARGE,
+                ]); ?>
+                <?php Modal::end(); ?>
             </div>
         </div>
     </div>
 </div>
+<?php
+$this->registerJs(
+    "
+        $(document).on(\"click\",\".detail-link\",function() {
+            $.get($(this).attr(\"href\"),
+                function (data) {
+                    $('#activity-modal .modal-body').html(data);
+                    $('#activity-modal').modal();
+                }
+            );
+        });
+    "
+);
+?>

@@ -9,6 +9,7 @@ use yii\bootstrap\ActiveForm;
 /* @var $extendModel \common\models\UserExtend */
 
 $this->title                   = Yii::t('rbac-admin', 'Signup');
+$this->params['breadcrumbs'][] = ['label' => '用户列表', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
