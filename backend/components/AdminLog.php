@@ -16,7 +16,10 @@ class AdminLog {
      * @return bool
      */
     public static function write($event) {
-//        var_dump($event);die();
+        if (Yii::$app->controller->action->id=='login'){
+            return true;
+        }
+
         $raw_data     = [];
         $current_data = [];
         switch ($event->name) {
