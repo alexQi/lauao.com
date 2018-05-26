@@ -41,7 +41,7 @@
                     </tr>
                     <tr>
                         <?php foreach ($oldDataList as $td): ?>
-                            <td><?php echo $td?$td:'<code>NULL</code>'; ?></td>
+                            <td><?php echo $td!=='' && $td!==null ?$td:'<code>NULL</code>'; ?></td>
                         <?php endforeach; ?>
                     </tr>
                 </table>
@@ -61,7 +61,7 @@
                     </tr>
                     <tr>
                         <?php foreach ($newDataList as $td): ?>
-                            <td><?php echo $td?$td:'<code>NULL</code>'; ?></td>
+                            <td><?php echo $td!=='' && $td!==null ?$td:'<code>NULL</code>'; ?></td>
                         <?php endforeach; ?>
                     </tr>
                 </table>
