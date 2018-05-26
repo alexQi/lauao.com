@@ -1,12 +1,12 @@
 <?php
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \common\models\LoginForm */
+/* @var $model \backend\models\LoginForm */
 
-$this->title = 'OLIU - 后台登录';
+$this->title = 'LauaoECC - 后台登录';
 
 $fieldOptions1 = [
     'options' => ['class' => 'form-group has-feedback'],
@@ -27,7 +27,11 @@ $fieldOptions2 = [
     <div class="login-box-body">
         <p class="login-box-msg">请输入账号密码登录</p>
 
-        <?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
+        <?php $form = ActiveForm::begin([
+                'id' => 'login-form',
+                'enableAjaxValidation' => true,
+                'validationUrl' => Url::toRoute(['/ajax/validate/validate-login-form']),
+            ]); ?>
 
         <?= $form
             ->field($model, 'username', $fieldOptions1)
@@ -37,7 +41,7 @@ $fieldOptions2 = [
         <?= $form
             ->field($model, 'password', $fieldOptions2)
             ->label(false)
-            ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
+            ->passwordInput(['autocomplete'=>'off','placeholder' => $model->getAttributeLabel('password')]) ?>
 
         <div class="row">
             <div class="col-xs-8">
@@ -49,7 +53,6 @@ $fieldOptions2 = [
             </div>
             <!-- /.col -->
         </div>
-
 
         <?php ActiveForm::end(); ?>
 

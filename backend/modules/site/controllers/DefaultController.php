@@ -9,7 +9,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\data\ArrayDataProvider;
 use yii\data\Pagination;
-use common\models\LoginForm;
+use backend\models\LoginForm;
 
 /**
  * Site controller
