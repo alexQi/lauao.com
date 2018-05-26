@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'attribute'=>'video_id',
                             "headerOptions" => [
-                                "width" => "50"
+                                "width" => "80"
                             ],
                         ],
                         [
@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             },
                             'filter' => \common\models\Video::getCategoryList(), //筛选的数据
                             "headerOptions" => [
-                                "width" => "150"
+                                "width" => "120"
                             ],
                         ],
                         [
@@ -69,16 +69,21 @@ $this->params['breadcrumbs'][] = $this->title;
                             },
                             'filter' => [1=>'禁用',2=>'启用'], //筛选的数据
                             "headerOptions" => [
-                                "width" => "120"
+                                "width" => "80"
                             ],
                         ],
-                        'created_at',
+                        [
+                            'attribute'=>'created_at',
+                            "headerOptions" => [
+                                "width" => "150"
+                            ],
+                        ],
                         'uploader',
                         [
                             'class' => 'backend\components\LauaoActionColumn',
                             'template' => '{view} {update} {delete}',
                             "headerOptions" => [
-                                "width" => "100"
+                                "width" => "150"
                             ],
                         ],
                     ],

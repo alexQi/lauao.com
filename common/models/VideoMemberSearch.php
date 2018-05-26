@@ -19,7 +19,7 @@ class VideoMemberSearch extends VideoMember
     {
         return [
             [['id'], 'integer'],
-            [['avatar_url', 'name', 'desc', 'created_at'], 'safe'],
+            [['avatar_url', 'name', 'desc','sort', 'created_at'], 'safe'],
         ];
     }
 

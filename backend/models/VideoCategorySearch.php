@@ -61,11 +61,11 @@ class VideoCategorySearch extends VideoCategory
         $query->andFilterWhere([
             'id' => $this->id,
             'type' => $this->type,
-            'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
-        $query->andFilterWhere(['like', 'cate_name', $this->cate_name]);
+        $query->andFilterWhere(['like', 'cate_name', $this->cate_name])
+            ->andFilterWhere(['like', 'created_at', $this->created_at]);
 
         return $dataProvider;
     }

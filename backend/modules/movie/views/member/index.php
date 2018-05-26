@@ -35,13 +35,32 @@ $this->params['breadcrumbs'][] = $this->title;
             ]
         ],
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            [
+                'attribute'=>'id',
+                "headerOptions" => [
+                    "width" => "80"
+                ],
+            ],
 
-            'id',
             'avatar_url:url',
-            'name',
-            'sort',
-            'created_at',
+            [
+                'attribute'=>'name',
+                "headerOptions" => [
+                    "width" => "100"
+                ],
+            ],
+            [
+                'attribute'=>'sort',
+                "headerOptions" => [
+                    "width" => "100"
+                ],
+            ],
+            [
+                'attribute'=>'created_at',
+                "headerOptions" => [
+                    "width" => "110"
+                ],
+            ],
             [
                 'class' => 'backend\components\LauaoActionColumn',
                 'template' => '{view} {update} {delete}',

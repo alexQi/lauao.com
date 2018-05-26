@@ -35,7 +35,12 @@ $this->params['breadcrumbs'][] = $this->title;
                             ]
                         ],
                         'columns' => [
-                            'id',
+                            [
+                                'attribute'=>'id',
+                                "headerOptions" => [
+                                    "width" => "80"
+                                ],
+                            ],
                             [
                                 'label' => '类型',
                                 'attribute'=>'type',
@@ -52,8 +57,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ],
                             ],
                             'cate_name',
-                            'created_at',
-
+                            [
+                                'attribute'=>'created_at',
+                                "headerOptions" => [
+                                    "width" => "150"
+                                ],
+                            ],
                             [
                                 'class' => 'backend\components\LauaoActionColumn',
                                 'template' => '{view} {update} {delete}',
