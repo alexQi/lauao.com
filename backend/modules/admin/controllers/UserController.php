@@ -344,6 +344,9 @@ class UserController extends Controller
         if ($user->status == User::STATUS_INACTIVE) {
             $user->status = User::STATUS_ACTIVE;
         }else{
+            if ($id==1){
+                return $this->redirect(['index']);
+            }
             $user->status = User::STATUS_INACTIVE;
         }
         if (!$user->save()) {

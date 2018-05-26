@@ -132,19 +132,23 @@ $this->params['breadcrumbs'][] = $this->title;
                             'template'      => Helper::filterActionColumn(['view', 'update', 'activate', 'delete']),
                             'buttons'       => [
                                 'activate' => function ($url, $model) {
-                                    if ($model->status == \backend\modules\admin\models\User::STATUS_ACTIVE) {
-                                        $message = "确认禁用当前用户吗？";
-                                    } else {
-                                        $message = "确认启用当前用户吗？";
-                                    }
                                     $options = [
                                         'class'        => 'btn btn-sm margin-r-5 bg-green',
                                         'title'        => Yii::t('rbac-admin', 'Activate'),
                                         'aria-label'   => Yii::t('rbac-admin', 'Activate'),
-                                        'data-confirm' => $message,
                                         'data-method'  => 'post',
                                         'data-pjax'    => '0',
                                     ];
+                                    if ($model->id == 1){
+                                        $url = "javascript:showAlert('该当前账户不允许被禁用')";
+                                    }else{
+                                        if ($model->status == \backend\modules\admin\models\User::STATUS_ACTIVE) {
+                                            $options['data-confirm'] = "确认禁用当前用户吗？";
+                                        } else {
+                                            $options['data-confirm'] = "确认启用当前用户吗？";
+                                        }
+                                    }
+
                                     return Html::a('<span class="glyphicon glyphicon-retweet"></span>', $url, $options);
                                 },
                                 'view'     => function ($url, $model) {
