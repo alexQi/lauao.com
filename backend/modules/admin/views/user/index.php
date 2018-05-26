@@ -162,6 +162,22 @@ $this->params['breadcrumbs'][] = $this->title;
                                     }
 
                                     return $aHtml;
+                                },
+                                'delete'     => function ($url, $model) {
+                                    $options = [
+                                        'class'      => 'btn btn-sm margin-r-5 btn-danger',
+                                        'title'      => '分配权限',
+                                        'aria-label' => '分配权限',
+                                        'data-pjax'  => '0',
+                                    ];
+                                    if ($model->id==1) {
+                                        $url = "javascript:showAlert('该账户不允许被删除！')";
+                                        $aHtml = Html::a('<span class="glyphicon glyphicon-trash"></span>',$url , $options);
+                                    }else{
+                                        $aHtml = Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, $options);
+                                    }
+
+                                    return $aHtml;
                                 }
                             ],
                             "headerOptions" => [

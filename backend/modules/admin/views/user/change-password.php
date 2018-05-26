@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
@@ -9,7 +10,8 @@ use yii\bootstrap\ActiveForm;
 ?>
 <?php $form = ActiveForm::begin([
         'options'              => ['class' => 'form-horizontal'],
-        'enableAjaxValidation' => false,
+        'enableAjaxValidation' => true,
+        'validationUrl' => Url::toRoute(['/ajax/validate/validate-change-pass-form']),
         'id'                   => 'passwd-form',
         'fieldConfig'          => [
             'template'     => "{input}{error}"

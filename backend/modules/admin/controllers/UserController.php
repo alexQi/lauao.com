@@ -190,18 +190,18 @@ class UserController extends Controller
      */
     public function actionDelete($id)
     {
-        if ($id==1){
-            return false;
+        if ($id!=1){
+            //清除用户基础信息
+            $userExtend = UserExtend::find()->where(['user_id'=>$id])->one();
+            if ($userExtend)
+            {
+                $userExtend->delete();
+            }
+            //清除用户权限授权记录
+            AuthAssignment::deleteAll(['user_id'=>$id]);
+            $this->findModel($id)->delete();
         }
-        //清除用户基础信息
-        $userExtend = UserExtend::find()->where(['user_id'=>$id])->one();
-        if ($userExtend)
-        {
-            $userExtend->delete();
-        }
-        //清除用户权限授权记录
-        AuthAssignment::deleteAll(['user_id'=>$id]);
-        $this->findModel($id)->delete();
+
 
         return $this->redirect(['index']);
     }
