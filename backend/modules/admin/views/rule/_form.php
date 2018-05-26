@@ -7,21 +7,25 @@ use yii\widgets\ActiveForm;
 /* @var $model backend\modules\admin\models\BizRule */
 /* @var $form ActiveForm */
 ?>
-
-<div class="auth-item-form">
-
-    <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'name')->textInput(['maxlength' => 64]) ?>
-
-    <?= $form->field($model, 'className')->textInput() ?>
-
-    <div class="form-group">
-        <?php
-        echo Html::submitButton($model->isNewRecord ? Yii::t('rbac-admin', 'Create') : Yii::t('rbac-admin', 'Update'), [
-            'class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary'])
-        ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
+<?php $form = ActiveForm::begin([
+        'options' => ['class'=>'form-horizontal'],
+        'enableAjaxValidation'=>false,
+        'id' => 'rule-form',
+        'fieldConfig' => [
+            'template' => "{input}{error}",
+            'labelOptions' => ['class' => 'col-sm-2 control-label'],
+        ]
+    ]
+);?>
+<div class="box-body">
+    <?= $form->field($model, 'name')->textInput(['maxlength' => 64,'placeholder'=>'规则名称']) ?>
+    <?= $form->field($model, 'className')->textInput(['placeholder'=>'类名']) ?>
 </div>
+<div class="box-footer text-right">
+    <?php
+    echo Html::submitButton($model->isNewRecord ? Yii::t('rbac-admin', 'Create') : Yii::t('rbac-admin', 'Update'), [
+        'class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary',
+        'name' => 'submit-button'])
+    ?>
+</div>
+<?php ActiveForm::end(); ?>

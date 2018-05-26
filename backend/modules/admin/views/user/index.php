@@ -113,7 +113,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 return long2ip($model->userExtend['last_login_ip']);
                             },
                             "headerOptions" => [
-                                "width" => "80"
+                                "width" => "125"
                             ],
                         ],
                         [

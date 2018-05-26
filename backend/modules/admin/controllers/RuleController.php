@@ -74,7 +74,7 @@ class RuleController extends Controller
 
             return $this->redirect(['view', 'id' => $model->name]);
         } else {
-            return $this->render('create', ['model' => $model,]);
+            return $this->renderAjax('create', ['model' => $model,]);
         }
     }
 
@@ -93,7 +93,7 @@ class RuleController extends Controller
             return $this->redirect(['view', 'id' => $model->name]);
         }
 
-        return $this->render('update', ['model' => $model,]);
+        return $this->renderAjax('update', ['model' => $model,]);
     }
 
     /**

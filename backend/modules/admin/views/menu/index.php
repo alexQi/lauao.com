@@ -139,7 +139,7 @@ $this->registerJs(
         $(document).on(\"click\",\".detail-link\",function() {
             $.get($(this).attr(\"href\"),
                 function (data) {
-                    $('.modal-body').html(data);
+                    $('#activity-modal .modal-body').html(data);
                     $('#activity-modal').modal();
                 }
             );

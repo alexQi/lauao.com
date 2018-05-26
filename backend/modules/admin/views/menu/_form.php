@@ -49,7 +49,7 @@ $this->registerJs($this->render('_script.js'));
     </div>
 </div>
 <div class="box-footer text-right">
-    <button type="button" class="btn btn-default" data-btn-type="cancel" data-dismiss="modal">取消</button>
+    <?=Html::button('取消', ['class' => 'btn btn-default', 'data-btn-type' => 'cancel','data-dismiss'=>'modal'])?>
     <?php
     echo Html::submitButton($model->isNewRecord ? Yii::t('rbac-admin', 'Create') : Yii::t('rbac-admin', 'Update'), [
         'class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary',
