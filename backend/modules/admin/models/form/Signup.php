@@ -12,8 +12,7 @@ use yii\base\Exception;
 /**
  * Signup form
  */
-class Signup extends Model
-{
+class Signup extends Model {
     public $id          = false;
     public $section     = 0;
     public $avatar      = 0;
@@ -54,13 +53,14 @@ class Signup extends Model
      */
     public function attributeLabels() {
         return [
-            'username'  => '用户名',
-            'nick_name' => '昵称',
-            'real_name' => '真实姓名',
-            'section'   => '部门',
-            'gender'    => '性别',
-            'birthday'  => '生日',
-            'avatar'    => '头像',
+            'username'      => '用户名',
+            'nick_name'     => '昵称',
+            'real_name'     => '真实姓名',
+            'section'       => '部门',
+            'gender'        => '性别',
+            'birthday'      => '生日',
+            'avatar'        => '头像',
+            'password_hash' => '密码',
         ];
     }
 
