@@ -179,6 +179,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         $url = "javascript:showAlert('该账户不允许被删除！')";
                                         $aHtml = Html::a('<span class="glyphicon glyphicon-trash"></span>',$url , $options);
                                     }else{
+                                        $options['data-confirm'] = "确认删除当前用户吗？";
                                         $aHtml = Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, $options);
                                     }
 
