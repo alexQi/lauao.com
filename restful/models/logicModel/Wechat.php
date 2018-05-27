@@ -12,6 +12,11 @@ use Yii;
 use yii\base\Model;
 use common\components\Common;
 
+/**
+ * Class Wechat
+ *
+ * @package restful\models\logicModel
+ */
 class Wechat extends Model{
 
     private $appid;
@@ -59,6 +64,11 @@ class Wechat extends Model{
         return $result;
     }
 
+    /**
+     * @param $code
+     * @return mixed
+     * @throws \yii\base\Exception
+     */
     public function getAppSession($code){
         $param['grant_type'] = 'authorization_code';
         $param['appid']      = yii::$app->params['wechatConfig']['appid'];

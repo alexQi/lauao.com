@@ -43,6 +43,7 @@ return [
 //                "<module:\w+>/<controller:\w+>/<action:\w+>.html"=>"<module>/<controller>/<action>",
 
                 //restful route
+                // request like this : http://restful.lauao.test/system/apply-users/list
                 ['class' => 'yii\rest\UrlRule',
                     'controller' => 'system/apply-user',
                     'extraPatterns' => [

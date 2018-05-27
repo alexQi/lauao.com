@@ -2,7 +2,6 @@
 
 namespace restful\modules\system\controllers;
 
-use yii;
 use yii\base\Exception;
 use restful\models\logicModel\Wechat;
 use restful\controllers\BaseController;
@@ -11,6 +10,9 @@ use restful\controllers\BaseController;
  */
 class AuthController extends BaseController
 {
+    /**
+     * @return array|mixed
+     */
     public function actionGetSession()
     {
         $data = [];
