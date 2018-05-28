@@ -32,8 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </p>
             <hr>
             <strong><i class="fa fa-file-text-o margin-r-5"></i> 备注</strong>
-
-            <p>发现问题请点<a href="mailto:514438556@qq.com">我</a>发送邮件，记得截图哟</p>
+            <p>有问题请点<a href="mailto:514438556@qq.com">我</a>发送问题截图描述</p>
         </div>
     </div>
 </div>
