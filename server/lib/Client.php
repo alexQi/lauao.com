@@ -111,7 +111,8 @@ class Client {
 		if (isset($this->_connection)) {
 			$this->disconnect();
 		}
-
+        $errNum = 0;
+		$errStr = '';
 		$function = $this->_config['persistent'] ? 'pfsockopen' : 'fsockopen';
 		$params = [$this->_config['host'], $this->_config['port'], &$errNum, &$errStr];
 

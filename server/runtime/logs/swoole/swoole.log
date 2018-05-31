@@ -1,0 +1,1 @@
+[2018-05-29 15:49:15 *23217.3]	ERROR	swFactoryProcess_finish (ERROR 1004): send 864 byte failed, because connection[fd=1] is closed.

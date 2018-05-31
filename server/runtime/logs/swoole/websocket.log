@@ -1,0 +1,10 @@
+[2018-05-29 17:05:24 ^24522.5]	ERROR	zm_deactivate_swoole (ERROR 9003): worker process is terminated by exit()/die().
+[2018-05-29 17:06:08 ^24521.4]	ERROR	zm_deactivate_swoole (ERROR 9003): worker process is terminated by exit()/die().
+[2018-05-29 17:08:31 ^24536.5]	ERROR	zm_deactivate_swoole (ERROR 9003): worker process is terminated by exit()/die().
+[2018-05-29 17:18:46 ^24806.4]	ERROR	zm_deactivate_swoole (ERROR 9003): worker process is terminated by exit()/die().
+[2018-05-29 17:41:45 ^25002.4]	ERROR	zm_deactivate_swoole (ERROR 9003): worker process is terminated by exit()/die().
+[2018-05-29 17:45:28 ^25003.5]	ERROR	zm_deactivate_swoole (ERROR 9003): worker process is terminated by exit()/die().
+[2018-05-29 17:50:38 ^25005.7]	ERROR	zm_deactivate_swoole (ERROR 9003): worker process is terminated by exit()/die().
+[2018-05-29 17:50:38 ^25036.5]	ERROR	zm_deactivate_swoole (ERROR 9003): worker process is terminated by exit()/die().
+[2018-05-29 17:50:39 ^25004.6]	ERROR	zm_deactivate_swoole (ERROR 9003): worker process is terminated by exit()/die().
+[2018-05-29 17:50:39 ^25012.4]	ERROR	zm_deactivate_swoole (ERROR 9003): worker process is terminated by exit()/die().

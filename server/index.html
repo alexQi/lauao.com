@@ -3,26 +3,44 @@
 <head>
     <title></title>
     <meta charset="UTF-8">
+    <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript">
         var socket;
-        var $ = function() {
-            return document.getElementById(arguments[0]);
-        };
-
         var initWebSocket = function() {
             if (window.WebSocket) {
                 socket = new WebSocket("ws://0.0.0.0:9501");
                 socket.onmessage = function(event) {
-                    console.log(event);
+                    console.log(111);
+                    var dataList = eval('(' + event.data + ')');
+                    $('.table').empty();
+                    var html = "<tr>";
+                    html += "<th>date</th><th>price</th><th>amount</th>";
+                    html += "</tr>";
+                    $.each(dataList,function(index,data){
+                        html += "<tr>";
+                        html += "<td>"+getLocalTime(data.timestamp/1000)+"</td>";
+                        html += "<td>"+data.price+"</td>";
+                        html += "<td class='"+(data.buy?'text-success':'text-danger')+"'>"+data.amount+"</td>";
+                        html += "</tr>";
+                    })
+                    $('.table').append(html);
                 };
                 socket.onopen = function(event) {
-                    console.log(event);
+                    // console.log(event);
                 };
                 socket.onclose = function(event) {
-                    console.log(event);
+                    console.log(event.data);
                 };
                 socket.onerror = function(event) {
-                    console.log(event);
+                    console.log(event.data);
                 };
             } else {
                 log("Your browser does not support Web Socket.");
@@ -31,9 +49,13 @@
 
         initWebSocket();
 
-        var send = function(params) {
-            var data = function(param) {
-                socket.send(param);
+        function getLocalTime(nS) {
+            return new Date(parseInt(nS) * 1000).toLocaleString().replace(/:\d{1,2}$/,' ');
+        }
+        function send(){
+            var params = document.getElementById('content').value;
+            var data = function(params) {
+                socket.send(params);
             };
             if (socket.readyState !== 1) {
                 socket.close();
@@ -48,7 +70,7 @@
     </script>
 </head>
 <body>
-<input  type="text" id="content">
-<button  onclick="send( document.getElementById('content').value )">发送</button>
+<table class="table table-bordered table-hover">
+</table>
 </body>
 </html>
