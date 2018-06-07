@@ -33,6 +33,10 @@ class TencentController extends Controller {
             $requstUrl  = $apiUrl . "&page=$page&limit=10";
             $result     = Common::httpRequest($requstUrl);
             $tempData   = json_decode($result, true);
+            if (!isset($tempData['data']) || !isset($tempData['data']['total'])){
+                echo date('Y-m-d H:i:s',time())." ".$result."\r\n";
+                break;
+            }
             $totalVideo = $tempData['data']['total'];
             $totalPage  = intval($totalVideo / 10);
             $remainder  = $totalVideo % 10;
@@ -42,7 +46,7 @@ class TencentController extends Controller {
             $data = [];
             foreach ($tempData['data']['articles'] as $key => $val) {
                 if (!isset($val['article_video_info']) || !isset($val['article_video_info']['vid']) || $val['article_video_info']['vid']==''){
-                    continue;
+                    break;
                 }
                 $tempIndex[] = $val['article_video_info']['vid'];
                 $row = Video::findOne(['video_url'=>$val['article_video_info']['vid']]);
@@ -72,8 +76,11 @@ class TencentController extends Controller {
             }
             $page++;
         }
-        yii::$app->db->createCommand()->delete(Video::tableName(),['not in','video_url',$tempIndex])->execute();
-
-        echo "handle data success";
+        if (!empty($tempIndex)){
+            yii::$app->db->createCommand()->delete(Video::tableName(),['not in','video_url',$tempIndex])->execute();
+            echo date('Y-m-d H:i:s',time())." handle data success \r\n";
+        }else{
+            echo date('Y-m-d H:i:s',time())." there is no new data \r\n";
+        }
     }
 }
