@@ -7,9 +7,9 @@
  */
 return [
     'class' => 'yii\db\Connection',
-    'dsn'   => 'mysql:host=127.0.0.1;dbname=ahwes;port=3306',
+    'dsn'   => 'mysql:host=127.0.0.1;dbname=lauao;port=3306',
     'username' => 'root',
-    'password' => 'db@wealth123',
+    'password' => 'woshishei@1',
     'charset'  => 'utf8',
     'tablePrefix' => 'pre_',
 ];

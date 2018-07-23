@@ -10,8 +10,8 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'language'=>'zh-CN',
-    'homeUrl' => '/movie/default/index',
-    'defaultRoute' => 'movie',
+    'homeUrl' => '/blog/default/index',
+    'defaultRoute' => 'blog',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
