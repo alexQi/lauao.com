@@ -77,7 +77,7 @@ class TencentController extends Controller {
             $page++;
         }
         if (!empty($tempIndex)){
-            yii::$app->db->createCommand()->delete(Video::tableName(),['not in','video_url',$tempIndex])->execute();
+            yii::$app->db->createCommand()->update(Video::tableName(),['status'=>1],['not in','video_url',$tempIndex]);
             echo date('Y-m-d H:i:s',time())." handle data success \r\n";
         }else{
             echo date('Y-m-d H:i:s',time())." there is no new data \r\n";
