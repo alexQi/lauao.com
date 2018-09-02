@@ -16,6 +16,10 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="box-header">
                 <h3 class="box-title"><?= Html::encode($this->title) ?></h3>
             </div>
+            <!--取消同步,新增视频-->
+            <div class="box-tools">
+                <?= Html::a('添加视频', ['create'], ['class' => 'btn btn-success']) ?>
+            </div>
             <div class="box-body">
             <?php Pjax::begin(); ?>
             <?= GridView::widget([
