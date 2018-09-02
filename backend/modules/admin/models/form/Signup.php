@@ -86,7 +86,6 @@ class Signup extends Model {
             if (!$user->save()) {
                 throw new Exception(current($user->getFirstErrors()));
             }
-
             //用户基础信息
             $userExtend            = new UserExtend();
             $userExtend->user_id   = $user->id;
@@ -98,7 +97,6 @@ class Signup extends Model {
             $userExtend->avatar    = $this->avatar;
 
             if (!$userExtend->save()) {
-                $userExtend->getFirstErrors();
                 throw new Exception(current($userExtend->getFirstErrors()));
             }
 
@@ -111,11 +109,10 @@ class Signup extends Model {
             if (!$assignmentResult) {
                 throw new Exception('初始化用户权限失败');
             }
-
             $tran->commit();
             $result = true;
         } catch (Exception $e) {
-            $tran->rollBack();
+            $this->addError('real_name',$e->getMessage());
             $result = false;
         }
 
