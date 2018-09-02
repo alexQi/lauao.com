@@ -36,6 +36,8 @@ class VideoService extends Video
 
         $query->orderBy(['v.video_id'=>SORT_DESC]);
 
+        $query->orderBy(['v.sort'=>SORT_ASC]);
+
         $query->groupBy('v.video_id');
 
         $pages = new Pagination(['totalCount' => $query->count()]);
@@ -43,7 +45,6 @@ class VideoService extends Video
         $list = $query->offset($pages->offset)->limit($pages->limit)->asArray()->all();
         $data['pages'] = $pages;
         $data['list']  = $list;
-
         return $data;
     }
 

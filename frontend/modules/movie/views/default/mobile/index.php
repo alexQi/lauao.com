@@ -111,8 +111,9 @@ use yii\helpers\Url;
 <div class="layui-row">
     <?php foreach ($videoList['list'] as $key => $video): ?>
         <div class="layui-col-xs12">
-            <div class="thumbnail" style="border: 0" >
-                <img class="img-rounded video-image" onclick="playVideo(this)" data-id="<?php echo trim($video['video_url']); ?>" style="width: 100%;height: 200px;" src="<?php echo $video['poster']; ?>">
+            <a class="thumbnail" style="border: 0" href="<?php echo $video['video_url']?>" target="_blank">
+<!--                onclick="playVideo(this)" data-id="<?php //echo trim($video['video_url'])?>;-->
+                <img class="img-rounded video-image"   style="width: 100%;height: 200px;" src="<?php echo $video['poster']; ?>">
                 <div class="video-mask" id="<?php echo trim($video['video_url']); ?>" style="display: none"></div>
                 <div class="layui-row">
                     <div class="layui-col-xs9">
@@ -123,6 +124,7 @@ use yii\helpers\Url;
                     <div class="layui-col-xs10">
                     <h4 class="fs_16_l" style="margin: 0px 0px 50px 15px"><?php echo $video['video_name']; ?></h4>
                     </div>
+                </a>
                     <div class="layui-col-xs2">
                         <i class="layui-icon layui-icon-login-wechat" style="font-size: 30px;color:#36b157"></i>
 
@@ -139,36 +141,36 @@ use yii\helpers\Url;
 
 
 
-<script language="javascript" src="http://qzs.qq.com/tencentvideo_v1/js/tvp/tvp.player.js" charset="utf-8"></script>
+<!--<script language="javascript" src="http://qzs.qq.com/tencentvideo_v1/js/tvp/tvp.player.js" charset="utf-8"></script>-->
 
 <script language="javascript">
-    function playVideo(obj){
-        $('.video-image').show();
-        $('.video-mask').empty();
-        var id = $(obj).attr('data-id');
-        var width  = $(obj).width();
-        var height = $(obj).height();
+   // function playVideo(obj){
+     //   $('.video-image').show();
+     //   $('.video-mask').empty();
+     //   var id = $(obj).attr('data-id');
+     //   var width  = $(obj).width();
+     //   var height = $(obj).height();
 
-        $(obj).hide();
-        $('#'+id).attr('width',width);
-        $('#'+id).attr('height',height);
-        $('#'+id).show();
+     //   $(obj).hide();
+      //  $('#'+id).attr('width',width);
+      //  $('#'+id).attr('height',height);
+      //  $('#'+id).show();
 
-        var video = new tvp.VideoInfo();
+       // var video = new tvp.VideoInfo();
         //向视频对象传入直播频道id
-        video.setVid(id);
-        var player = new tvp.Player(width, height);
+       // video.setVid(id);
+      //  var player = new tvp.Player(width, height);
         //设置播放器初始化时加载的视频
-        player.setCurVideo(video);
+       // player.setCurVideo(video);
         //设置播放器为直播状态，1表示直播，2表示点播，默认为2
-        player.addParam("type", "2");
-        player.addParam("autoplay", 1);
-        player.addParam("wmode", "transparent");
-        player.addParam("showcfg", "0");
-        player.addParam("flashskin", "http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf");
-        player.addParam("showend", 0);
+        //player.addParam("type", "2");
+       // player.addParam("autoplay", 1);
+       // player.addParam("wmode", "transparent");
+       // player.addParam("showcfg", "0");
+       // player.addParam("flashskin", "http://imgcache.qq.com/minivideo_v1/vd/res/skins/TencentPlayerMiniSkin.swf");
+       // player.addParam("showend", 0);
         //输出播放器
-        player.write(id);
+       // player.write(id);
 
 }
 
