@@ -18,9 +18,9 @@ return [
         "admin" => [
             "class" => "backend\modules\admin\Module",
         ],
-//        "admin" => [
-//            "class" => "mdm\admin\Module",
-//        ],
+        "wedding" => [
+            "class" => "backend\modules\wedding\Module",
+        ],
         'site' => [
             'class' => 'backend\modules\site\Module',
         ],
@@ -41,8 +41,6 @@ return [
         ],
         'blog' => [
             'class' => 'backend\modules\blog\Module',
-//            'class' => 'funson86\blog\Module',
-//            'controllerNamespace' => 'funson86\blog\controllers\backend'
         ],
         'movie' => [
             'class' => 'backend\modules\movie\Module',
