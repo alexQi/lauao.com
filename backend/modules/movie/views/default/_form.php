@@ -90,7 +90,8 @@ use kartik\file\FileInput;
     </div>
 
     <div class="row margin">
-        <?= $form->field($model, 'video_url',['labelOptions' => ['label' => '视频id'],'template'=>'{label}<div class="col-xs-8">{input}</div><div class="col-xs-2">{error}</div>'])->textInput(['maxlength' => true,['id'=>'col-xs-4'],'readonly'=>true]) ?>
+     <!-- 'readonly'=>true-->
+        <?= $form->field($model, 'video_url',['labelOptions' => ['label' => '视频地址'],'template'=>'{label}<div class="col-xs-8">{input}</div><div class="col-xs-2">{error}</div>'])->textInput(['maxlength' => true,['id'=>'col-xs-4']]) ?>
     </div>
 
     <div class="row margin">
@@ -98,6 +99,9 @@ use kartik\file\FileInput;
     </div>
     <div class="row margin">
         <?= $form->field($model, 'status',['labelOptions' => ['label' => '状态'],'template'=>'{label}<div class="col-xs-2">{input}</div><div class="col-xs-2">{error}</div>'])->dropDownList(['1'=>'禁用','2'=>'启用']) ?>
+    </div>
+    <div class="row margin">
+        <?= $form->field($model, 'sort',['labelOptions' => ['label' => '排序'],'template'=>'{label}<div class="col-xs-2">{input}</div><div class="col-xs-2">{error}</div>'])->textInput(['maxlength' => true,['id'=>'col-xs-4']])  ?>
     </div>
 
     <div class="row margin">

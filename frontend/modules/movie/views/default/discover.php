@@ -474,7 +474,8 @@ if ($video_cate_id) {
         <ul class="video-list">
             <?php foreach ($videoList['list'] as $key => $video): ?>
                 <li class="enter-filmplay" data-articleid="10178093" data-videourl="ArticleList">
-                    <a class="video-cover" href="<?php echo Url::to(['default/detail', 'video_id' => $video['video_id']]); ?>">
+<!--                    <a class="video-cover" href="--><?php //echo Url::to(['default/detail', 'video_id' => $video['video_id']]); ?><!--">-->
+                        <a class="video-cover" href="<?php echo $video['video_url']; ?> " target="_blank">
                         <img class="" src="<?php echo $video['poster']; ?>">
 <!--                        <span class="duration fs_12">--><?php //echo $video['video_time']; ?><!--</span>-->
 

@@ -62,6 +62,7 @@ VideoAsset::register($this);
                                     "width" => "100"
                                 ],
                             ],
+                            'sort',
                             'uploader',
                             'updated_at',
                         ],

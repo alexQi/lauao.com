@@ -38,7 +38,7 @@ class Video extends \yii\db\ActiveRecord {
         return [
             [['video_cate_id', 'video_name', 'video_url', 'poster', 'play_num', 'like_num', 'uploader', 'video_time', 'created_at', 'updated_at'], 'required'],
             [['video_cate_id', 'play_num', 'like_num'], 'integer'],
-            [['created_at', 'updated_at', 'status'], 'safe'],
+            [['created_at', 'updated_at', 'status','sort'], 'safe'],
             [['video_name', 'video_url', 'poster', 'uploader', 'tempFileUrl'], 'string', 'max' => 255],
         ];
     }
@@ -51,6 +51,7 @@ class Video extends \yii\db\ActiveRecord {
             'video_id'      => 'ID',
             'video_cate_id' => '分类ID',
             'video_name'    => '标题',
+            'sort' => '排序',
             'video_url'     => '视频',
             'poster'        => '视频封面',
             'play_num'      => '播放次数',
@@ -69,6 +70,7 @@ class Video extends \yii\db\ActiveRecord {
         if (!empty($list)) {
             $result = ArrayHelper::map($list, "id", "cate_name");
         }
+
         return $result;
     }
 }

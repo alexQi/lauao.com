@@ -15,7 +15,12 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="box box-primary">
             <div class="box-header">
                 <h3 class="box-title"><?= Html::encode($this->title) ?></h3>
+                <!--取消同步,新增视频-->
+                <div class="box-tools">
+                    <?= Html::a('添加视频', ['create'], ['class' => 'btn btn-success']) ?>
+                </div>
             </div>
+
             <div class="box-body">
             <?php Pjax::begin(); ?>
             <?= GridView::widget([
@@ -49,6 +54,13 @@ $this->params['breadcrumbs'][] = $this->title;
                             'filter' => \common\models\Video::getCategoryList(), //筛选的数据
                             "headerOptions" => [
                                 "width" => "120"
+                            ],
+                        ],
+                        [
+                            'label' => '排序',
+                            'attribute'=>'sort',
+                            "headerOptions" => [
+                                "width" => "100"
                             ],
                         ],
                         [
