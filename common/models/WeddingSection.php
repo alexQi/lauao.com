@@ -51,4 +51,11 @@ class WeddingSection extends \yii\db\ActiveRecord
             'updated_at' => '更新时间',
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserExtend() {
+        return $this->hasOne(UserExtend::className(), ['user_id' => 'user_id']);
+    }
 }

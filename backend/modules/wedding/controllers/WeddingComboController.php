@@ -2,6 +2,7 @@
 
 namespace backend\modules\wedding\controllers;
 
+use common\models\WeddingSection;
 use Yii;
 use common\models\WeddingCombo;
 use backend\models\WeddingComboSearch;
@@ -37,7 +38,6 @@ class WeddingComboController extends Controller
     {
         $searchModel = new WeddingComboSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -68,8 +68,10 @@ class WeddingComboController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->combo_id]);
         } else {
-            return $this->render('create', [
+            $sections = WeddingSection::find()->select(['section_id','section_name'])->asArray()->all();
+            return $this->renderAjax('create', [
                 'model' => $model,
+                'sections' => $sections
             ]);
         }
     }
@@ -87,7 +89,7 @@ class WeddingComboController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->combo_id]);
         } else {
-            return $this->render('update', [
+            return $this->renderAjax('update', [
                 'model' => $model,
             ]);
         }

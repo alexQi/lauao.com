@@ -14,6 +14,13 @@ return [
     'create'=>'添加',
     'update'=>'更新',
     'delete'=>'删除',
+    'Wedding Combos'=>'套餐列表',
+    'Create Wedding Combo' => '添加套餐',
+    'Wedding Item Orders'=>'分部门子订单',
+    'Create Wedding Order'=>'添加订单',
+    'Wedding Orders'=>'订单列表',
+    'Create Wedding Section'=>'创建部门',
+    'Wedding Sections'=>'部门列表',
 
     'cate'=>'分类',
 

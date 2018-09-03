@@ -6,12 +6,15 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\WeddingSection;
+use common\models\UserExtend;
 
 /**
  * WeddingSectionSearch represents the model behind the search form about `common\models\WeddingSection`.
  */
 class WeddingSectionSearch extends WeddingSection
 {
+    public $real_name;
+
     /**
      * @inheritdoc
      */
@@ -42,6 +45,7 @@ class WeddingSectionSearch extends WeddingSection
     public function search($params)
     {
         $query = WeddingSection::find();
+        $query->joinWith(['userExtend']);
 
         // add conditions that should always apply here
 
@@ -57,16 +61,30 @@ class WeddingSectionSearch extends WeddingSection
             return $dataProvider;
         }
 
+        $dataProvider->setSort([
+            'attributes' => [
+                'section_id',
+                'section_name',
+                'desc',
+                'created_at',
+                'updated_at',
+                'real_name' => [
+                    'asc'  => [UserExtend::tableName() . '.real_name' => SORT_ASC],
+                    'desc' => [UserExtend::tableName() . '.real_name' => SORT_DESC],
+                ]
+            ]
+        ]);
+
         // grid filtering conditions
         $query->andFilterWhere([
             'section_id' => $this->section_id,
-            'user_id' => $this->user_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'section_name', $this->section_name])
-            ->andFilterWhere(['like', 'desc', $this->desc]);
+            ->andFilterWhere(['like', 'desc', $this->desc])
+            ->andFilterWhere(['like', UserExtend::tableName() . '.real_name', $this->real_name]);;
 
         return $dataProvider;
     }
