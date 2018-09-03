@@ -23,7 +23,7 @@ use yii\helpers\ArrayHelper;
 
     <div class="col-lg-12 no-margin">
         <div class="form-group">
-            <?= $form->field($model, 'section_id')->dropDownList(ArrayHelper::map($sections,'id','section_name')) ?>
+            <?= $form->field($model, 'section_id')->dropDownList(ArrayHelper::map($sections,'section_id','section_name')) ?>
         </div>
         <div class="form-group">
             <?= $form->field($model, 'combo_name')->textInput(['maxlength' => true]) ?>
