@@ -51,8 +51,9 @@ class WeddingSectionController extends Controller
      */
     public function actionView($id)
     {
+        $logModel = WeddingSection::find()->joinWith(['userExtend'])->where(['section_id' => $id])->one();
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $logModel,
         ]);
     }
 
@@ -85,7 +86,7 @@ class WeddingSectionController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        $model->updated_at = time();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->section_id]);
         } else {

@@ -21,8 +21,8 @@ class WeddingSectionSearch extends WeddingSection
     public function rules()
     {
         return [
-            [['section_id', 'user_id', 'created_at', 'updated_at'], 'integer'],
-            [['section_name', 'desc'], 'safe'],
+            [['section_id', 'user_id'], 'integer'],
+            [['section_name', 'desc', 'real_name'], 'safe'],
         ];
     }
 
@@ -51,6 +51,11 @@ class WeddingSectionSearch extends WeddingSection
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=>[
+                'defaultOrder' => [
+                    'id' => SORT_ASC
+                ]
+            ],
         ]);
 
         $this->load($params);
@@ -74,12 +79,9 @@ class WeddingSectionSearch extends WeddingSection
                 ]
             ]
         ]);
-
         // grid filtering conditions
         $query->andFilterWhere([
-            'section_id' => $this->section_id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'section_id' => $this->section_id
         ]);
 
         $query->andFilterWhere(['like', 'section_name', $this->section_name])

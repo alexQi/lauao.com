@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row">
     <div class="col-xs-12">
         <div class="box box-info">
-            <div class="box-header with-border">
+            <div class="box-header">
                 <h3 class="box-title"><?=Html::encode($this->title)?></h3>
 
                 <div class="box-tools">
@@ -32,18 +32,35 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
             <div class="box-body">
-                <?php Pjax::begin(); ?>    <?=GridView::widget([
+                <?php Pjax::begin(); ?>
+                <?=GridView::widget([
                     'dataProvider' => $dataProvider,
                     'filterModel'  => $searchModel,
+                    'layout'       => "{items}{summary}{pager}",
+                    'summary'      => "<span class='dataTables_info'>当前共有{totalCount}条数据,分为{pageCount}页,当前为第{page}页</span>",
+                    'options'      => [
+                        'class' => 'col-sm-12 no-padding'
+                    ],
+                    'pager'        => [
+                        'options' => [
+                            'class' => 'pagination pull-right no-margin',
+                        ]
+                    ],
                     'columns'      => [
                         [
                             'label'         => '部门ID',
                             'attribute'     => 'section_id',
                             "headerOptions" => [
-                                "width" => "50"
+                                "width" => "80"
                             ],
                         ],
-                        'section_name',
+                        [
+                            'label'         => '部门',
+                            'attribute'     => 'section_name',
+                            "headerOptions" => [
+                                "width" => "100"
+                            ],
+                        ],
                         'desc',
                         [
                             'label'         => '操作者',
