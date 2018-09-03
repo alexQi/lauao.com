@@ -10,15 +10,19 @@ use common\models\WeddingOrder;
 /**
  * WeddingOrderSearch represents the model behind the search form about `common\models\WeddingOrder`.
  */
-class WeddingOrderSearch extends WeddingOrder
-{
+class WeddingOrderSearch extends WeddingOrder {
+    public static $process = [
+        1 => '已付定金',
+        2 => '已付合同款',
+        3 => '已付尾款'
+    ];
+
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            [['order_id', 'customer_mobile', 'wedding_date', 'project_process', 'user_id', 'created_at', 'updated_at'], 'integer'],
+            [['order_id', 'customer_mobile', 'project_process', 'user_id', 'created_at', 'updated_at'], 'integer'],
             [['order_sn', 'order_source', 'customer_name', 'wedding_address', 'remark'], 'safe'],
         ];
     }
@@ -26,8 +30,7 @@ class WeddingOrderSearch extends WeddingOrder
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -39,8 +42,7 @@ class WeddingOrderSearch extends WeddingOrder
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = WeddingOrder::find();
 
         // add conditions that should always apply here
@@ -59,13 +61,13 @@ class WeddingOrderSearch extends WeddingOrder
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'order_id' => $this->order_id,
+            'order_id'        => $this->order_id,
             'customer_mobile' => $this->customer_mobile,
-            'wedding_date' => $this->wedding_date,
+            'wedding_date'    => $this->wedding_date,
             'project_process' => $this->project_process,
-            'user_id' => $this->user_id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            'user_id'         => $this->user_id,
+            'created_at'      => $this->created_at,
+            'updated_at'      => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'order_sn', $this->order_sn])
