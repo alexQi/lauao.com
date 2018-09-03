@@ -45,7 +45,7 @@ class WeddingCombo extends \yii\db\ActiveRecord
     {
         return [
             'combo_id' => 'ID',
-            'section_id' => '部门ID',
+            'section_id' => '部门',
             'combo_name' => '套餐名',
             'price' => '价格',
             'user_id' => '创建用户',
