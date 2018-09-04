@@ -2,11 +2,11 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-
+use yii\bootstrap\Modal;
 /* @var $this yii\web\View */
 /* @var $model common\models\WeddingCombo */
 
-$this->title = $model->combo_id;
+$this->title = $model->combo_name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Wedding Combos'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -15,11 +15,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->combo_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->combo_id], [
+        <?= Html::a('更新', ['update', 'id' => $model->combo_id],
+            ['class' => 'btn btn-primary',
+            'data-key'    => '',
+                                'data-toggle' => 'modal',
+                                'data-target' => '#combo-modal',
+            ]) ?>
+
+        <?= Html::a('刪除', ['delete', 'id' => $model->combo_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -32,10 +38,48 @@ $this->params['breadcrumbs'][] = $this->title;
             'section_id',
             'combo_name',
             'price',
-            'user_id',
-            'created_at',
-            'updated_at',
+            [
+                'label'         => '操作者',
+                'attribute'     => 'real_name',
+                'format'        => 'html',
+                'value'         => function ($model) {
+                    return $model->userExtend['real_name'];
+                },
+                "headerOptions" => [
+                    "width" => "100"
+                ],
+            ],
+            [
+                'label' => '创建时间',
+                'attribute'=>'created_at',
+                'format' => 'date',
+            ],
+            [
+                'label' => '更新时间',
+                'attribute'=>'updated_at',
+                'format' => 'date',
+            ],
         ],
     ]) ?>
 
-</div>
+</div>\
+<?php Modal::begin([
+    'id'     => 'combo-modal',
+    'header' => '<h4 class="modal-title"><i class="glyphicon glyphicon-transfer"></i> 部门</h4>',
+    'size'   => Modal::SIZE_LARGE,
+]); ?>
+<?php Modal::end(); ?>
+<?php
+$this->registerJs(
+    "
+        $(document).on(\"click\",\".detail-link\",function() {
+            $.get($(this).attr(\"href\"),
+                function (data) {
+                    $('#combo-modal .modal-body').html(data);
+                    $('#combo-modal').modal();
+                }
+            );
+        });
+    "
+);
+?>

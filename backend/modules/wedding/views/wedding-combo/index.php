@@ -47,13 +47,31 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]
                     ],
                     'columns'      => [
-                        ['class' => 'yii\grid\SerialColumn'],
+                        //['class' => 'yii\grid\SerialColumn'],
 
-                        'combo_id',
+
+                         [
+                            'label'         => '套餐ID',
+                            'attribute'     => 'combo_id',
+                            "headerOptions" => [
+                                "width" => "100"
+                            ],
+                        ],
                         'section_id',
                         'combo_name',
                         'price',
-                        'user_id',
+                       // 'user_id',
+                        [
+                            'label'         => '操作者',
+                            'attribute'     => 'real_name',
+                            'format'        => 'html',
+                            'value'         => function ($model) {
+                                return $model->userExtend['real_name'];
+                            },
+                            "headerOptions" => [
+                                "width" => "100"
+                            ],
+                        ],
                         // 'created_at',
                         // 'updated_at',
                         [
@@ -65,7 +83,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         'class'       => 'btn btn-sm margin-r-5 bg-purple detail-link',
                                         'title'       => Yii::t('app', 'Update'),
                                         'data-pjax'   => "0",
-                                        'data-key'    => $model->name,
+                                        'data-key'    => $model->combo_name,
                                         'data-toggle' => 'modal',
                                         'data-target' => '#combo-modal',
                                     ];

@@ -51,8 +51,11 @@ class WeddingComboController extends Controller
      */
     public function actionView($id)
     {
+        $logModel = WeddingCombo::find()->joinWith(['userExtend'])->where(['combo_id' => $id])->one();
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+
+            'model' => $logModel,//$this->findModel($id),
         ]);
     }
 
@@ -64,6 +67,9 @@ class WeddingComboController extends Controller
     public function actionCreate()
     {
         $model = new WeddingCombo();
+        $model->user_id = yii::$app->user->id;
+        $model->created_at = time();
+        $model->updated_at = time();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->combo_id]);

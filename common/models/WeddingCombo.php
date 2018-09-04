@@ -53,4 +53,9 @@ class WeddingCombo extends \yii\db\ActiveRecord
             'updated_at' => '更新时间',
         ];
     }
+
+    public function getUserExtend() {
+        return $this->hasOne(UserExtend::className(), ['user_id' => 'user_id']);
+    }
+
 }
