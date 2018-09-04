@@ -76,9 +76,9 @@ class WeddingOrderController extends Controller {
             $item_order_model->section_name = $section->section_name;
             $item_order_model->combos       = WeddingComboSearch::find()
                 ->where(['section_id' => $section->section_id])
+                ->select(['combo_id','combo_name'])
                 ->asArray()
                 ->all();
-
             $item_data_model[] = $item_order_model;
         }
 

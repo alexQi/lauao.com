@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use backend\models\WeddingOrderSearch;
 use backend\assets\AdminLtePluginsDatePickerAsset;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\WeddingOrder */
@@ -16,6 +17,12 @@ $fieldOptions = [
     'options'      => ['class' => 'form-group'],
     'labelOptions' => ['label' => '生日'],
     'template'     => '{label}<div class="col-xs-3"><div class="input-group"><div class="input-group-addon"><i class="fa fa-calendar"></i></div>{input}</div></div><div class="col-xs-2 no-padding">{error}</div>',
+];
+
+$comboOptions = [
+    'options'      => ['class' => 'form-group'],
+    'labelOptions' => ['label' => '套餐'],
+    'template'     => '{label}<div class="col-xs-3"><div class="input-group">{input}</div></div><div class="col-xs-2 no-padding">{error}</div>',
 ];
 ?>
 
@@ -68,23 +75,21 @@ $fieldOptions = [
             <?php foreach ($item_data_model as $item_model): ?>
                 <div class="tab-pane" id="section_<?php echo $item_model->section_id;?>">
                     <div class="form-group">
-                        <?= $form->field($item_model, 'section_id')->textInput() ?>
+                        <?= $form->field($item_model, "[{$item_model->section_id}]combo_id",$comboOptions)->radioList(ArrayHelper::map($item_model->combos,'combo_id','combo_name')) ?>
                     </div>
                     <div class="form-group">
-                        <?= $form->field($item_model, 'combo_id')->textInput() ?>
+                        <?= $form->field($item_model, "[{$item_model->section_id}]custom")->textInput(['maxlength' => true]) ?>
                     </div>
                     <div class="form-group">
-                        <?= $form->field($item_model, 'custom')->textInput(['maxlength' => true]) ?>
+                        <?= $form->field($item_model, "[{$item_model->section_id}]deal_price")->textInput(['maxlength' => true]) ?>
                     </div>
                     <div class="form-group">
-                        <?= $form->field($item_model, 'deal_price')->textInput(['maxlength' => true]) ?>
+                        <?= $form->field($item_model, "[{$item_model->section_id}]status")->textInput() ?>
                     </div>
                     <div class="form-group">
-                        <?= $form->field($item_model, 'status')->textInput() ?>
+                        <?= $form->field($item_model, "[{$item_model->section_id}]principal")->textInput(['maxlength' => true]) ?>
                     </div>
-                    <div class="form-group">
-                        <?= $form->field($item_model, 'principal')->textInput(['maxlength' => true]) ?>
-                    </div>
+                    <?= $form->field($item_model, "[{$item_model->section_id}]section_id")->hiddenInput()->label(false)?>
                 </div>
             <?php endforeach; ?>
         </div>
