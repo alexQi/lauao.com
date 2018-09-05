@@ -74,13 +74,13 @@ class DefaultController extends Controller {
             }
             $model->play_num   = rand(100, 1000);
             $model->like_num   = rand(100, 1000);
-//            $model->video_time = rand(50, 300);
+            $model->video_time = rand(50, 300);
             $model->created_at = date("Y-m-d H:i:s", time());
             $model->updated_at = date("Y-m-d H:i:s", time());
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->video_id]);
             }else{
-                throw new HttpException('1',end($model->firstErrors));
+                throw new HttpException('1',end($model->getFirstErrors()));
             }
         } else {
             $videoCategory = VideoCategorySearch::find()->select(['id', 'cate_name'])->asArray()->all();
