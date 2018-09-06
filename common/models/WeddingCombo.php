@@ -3,7 +3,7 @@
 namespace common\models;
 
 use Yii;
-
+use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "{{%wedding_combo}}".
  *
@@ -54,8 +54,24 @@ class WeddingCombo extends \yii\db\ActiveRecord
         ];
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getUserExtend() {
         return $this->hasOne(UserExtend::className(), ['user_id' => 'user_id']);
+    }
+
+    /**
+     * @return array
+     */
+    public static function getSectionList() {
+        $result = [];
+        $list   = WeddingSection::find()->select(['section_id', 'section_name'])->asArray()->all();
+        if (!empty($list)) {
+            $result = ArrayHelper::map($list, "section_id", "section_name");
+        }
+
+        return $result;
     }
 
 }

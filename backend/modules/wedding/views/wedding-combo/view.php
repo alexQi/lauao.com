@@ -35,7 +35,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'combo_id',
-            'section_id',
+            [
+                'label' => '部門',
+                'attribute'=>'section_id',
+                'format' => 'html',
+                'value'=>function ($model) {
+                    $sectionList = \common\models\WeddingCombo::getSectionList();
+                    return  $sectionList[$model->section_id];
+                },
+                'filter' => \common\models\WeddingCombo::getSectionList(), //筛选的数据
+                "headerOptions" => [
+                    "width" => "120"
+                ],
+            ],
             'combo_name',
             'price',
             [
@@ -62,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
-</div>\
+</div>
 <?php Modal::begin([
     'id'     => 'combo-modal',
     'header' => '<h4 class="modal-title"><i class="glyphicon glyphicon-transfer"></i> 部门</h4>',

@@ -57,7 +57,19 @@ $this->params['breadcrumbs'][] = $this->title;
                                 "width" => "100"
                             ],
                         ],
-                        'section_id',
+                        [
+                            'label' => '部門',
+                            'attribute'=>'section_id',
+                            'format' => 'html',
+                            'value'=>function ($model) {
+                                $sectionList = \common\models\WeddingCombo::getSectionList();
+                                return  $sectionList[$model->section_id];
+                            },
+                            'filter' => \common\models\WeddingCombo::getSectionList(), //筛选的数据
+                            "headerOptions" => [
+                                "width" => "120"
+                            ],
+                        ],
                         'combo_name',
                         'price',
                        // 'user_id',
