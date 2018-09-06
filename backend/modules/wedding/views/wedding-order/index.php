@@ -43,24 +43,59 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]
                     ],
                     'columns'      => [
-                        'order_id',
+                        //                        'order_id',
                         'order_sn',
-                        'order_source',
+                        //                        'order_source',
                         'customer_name',
                         'customer_mobile',
                         [
-                            'attribute'=>'wedding_date',
-                            'format'=>'date'
+                            'attribute' => 'wedding_date',
+                            'format'    => 'date'
                         ],
                         // 'wedding_date',
-                         'wedding_address',
-                         'project_process',
-//                         'remark',
+                        'wedding_address',
+                        [
+                            'attribute'      => 'project_process',
+                            'format'         => 'html',
+                            'value'          => function ($model) {
+                                switch ($model->project_process) {
+                                    case 1:
+                                        $string = '已付定金';
+                                        $class  = 'success';
+                                        break;
+                                    case 2:
+                                        $string = '已付合同款';
+                                        $class  = 'warning';
+                                        break;
+                                    case 3:
+                                        $string = '已付尾款';
+                                        $class  = 'danger';
+                                        break;
+                                    default:
+                                        //。。。。。
+                                }
+                                $html = '<span class="label label-' . $class . '">' . $string . '</span>';
+                                return $html;
+                            },
+                            "headerOptions"  => [
+                                "width" => "70",
+                                'class' => 'text-center'
+                            ],
+                            "contentOptions" => [
+                                'class' => 'text-center'
+                            ],
+                            'filter'         => [
+                                1 => '已付定金',
+                                2 => '已付合同款',
+                                3 => '已付尾款'
+                            ],
+                        ],
+                        //                         'remark',
 
                         // 'user_id',
                         [
-                            'attribute'=>'updated_at',
-                            'format'=>'date'
+                            'attribute' => 'updated_at',
+                            'format'    => 'date'
                         ],
                         // 'created_at',
                         // 'updated_at',
@@ -74,7 +109,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         'class'       => 'btn btn-sm margin-r-5 bg-purple detail-link',
                                         'title'       => Yii::t('app', 'Update'),
                                         'data-pjax'   => "0",
-                                        'data-key'    => $model->section_name,
+                                        'data-key'    => $model->order_sn,
                                         'data-toggle' => 'modal',
                                         'data-target' => '#wedding-order-modal',
                                     ];

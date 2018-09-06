@@ -23,7 +23,7 @@ class WeddingOrderSearch extends WeddingOrder {
     public function rules() {
         return [
             [['order_id', 'customer_mobile', 'project_process', 'user_id', 'created_at', 'updated_at'], 'integer'],
-            [['order_sn', 'order_source', 'customer_name', 'wedding_address', 'remark'], 'safe'],
+            [['order_sn', 'order_source', 'customer_name','wedding_date', 'wedding_address', 'remark'], 'safe'],
         ];
     }
 

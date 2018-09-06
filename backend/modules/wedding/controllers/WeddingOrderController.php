@@ -10,6 +10,7 @@ use backend\models\WeddingComboSearch;
 use backend\models\WeddingSectionSearch;
 use backend\models\WeddingOrderSearch;
 use yii\web\Controller;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -65,31 +66,61 @@ class WeddingOrderController extends Controller {
      * @return mixed
      */
     public function actionCreate() {
-        $model = new WeddingOrderSearch();
-
-        $sections_model = WeddingSectionSearch::find()->all();
-
-        $item_data_model = [];
-        foreach ($sections_model as $key => $section) {
-            $item_order_model               = new WeddingItemOrderSearch();
-            $item_order_model->section_id   = $section->section_id;
-            $item_order_model->section_name = $section->section_name;
-            $item_order_model->combos       = WeddingComboSearch::find()
-                ->where(['section_id' => $section->section_id])
-                ->select(['combo_id','combo_name'])
-                ->asArray()
-                ->all();
-            $item_data_model[] = $item_order_model;
-        }
+        $model            = new WeddingOrderSearch();
+        $item_order_model = new WeddingItemOrderSearch();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->user_id    = yii::$app->user->id;
-            $model->created_at = time();
-            $model->updated_at = time();
-            if ($model->save()) {
-                return $this->redirect(['view', 'id' => $model->order_id]);
+            $tran = yii::$app->db->beginTransaction();
+            try {
+                $model->wedding_date = strtotime($model->wedding_date);
+                $model->order_sn     = 'ON' . time() . rand(1000, 9999);
+                $model->user_id      = yii::$app->user->id;
+                $model->created_at   = time();
+                $model->updated_at   = time();
+
+                if (!$model->save()) {
+                    throw new HttpException('下单失败');
+                }
+
+                foreach (Yii::$app->request->post('WeddingItemOrderSearch') as $item) {
+                    if (!$item['combo_id']) {
+                        continue;
+                    }
+                    $temp_array['WeddingItemOrderSearch'] = $item;
+                    $item_order_model->load($temp_array);
+                    $item_order_model->order_id   = $model->order_id;
+                    $item_order_model->user_id    = yii::$app->user->id;
+                    $item_order_model->created_at = time();
+                    $item_order_model->updated_at = time();
+                    if (!$item_order_model->save()) {
+                        throw new HttpException('写入自订单失败');
+                    }
+                }
+                $tran->commit();
+            } catch (HttpException $e) {
+                $tran->rollBack();
+                var_dump($e->getMessage());die();
+                throw new HttpException($e->getMessage());
             }
+            return $this->redirect(['view', 'id' => $model->order_id]);
         } else {
+            $sections_model = WeddingSectionSearch::find()->all();
+
+            $item_data_model = [];
+            foreach ($sections_model as $key => $section) {
+                $item_order_model = new WeddingItemOrderSearch();
+
+                $item_order_model->section_id   = $section->section_id;
+                $item_order_model->section_name = $section->section_name;
+                $item_order_model->combos       = WeddingComboSearch::find()
+                    ->where(['section_id' => $section->section_id])
+                    ->select(['combo_id', 'combo_name'])
+                    ->asArray()
+                    ->all();
+
+                $item_data_model[] = $item_order_model;
+            }
+
             $model->wedding_date = date('Y-m-d', time() + 3 * 86400);
             return $this->renderAjax('create', [
                 'model'           => $model,
@@ -140,6 +171,22 @@ class WeddingOrderController extends Controller {
      */
     protected function findModel($id) {
         if (($model = WeddingOrder::findOne($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+
+    /**
+     * Finds the WeddingOrder model based on its primary key value.
+     * If the model is not found, a 404 HTTP exception will be thrown.
+     *
+     * @param integer $id
+     * @return WeddingItemOrderSearch the loaded model
+     * @throws NotFoundHttpException if the model cannot be found
+     */
+    protected function findItemModel($id) {
+        if (($model = WeddingItemOrderSearch::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -15,7 +15,7 @@ AdminLtePluginsDatePickerAsset::register($this);
 
 $fieldOptions = [
     'options'      => ['class' => 'form-group'],
-    'labelOptions' => ['label' => '生日'],
+    'labelOptions' => ['label' => '婚庆日期'],
     'template'     => '{label}<div class="col-xs-3"><div class="input-group"><div class="input-group-addon"><i class="fa fa-calendar"></i></div>{input}</div></div><div class="col-xs-2 no-padding">{error}</div>',
 ];
 
@@ -84,7 +84,7 @@ $comboOptions = [
                         <?= $form->field($item_model, "[{$item_model->section_id}]deal_price")->textInput(['maxlength' => true]) ?>
                     </div>
                     <div class="form-group">
-                        <?= $form->field($item_model, "[{$item_model->section_id}]status")->textInput() ?>
+                        <?= $form->field($item_model, "[{$item_model->section_id}]status")->dropDownList([0=>'未接单',1=>'已接单']) ?>
                     </div>
                     <div class="form-group">
                         <?= $form->field($item_model, "[{$item_model->section_id}]principal")->textInput(['maxlength' => true]) ?>
