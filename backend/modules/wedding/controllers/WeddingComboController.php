@@ -95,8 +95,10 @@ class WeddingComboController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->combo_id]);
         } else {
+            $sections = WeddingSection::find()->select(['section_id','section_name'])->asArray()->all();
             return $this->renderAjax('update', [
                 'model' => $model,
+                'sections'=>$sections
             ]);
         }
     }
