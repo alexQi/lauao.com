@@ -161,8 +161,13 @@ class DefaultController extends Controller {
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
+
+            $platform = Yii::$app->request->getQueryParam('platform');
+
+
             return $this->render('login', [
                 'model' => $model,
+                'platform'=>$platform
             ]);
         }
     }

@@ -6,7 +6,7 @@ use yii\helpers\Url;
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \backend\models\LoginForm */
 
-$this->title = 'LauaoECC - 后台登录';
+
 
 $fieldOptions1 = [
     'options' => ['class' => 'form-group has-feedback'],
@@ -17,11 +17,29 @@ $fieldOptions2 = [
     'options' => ['class' => 'form-group has-feedback'],
     'inputTemplate' => "{input}<span class='glyphicon glyphicon-lock form-control-feedback'></span>"
 ];
+
+
 ?>
+
+
 
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>LAUAO</b>ECC</a>
+<?php
+        if(isset($platform) && !empty($platform))
+        {
+        if($platform=="CM") {
+            $this->title = 'CM厘米创意下单系统';
+            echo '<a href="#"><b>CM厘米创意</b> 下单系统</a>';
+        }
+        //多个平台可以在添加噻
+        }
+        else
+       {
+           $this->title = '安徽维尔斯宣城直播';
+           echo '<a href="#"><b>宣城直播</b> 后台登陆</a>';
+       }?>
+
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
