@@ -11,7 +11,7 @@ $this->title                   = $model->section_name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Wedding Sections'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="activity-base-view">
+<div class="section-base-view">
 
     <div class="row">
         <div class="col-xs-12">
@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <p>
                         <?=Html::a('更新', ['update', 'id' => $model->section_id],
                             [
-                                'class'       => 'btn btn-sm btn-info detail-link',
+                                'class'       => 'btn btn-info detail-link',
                                 'data-key'    => '',
                                 'data-toggle' => 'modal',
                                 'data-target' => '#section-modal',

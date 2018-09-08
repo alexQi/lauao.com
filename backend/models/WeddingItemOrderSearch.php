@@ -14,6 +14,7 @@ class WeddingItemOrderSearch extends WeddingItemOrder
 {
     public $combos;
     public $section_name;
+    public $combo_name;
     /**
      * @inheritdoc
      */
@@ -23,6 +24,17 @@ class WeddingItemOrderSearch extends WeddingItemOrder
             [['item_order_id', 'order_id', 'section_id', 'combo_id', 'status', 'user_id', 'created_at', 'updated_at'], 'integer'],
             [['custom', 'principal','combos','section_name'], 'safe'],
             [['deal_price'], 'number'],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'section_name' => '部门',
+            'combo_name' => '套餐',
         ];
     }
 

@@ -84,10 +84,7 @@ $comboOptions = [
                         <?= $form->field($item_model, "[{$item_model->section_id}]deal_price")->textInput(['maxlength' => true]) ?>
                     </div>
                     <div class="form-group">
-                        <?= $form->field($item_model, "[{$item_model->section_id}]status")->dropDownList([0=>'未接单',1=>'已接单']) ?>
-                    </div>
-                    <div class="form-group">
-                        <?= $form->field($item_model, "[{$item_model->section_id}]principal")->textInput(['maxlength' => true]) ?>
+                        <?= $form->field($item_model, "[{$item_model->section_id}]status")->dropDownList([0=>'未接单',1=>'已接单'],['disabled'=>true]) ?>
                     </div>
                     <?= $form->field($item_model, "[{$item_model->section_id}]section_id")->hiddenInput()->label(false)?>
                 </div>

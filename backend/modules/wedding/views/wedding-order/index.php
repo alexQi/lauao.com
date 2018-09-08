@@ -43,14 +43,22 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]
                     ],
                     'columns'      => [
-                        //                        'order_id',
                         'order_sn',
-                        //                        'order_source',
-                        'customer_name',
+                        [
+                            'attribute'      => 'customer_name',
+                            "headerOptions"  => [
+                                "width" => "100",
+                                'class' => 'text-center'
+                            ]
+                        ],
                         'customer_mobile',
                         [
-                            'attribute' => 'wedding_date',
-                            'format'    => 'date'
+                            'attribute'      => 'wedding_date',
+                            'format'         => 'date',
+                            "headerOptions"  => [
+                                "width" => "100",
+                                'class' => 'text-center'
+                            ]
                         ],
                         // 'wedding_date',
                         'wedding_address',
@@ -90,15 +98,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                 3 => '已付尾款'
                             ],
                         ],
-                        //                         'remark',
-
-                        // 'user_id',
                         [
-                            'attribute' => 'updated_at',
-                            'format'    => 'date'
+                            'attribute'      => 'updated_at',
+                            'format'         => 'date',
+                            "headerOptions"  => [
+                                "width" => "100",
+                                'class' => 'text-center'
+                            ]
                         ],
-                        // 'created_at',
-                        // 'updated_at',
 
                         [
                             'class'         => 'backend\components\LauaoActionColumn',

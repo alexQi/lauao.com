@@ -37,11 +37,12 @@ class WeddingOrder extends \yii\db\ActiveRecord
     {
         return [
             [['order_sn', 'order_source', 'customer_name', 'customer_mobile', 'wedding_date', 'wedding_address', 'project_process', 'remark', 'user_id', 'created_at', 'updated_at'], 'required'],
-            [['customer_mobile', 'wedding_date', 'project_process', 'user_id', 'created_at', 'updated_at'], 'integer'],
+            [['customer_mobile', 'project_process', 'user_id', 'created_at', 'updated_at'], 'integer'],
             [['order_sn'], 'string', 'max' => 50],
             [['order_source', 'wedding_address'], 'string', 'max' => 200],
             [['customer_name'], 'string', 'max' => 100],
             [['remark'], 'string', 'max' => 255],
+            [['wedding_date'], 'safe']
         ];
     }
 
