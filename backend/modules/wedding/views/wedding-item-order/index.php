@@ -21,6 +21,16 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?php Pjax::begin(); ?>    <?=GridView::widget([
                     'dataProvider' => $dataProvider,
                     'filterModel'  => $searchModel,
+                    'layout'       => "{items}{summary}{pager}",
+                    'summary'      => "<span class='dataTables_info'>当前共有{totalCount}条数据,分为{pageCount}页,当前为第{page}页</span>",
+                    'options'      => [
+                        'class' => 'col-sm-12 no-padding'
+                    ],
+                    'pager'        => [
+                        'options' => [
+                            'class' => 'pagination pull-right no-margin',
+                        ]
+                    ],
                     'columns'      => [
                         ['class' => 'yii\grid\SerialColumn'],
 
@@ -36,7 +46,26 @@ $this->params['breadcrumbs'][] = $this->title;
                         // 'created_at',
                         // 'updated_at',
 
-                        ['class' => 'yii\grid\ActionColumn'],
+                        [
+                            'class'         => 'backend\components\LauaoActionColumn',
+                            'template'      => '{view} {update}',
+                            'buttons'       => [
+                                'update' => function ($url, $model) {
+                                    $options = [
+                                        'class'       => 'btn btn-sm margin-r-5 bg-purple detail-link',
+                                        'title'       => Yii::t('app', 'Update'),
+                                        'data-pjax'   => "0",
+                                        'data-key'    => $model->item_order_id,
+                                        'data-toggle' => 'modal',
+                                        'data-target' => '#section-modal',
+                                    ];
+                                    return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, $options);
+                                }
+                            ],
+                            "headerOptions" => [
+                                "width" => "150"
+                            ],
+                        ],
                     ],
                 ]);?>
                 <?php Pjax::end(); ?>
