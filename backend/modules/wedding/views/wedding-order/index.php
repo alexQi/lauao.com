@@ -48,7 +48,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'attribute'      => 'customer_name',
                             "headerOptions"  => [
                                 "width" => "100",
-                                'class' => 'text-center'
+                                'class' => 'text-left'
                             ]
                         ],
                         'customer_mobile',
@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'format'         => 'date',
                             "headerOptions"  => [
                                 "width" => "100",
-                                'class' => 'text-center'
+                                'class' => 'text-left'
                             ]
                         ],
                         // 'wedding_date',
@@ -87,10 +87,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             },
                             "headerOptions"  => [
                                 "width" => "70",
-                                'class' => 'text-center'
+                                'class' => 'text-left'
                             ],
                             "contentOptions" => [
-                                'class' => 'text-center'
+                                'class' => 'text-left'
                             ],
                             'filter'         => [
                                 1 => '已付定金',
@@ -103,7 +103,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'format'         => 'date',
                             "headerOptions"  => [
                                 "width" => "100",
-                                'class' => 'text-center'
+                                'class' => 'text-left'
                             ]
                         ],
 

@@ -10,6 +10,24 @@ use common\models\UserExtend;
  */
 class UserSearch extends User
 {
+
+    /**
+     * @return array|null|\yii\db\ActiveRecord
+     */
+    public static function getUserInfo($id){
+        return self::find()
+            ->alias('u')
+            ->leftJoin(UserExtend::tableName().' ue','ue.user_id=u.id')
+            ->where(['u.id'=>$id])
+            ->select(['u.*','ue.*'])
+            ->asArray()
+            ->one();
+    }
+    /**
+     * @param array $param
+     *
+     * @return array
+     */
     public static function getUserMail($param=[])
     {
         $query = self::find();
