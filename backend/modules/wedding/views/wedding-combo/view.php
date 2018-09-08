@@ -10,13 +10,18 @@ $this->title = $model->combo_name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Wedding Combos'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="wedding-combo-view">
+    <div class="activity-base-view">
 
+    <div class="row">
+    <div class="col-xs-12">
+    <div class="box box-primary">
+    <div class="box-header">
     <h1><?= Html::encode($this->title) ?></h1>
-
+    </div>
+    <div class="box-body">
     <p>
         <?= Html::a('更新', ['update', 'id' => $model->combo_id],
-            ['class' => 'btn btn-primary',
+            ['class' => 'btn btn-info detail-link',
             'data-key'    => '',
                                 'data-toggle' => 'modal',
                                 'data-target' => '#combo-modal',
@@ -74,7 +79,11 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
-</div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 <?php Modal::begin([
     'id'     => 'combo-modal',
     'header' => '<h4 class="modal-title"><i class="glyphicon glyphicon-transfer"></i> 部门</h4>',
