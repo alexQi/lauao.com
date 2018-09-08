@@ -81,8 +81,8 @@ class WeddingComboSearch extends WeddingCombo
         // grid filtering conditions
         $query->andFilterWhere([
             'combo_id' => $this->combo_id,
-           // 'section_id' => $this->section_id,
-          // 'price' => $this->price,
+            'section_id' => $this->section_id,
+           'price' => $this->price,
           // 'user_id' => $this->user_id,
            //'created_at' => $this->created_at,
            // 'updated_at' => $this->updated_at,

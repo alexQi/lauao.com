@@ -282,8 +282,8 @@ use yii\helpers\Url;
 </style>
 <div class="wrappage-container">
     <div class="wrappage-cover-wrap banner-wrap">
-        <video src="http://video.sboyo.com/background-test.mp4" loop muted autoplay preload
-               class="need-though-play opacity0"></video>
+        <video id="backgroundmovie" autoplay="autoplay" loop="loop" type="video/mp4" src="http://video.sboyo.com/ahweslogo2018.mp4" loop muted autoplay preload
+<!--               class="need-though-play opacity0">--></video>
         <div class="wrappage-cover-main">
             <div class="wrappage-cover-center">
                 <div class="wrappage-cover-detail">
@@ -308,7 +308,7 @@ use yii\helpers\Url;
         <div class="article-show-box float-contaniner">
             <div class="show-left select-list">
                 <h4 class="level-title second-level-title float-elem float-down el-2">启发创作灵感</h4>
-                <p class="show-intro float-elem float-down el-3">我们浏览海量国内外优质作品;职位创作更佳作品<br>高端快传直播广电技术发挥极致，锻造专业直播团队</p>
+                <p class="show-intro float-elem float-down el-3">我们学习海量国内外优质作品;<br>只为了创作更好的优秀作品</p>
                 <ul class="show-btn-list float-elem float-down el-4" data-eventname="查看作品分类" data-key="分类">
                     <?php foreach ($cateList as $key => $cate): ?>
                         <li>
@@ -410,6 +410,8 @@ use yii\helpers\Url;
     });
 
     (function (window, $) {
+        var videoEle = document.getElementById("backgroundmovie");
+        videoEle.volume=100;
         $.fn.creatorchange = function () {
             return this.each(function () {
                 var random = Math.random() * 1; // 10s内随机开始
