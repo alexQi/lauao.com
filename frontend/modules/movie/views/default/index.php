@@ -297,7 +297,7 @@ use yii\helpers\Url;
 
                     <a  id="show-weixin" class="dplus-link join-btn bg-transparent " href="javascript:;"
                        data-link=""
-                       data-value="头部">联系我们</a>
+                       data-value="头部" >联系我们</a>
 
 
                 </div>
