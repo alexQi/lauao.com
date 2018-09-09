@@ -282,8 +282,8 @@ use yii\helpers\Url;
 </style>
 <div class="wrappage-container">
     <div class="wrappage-cover-wrap banner-wrap">
-        <video id="backgroundmovie" autoplay="autoplay" loop="loop" type="video/mp4" src="http://video.sboyo.com/ahweslogo2018.mp4" loop muted autoplay preload
-<!--               class="need-though-play opacity0">--></video>
+        <video id="backgroundmovie"  src="http://video.sboyo.com/ahweslogo2018.mp4" loop muted autoplay preload
+       class="need-though-play opacity0"></video>
         <div class="wrappage-cover-main">
             <div class="wrappage-cover-center">
                 <div class="wrappage-cover-detail">
@@ -410,8 +410,8 @@ use yii\helpers\Url;
     });
 
     (function (window, $) {
-        var videoEle = document.getElementById("backgroundmovie");
-        videoEle.volume=100;
+        //var videoEle = document.getElementById("backgroundmovie");
+       // videoEle.volume=100;
         $.fn.creatorchange = function () {
             return this.each(function () {
                 var random = Math.random() * 1; // 10s内随机开始
