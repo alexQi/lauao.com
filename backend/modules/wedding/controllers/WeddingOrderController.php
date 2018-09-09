@@ -60,19 +60,13 @@ class WeddingOrderController extends Controller
      */
     public function actionView($id)
     {
-        $model          = $this->findModel($id);
+        $model = $this->findModel($id);
 
-        $item_data_model = WeddingItemOrderSearch::find()
-            ->alias('wios')
-            ->leftJoin(WeddingCombo::tableName().' wc','wc.combo_id=wios.combo_id')
-            ->leftJoin(WeddingSectionSearch::tableName().'wss','wss.section_id=wios.section_id')
-            ->where(['order_id'   => $id])
-            ->select('wios.*,wc.combo_name,wss.section_name')
-            ->all();
+        $item_data_model = WeddingItemOrderSearch::find()->alias('wios')->leftJoin(WeddingCombo::tableName() . ' wc', 'wc.combo_id=wios.combo_id')->leftJoin(WeddingSectionSearch::tableName() . 'wss', 'wss.section_id=wios.section_id')->where(['order_id' => $id])->select('wios.*,wc.combo_name,wss.section_name')->all();
 
         return $this->render('view', [
             'model'           => $model,
-            'item_data_model' => $item_data_model
+            'item_data_model' => $item_data_model,
         ]);
     }
 
@@ -113,6 +107,7 @@ class WeddingOrderController extends Controller
                     $item_order_model->load($temp_array);
                     $item_order_model->order_id   = $model->order_id;
                     $item_order_model->user_id    = yii::$app->user->id;
+                    $item_order_model->status     = 0;
                     $item_order_model->created_at = time();
                     $item_order_model->updated_at = time();
                     if (!$item_order_model->save())
@@ -143,9 +138,9 @@ class WeddingOrderController extends Controller
                 $item_order_model->section_id   = $section->section_id;
                 $item_order_model->section_name = $section->section_name;
                 $item_order_model->combos       = WeddingComboSearch::find()->where(['section_id' => $section->section_id])->select([
-                        'combo_id',
-                        'combo_name',
-                    ])->asArray()->all();
+                    'combo_id',
+                    'combo_name',
+                ])->asArray()->all();
 
                 $item_data_model[] = $item_order_model;
             }
@@ -203,6 +198,7 @@ class WeddingOrderController extends Controller
                     {
                         $item_order_model->order_id   = $model->order_id;
                         $item_order_model->user_id    = yii::$app->user->id;
+                        $item_order_model->status     = 0;
                         $item_order_model->created_at = time();
                     }
                     $item_order_model->updated_at = time();
@@ -241,9 +237,9 @@ class WeddingOrderController extends Controller
                 $item_order_model->section_id   = $section->section_id;
                 $item_order_model->section_name = $section->section_name;
                 $item_order_model->combos       = WeddingComboSearch::find()->where(['section_id' => $section->section_id])->select([
-                        'combo_id',
-                        'combo_name',
-                    ])->asArray()->all();
+                    'combo_id',
+                    'combo_name',
+                ])->asArray()->all();
 
                 $item_data_model[] = $item_order_model;
             }
