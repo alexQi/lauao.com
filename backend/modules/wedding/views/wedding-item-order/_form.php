@@ -28,7 +28,7 @@ $comboOptions = [
 
 <?php $form = ActiveForm::begin([
         'options'              => ['class' => 'form-horizontal'],
-        'enableAjaxValidation' => false,
+        'enableAjaxValidation' => true,
         'id'                   => 'menu-form',
         'fieldConfig'          => [
             'template'     => "{label}<div class=\"col-xs-8\">{input}</div>{error}",
@@ -101,7 +101,7 @@ $comboOptions = [
             </div>
             <div class="tab-pane" id="section_detail_<?php echo $item_data_model->section_id; ?>">
                 <div class="form-group">
-                    <?=$form->field($item_data_model, "combo_id", $comboOptions)->radioList(ArrayHelper::map($item_data_model->combos, 'combo_id', 'combo_name'))?>
+                    <?=$form->field($item_data_model, "combo_id", $comboOptions)->dropDownList(ArrayHelper::map($item_data_model->combos, 'combo_id', 'combo_name'),['disabled'=>true])?>
                 </div>
                 <div class="form-group">
                     <?=$form->field($item_data_model, "custom")->textInput(['maxlength' => true])?>

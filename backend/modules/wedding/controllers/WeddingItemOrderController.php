@@ -10,10 +10,11 @@ use common\models\WeddingCombo;
 use backend\models\WeddingSectionSearch;
 use backend\models\WeddingOrderSearch;
 use backend\models\WeddingItemOrderSearch;
+use yii\base\InvalidValueException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\HttpException;
+use yii\helpers\Html;
 
 /**
  * WeddingItemOrderController implements the CRUD actions for WeddingItemOrder model.
@@ -61,10 +62,17 @@ class WeddingItemOrderController extends Controller
     public function actionView($id)
     {
         $item_data_model = WeddingItemOrderSearch::find()->alias('wios')->leftJoin(WeddingCombo::tableName() . ' wc', 'wc.combo_id=wios.combo_id')->leftJoin(WeddingSectionSearch::tableName() . 'wss', 'wss.section_id=wios.section_id')->where(['item_order_id' => $id])->select('wios.*,wc.combo_name,wss.section_name')->one();
-        $model = WeddingOrderSearch::findOne($item_data_model->order_id);
+        $model           = WeddingOrderSearch::findOne($item_data_model->order_id);
+
+        if ($model->project_process == 1)
+        {
+            $star                   = substr($model->customer_mobile, 3, 4);
+            $model->customer_mobile = str_replace($star, '****', $model->customer_mobile);
+        }
+
         return $this->render('view', [
-            'model' => $model,
-            'item_data_model' => $item_data_model
+            'model'           => $model,
+            'item_data_model' => $item_data_model,
         ]);
     }
 
@@ -80,27 +88,43 @@ class WeddingItemOrderController extends Controller
     {
         $item_data_model = $this->findModel($id);
 
-        if ($item_data_model->load(Yii::$app->request->post()) )
+        if ($item_data_model->load(Yii::$app->request->post()))
         {
             $item_data_model->updated_at = time();
-            if ($item_data_model->save())
+            if ($item_data_model->principal != '' && $item_data_model->save())
             {
                 return $this->redirect([
                     'view',
                     'id' => $item_data_model->item_order_id,
                 ]);
-            }else{
-                throw new HttpException('更新子订单失败');
+            }
+            else
+            {
+                if ($item_data_model->principal == '')
+                {
+                    $item_data_model->addError('principal', '负责人不能为空');
+                }
+                foreach ($item_data_model->getErrors() as $attribute => $errors)
+                {
+                    $result[Html::getInputId($item_data_model, $attribute)] = $errors;
+                }
+                return json_encode($result);
             }
         }
         else
         {
             $model = WeddingOrderSearch::findOne($item_data_model->order_id);
-
-            $item_data_model->combos = WeddingComboSearch::find()->where(['section_id' => $item_data_model->section_id])->select([
-                'combo_id',
-                'combo_name',
-            ])->asArray()->all();
+            if ($model->project_process == 1)
+            {
+                $star                   = substr($model->customer_mobile, 3, 4);
+                $model->customer_mobile = str_replace($star, '****', $model->customer_mobile);
+            }
+            $item_data_model->combos = WeddingComboSearch::find()->where([
+                    'combo_id' => $item_data_model->combo_id,
+                ])->select([
+                    'combo_id',
+                    'combo_name',
+                ])->asArray()->all();
 
             return $this->renderAjax('update', [
                 'model'           => $model,

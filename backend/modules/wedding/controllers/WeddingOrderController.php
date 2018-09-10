@@ -262,6 +262,9 @@ class WeddingOrderController extends Controller
     public function actionDelete($id)
     {
         $this->findModel($id)->delete();
+        WeddingItemOrderSearch::deleteAll([
+            'order_id'=>$id
+        ]);
 
         return $this->redirect(['index']);
     }

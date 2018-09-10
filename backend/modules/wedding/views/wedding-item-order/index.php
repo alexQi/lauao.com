@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'attribute'     => 'customer_mobile',
                             "headerOptions" => [
-                                "width" => "100",
+                                "width" => "110",
                                 'class' => 'text-left',
                             ],
                         ],
