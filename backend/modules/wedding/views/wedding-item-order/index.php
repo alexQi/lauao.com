@@ -43,6 +43,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         ],
                         [
                             'attribute'     => 'customer_mobile',
+                            'format'        => 'html',
+                            'value'         => function($model)
+                            {
+                                if ($model->project_process == 1)
+                                {
+                                    $star                   = substr($model->customer_mobile, 3, 4);
+                                    $model->customer_mobile = str_replace($star, '****', $model->customer_mobile);
+                                }
+                                return $model->customer_mobile;
+                            },
                             "headerOptions" => [
                                 "width" => "110",
                                 'class' => 'text-left',
@@ -57,11 +67,12 @@ $this->params['breadcrumbs'][] = $this->title;
                             ],
                         ],
                         [
-                            'attribute'      => 'combo_name',
-                            'format'         => 'html',
-                            'value'          => function ($model) {
+                            'attribute' => 'combo_name',
+                            'format'    => 'html',
+                            'value'     => function($model)
+                            {
                                 return '<span class="label label-success">' . $model->combo_name . '</span>';
-                            }
+                            },
                         ],
                         [
                             'attribute'     => 'deal_price',
@@ -73,8 +84,10 @@ $this->params['breadcrumbs'][] = $this->title;
                         [
                             'attribute'      => 'status',
                             'format'         => 'html',
-                            'value'          => function ($model) {
-                                switch ($model->status) {
+                            'value'          => function($model)
+                            {
+                                switch ($model->status)
+                                {
                                     case 0:
                                         $string = '未接单';
                                         $class  = 'danger';
@@ -91,10 +104,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             },
                             "headerOptions"  => [
                                 "width" => "70",
-                                'class' => 'text-center'
+                                'class' => 'text-center',
                             ],
                             "contentOptions" => [
-                                'class' => 'text-center'
+                                'class' => 'text-center',
                             ],
                             'filter'         => [
                                 0 => '未接单',
@@ -104,9 +117,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         // 'principal',
                         // 'user_id',
                         [
-                            'label' => '下单日期',
-                            'attribute'=>'created_at',
-                            'format' => 'date',
+                            'label'     => '下单日期',
+                            'attribute' => 'created_at',
+                            'format'    => 'date',
                         ],
                         // 'updated_at',
 
@@ -145,8 +158,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 <?php
-$this->registerJs(
-    "
+$this->registerJs("
         $(document).on(\"click\",\".detail-link\",function() {
             $.get($(this).attr(\"href\"),
                 function (data) {
@@ -155,6 +167,5 @@ $this->registerJs(
                 }
             );
         });
-    "
-);
+    ");
 ?>
