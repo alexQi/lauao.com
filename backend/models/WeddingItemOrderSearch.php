@@ -19,6 +19,7 @@ class WeddingItemOrderSearch extends WeddingItemOrder
     public $order_sn;
     public $customer_name;
     public $customer_mobile;
+    public $project_process;
     public $wedding_date;
     public $wedding_address;
     /**
