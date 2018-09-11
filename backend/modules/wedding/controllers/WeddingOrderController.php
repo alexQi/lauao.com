@@ -78,7 +78,7 @@ class WeddingOrderController extends Controller
      */
     public function actionCreate()
     {
-        $model            = new WeddingOrderSearch();
+        $model = new WeddingOrderSearch();
 
         if ($model->load(Yii::$app->request->post()))
         {
@@ -98,7 +98,7 @@ class WeddingOrderController extends Controller
 
                 foreach (Yii::$app->request->post('WeddingItemOrderSearch') as $item)
                 {
-                    if (!$item['combo_id'])
+                    if ($item['need_item_order']==1)
                     {
                         continue;
                     }
@@ -134,16 +134,22 @@ class WeddingOrderController extends Controller
             $item_data_model = [];
             foreach ($sections_model as $key => $section)
             {
-                $item_order_model = new WeddingItemOrderSearch();
-
-                $item_order_model->section_id   = $section->section_id;
-                $item_order_model->section_name = $section->section_name;
-                $item_order_model->combos       = WeddingComboSearch::find()->where(['section_id' => $section->section_id])->select([
+                $all_combos = WeddingComboSearch::find()->where(['section_id' => $section->section_id])->select([
                     'combo_id',
                     'combo_name',
                 ])->asArray()->all();
+                array_unshift($all_combos, [
+                    'combo_id'   => -1,
+                    'combo_name' => '无套餐',
+                ]);
 
-                $item_data_model[] = $item_order_model;
+                $item_order_model = new WeddingItemOrderSearch();
+
+                $item_order_model->section_id      = $section->section_id;
+                $item_order_model->section_name    = $section->section_name;
+                $item_order_model->combos          = $all_combos;
+                $item_order_model->need_item_order = 1;
+                $item_data_model[]                 = $item_order_model;
             }
 
             $model->wedding_date = date('Y-m-d', time() + 3 * 86400);
@@ -181,8 +187,12 @@ class WeddingOrderController extends Controller
 
                 foreach (Yii::$app->request->post('WeddingItemOrderSearch') as $item)
                 {
-                    if (!$item['combo_id'])
+                    if ($item['need_item_order'] == 1)
                     {
+                        WeddingItemOrderSearch::deleteAll([
+                            'section_id' => $item['section_id'],
+                            'order_id'   => $id,
+                        ]);
                         continue;
                     }
                     $item_order_model = WeddingItemOrderSearch::find()->where([
@@ -235,14 +245,20 @@ class WeddingOrderController extends Controller
                     $item_order_model = new WeddingItemOrderSearch();
                 }
 
-                $item_order_model->section_id   = $section->section_id;
-                $item_order_model->section_name = $section->section_name;
-                $item_order_model->combos       = WeddingComboSearch::find()->where(['section_id' => $section->section_id])->select([
+                $all_combos = WeddingComboSearch::find()->where(['section_id' => $section->section_id])->select([
                     'combo_id',
                     'combo_name',
                 ])->asArray()->all();
+                array_unshift($all_combos, [
+                    'combo_id'   => -1,
+                    'combo_name' => '无套餐',
+                ]);
 
-                $item_data_model[] = $item_order_model;
+                $item_order_model->section_id      = $section->section_id;
+                $item_order_model->section_name    = $section->section_name;
+                $item_order_model->combos          = $all_combos;
+                $item_order_model->need_item_order = $item_order_model->isNewRecord ? 1 : 2;
+                $item_data_model[]                 = $item_order_model;
             }
             $model->wedding_date = date('Y-m-d', $model->wedding_date);
             return $this->renderAjax('update', [
@@ -264,7 +280,7 @@ class WeddingOrderController extends Controller
     {
         $this->findModel($id)->delete();
         WeddingItemOrderSearch::deleteAll([
-            'order_id'=>$id
+            'order_id' => $id,
         ]);
 
         return $this->redirect(['index']);

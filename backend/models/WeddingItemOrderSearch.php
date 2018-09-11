@@ -22,6 +22,7 @@ class WeddingItemOrderSearch extends WeddingItemOrder
     public $project_process;
     public $wedding_date;
     public $wedding_address;
+    public $need_item_order=1;
     /**
      * @inheritdoc
      */
@@ -29,7 +30,7 @@ class WeddingItemOrderSearch extends WeddingItemOrder
     {
         return [
             [['item_order_id', 'order_id', 'section_id', 'combo_id', 'status', 'user_id', 'created_at', 'updated_at'], 'integer'],
-            [['custom', 'principal','combos','section_name','order_sn','customer_name','customer_mobile','wedding_date','wedding_address'], 'safe'],
+            [['custom', 'principal','combos','section_name','order_sn','customer_name','customer_mobile','wedding_date','wedding_address','need_item_order'], 'safe'],
             [['deal_price'], 'number'],
         ];
     }
@@ -51,6 +52,7 @@ class WeddingItemOrderSearch extends WeddingItemOrder
             'customer_mobile' => '客户手机号',
             'wedding_date' => '婚庆日期',
             'wedding_address' => '婚庆地址',
+            'need_item_order' => '是否选择当前部门'
         ];
     }
 

@@ -75,6 +75,9 @@ $comboOptions = [
             <?php foreach ($item_data_model as $item_model): ?>
                 <div class="tab-pane" id="section_<?php echo $item_model->section_id;?>">
                     <div class="form-group">
+                        <?=$form->field($item_model, "[{$item_model->section_id}]need_item_order")->dropDownList([1=>'不选择当前部门',2=>'已选择当前部门'])?>
+                    </div>
+                    <div class="form-group">
                         <?= $form->field($item_model, "[{$item_model->section_id}]combo_id",$comboOptions)->radioList(ArrayHelper::map($item_model->combos,'combo_id','combo_name')) ?>
                     </div>
                     <div class="form-group">
