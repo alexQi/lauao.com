@@ -118,11 +118,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                             'attributes' => [
                                                 'section_name',
                                                 [
-                                                    'attribute'      => 'combo_name',
-                                                    'format'         => 'html',
-                                                    'value'          => function ($model) {
-                                                        return '<span class="label label-success">' . $model->combo_name . '</span>';
-                                                    }
+                                                    'attribute' => 'combo_name',
+                                                    'format'    => 'html',
+                                                    'value'     => function($model)
+                                                    {
+                                                        if ($model->combo_id==-1){
+                                                            $html = '<span class="label label-danger">无套餐</span>';
+                                                        }else{
+                                                            $html = '<span class="label label-success">' . $model->combo_name . '</span>';;
+                                                        }
+                                                        return $html;
+                                                    },
                                                 ],
                                                 'custom',
                                                 'deal_price',

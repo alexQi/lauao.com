@@ -119,12 +119,15 @@ class WeddingItemOrderController extends Controller
                 $star                   = substr($model->customer_mobile, 3, 4);
                 $model->customer_mobile = str_replace($star, '****', $model->customer_mobile);
             }
-            $item_data_model->combos = WeddingComboSearch::find()->where([
-                    'combo_id' => $item_data_model->combo_id,
-                ])->select([
-                    'combo_id',
-                    'combo_name',
-                ])->asArray()->all();
+            $all_combos = WeddingComboSearch::find()->where(['combo_id' => $item_data_model->combo_id])->select([
+                'combo_id',
+                'combo_name',
+            ])->asArray()->all();
+            array_unshift($all_combos, [
+                'combo_id'   => -1,
+                'combo_name' => '无套餐',
+            ]);
+            $item_data_model->combos = $all_combos;
 
             return $this->renderAjax('update', [
                 'model'           => $model,

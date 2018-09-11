@@ -62,7 +62,13 @@ class WeddingOrderController extends Controller
     {
         $model = $this->findModel($id);
 
-        $item_data_model = WeddingItemOrderSearch::find()->alias('wios')->leftJoin(WeddingCombo::tableName() . ' wc', 'wc.combo_id=wios.combo_id')->leftJoin(WeddingSectionSearch::tableName() . 'wss', 'wss.section_id=wios.section_id')->where(['order_id' => $id])->select('wios.*,wc.combo_name,wss.section_name')->all();
+        $item_data_model = WeddingItemOrderSearch::find()
+            ->alias('wios')
+            ->leftJoin(WeddingCombo::tableName() . ' wc', 'wc.combo_id=wios.combo_id')
+            ->leftJoin(WeddingSectionSearch::tableName() . 'wss', 'wss.section_id=wios.section_id')
+            ->where(['order_id' => $id])
+            ->select('wios.*,wc.combo_name,wss.section_name')
+            ->all();
 
         return $this->render('view', [
             'model'           => $model,
