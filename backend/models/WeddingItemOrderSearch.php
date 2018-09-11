@@ -105,7 +105,8 @@ class WeddingItemOrderSearch extends WeddingItemOrder
                 'combo_name',
                 'deal_price',
                 'status',
-                'created_at'
+                'created_at',
+                'updated_at'
             ]
         ]);
 
@@ -118,11 +119,14 @@ class WeddingItemOrderSearch extends WeddingItemOrder
             'combo_name' => $this->combo_name,
             'deal_price' => $this->deal_price,
             'status' => $this->status,
-            'created_at' => $this->created_at
+            'created_at' => $this->created_at,
+            'updated_at'=>$this->updated_at
         ]);
 
         $query->andFilterWhere(['like', 'custom', $this->custom])
             ->andFilterWhere(['like', 'principal', $this->principal]);
+
+        $query->orderBy(['wedding_date'=>SORT_DESC]);
 
         return $dataProvider;
     }

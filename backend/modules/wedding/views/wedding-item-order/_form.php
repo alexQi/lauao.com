@@ -104,10 +104,10 @@ $comboOptions = [
                     <?=$form->field($item_data_model, "combo_id", $comboOptions)->dropDownList(ArrayHelper::map($item_data_model->combos, 'combo_id', 'combo_name'),['disabled'=>true])?>
                 </div>
                 <div class="form-group">
-                    <?=$form->field($item_data_model, "custom")->textInput(['maxlength' => true])?>
+                    <?=$form->field($item_data_model, "custom")->textInput(['maxlength' => true,'disabled'=>true])?>
                 </div>
                 <div class="form-group">
-                    <?=$form->field($item_data_model, "deal_price")->textInput(['maxlength' => true])?>
+                    <?=$form->field($item_data_model, "deal_price")->textInput(['maxlength' => true,'disabled'=>true])?>
                 </div>
                 <div class="form-group">
                     <?=$form->field($item_data_model, "status")->dropDownList([

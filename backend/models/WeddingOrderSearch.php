@@ -76,6 +76,7 @@ class WeddingOrderSearch extends WeddingOrder {
             ->andFilterWhere(['like', 'wedding_address', $this->wedding_address])
             ->andFilterWhere(['like', 'remark', $this->remark]);
 
+        $query->orderBy(['project_process'=>SORT_ASC]);
         return $dataProvider;
     }
 }
