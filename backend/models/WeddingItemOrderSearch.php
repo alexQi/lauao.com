@@ -80,7 +80,7 @@ class WeddingItemOrderSearch extends WeddingItemOrder
             ->leftJoin(WeddingSectionSearch::tableName().' wss','wss.section_id=wio.section_id')
             ->leftJoin(WeddingComboSearch::tableName().' wcs','wcs.combo_id=wio.combo_id')
             ->where(['wio.section_id'=>$user_section_id])
-            ->select(['wio.*','wos.order_sn','wos.customer_name','wos.customer_mobile','wos.wedding_date','wos.wedding_address','wcs.combo_name']);
+            ->select(['wio.*','wos.order_sn','wos.customer_name','wos.project_process','wos.customer_mobile','wos.wedding_date','wos.wedding_address','wcs.combo_name']);
 
         // add conditions that should always apply here
 

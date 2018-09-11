@@ -23,6 +23,16 @@ class UserSearch extends User
             ->asArray()
             ->one();
     }
+
+    /**
+     * @param $id
+     *
+     * @return UserExtend|null
+     */
+    public static function getUserExtendInfo($id){
+        return UserExtend::findOne(['user_id'=>$id]);
+    }
+
     /**
      * @param array $param
      *

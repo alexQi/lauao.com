@@ -36,6 +36,15 @@ class WeddingComboSearch extends WeddingCombo
     }
 
     /**
+     * @param $section_id
+     *
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public static function getSectionComboList($section_id){
+        return self::find()->select(['combo_id','combo_name'])->where(['section_id'=>$section_id])->asArray()->all();
+    }
+
+    /**
      * Creates data provider instance with search query applied
      *
      * @param array $params
