@@ -49,7 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
                                 <li class="active">
-                                    <a href="#main" data-toggle="tab">基本信息</a>
+                                    <a href="#main_detail" data-toggle="tab">基本信息</a>
                                 </li>
                                 <?php foreach ($item_data_model as $item_model): ?>
                                     <li>
@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?php endforeach; ?>
                             </ul>
                             <div class="tab-content">
-                                <div class="active tab-pane" id="main">
+                                <div class="active tab-pane" id="main_detail">
                                     <?=DetailView::widget([
                                         'model'      => $model,
                                         'attributes' => [
