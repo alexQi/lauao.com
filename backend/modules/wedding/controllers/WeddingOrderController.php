@@ -79,7 +79,6 @@ class WeddingOrderController extends Controller
     public function actionCreate()
     {
         $model            = new WeddingOrderSearch();
-        $item_order_model = new WeddingItemOrderSearch();
 
         if ($model->load(Yii::$app->request->post()))
         {
@@ -103,6 +102,8 @@ class WeddingOrderController extends Controller
                     {
                         continue;
                     }
+                    $item_order_model = new WeddingItemOrderSearch();
+
                     $temp_array['WeddingItemOrderSearch'] = $item;
                     $item_order_model->load($temp_array);
                     $item_order_model->order_id   = $model->order_id;
