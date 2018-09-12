@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\WeddingOrder;
+use app\models\UserSearch;
 
 /**
  * WeddingOrderSearch represents the model behind the search form about `common\models\WeddingOrder`.
@@ -44,6 +45,11 @@ class WeddingOrderSearch extends WeddingOrder {
      */
     public function search($params) {
         $query = WeddingOrder::find();
+        $user_extend_info = UserSearch::getUserExtendInfo(yii::$app->user->identity->getId());
+        if (in_array($user_extend_info->section,range(1,9)))
+        {
+            $query->where(['user_id'=>yii::$app->user->identity->getId()]);
+        }
 
         // add conditions that should always apply here
 

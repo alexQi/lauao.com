@@ -10,7 +10,6 @@ use common\models\WeddingCombo;
 use backend\models\WeddingSectionSearch;
 use backend\models\WeddingOrderSearch;
 use backend\models\WeddingItemOrderSearch;
-use yii\base\InvalidValueException;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
