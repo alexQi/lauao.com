@@ -31,8 +31,8 @@ $comboOptions = [
         'enableAjaxValidation' => false,
         'id'                   => 'menu-form',
         'fieldConfig'          => [
-            'template'     => "{label}<div class=\"col-xs-8\">{input}</div>{error}",
-            'labelOptions' => ['class' => 'col-sm-2 control-label'],
+            'template'     => "{label}<div class=\"col-xs-7\">{input}</div>{error}",
+            'labelOptions' => ['class' => 'col-sm-3 control-label'],
         ]
     ]
 ); ?>

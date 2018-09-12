@@ -162,9 +162,16 @@ class DefaultController extends Controller {
             return $this->goBack();
         } else {
 
-            $platform = Yii::$app->request->getQueryParam('platform');
+            $platform = Yii::$app->request->get('platform');
 
-
+            $session = Yii::$app->session;
+            $session->open();
+            $session->remove('platform');
+            if($platform=="CM")
+            {
+                $session->set('platform','CM');
+            }
+            $session->close();
             return $this->render('login', [
                 'model' => $model,
                 'platform'=>$platform
@@ -173,13 +180,25 @@ class DefaultController extends Controller {
     }
 
     /**
-     * Logout action.
-     *
-     * @return string
+     * @return \yii\web\Response
      */
     public function actionLogout() {
-        if (Yii::$app->user->logout()) {
-            return $this->redirect(Url::to(['login']));
+        //don't clear session
+        if (Yii::$app->user->logout(false)) {
+
+            $session = Yii::$app->session;
+            $session->open();
+            $platform=$session->get("platform");
+            Yii::$app->getSession()->destroy();//释放
+            if($platform=="CM")
+            {
+                return $this->redirect(Url::to(['login','platform'=>'CM']));
+            }
+            else
+            {
+               return $this->redirect(Url::to(['login']));
+            }
+
         }
 
     }
