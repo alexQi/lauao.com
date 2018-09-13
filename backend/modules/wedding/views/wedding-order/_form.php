@@ -28,7 +28,7 @@ $comboOptions = [
 
 <?php $form = ActiveForm::begin([
         'options'              => ['class' => 'form-horizontal'],
-        'enableAjaxValidation' => false,
+        'enableAjaxValidation' => true,
         'id'                   => 'menu-form',
         'fieldConfig'          => [
             'template'     => "{label}<div class=\"col-xs-7\">{input}</div>{error}",

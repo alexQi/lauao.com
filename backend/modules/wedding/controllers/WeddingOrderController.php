@@ -3,17 +3,19 @@
 namespace backend\modules\wedding\controllers;
 
 
-use common\models\WeddingCombo;
+
 use Yii;
+use Exception;
+use common\models\WeddingCombo;
 use common\models\WeddingOrder;
 use backend\models\WeddingItemOrderSearch;
 use backend\models\WeddingComboSearch;
 use backend\models\WeddingSectionSearch;
 use backend\models\WeddingOrderSearch;
 use yii\web\Controller;
-use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Html;
 
 /**
  * WeddingOrderController implements the CRUD actions for WeddingOrder model.
@@ -91,6 +93,8 @@ class WeddingOrderController extends Controller
             $tran = yii::$app->db->beginTransaction();
             try
             {
+                $model->setScenario('create');
+
                 $model->wedding_date = strtotime($model->wedding_date);
                 $model->order_sn     = 'ON' . time() . rand(1000, 9999);
                 $model->user_id      = yii::$app->user->id;
@@ -99,7 +103,7 @@ class WeddingOrderController extends Controller
 
                 if (!$model->save())
                 {
-                    throw new HttpException('下单失败');
+                    throw new Exception('生成订单失败');
                 }
 
                 foreach (Yii::$app->request->post('WeddingItemOrderSearch') as $item)
@@ -119,19 +123,23 @@ class WeddingOrderController extends Controller
                     $item_order_model->updated_at = time();
                     if (!$item_order_model->save())
                     {
-                        throw new HttpException('写入子订单失败');
+                        throw new Exception(404);
                     }
                 }
                 $tran->commit();
-            } catch (HttpException $e)
+                return $this->redirect([
+                    'view',
+                    'id' => $model->order_id,
+                ]);
+            } catch (Exception $e)
             {
                 $tran->rollBack();
-                throw new HttpException($e->getMessage());
+                foreach ($model->getErrors() as $attribute => $errors)
+                {
+                    $result[Html::getInputId($model, $attribute)] = $errors;
+                }
+                return json_encode($result);
             }
-            return $this->redirect([
-                'view',
-                'id' => $model->order_id,
-            ]);
         }
         else
         {
@@ -159,11 +167,11 @@ class WeddingOrderController extends Controller
             }
 
             $model->wedding_date = date('Y-m-d', time() + 3 * 86400);
-            return $this->renderAjax('create', [
-                'model'           => $model,
-                'item_data_model' => $item_data_model,
-            ]);
         }
+        return $this->renderAjax('create', [
+            'model'           => $model,
+            'item_data_model' => $item_data_model,
+        ]);
     }
 
     /**
@@ -183,12 +191,14 @@ class WeddingOrderController extends Controller
             $tran = yii::$app->db->beginTransaction();
             try
             {
+                $model->setScenario('update');
+
                 $model->wedding_date = strtotime($model->wedding_date);
                 $model->updated_at   = time();
 
                 if (!$model->save())
                 {
-                    throw new HttpException('下单失败');
+                    throw new Exception('下单失败');
                 }
 
                 foreach (Yii::$app->request->post('WeddingItemOrderSearch') as $item)
@@ -221,19 +231,23 @@ class WeddingOrderController extends Controller
                     $item_order_model->updated_at = time();
                     if (!$item_order_model->save())
                     {
-                        throw new HttpException('更新子订单失败');
+                        throw new Exception('更新子订单失败');
                     }
                 }
                 $tran->commit();
-            } catch (HttpException $e)
+                return $this->redirect([
+                    'view',
+                    'id' => $model->order_id,
+                ]);
+            } catch (Exception $e)
             {
                 $tran->rollBack();
-                throw new HttpException($e->getMessage());
+                foreach ($model->getErrors() as $attribute => $errors)
+                {
+                    $result[Html::getInputId($model, $attribute)] = $errors;
+                }
+                return json_encode($result);
             }
-            return $this->redirect([
-                'view',
-                'id' => $model->order_id,
-            ]);
         }
         else
         {

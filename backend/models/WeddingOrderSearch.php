@@ -38,7 +38,14 @@ class WeddingOrderSearch extends WeddingOrder {
      */
     public function scenarios() {
         // bypass scenarios() implementation in the parent class
-        return Model::scenarios();
+        $scenarios = parent::scenarios();
+
+        //各个场景的活动属性
+        $scenarios['create'] = ['order_sn', 'customer_name', 'customer_mobile', 'wedding_date', 'wedding_address', 'project_process', 'user_id', 'created_at', 'updated_at'];
+        $scenarios['update'] = ['order_sn', 'customer_name', 'customer_mobile', 'wedding_date', 'wedding_address', 'project_process'];
+
+        return $scenarios;
+
     }
 
     /**

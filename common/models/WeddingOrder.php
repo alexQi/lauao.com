@@ -59,7 +59,7 @@ class WeddingOrder extends \yii\db\ActiveRecord
             'customer_mobile' => '客户手机号',
             'wedding_date' => '婚庆日期',
             'wedding_address' => '婚庆地址',
-            'project_process' => '项目进度',
+            'project_process' => '进度',
             'remark' => '备注',
             'user_id' => '创建用户',
             'created_at' => '下单时间',
