@@ -90,19 +90,21 @@ class WeddingItemOrderController extends Controller
         if ($item_data_model->load(Yii::$app->request->post()))
         {
             $item_data_model->updated_at = time();
-            if ($item_data_model->principal != '' && $item_data_model->save())
-            {
-                return $this->redirect([
-                    'view',
-                    'id' => $item_data_model->item_order_id,
-                ]);
-            }
-            else
-            {
+            if (Yii::$app->request->post('submit-button')=='submit'){
+                if ($item_data_model->save())
+                {
+                    return $this->redirect([
+                        'view',
+                        'id' => $item_data_model->item_order_id,
+                    ]);
+                }
+            }else{
+                $item_data_model->validate();
                 if ($item_data_model->principal == '')
                 {
                     $item_data_model->addError('principal', '负责人不能为空');
                 }
+                $result = [];
                 foreach ($item_data_model->getErrors() as $attribute => $errors)
                 {
                     $result[Html::getInputId($item_data_model, $attribute)] = $errors;

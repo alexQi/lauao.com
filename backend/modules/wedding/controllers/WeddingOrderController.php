@@ -101,45 +101,50 @@ class WeddingOrderController extends Controller
                 $model->created_at   = time();
                 $model->updated_at   = time();
 
-                if (!$model->save())
-                {
-                    throw new Exception('生成订单失败');
-                }
-
-                foreach (Yii::$app->request->post('WeddingItemOrderSearch') as $item)
-                {
-                    if ($item['need_item_order']==1)
+                if (Yii::$app->request->post('submit-button')=='submit'){
+                    if (!$model->save())
                     {
-                        continue;
+                        throw new Exception('生成订单失败');
                     }
-                    $item_order_model = new WeddingItemOrderSearch();
 
-                    $temp_array['WeddingItemOrderSearch'] = $item;
-                    $item_order_model->load($temp_array);
-                    $item_order_model->order_id   = $model->order_id;
-                    $item_order_model->user_id    = yii::$app->user->id;
-                    $item_order_model->status     = 0;
-                    $item_order_model->created_at = time();
-                    $item_order_model->updated_at = time();
-                    if (!$item_order_model->save())
+                    foreach (Yii::$app->request->post('WeddingItemOrderSearch') as $item)
                     {
-                        throw new Exception(404);
+                        if ($item['need_item_order']==1)
+                        {
+                            continue;
+                        }
+                        $item_order_model = new WeddingItemOrderSearch();
+
+                        $temp_array['WeddingItemOrderSearch'] = $item;
+                        $item_order_model->load($temp_array);
+                        $item_order_model->order_id   = $model->order_id;
+                        $item_order_model->user_id    = yii::$app->user->id;
+                        $item_order_model->status     = 0;
+                        $item_order_model->created_at = time();
+                        $item_order_model->updated_at = time();
+                        if (!$item_order_model->save())
+                        {
+                            throw new Exception('生成子订单失败');
+                        }
                     }
+                    $tran->commit();
+                }else{
+                    $model->validate();
+                    $result = [];
+                    foreach ($model->getErrors() as $attribute => $errors)
+                    {
+                        $result[Html::getInputId($model, $attribute)] = $errors;
+                    }
+                    return json_encode($result);
                 }
-                $tran->commit();
-                return $this->redirect([
-                    'view',
-                    'id' => $model->order_id,
-                ]);
             } catch (Exception $e)
             {
                 $tran->rollBack();
-                foreach ($model->getErrors() as $attribute => $errors)
-                {
-                    $result[Html::getInputId($model, $attribute)] = $errors;
-                }
-                return json_encode($result);
             }
+            return $this->redirect([
+                'view',
+                'id' => $model->order_id,
+            ]);
         }
         else
         {
@@ -184,7 +189,7 @@ class WeddingOrderController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $model = WeddingOrderSearch::findOne($id);
 
         if ($model->load(Yii::$app->request->post()))
         {
@@ -195,59 +200,64 @@ class WeddingOrderController extends Controller
 
                 $model->wedding_date = strtotime($model->wedding_date);
                 $model->updated_at   = time();
-
-                if (!$model->save())
-                {
-                    throw new Exception('下单失败');
-                }
-
-                foreach (Yii::$app->request->post('WeddingItemOrderSearch') as $item)
-                {
-                    if ($item['need_item_order'] == 1)
+                if (Yii::$app->request->post('submit-button')=='submit'){
+                    if (!$model->save())
                     {
-                        WeddingItemOrderSearch::deleteAll([
+                        throw new Exception('下单失败');
+                    }
+
+                    foreach (Yii::$app->request->post('WeddingItemOrderSearch') as $item)
+                    {
+                        if ($item['need_item_order'] == 1)
+                        {
+                            WeddingItemOrderSearch::deleteAll([
+                                'section_id' => $item['section_id'],
+                                'order_id'   => $id,
+                            ]);
+                            continue;
+                        }
+                        $item_order_model = WeddingItemOrderSearch::find()->where([
                             'section_id' => $item['section_id'],
                             'order_id'   => $id,
-                        ]);
-                        continue;
+                        ])->one();
+                        if (!$item_order_model)
+                        {
+                            $item_order_model = new WeddingItemOrderSearch();
+                        }
+                        $temp_array['WeddingItemOrderSearch'] = $item;
+                        $item_order_model->load($temp_array);
+                        if ($item_order_model->isNewRecord)
+                        {
+                            $item_order_model->order_id   = $model->order_id;
+                            $item_order_model->user_id    = yii::$app->user->id;
+                            $item_order_model->status     = 0;
+                            $item_order_model->created_at = time();
+                        }
+                        $item_order_model->updated_at = time();
+                        if (!$item_order_model->save())
+                        {
+                            throw new Exception('更新子订单失败');
+                        }
                     }
-                    $item_order_model = WeddingItemOrderSearch::find()->where([
-                        'section_id' => $item['section_id'],
-                        'order_id'   => $id,
-                    ])->one();
-                    if (!$item_order_model)
+                }else{
+                    $model->validate();
+                    $result = [];
+                    foreach ($model->getErrors() as $attribute => $errors)
                     {
-                        $item_order_model = new WeddingItemOrderSearch();
+                        $result[Html::getInputId($model, $attribute)] = $errors;
                     }
-                    $temp_array['WeddingItemOrderSearch'] = $item;
-                    $item_order_model->load($temp_array);
-                    if ($item_order_model->isNewRecord)
-                    {
-                        $item_order_model->order_id   = $model->order_id;
-                        $item_order_model->user_id    = yii::$app->user->id;
-                        $item_order_model->status     = 0;
-                        $item_order_model->created_at = time();
-                    }
-                    $item_order_model->updated_at = time();
-                    if (!$item_order_model->save())
-                    {
-                        throw new Exception('更新子订单失败');
-                    }
+                    return json_encode($result);
                 }
+
                 $tran->commit();
-                return $this->redirect([
-                    'view',
-                    'id' => $model->order_id,
-                ]);
             } catch (Exception $e)
             {
                 $tran->rollBack();
-                foreach ($model->getErrors() as $attribute => $errors)
-                {
-                    $result[Html::getInputId($model, $attribute)] = $errors;
-                }
-                return json_encode($result);
             }
+            return $this->redirect([
+                'view',
+                'id' => $model->order_id,
+            ]);
         }
         else
         {
