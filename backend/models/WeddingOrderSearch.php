@@ -23,7 +23,7 @@ class WeddingOrderSearch extends WeddingOrder {
      */
     public function rules() {
         return [
-            [['order_sn', 'customer_name', 'customer_mobile', 'wedding_date', 'wedding_address', 'project_process', 'user_id', 'created_at', 'updated_at'], 'required'],
+            [['order_sn', 'customer_name', 'customer_mobile', 'wedding_date', 'wedding_address', 'project_process', 'user_id', 'created_at', 'updated_at'], 'required','on'=>['create','update']],
             [['customer_mobile', 'project_process', 'user_id', 'created_at', 'updated_at'], 'integer'],
             [['order_sn'], 'string', 'max' => 50],
             [['order_source', 'wedding_address'], 'string', 'max' => 200],
@@ -63,7 +63,6 @@ class WeddingOrderSearch extends WeddingOrder {
         ]);
 
         $this->load($params);
-
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
