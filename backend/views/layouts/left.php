@@ -15,7 +15,7 @@ use app\models\UserSearch;
                 <p><?php echo isset(yii::$app->user->identity->username) ?yii::$app->user->identity->username :'' ; ?></p>
 
 <!--                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>-->
-                <a href="#"><?php echo UserSearch::getUserExtendInfo(yii::$app->user->identity->getId())->real_name; ?></a>
+                <b><?php echo UserSearch::getUserExtendInfo(yii::$app->user->identity->getId())->real_name; ?></b>
             </div>
         </div>
 
