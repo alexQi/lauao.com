@@ -3,7 +3,6 @@
 namespace backend\modules\wedding\controllers;
 
 
-
 use Yii;
 use Exception;
 use common\models\WeddingCombo;
@@ -64,13 +63,7 @@ class WeddingOrderController extends Controller
     {
         $model = $this->findModel($id);
 
-        $item_data_model = WeddingItemOrderSearch::find()
-            ->alias('wios')
-            ->leftJoin(WeddingCombo::tableName() . ' wc', 'wc.combo_id=wios.combo_id')
-            ->leftJoin(WeddingSectionSearch::tableName() . 'wss', 'wss.section_id=wios.section_id')
-            ->where(['order_id' => $id])
-            ->select('wios.*,wc.combo_name,wss.section_name')
-            ->all();
+        $item_data_model = WeddingItemOrderSearch::find()->alias('wios')->leftJoin(WeddingCombo::tableName() . ' wc', 'wc.combo_id=wios.combo_id')->leftJoin(WeddingSectionSearch::tableName() . 'wss', 'wss.section_id=wios.section_id')->where(['order_id' => $id])->select('wios.*,wc.combo_name,wss.section_name')->all();
 
         return $this->render('view', [
             'model'           => $model,
@@ -86,8 +79,8 @@ class WeddingOrderController extends Controller
      */
     public function actionCreate()
     {
-        $model = new WeddingOrderSearch();
-
+        $model           = new WeddingOrderSearch();
+        $item_data_model = [];
         if ($model->load(Yii::$app->request->post()))
         {
             $tran = yii::$app->db->beginTransaction();
@@ -101,46 +94,76 @@ class WeddingOrderController extends Controller
                 $model->created_at   = time();
                 $model->updated_at   = time();
 
-                if (Yii::$app->request->post('submit-button')=='submit'){
+                $result = [];
+                $model->validate();
+                foreach ($model->getErrors() as $attribute => $errors)
+                {
+                    $result[Html::getInputId($model, $attribute)] = $errors;
+                }
+                if (!empty($result))
+                {
+                    return json_encode($result);
+                }
+
+                foreach (Yii::$app->request->post('WeddingItemOrderSearch') as $key => $item)
+                {
+                    if ($item['need_item_order'] == 1)
+                    {
+                        continue;
+                    }
+                    $item_order_model = new WeddingItemOrderSearch();
+
+                    $temp_array['WeddingItemOrderSearch'] = $item;
+                    $item_order_model->load($temp_array);
+                    $item_order_model->user_id    = yii::$app->user->id;
+                    $item_order_model->status     = 0;
+                    $item_order_model->created_at = time();
+                    $item_order_model->updated_at = time();
+
+                    $item_order_model->validate();
+                    if ($item_order_model->deal_price == '')
+                    {
+                        $item_order_model->addError('deal_price', '价格不能为空');
+                    }
+                    $result = [];
+                    foreach ($item_order_model->getErrors() as $attribute => $errors)
+                    {
+                        $result[Html::getInputId($item_order_model, '-' . $item_order_model->section_id . ']' . $attribute)] = $errors;
+                    }
+                    if (!empty($result))
+                    {
+                        return json_encode($result);
+                    }
+                    $item_data_model[] = $item_order_model;
+                }
+
+                if (Yii::$app->request->post('submit-button') == 'submit')
+                {
+
                     if (!$model->save())
                     {
                         throw new Exception('生成订单失败');
                     }
 
-                    foreach (Yii::$app->request->post('WeddingItemOrderSearch') as $item)
+                    foreach ($item_data_model as $item_order_model)
                     {
-                        if ($item['need_item_order']==1)
-                        {
-                            continue;
-                        }
-                        $item_order_model = new WeddingItemOrderSearch();
-
-                        $temp_array['WeddingItemOrderSearch'] = $item;
-                        $item_order_model->load($temp_array);
-                        $item_order_model->order_id   = $model->order_id;
-                        $item_order_model->user_id    = yii::$app->user->id;
-                        $item_order_model->status     = 0;
-                        $item_order_model->created_at = time();
-                        $item_order_model->updated_at = time();
+                        $item_order_model->order_id = $model->order_id;
                         if (!$item_order_model->save())
                         {
                             throw new Exception('生成子订单失败');
                         }
                     }
                     $tran->commit();
-                }else{
-                    $model->validate();
-                    $result = [];
-                    foreach ($model->getErrors() as $attribute => $errors)
-                    {
-                        $result[Html::getInputId($model, $attribute)] = $errors;
-                    }
+                }
+                else
+                {
                     return json_encode($result);
                 }
             } catch (Exception $e)
             {
                 $tran->rollBack();
             }
+
             return $this->redirect([
                 'view',
                 'id' => $model->order_id,
@@ -150,7 +173,6 @@ class WeddingOrderController extends Controller
         {
             $sections_model = WeddingSectionSearch::find()->all();
 
-            $item_data_model = [];
             foreach ($sections_model as $key => $section)
             {
                 $all_combos = WeddingComboSearch::find()->where(['section_id' => $section->section_id])->select([
@@ -165,6 +187,7 @@ class WeddingOrderController extends Controller
                 $item_order_model = new WeddingItemOrderSearch();
 
                 $item_order_model->section_id      = $section->section_id;
+                $item_order_model->combo_id        = -1;
                 $item_order_model->section_name    = $section->section_name;
                 $item_order_model->combos          = $all_combos;
                 $item_order_model->need_item_order = 1;
@@ -190,7 +213,7 @@ class WeddingOrderController extends Controller
     public function actionUpdate($id)
     {
         $model = WeddingOrderSearch::findOne($id);
-
+        $item_data_model = [];
         if ($model->load(Yii::$app->request->post()))
         {
             $tran = yii::$app->db->beginTransaction();
@@ -200,15 +223,69 @@ class WeddingOrderController extends Controller
 
                 $model->wedding_date = strtotime($model->wedding_date);
                 $model->updated_at   = time();
-                if (Yii::$app->request->post('submit-button')=='submit'){
+                $model->validate();
+                $result = [];
+                foreach ($model->getErrors() as $attribute => $errors)
+                {
+                    $result[Html::getInputId($model, $attribute)] = $errors;
+                }
+                if (!empty($result))
+                {
+                    return json_encode($result);
+                }
+
+                foreach (Yii::$app->request->post('WeddingItemOrderSearch') as $key => $item)
+                {
+                    if ($item['need_item_order'] == 1)
+                    {
+                        continue;
+                    }
+                    $item_order_model = WeddingItemOrderSearch::find()->where([
+                        'section_id' => $item['section_id'],
+                        'order_id'   => $id,
+                    ])->one();
+                    if (!$item_order_model)
+                    {
+                        $item_order_model = new WeddingItemOrderSearch();
+                    }
+                    $temp_array['WeddingItemOrderSearch'] = $item;
+                    $item_order_model->load($temp_array);
+                    if ($item_order_model->isNewRecord)
+                    {
+                        $item_order_model->order_id   = $model->order_id;
+                        $item_order_model->user_id    = yii::$app->user->id;
+                        $item_order_model->status     = 0;
+                        $item_order_model->created_at = time();
+                    }
+                    $item_order_model->updated_at = time();
+
+                    $item_order_model->validate();
+                    if ($item_order_model->deal_price == '')
+                    {
+                        $item_order_model->addError('deal_price', '价格不能为空');
+                    }
+                    $result = [];
+                    foreach ($item_order_model->getErrors() as $attribute => $errors)
+                    {
+                        $result[Html::getInputId($item_order_model, '-' . $item_order_model->section_id . ']' . $attribute)] = $errors;
+                    }
+                    if (!empty($result))
+                    {
+                        return json_encode($result);
+                    }
+                    $item_data_model[] = $item_order_model;
+                }
+
+                if (Yii::$app->request->post('submit-button') == 'submit')
+                {
                     if (!$model->save())
                     {
                         throw new Exception('下单失败');
                     }
 
-                    foreach (Yii::$app->request->post('WeddingItemOrderSearch') as $item)
+                    foreach ($item_data_model as $item_order_model)
                     {
-                        if ($item['need_item_order'] == 1)
+                        if ($item_order_model->need_item_order == 1)
                         {
                             WeddingItemOrderSearch::deleteAll([
                                 'section_id' => $item['section_id'],
@@ -216,36 +293,14 @@ class WeddingOrderController extends Controller
                             ]);
                             continue;
                         }
-                        $item_order_model = WeddingItemOrderSearch::find()->where([
-                            'section_id' => $item['section_id'],
-                            'order_id'   => $id,
-                        ])->one();
-                        if (!$item_order_model)
-                        {
-                            $item_order_model = new WeddingItemOrderSearch();
-                        }
-                        $temp_array['WeddingItemOrderSearch'] = $item;
-                        $item_order_model->load($temp_array);
-                        if ($item_order_model->isNewRecord)
-                        {
-                            $item_order_model->order_id   = $model->order_id;
-                            $item_order_model->user_id    = yii::$app->user->id;
-                            $item_order_model->status     = 0;
-                            $item_order_model->created_at = time();
-                        }
-                        $item_order_model->updated_at = time();
                         if (!$item_order_model->save())
                         {
                             throw new Exception('更新子订单失败');
                         }
                     }
-                }else{
-                    $model->validate();
-                    $result = [];
-                    foreach ($model->getErrors() as $attribute => $errors)
-                    {
-                        $result[Html::getInputId($model, $attribute)] = $errors;
-                    }
+                }
+                else
+                {
                     return json_encode($result);
                 }
 
@@ -254,6 +309,7 @@ class WeddingOrderController extends Controller
             {
                 $tran->rollBack();
             }
+
             return $this->redirect([
                 'view',
                 'id' => $model->order_id,
@@ -285,6 +341,7 @@ class WeddingOrderController extends Controller
                 ]);
 
                 $item_order_model->section_id      = $section->section_id;
+                $item_order_model->combo_id        = -1;
                 $item_order_model->section_name    = $section->section_name;
                 $item_order_model->combos          = $all_combos;
                 $item_order_model->need_item_order = $item_order_model->isNewRecord ? 1 : 2;
