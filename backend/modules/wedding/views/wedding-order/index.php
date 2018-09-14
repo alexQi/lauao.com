@@ -19,6 +19,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 <h3 class="box-title"><?=Html::encode($this->title)?></h3>
 
                 <div class="box-tools">
+                    <?=Html::a(Yii::t('app', 'exprot excel'), ['export-excel'],
+                        [
+                            'class'       => 'btn btn-sm btn-warning',
+                        ])?>
                     <?=Html::a(Yii::t('app', 'Create Wedding Order'), ['create'],
                         [
                             'class'       => 'btn btn-sm btn-info detail-link',

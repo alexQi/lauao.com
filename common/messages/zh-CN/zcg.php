@@ -21,6 +21,7 @@ return [
     'Wedding Orders'=>'订单列表',
     'Create Wedding Section'=>'创建部门',
     'Wedding Sections'=>'部门列表',
+    'exprot excel' => '导出EXCEL',
 
     'cate'=>'分类',
 

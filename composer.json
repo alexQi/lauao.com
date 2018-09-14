@@ -28,7 +28,8 @@
         "callmez/yii2-wechat-sdk": "dev-master",
         "yiisoft/yii2-redis": "^2.0",
         "mihaildev/yii2-ckeditor": "*",
-        "bshaffer/oauth2-server-php":"*"
+        "bshaffer/oauth2-server-php":"*",
+        "moonlandsoft/yii2-phpexcel": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

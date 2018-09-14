@@ -15,6 +15,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Html;
+use moonland\phpexcel\Excel;
 
 /**
  * WeddingOrderController implements the CRUD actions for WeddingOrder model.
@@ -49,6 +50,54 @@ class WeddingOrderController extends Controller
         return $this->render('index', [
             'searchModel'  => $searchModel,
             'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * 导出Excel
+     */
+    public function actionExportExcel()
+    {
+        $main_order = WeddingOrderSearch::find()->all();
+
+        return Excel::export([
+            'isMultipleSheet' => false,
+            'fileName'        => '婚庆主订单-'.date('Y-m-d'),
+            'models'          => $main_order,
+            'columns'         => [
+                'order_id',
+                'order_sn',
+                'order_source',
+                'customer_name',
+                'customer_mobile',
+                'wedding_date:date',
+                'wedding_address',
+                [
+                    'attribute' => 'project_process',
+                    'format'    => 'text',
+                    'value'     => function($model)
+                    {
+                        switch ($model->project_process)
+                        {
+                            case 1:
+                                $string = '已付定金';
+                                break;
+                            case 2:
+                                $string = '已付合同款';
+                                break;
+                            case 3:
+                                $string = '已付尾款';
+                                break;
+                            default:
+                                //。。。。。
+                        }
+                        return $string;
+                    },
+                ],
+                'remark',
+                'created_at:datetime',
+                'updated_at:datetime',
+            ],
         ]);
     }
 
@@ -211,7 +260,7 @@ class WeddingOrderController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = WeddingOrderSearch::findOne($id);
+        $model           = WeddingOrderSearch::findOne($id);
         $item_data_model = [];
         $model->setScenario('update');
         if ($model->load(Yii::$app->request->post()))
