@@ -81,13 +81,12 @@ class WeddingOrderController extends Controller
     {
         $model           = new WeddingOrderSearch();
         $item_data_model = [];
+        $model->setScenario('create');
         if ($model->load(Yii::$app->request->post()))
         {
             $tran = yii::$app->db->beginTransaction();
             try
             {
-                $model->setScenario('create');
-
                 $model->wedding_date = strtotime($model->wedding_date);
                 $model->order_sn     = 'ON' . time() . rand(1000, 9999);
                 $model->user_id      = yii::$app->user->id;
@@ -214,13 +213,12 @@ class WeddingOrderController extends Controller
     {
         $model = WeddingOrderSearch::findOne($id);
         $item_data_model = [];
+        $model->setScenario('update');
         if ($model->load(Yii::$app->request->post()))
         {
             $tran = yii::$app->db->beginTransaction();
             try
             {
-                $model->setScenario('update');
-
                 $model->wedding_date = strtotime($model->wedding_date);
                 $model->updated_at   = time();
                 $model->validate();

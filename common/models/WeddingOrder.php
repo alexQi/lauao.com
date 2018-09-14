@@ -41,8 +41,7 @@ class WeddingOrder extends \yii\db\ActiveRecord
             [['order_sn'], 'string', 'max' => 50],
             [['order_source', 'wedding_address'], 'string', 'max' => 200],
             [['customer_name'], 'string', 'max' => 100],
-            [['remark'], 'string', 'max' => 255],
-            [['wedding_date'], 'safe']
+            [['remark'], 'string', 'max' => 255]
         ];
     }
 
