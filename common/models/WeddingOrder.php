@@ -52,7 +52,7 @@ class WeddingOrder extends \yii\db\ActiveRecord
     {
         return [
             'order_id' => '订单ID',
-            'order_sn' => '订单SN',
+            'order_sn' => '订单号',
             'order_source' => '策划师+推荐人+店名',
             'customer_name' => '客户姓名',
             'customer_mobile' => '客户手机号',

@@ -47,7 +47,7 @@ class WeddingItemOrderSearch extends WeddingItemOrder
             'deal_price' => '成交价格',
             'status' => '状态',
             'principal' => '负责人',
-            'order_sn' => '订单SN',
+            'order_sn' => '订单号',
             'customer_name' => '客户姓名',
             'customer_mobile' => '客户手机号',
             'wedding_date' => '婚庆日期',

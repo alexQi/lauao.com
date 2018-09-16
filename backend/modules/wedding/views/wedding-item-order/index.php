@@ -16,7 +16,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-xs-12">
         <div class="box box-info">
             <div class="box-header with-border">
-                <h3 class="box-title"><?=Html::encode($this->title)?></h3>
+                <h3 class="box-title info"><b><?=Html::encode($section_names)?>订单</b></h3>
+                <div class="box-tools">
+                    <?=Html::a(Yii::t('app', 'exprot excel'), ['export-excel'],
+                        [
+                            'class'       => 'btn btn-sm btn-warning',
+                        ])?>
+
+                </div>
             </div>
             <div class="box-body">
                 <?php Pjax::begin(); ?>    <?=GridView::widget([
@@ -36,10 +43,21 @@ $this->params['breadcrumbs'][] = $this->title;
                         'order_sn',
                         [
                             'attribute'     => 'customer_name',
+                            'value'=>function($model)
+                            {
+                                if($model->project_process==1)
+                                {
+
+                                $names                  = substr($model->customer_name, 1);
+                                    $model->customer_name = str_replace($names, '***', $model->customer_name);
+                                }
+                                return $model->customer_name;
+                            },
                             "headerOptions" => [
                                 "width" => "100",
                                 'class' => 'text-left',
                             ],
+
                         ],
                         [
                             'attribute'     => 'customer_mobile',
