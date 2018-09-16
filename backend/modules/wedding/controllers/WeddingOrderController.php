@@ -62,7 +62,8 @@ class WeddingOrderController extends Controller
 
         return Excel::export([
             'isMultipleSheet' => false,
-            'fileName'        => '婚庆主订单-'.date('Y-m-d'),
+            'fileName'        => '婚庆主订单-'.date('Y-m-d').'.xlsx',
+            'format'=>'Excel2007',
             'models'          => $main_order,
             'columns'         => [
                 'order_id',
