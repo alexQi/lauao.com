@@ -79,7 +79,7 @@ class WeddingOrderSearch extends WeddingOrder {
         // grid filtering conditions
         $query->andFilterWhere([
             'order_id'        => $this->order_id,
-            'customer_mobile' => $this->customer_mobile,
+            //'customer_mobile' => $this->customer_mobile,
             'wedding_date'    => $this->wedding_date,
             'project_process' => $this->project_process,
             'user_id'         => $this->user_id,
@@ -88,6 +88,7 @@ class WeddingOrderSearch extends WeddingOrder {
         ]);
 
         $query->andFilterWhere(['like', 'order_sn', $this->order_sn])
+            ->andFilterWhere(['like','customer_mobile',$this->customer_mobile])
             ->andFilterWhere(['like', 'order_source', $this->order_source])
             ->andFilterWhere(['like', 'customer_name', $this->customer_name])
             ->andFilterWhere(['like', 'wedding_address', $this->wedding_address])

@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]
                     ],
                     'columns'      => [
-                        'order_sn',
+                        'order_source',
                         [
                             'attribute'      => 'customer_name',
                             "headerOptions"  => [
