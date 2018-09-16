@@ -41,8 +41,8 @@ class WeddingOrderSearch extends WeddingOrder {
         $scenarios = parent::scenarios();
 
         //各个场景的活动属性
-        $scenarios['create'] = ['order_sn', 'customer_name', 'customer_mobile', 'wedding_date', 'wedding_address', 'project_process', 'user_id', 'created_at', 'updated_at'];
-        $scenarios['update'] = ['order_sn', 'customer_name', 'customer_mobile', 'wedding_date', 'wedding_address', 'project_process'];
+        $scenarios['create'] = ['order_sn','order_source', 'customer_name', 'customer_mobile', 'wedding_date', 'wedding_address', 'project_process', 'user_id', 'created_at', 'updated_at'];
+        $scenarios['update'] = ['order_sn','order_source', 'customer_name', 'customer_mobile', 'wedding_date', 'wedding_address', 'project_process'];
 
         return $scenarios;
 
