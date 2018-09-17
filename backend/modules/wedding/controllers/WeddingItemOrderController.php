@@ -67,7 +67,13 @@ class WeddingItemOrderController extends Controller
      */
     public function actionView($id)
     {
-        $item_data_model = WeddingItemOrderSearch::find()->alias('wios')->leftJoin(WeddingCombo::tableName() . ' wc', 'wc.combo_id=wios.combo_id')->leftJoin(WeddingSectionSearch::tableName() . 'wss', 'wss.section_id=wios.section_id')->where(['item_order_id' => $id])->select('wios.*,wc.combo_name,wss.section_name')->one();
+        $item_data_model = WeddingItemOrderSearch::find()
+            ->alias('wios')
+            ->leftJoin(WeddingCombo::tableName() . ' wc', 'wc.combo_id=wios.combo_id')
+            ->leftJoin(WeddingSectionSearch::tableName() . 'wss', 'wss.section_id=wios.section_id')
+            ->where(['item_order_id' => $id])
+            ->select('wios.*,wc.combo_name,wss.section_name')
+            ->one();
         $model           = WeddingOrderSearch::findOne($item_data_model->order_id);
 
         if ($model->project_process == 1)
@@ -96,16 +102,23 @@ class WeddingItemOrderController extends Controller
 
         $user_info       = UserSearch::getUserInfo(yii::$app->user->identity->getId());
         $user_section_id = $user_info ? $user_info['section'] : -1;
-        $main_order      = WeddingItemOrderSearch::find()->alias('wio')->leftJoin(WeddingOrderSearch::tableName() . ' wos', 'wos.order_id=wio.order_id')->leftJoin(WeddingSectionSearch::tableName() . ' wss', 'wss.section_id=wio.section_id')->leftJoin(WeddingComboSearch::tableName() . ' wcs', 'wcs.combo_id=wio.combo_id')->where(['wio.section_id' => $user_section_id])->select([
-            'wio.*',
-            'wos.order_sn',
-            'wos.customer_name',
-            'wos.project_process',
-            'wos.customer_mobile',
-            'wos.wedding_date',
-            'wos.wedding_address',
-            'wcs.combo_name',
-        ])->all();
+        $main_order      = WeddingItemOrderSearch::find()
+            ->alias('wio')
+            ->leftJoin(WeddingOrderSearch::tableName() . ' wos', 'wos.order_id=wio.order_id')
+            ->leftJoin(WeddingSectionSearch::tableName() . ' wss', 'wss.section_id=wio.section_id')
+            ->leftJoin(WeddingComboSearch::tableName() . ' wcs', 'wcs.combo_id=wio.combo_id')
+            ->where(['wio.section_id' => $user_section_id])
+            ->select([
+                'wio.*',
+                'wos.order_sn',
+                'wos.customer_name',
+                'wos.project_process',
+                'wos.customer_mobile',
+                'wos.wedding_date',
+                'wos.wedding_address',
+                'wcs.combo_name',
+            ])
+            ->all();
 
 
         return Excel::export([
