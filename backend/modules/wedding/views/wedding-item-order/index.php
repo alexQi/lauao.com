@@ -48,8 +48,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 if($model->project_process==1)
                                 {
 
-                                $names                  = substr($model->customer_name, 1);
-                                    $model->customer_name = str_replace($names, '***', $model->customer_name);
+                                    $name_length = mb_strlen($model->customer_name, 'utf-8');
+                                    $surname     = mb_substr($model->customer_name, 0, 1, 'utf-8');
+
+                                    $model->customer_name = $surname . str_repeat('*', ($name_length - 1));
                                 }
                                 return $model->customer_name;
                             },

@@ -45,16 +45,16 @@ class WeddingItemOrderController extends Controller
      */
     public function actionIndex()
     {
-        $user_info = UserSearch::getUserInfo(yii::$app->user->identity->getId());
+        $user_info       = UserSearch::getUserInfo(yii::$app->user->identity->getId());
         $user_section_id = $user_info ? $user_info['section'] : -1;
 
-        $searchModel  = new WeddingItemOrderSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $section_names = WeddingSection::find()->where(['section_id'=>$user_section_id])->one();
+        $searchModel   = new WeddingItemOrderSearch();
+        $dataProvider  = $searchModel->search(Yii::$app->request->queryParams);
+        $section_names = WeddingSection::find()->where(['section_id' => $user_section_id])->one();
         return $this->render('index', [
-            'searchModel'  => $searchModel,
-            'dataProvider' => $dataProvider,
-            'section_names'=>$section_names->section_name
+            'searchModel'   => $searchModel,
+            'dataProvider'  => $dataProvider,
+            'section_names' => $section_names->section_name,
         ]);
     }
 
@@ -75,8 +75,10 @@ class WeddingItemOrderController extends Controller
             $star                   = substr($model->customer_mobile, 3, 4);
             $model->customer_mobile = str_replace($star, '****', $model->customer_mobile);
 
-            $names                  = substr($model->customer_name, 1);
-            $model->customer_name = str_replace($names, '***', $model->customer_name);
+            $name_length = mb_strlen($model->customer_name, 'utf-8');
+            $surname     = mb_substr($model->customer_name, 0, 1, 'utf-8');
+
+            $model->customer_name = $surname . str_repeat('*', ($name_length - 1));
         }
 
         return $this->render('view', [
@@ -92,21 +94,24 @@ class WeddingItemOrderController extends Controller
     {
         //$main_order = WeddingItemOrderSearch::find()->all();
 
-        $user_info = UserSearch::getUserInfo(yii::$app->user->identity->getId());
+        $user_info       = UserSearch::getUserInfo(yii::$app->user->identity->getId());
         $user_section_id = $user_info ? $user_info['section'] : -1;
-        $main_order = WeddingItemOrderSearch::find()
-            ->alias('wio')
-            ->leftJoin(WeddingOrderSearch::tableName().' wos','wos.order_id=wio.order_id')
-            ->leftJoin(WeddingSectionSearch::tableName().' wss','wss.section_id=wio.section_id')
-            ->leftJoin(WeddingComboSearch::tableName().' wcs','wcs.combo_id=wio.combo_id')
-            ->where(['wio.section_id'=>$user_section_id])
-            ->select(['wio.*','wos.order_sn','wos.customer_name','wos.project_process','wos.customer_mobile','wos.wedding_date','wos.wedding_address','wcs.combo_name'])->all();
+        $main_order      = WeddingItemOrderSearch::find()->alias('wio')->leftJoin(WeddingOrderSearch::tableName() . ' wos', 'wos.order_id=wio.order_id')->leftJoin(WeddingSectionSearch::tableName() . ' wss', 'wss.section_id=wio.section_id')->leftJoin(WeddingComboSearch::tableName() . ' wcs', 'wcs.combo_id=wio.combo_id')->where(['wio.section_id' => $user_section_id])->select([
+            'wio.*',
+            'wos.order_sn',
+            'wos.customer_name',
+            'wos.project_process',
+            'wos.customer_mobile',
+            'wos.wedding_date',
+            'wos.wedding_address',
+            'wcs.combo_name',
+        ])->all();
 
 
         return Excel::export([
             'isMultipleSheet' => false,
-            'fileName'        => '子部门订单-'.date('Y-m-d').'.xlsx',
-            'format'=>'Excel2007',
+            'fileName'        => '子部门订单-' . date('Y-m-d') . '.xlsx',
+            'format'          => 'Excel2007',
             'models'          => $main_order,
             'columns'         => [
                 'order_sn',
@@ -117,35 +122,37 @@ class WeddingItemOrderController extends Controller
                 'combo_name',
                 'deal_price',
                 [
-                'attribute' => 'principal',
-                'format'    => 'text',
-                'value'     => function($main_order) {
-                    switch ($main_order->principal)
+                    'attribute' => 'principal',
+                    'format'    => 'text',
+                    'value'     => function($main_order)
                     {
-                        case 0:
-                            $string = '未接单';
-                            break;
-                        case 1:
-                            $string = '已接单';
-                            break;
+                        switch ($main_order->principal)
+                        {
+                            case 0:
+                                $string = '未接单';
+                                break;
+                            case 1:
+                                $string = '已接单';
+                                break;
 
-                        default:
+                            default:
 
-                    }
-                    return $string;
-                }],
+                        }
+                        return $string;
+                    },
+                ],
                 [
-                    'header'     => '下单日期',
+                    'header'    => '下单日期',
                     'attribute' => 'created_at',
                     'format'    => 'datetime',
                 ],
 
                 [
-                    'header'     => '更新日期',
+                    'header'    => '更新日期',
                     'attribute' => 'updated_at',
                     'format'    => 'datetime',
-                ]
-            ]
+                ],
+            ],
         ]);
     }
 
@@ -165,7 +172,8 @@ class WeddingItemOrderController extends Controller
         if ($item_data_model->load(Yii::$app->request->post()))
         {
             $item_data_model->updated_at = time();
-            if (Yii::$app->request->post('submit-button')=='submit'){
+            if (Yii::$app->request->post('submit-button') == 'submit')
+            {
                 if ($item_data_model->save())
                 {
                     return $this->redirect([
@@ -173,7 +181,9 @@ class WeddingItemOrderController extends Controller
                         'id' => $item_data_model->item_order_id,
                     ]);
                 }
-            }else{
+            }
+            else
+            {
                 $item_data_model->validate();
                 if ($item_data_model->principal == '')
                 {
