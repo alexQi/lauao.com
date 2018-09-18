@@ -120,6 +120,8 @@ class WeddingItemOrderController extends Controller
             ])
             ->all();
 
+       // $models = WeddingOrderSearch::findOne($main_order->order_id);//找到主订单状态
+
 
         return Excel::export([
             'isMultipleSheet' => false,
@@ -128,8 +130,37 @@ class WeddingItemOrderController extends Controller
             'models'          => $main_order,
             'columns'         => [
                 'order_sn',
-                'customer_name',
-                'customer_mobile',
+
+                //'customer_name',
+                ['attribute' => 'customer_name',
+                    'format'    => 'text',
+                    'value'     => function($main_order)
+                    {
+                        if($main_order->project_process == 1)
+                        {
+                            $name_length = mb_strlen($main_order->customer_name, 'utf-8');
+                            $surname     = mb_substr($main_order->customer_name, 0, 1, 'utf-8');
+
+                             $main_order->customer_name = $surname . str_repeat('*', ($name_length - 1));
+                        }
+                        return $main_order->customer_name;
+
+                    },
+                ],
+                ['attribute' => 'customer_mobile',
+                    'format'    => 'text',
+                    'value'     => function($main_order)
+                    {
+                        if($main_order->project_process == 1)
+                        {
+                             $star = substr($main_order->customer_mobile, 3, 4);
+                             $main_order->customer_mobile = str_replace($star, '****', $main_order->customer_mobile);
+
+                        }
+                        return $main_order->customer_mobile;
+
+                    },
+                ],
                 'wedding_date:date',
                 'wedding_address',
                 'combo_name',
