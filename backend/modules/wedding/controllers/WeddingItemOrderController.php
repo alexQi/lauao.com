@@ -50,11 +50,17 @@ class WeddingItemOrderController extends Controller
 
         $searchModel   = new WeddingItemOrderSearch();
         $dataProvider  = $searchModel->search(Yii::$app->request->queryParams);
-        $section_names = WeddingSection::find()->where(['section_id' => $user_section_id])->one();
+        $section_model = WeddingSection::find()->where(['section_id' => $user_section_id])->one();
+
+        if ($section_model){
+            $section_name = $section_model->section_name;
+        }else{
+            $section_name = '';
+        }
         return $this->render('index', [
             'searchModel'   => $searchModel,
             'dataProvider'  => $dataProvider,
-            'section_names' => $section_names->section_name,
+            'section_names' => $section_name,
         ]);
     }
 
