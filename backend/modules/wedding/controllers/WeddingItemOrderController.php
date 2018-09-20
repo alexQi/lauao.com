@@ -172,11 +172,11 @@ class WeddingItemOrderController extends Controller
                 'combo_name',
                 'deal_price',
                 [
-                    'attribute' => 'principal',
+                    'attribute' => 'status',
                     'format'    => 'text',
                     'value'     => function($main_order)
                     {
-                        switch ($main_order->principal)
+                        switch ($main_order->status)
                         {
                             case 0:
                                 $string = '未接单';
@@ -191,6 +191,7 @@ class WeddingItemOrderController extends Controller
                         return $string;
                     },
                 ],
+                'principal',
                 [
                     'header'    => '下单日期',
                     'attribute' => 'created_at',
