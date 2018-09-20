@@ -181,7 +181,7 @@ class WeddingItemOrderSearch extends WeddingItemOrder
                 $this->principal,
             ]);
 
-        $query->orderBy(['wedding_date' => SORT_DESC]);
+        $query->orderBy(['wedding_date' => SORT_ASC]);
 
         return $dataProvider;
     }
