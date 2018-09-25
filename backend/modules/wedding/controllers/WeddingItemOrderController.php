@@ -169,7 +169,21 @@ class WeddingItemOrderController extends Controller
                 ],
                 'wedding_date:date',
                 'wedding_address',
-                'combo_name',
+                //'combo_name',
+                ['attribute' => 'combo_name',
+                    'format'    => 'text',
+                    'value'     => function($main_order)
+                    {
+                        if($main_order->combo_id == -1)
+                        {
+
+                            $main_order->combo_name ='无套餐';
+
+                        }
+                        return $main_order->combo_name;
+
+                    },
+                ],
                 'deal_price',
                 [
                     'attribute' => 'status',
