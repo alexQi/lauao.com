@@ -462,4 +462,23 @@ class WeddingOrderController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+
+    public function redirect($url, $statusCode = 302, $checkAjax = true)
+    {
+        if (Yii::$app->getRequest()->getIsAjax()) {
+            if ($statusCode == 302) {
+                $statusCode = 308;
+            }
+        }
+        return parent::redirect($url, $statusCode, $checkAjax);
+    }
+
 }
+
+
+
+
+
+
+
