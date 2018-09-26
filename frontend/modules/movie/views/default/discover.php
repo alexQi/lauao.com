@@ -485,8 +485,9 @@ if ($video_cate_id) {
                         </div>
                     </a>
                     <div class="video-con">
-                        <a href="<?php echo Url::to(['default/detail', 'video_id' => $video['video_id']]); ?>">
-                            <p class="fs_14 fw_600 c_b_3 line-hide-1"><?php echo $video['video_name']; ?></p>
+<!--                        <a href="--><?php //echo Url::to(['default/detail', 'video_id' => $video['video_id']]); ?><!--">-->
+                        <a href="<?php echo $video['video_url']; ?> " target="_blank">
+                        <p class="fs_14 fw_600 c_b_3 line-hide-1"><?php echo $video['video_name']; ?></p>
                         </a>
                         <div class="video-view fs_12 fw_300 c_b_9">
                             <p class="fs_12"><?php echo $video['cate_name']; ?></p>
