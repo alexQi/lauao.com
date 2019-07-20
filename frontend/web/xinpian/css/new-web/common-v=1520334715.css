@@ -2731,11 +2731,11 @@ input {
 .footer-wrap .right .column-item {
     font-size: 12px;
     line-height: 1.5;
-    width: 200px;
+    /*width: 200px;*/
 }
 
 .footer-wrap .right .column-item:last-child {
-    width: 90px;
+    /*width: 90px;*/
     margin-right: 100px;
 }
 
@@ -2762,14 +2762,34 @@ input {
 
 .footer-wrap .footer-bottom {
     background-color: #f1f1f1;
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    z-index: 999;
+
 }
 
 .footer-wrap .footer-bottom .bottom-con {
-    height: 56px;
+    height: 30px;
     width: 500px;
     margin: 0 auto;
-    line-height: 56px;
-    padding: 0 20px;
+    line-height: 40px;
+    padding: 0 5px;
+}
+
+.footer-wrap .footer-bottom .bottom-statute {
+    height: 30px;
+    width: 500px;
+    margin: 0 auto;
+    line-height: 30px;
+    padding: 5px 10px;
+    text-align: center;
+
+}
+
+.footer-wrap .footer-bottom .bottom-statute a{
+
+    color: #999;
 }
 
 .footer-wrap .footer-bottom .bottom-con .copyright {
@@ -2777,6 +2797,8 @@ input {
     color: #999;
     margin-right: 27px;
 }
+
+
 
 .footer-wrap .footer-bottom .bottom-con .copyright a * {
     display: inline-block;
