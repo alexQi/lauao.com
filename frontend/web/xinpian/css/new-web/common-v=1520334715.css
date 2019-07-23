@@ -975,6 +975,7 @@ input {
 /* 视频article card */
 .video-list {
     font-size: 0;
+    min-height: 200px;
 }
 
 .video-list > li {
@@ -2689,6 +2690,8 @@ input {
     width: 100%;
     background: #fff;
     height: 321px;
+    /*position: absolute;*/
+
 }
 
 .footer-inner {

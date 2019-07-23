@@ -185,8 +185,8 @@ if ($video_cate_id) {
         </ul>
         <ul class="fr right-part no-login">
             <li class="search-btn icon-search"></li>
-            <li class="reg-btn"><a class="disabled" href="">登录</a></li>
-            <li class="login-btn"><a class="disabled" href="">注册</a></li>
+<!--            <li class="reg-btn"><a class="disabled" href="">登录</a></li>-->
+<!--            <li class="login-btn"><a class="disabled" href="">注册</a></li>-->
         </ul>
     </div>
 </div>
@@ -533,18 +533,25 @@ if ($video_cate_id) {
             </div>
             <div class="right fr clearfix">
                 <div class="column-item fl">
-                    <p class="title fs_16 c_b_3 fw_600">关于</p>
-                    <ul class="list fs_12 fw_300">
-                        <li><a target="_blank" class="disabled">关于我们</a></li>
-                        <li><a target="_blank" class="disabled">加入我们</a></li>
+                    <p class="title fs_16 c_b_3 fw_600">联系我们</p>
+                    <ul class="list fs_12 c_b_9 fw_300">
+                        <li><a target="_blank" class="disabled">公司名称:安徽维尔斯传媒策划有限公司</a></li>
+                        <li><a target="_blank" class="disabled">地址:安徽省宣城高新技术产业开发区麒麟大道11号</a></li>
+                        <li><a target="_blank" class="disabled">手机:18905631879</a></li>
+                        <li><a target="_blank" class="disabled">邮箱:279691663@qq.com</a></li>
                     </ul>
                 </div>
             </div>
+
         </div>
         <div class="footer-bottom">
             <div class="bottom-con">
-                <span class="copyright">Copyright © 2017 - 2018 维尔斯. All rights reserved.</span>
+                <span class="copyright">Copyright © 2017 - 2019 维尔斯. All rights reserved.</span>
                 <span class="copyright">皖ICP备17005514号-1</span>
+            </div>
+            <div class="bottom-statute">
+                <a target="_blank"  href="http://report.ccm.gov.cn/" class="disabled">12318全国文化市场举报平台</a>
+                <a target="_blank"  href="http://report.12377.cn:13225/toreportinputNormal_anis.do" class="disabled">中国互联网违法和不良信息举报中心</a>
             </div>
         </div>
     </div>
