@@ -186,7 +186,7 @@ if ($video_cate_id) {
         <ul class="fr right-part no-login">
             <li class="search-btn icon-search"></li>
 <!--            <li class="reg-btn"><a class="disabled" href="">登录</a></li>-->
-<!--            <li class="login-btn"><a class="disabled" href="">注册</a></li>-->
+            <li class="login-btn"><a  href="<?php echo Url::to(['/movie/default/signup'])?>">注册</a></li>
         </ul>
     </div>
 </div>

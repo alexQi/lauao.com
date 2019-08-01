@@ -83,7 +83,7 @@ use yii\helpers\Url;
 <?php ///*var_dump($videoList)*/?>
 
             <li class="nav-item school ">
-                <a class="disabled" id="show-weixin" href="javascript:;">联系我们</a>
+                <a class="disabled" id="show-weixin" href="javascript:;">器械租赁</a>
             </li>
             <li class="nav-item resource hover-elem">
                 <i class="icon-arrow-down"></i>
