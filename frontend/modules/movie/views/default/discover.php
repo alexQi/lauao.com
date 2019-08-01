@@ -139,7 +139,7 @@ if ($video_cate_id) {
             </li>
             <li class="nav-item hover-elem">
                 <i class="icon-arrow-down"></i>
-                <a href="<?php echo Url::to(['default/discover']) ?>">作品</a>
+                <a href="<?php echo Url::to(['default/discover']) ?>">我们的案例</a>
                 <div class="common-hover-wrap issue-hover-wrap">
                     <div class="hover-box">
                         <ul class="list">
@@ -428,7 +428,7 @@ if ($video_cate_id) {
                         <?php if (isset($Uri['video_cate_id'])) {
                             unset($Uri['video_cate_id']);
                         } ?>
-                        <a class="fs_14 fw_300 c_b_3" href="<?php echo Url::to($Uri) ?>">全部作品</a>
+                        <a class="fs_14 fw_300 c_b_3" href="<?php echo Url::to($Uri) ?>">成功案例</a>
                     </span>
                     <?php foreach ($cateList as $key => $cate): ?>
                         <?php $Uri['video_cate_id'] = $cate['id']; ?>

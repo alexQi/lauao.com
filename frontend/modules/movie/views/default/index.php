@@ -61,7 +61,7 @@ use yii\helpers\Url;
             </li>
             <li class="nav-item hover-elem">
                 <i class="icon-arrow-down"></i>
-                <a href="<?php echo Url::to(['/movie/default/discover']) ?>">作品</a>
+                <a href="<?php echo Url::to(['/movie/default/discover']) ?>">我们的案例</a>
                 <div class="common-hover-wrap issue-hover-wrap">
                     <div class="hover-box">
                         <ul class="list">
@@ -83,7 +83,7 @@ use yii\helpers\Url;
 <?php ///*var_dump($videoList)*/?>
 
             <li class="nav-item school ">
-                <a class="disabled" href="">器械租赁</a>
+                <a class="disabled" id="show-weixin" href="javascript:;">联系我们</a>
             </li>
             <li class="nav-item resource hover-elem">
                 <i class="icon-arrow-down"></i>
@@ -108,7 +108,7 @@ use yii\helpers\Url;
         <ul class="fr right-part no-login">
             <li class="search-btn icon-search"></li>
 <!--            <li class="reg-btn"><a class="disabled" href="">登录</a></li>-->
-<!--            <li class="login-btn"><a class="disabled" href="">注册</a></li>-->
+            <li class="login-btn"><a  href="<?php echo Url::to(['/movie/default/signup'])?>">注册</a></li>
         </ul>
     </div>
 </div>
@@ -287,27 +287,31 @@ use yii\helpers\Url;
         <div class="wrappage-cover-main">
             <div class="wrappage-cover-center">
                 <div class="wrappage-cover-detail">
-                    <p class="slogan">用作品打动世界</p>
+                    <p class="slogan">让维尔斯成为⽣活中的标配</p>
                     <p class="join-num">
-                        <i class="incremental-counter" data-current="808610" data-value="848610">808,610</i> 位创作人已加入</p>
+                        <i class="incremental-counter" data-current="13848610" data-value="13848610">13848610</i>位⽤户观看了直播</p>
                 </div>
-                <div class="btn-wrap" data-key="位置">
-                    <a class="dplus-link join-btn bg-red"
-                       href="<?php echo Url::to(['/movie/default/discover']) ?>">随便逛逛</a>
+<!--                <div class="btn-wrap" data-key="位置">-->
+<!--                    <a class="dplus-link join-btn bg-red"-->
+<!--                       href="--><?php //echo Url::to(['/movie/default/discover']) ?><!--">随便逛逛</a>-->
+<!---->
+<!--                    <a  id="show-weixin" class="dplus-link join-btn bg-transparent " href="javascript:;"-->
+<!--                       data-link=""-->
+<!--                       data-value="头部" >联系我们</a>-->
+<!---->
+<!---->
+<!--                </div>-->
 
-                    <a  id="show-weixin" class="dplus-link join-btn bg-transparent " href="javascript:;"
-                       data-link=""
-                       data-value="头部" >联系我们</a>
-
-
-                </div>
-            </div>
+                 </div>
         </div>
     </div>
     <div class="article-set-box">
         <div class="article-show-box float-contaniner">
             <div class="show-left select-list">
-                <h4 class="level-title second-level-title float-elem float-down el-2">启发创作灵感</h4>
+
+                    <h4 class="level-title second-level-title float-elem el-2">SUCESSFUL CASES</h4>
+                <h4 class="level-title second-level-title float-elem float-down el-2">成功案例</h4>
+
                 <p class="show-intro float-elem float-down el-3">我们学习海量国内外优质作品;<br>只为了创作更好的优秀作品</p>
                 <ul class="show-btn-list float-elem float-down el-4" data-eventname="查看作品分类" data-key="分类">
                     <?php foreach ($cateList as $key => $cate): ?>
@@ -322,8 +326,10 @@ use yii\helpers\Url;
          <ul class="show-right float-elem float-down el-1" data-eventname="查看作品" data-key="作品ID">
             <?php foreach ($videoList['list'] as $key=>$value):?>
                 <li>
-                    <a class="dplus-link video-cover " data-value="108864"
-                       data-link="<?php echo Url::to(['default/detail', 'video_id' => $value['video_id']])?>"/>
+<!--                    <a class="dplus-link video-cover " data-value="108864"-->
+<!--                       data-link="--><?php //echo Url::to(['default/detail', 'video_id' => $value['video_id']])?><!--"/>-->
+                    <a class="dplus-link video-cover " data-value="108864" href="<?php echo $value['video_url']; ?> " target="_blank"/>
+
                         <img class="lazy-img1"
                              src="<?php echo $value['poster']; ?>">
                         <div class="video-cover-con">
@@ -365,7 +371,8 @@ use yii\helpers\Url;
                 <?php endforeach;?>
             </ul>
             <div class="show-right select-list">
-                <h4 class="level-title second-level-title float-elem float-down el-2">发现优秀创作人</h4>
+                <h4 class="level-title second-level-title float-elem float-down el-2">TEAM ADVANTAGE</h4>
+                <h4 class="level-title second-level-title float-elem float-down el-2">团队优势</h4>
                 <p class="show-intro float-elem float-down el-3">优秀创作团队<br>优秀创作人聚集地，专业流程，<br>搭建优质创作人团队</p>
             </div>
         </div>
@@ -398,7 +405,7 @@ use yii\helpers\Url;
 
     $(".disabled").attr("disabled", true);
     $(".disabled").css("pointer-events", "none");
-    $(".incremental-counter").incrementalCounter();
+    // $(".incremental-counter").incrementalCounter();
 
     $(".dplus-link").live("click", function () {
         var _this = $(this),

@@ -93,4 +93,17 @@ class DefaultController extends BaseController
             ]);
         }
     }
+
+    /*
+     * 注册页面
+     *
+     * */
+    public function actionSignup(){
+
+        return $this->render('signup');
+
+
+    }
+
+
 }
