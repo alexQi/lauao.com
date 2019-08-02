@@ -11,7 +11,7 @@ use yii\helpers\Url;
     <meta charset="utf-8" class="next-head" />
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" class="next-head" />
     <meta name="description" content="维尔斯用户中心" class="jsx-1447149503 next-head" />
-    <title>注册 - 宣城直播</title>
+    <title>注册 - 宣城维尔斯</title>
 <!--    <link rel="preload" href="../static2.xpccdn.com/_next/static/images/flags-d47f95db62c588818ee472d7895eaedf.png" as="image" class="jsx-512335254 next-head" />-->
 <!--    <link rel="preload" href="../static2.xpccdn.com/_next/static/production-38/pages/signup.js" as="script" />-->
 <!--    <link rel="preload" href="../static2.xpccdn.com/_next/static/production-38/pages/_app.js" as="script" />-->
@@ -76,7 +76,7 @@ use yii\helpers\Url;
                 <a class="jsx-1447149503" href="<?php echo Yii::$app->request->hostInfo; ?>">
                     <img src="./xinpian/images/logo40.png" width="120" height="40" style="">
                 </a>
-                <h1 lang="zh" class="jsx-1447149503">让直播成为⽣活中的标配</h1>
+                <h1 lang="zh" class="jsx-1447149503">让维尔斯成为⽣活中的标配</h1>
             </div>
             <div class="ant-card card___6iDVc">
                 <div class="ant-card-body">
