@@ -94,6 +94,16 @@ class DefaultController extends BaseController
         }
     }
 
+    public function actionNewabout()
+    {
+        //if ($this->isMobile) {
+
+
+            return $this->render('mobile/newabout');
+        //}
+
+    }
+
     /*
      * 注册页面
      *
@@ -104,6 +114,8 @@ class DefaultController extends BaseController
 
 
     }
+
+
 
 
 }
