@@ -18,14 +18,14 @@
 </head>
 <body>
 <div >
-    <div class="layui-container">
+
     <div class="layui-row" >
             <div >
                 <img class="layui-col-xs12" src="http://image.sboyo.com/ahwes_app_images.jpg" />
             </div>
 
         </div>
-    </div>
+
 
 
 </div>
