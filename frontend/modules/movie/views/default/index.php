@@ -531,6 +531,7 @@ use yii\helpers\Url;
             <div class="bottom-con">
                 <span class="copyright">Copyright © 2017 - 2019 维尔斯. All rights reserved.</span>
                 <span class="copyright">皖ICP备17005514号-1</span>
+                <span class="copyright">皖网文[2019] 4652-199 号</span>
             </div>
             <div class="bottom-statute">
                 <a target="_blank"  href="http://report.ccm.gov.cn/" class="disabled">12318全国文化市场举报平台</a>

@@ -2774,7 +2774,7 @@ input {
 
 .footer-wrap .footer-bottom .bottom-con {
     height: 30px;
-    width: 500px;
+    width: 600px;
     margin: 0 auto;
     line-height: 40px;
     padding: 0 5px;
@@ -2798,7 +2798,7 @@ input {
 .footer-wrap .footer-bottom .bottom-con .copyright {
     font-size: 12px;
     color: #999;
-    margin-right: 27px;
+    margin-right: 5px;
 }
 
 
