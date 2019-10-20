@@ -36,7 +36,7 @@ use yii\helpers\Url;
          .po-bottom-title{ letter-spacing: 6px;text-align: center;font-weight: bold;font-size: 25px;margin-bottom: 90px }
 
           .po-header-background{ background:url('http://advert.sboyo.com/ahwesbg.png')
-          center center no-repeat;background-size: 28% 90% ;padding: 5px 0px;}
+          center center no-repeat;background-size: 20% 90% ;padding: 5px 0px;}
 
           .po-bottom-fixed{border-top: solid 1px #f2f2f2;position: fixed;bottom: 0px;width: 100%;background-color: white;padding: 10px}
 
