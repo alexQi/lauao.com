@@ -66,7 +66,8 @@ use common\models\Pay\Wechat;
         signature: '<?php echo $data["signature"];?>',
         jsApiList: [
             'checkJsApi',//判断当前客户端版本是否支持指定JS接口
-            'updateAppMessageShareData',//分享到朋友圈
+            'onMenuShareTimeline',//分享到朋友圈
+            'onMenuShareAppMessage'
         ]
     });
     wx.ready(function () {
@@ -80,7 +81,20 @@ use common\models\Pay\Wechat;
         //         alert(JSON.stringify(res));
         //     }
         // });
-        wx.updateAppMessageShareData({
+        wx.onMenuShareAppMessage({
+            title: '维尔斯直播团队', // 分享标题
+            desc: '让直播成为生活的标配', // 分享描述
+            link: 'https://www.ahwes.com/movie-default-newabout.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'https://www.ahwes.com/xinpian/images/sharelogo.jpg', // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户点击了分享后执行的回调函数
+            }
+        });
+
+
+        wx.onMenuShareTimeline({
             title: '维尔斯直播团队', // 分享标题
             desc: '让直播成为生活的标配', // 分享描述
             link: 'https://www.ahwes.com/movie-default-newabout.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
@@ -89,6 +103,7 @@ use common\models\Pay\Wechat;
                 // 设置成功
             }
         })
+
     });
 
 </script>
