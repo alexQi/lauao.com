@@ -43,7 +43,10 @@ use common\models\Pay\Wechat;
 
     </div>
     <div class="footer" >皖ICP备17005514号-1 皖网文[2019] 4652-199 号</div>
-<script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"/>
+
+</div>
+</body>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
 
 <script type="text/javascript">
 
@@ -62,29 +65,28 @@ use common\models\Pay\Wechat;
         ]
     });
 
-    wx.ready(function () {
+wx.ready(function () {
 
-        wx.updateAppMessageShareData({
-            title: '维尔斯直播团队', // 分享标题
-            desc: '让直播成为生活的标配', // 分享描述
-            link: 'https://www.ahwes.com/movie-default-newabout.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: 'https://www.ahwes.com/xinpian/images/blue-v.png', // 分享图标
-            success: function () {
-                // 设置成功
-            }
-        });
-
-        wx.updateTimelineShareData({
-            title: '维尔斯直播团队', // 分享标题
-            link: '让直播成为生活的标配', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: 'https://www.ahwes.com/xinpian/images/blue-v.png', // 分享图标
-            success: function () {
-                // 设置成功
-            }
-        });
-
+    wx.updateAppMessageShareData({
+        title: '维尔斯直播团队', // 分享标题
+        desc: '让直播成为生活的标配', // 分享描述
+        link: 'https://www.ahwes.com/movie-default-newabout.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://www.ahwes.com/xinpian/images/blue-v.png', // 分享图标
+        success: function () {
+            // 设置成功
+        }
     });
 
-</script>
+    wx.updateTimelineShareData({
+        title: '维尔斯直播团队', // 分享标题
+        link: '让直播成为生活的标配', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://www.ahwes.com/xinpian/images/blue-v.png', // 分享图标
+        success: function () {
+            // 设置成功
+        }
+    });
 
-</div>
+});
+
+</script>
+</html>
