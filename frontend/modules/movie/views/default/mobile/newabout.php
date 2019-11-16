@@ -12,11 +12,11 @@ use common\models\Pay\Wechat;
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>宣城直播创作团队</title>
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
-<!--    <link rel="stylesheet" href="./layui/css/layui.css">-->
-<!--    <script src="./layui/layui.js"></script>-->
+    <title>维尔斯直播团队</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <script src="./layui/layui.js"></script>
     <style>
         .footer{
             position: fixed;
@@ -95,6 +95,15 @@ wx.ready(function () {
         dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
         success: function () {
 // 用户点击了分享后执行的回调函数
+        }
+    });
+
+    wx.onMenuShareTimeline({
+        title: '维尔斯直播团队', // 分享标题
+        link: '让直播成为生活的标配', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: 'https://www.ahwes.com/xinpian/images/sharelogo.jpg', // 分享图标
+        success: function () {
+            // 设置成功
         }
     });
 
