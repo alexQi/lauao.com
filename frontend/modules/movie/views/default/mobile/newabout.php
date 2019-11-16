@@ -67,7 +67,9 @@ use common\models\Pay\Wechat;
         jsApiList: [
             'checkJsApi',//判断当前客户端版本是否支持指定JS接口
             'updateAppMessageShareData',//分享到朋友圈
-            'updateTimelineShareData'
+            'updateTimelineShareData',
+            'onMenuShareAppMessage',//老版本分享接口。
+            'onMenuShareTimeline'//老版本分享接口。
         ]
     });
     wx.ready(function () {
