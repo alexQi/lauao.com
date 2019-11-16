@@ -7,6 +7,7 @@ use common\models\Pay\Wechat;
 use common\models\ActivityBase;
 use common\models\VideoCategory;
 use common\models\VideoMember;
+use frontend\models\WechatJSSKD;
 use frontend\models\VideoService;
 use Yii;
 use frontend\controllers\BaseController;
@@ -112,10 +113,19 @@ class DefaultController extends BaseController
 
     public function actionNewabout()
     {
+        $appid ='wxcb2711060169adca' ;
+        $secret ='d8ebc47e79dffcaf97280b24e60ba66f';
+        $jssdk = new WechatJSSKD($appid, $secret);
+        $signPackage = $jssdk->GetSignPackage();
+
+        //echo '<pre>';
+        //print_r($signPackage);
         //if ($this->isMobile) {
+            //var_dump()
+            //var_dump($wechat->getAccessToken());
+            return $this->render('mobile/newabout',['data'=>$signPackage]
 
-
-            return $this->render('mobile/newabout');
+            );
         //}
 
     }
@@ -138,6 +148,10 @@ class DefaultController extends BaseController
 
         return $this->render('mobile/hapyear');
     }
+
+
+
+
 
 
 }
