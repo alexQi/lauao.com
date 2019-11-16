@@ -43,7 +43,7 @@ use common\models\Pay\Wechat;
 
     </div>
     <div class="footer" >皖ICP备17005514号-1 皖网文[2019] 4652-199 号</div>
-<script src="http://res.wx.qq.com/open/js/jweixin-1.4.0.js"/>
+<script src="https://res.wx.qq.com/open/js/jweixin-1.4.0.js"/>
 
 <script>
 
