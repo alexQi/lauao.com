@@ -66,35 +66,13 @@ use common\models\Pay\Wechat;
         signature: '<?php echo $data["signature"];?>',
         jsApiList: [
             'checkJsApi',//判断当前客户端版本是否支持指定JS接口
-            'onMenuShareTimeline',//分享到朋友圈
-            'onMenuShareAppMessage'
+            'updateAppMessageShareData',//分享到朋友圈
+            'updateTimelineShareData'
         ]
     });
     wx.ready(function () {
-        // 分享到朋友圈
-        // wx.onMenuShareTimeline({
-        //     title: '测试朋友圈', // 商品名
-        //     link: 'http://umk2hh.natappfree.cc/v1/web/oauth', // 分享链接   与公众号后台一致
-        //     desc: '测试分享到朋友圈', // 描述
-        //     imgUrl: 'http://135523_DRVV_1444646.jpg', // 分享的图标
-        //     fail: function (res) {
-        //         alert(JSON.stringify(res));
-        //     }
-        // });
-        wx.onMenuShareAppMessage({
-            title: '维尔斯直播团队', // 分享标题
-            desc: '让直播成为生活的标配', // 分享描述
-            link: 'https://www.ahwes.com/movie-default-newabout.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-            imgUrl: 'https://www.ahwes.com/xinpian/images/sharelogo.jpg', // 分享图标
-            type: '', // 分享类型,music、video或link，不填默认为link
-            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-            success: function () {
-                // 用户点击了分享后执行的回调函数
-            }
-        });
 
-
-        wx.onMenuShareTimeline({
+        wx.updateAppMessageShareData({
             title: '维尔斯直播团队', // 分享标题
             desc: '让直播成为生活的标配', // 分享描述
             link: 'https://www.ahwes.com/movie-default-newabout.html', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
@@ -102,7 +80,16 @@ use common\models\Pay\Wechat;
             success: function () {
                 // 设置成功
             }
-        })
+        });
+
+        wx.updateTimelineShareData({
+            title: '维尔斯直播团队', // 分享标题
+            link: '让直播成为生活的标配', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+            imgUrl: 'https://www.ahwes.com/xinpian/images/sharelogo.jpg', // 分享图标
+            success: function () {
+                // 设置成功
+            }
+        });
 
     });
 
