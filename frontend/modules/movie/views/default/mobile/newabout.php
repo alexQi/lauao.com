@@ -66,7 +66,7 @@ use common\models\Pay\Wechat;
         signature: '<?php echo $data["signature"];?>',
         jsApiList: [
             'checkJsApi',//判断当前客户端版本是否支持指定JS接口
-            'onMenuShareTimeline',//分享到朋友圈
+            'updateAppMessageShareData',//分享到朋友圈
         ]
     });
     wx.ready(function () {
