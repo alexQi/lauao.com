@@ -23,8 +23,10 @@ class UploadFileController extends BaseController
                 throw new Exception('Bucket 未定义');
             }
 
-            $fileFormName = yii::$app->request->get('fileClass').'[tempFileUrl]';
+            $fileFormName = yii::$app->request->get('fileClass').'[tempFileUrl][0]';
+
             $uploadFile = UploadedFile::getInstanceByName($fileFormName);
+
             if (!$uploadFile){
                 throw new Exception('未检测到上传文件');
             }
