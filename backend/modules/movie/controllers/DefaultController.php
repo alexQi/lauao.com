@@ -80,8 +80,8 @@ class DefaultController extends Controller {
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->video_id]);
             }else{
-                $error=$model->getFirstErrors();
-                throw new HttpException('1',end($error));
+                $error=end($model->getFirstErrors());
+                throw new HttpException('1',$error);
             }
         } else {
             $videoCategory = VideoCategorySearch::find()->select(['id', 'cate_name'])->asArray()->all();
