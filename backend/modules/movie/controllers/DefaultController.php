@@ -78,7 +78,7 @@ class DefaultController extends Controller {
             $model->video_time = rand(50, 300);
             $model->created_at = date("Y-m-d H:i:s", time());
             $model->updated_at = date("Y-m-d H:i:s", time());
-            $model->tempFileUrl='test';
+            //$model->tempFileUrl='test';
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->video_id]);
             }else{

@@ -22,6 +22,7 @@ use yii\helpers\ArrayHelper;
  * @property string $updated_at
  */
 class Video extends \yii\db\ActiveRecord {
+
     public $tempFileUrl;
 
     /**
@@ -39,7 +40,8 @@ class Video extends \yii\db\ActiveRecord {
             [['video_cate_id', 'video_name', 'video_url', 'poster', 'play_num', 'like_num', 'uploader', 'video_time', 'created_at', 'updated_at'], 'required'],
             [['video_cate_id', 'play_num', 'like_num'], 'integer'],
             [['created_at', 'updated_at', 'status', 'sort'], 'safe'],
-            [['video_name', 'video_url', 'poster', 'uploader', 'tempFileUrl'], 'string', 'max' => 255],
+            [['video_name', 'video_url', 'poster', 'uploader', 'tempFileUrl'], 'string', 'max' => 255,'min'=>0],
+            //[['video_name', 'video_url', 'poster', 'uploader'], 'string', 'max' => 255],
         ];
     }
 
