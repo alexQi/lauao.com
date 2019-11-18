@@ -72,17 +72,22 @@ class DefaultController extends Controller {
             if ($model->poster == '') {
                 throw new \HttpInvalidParamException('文件未上传');
             }
+
             $model->play_num   = rand(100, 1000);
             $model->like_num   = rand(100, 1000);
             $model->video_time = rand(50, 300);
             $model->created_at = date("Y-m-d H:i:s", time());
             $model->updated_at = date("Y-m-d H:i:s", time());
+            $model->tempFileUrl='test';
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->video_id]);
             }else{
                 $msg=$model->getFirstErrors();
                 throw new HttpException('1',end($msg));
             }
+
+
+
         } else {
             $videoCategory = VideoCategorySearch::find()->select(['id', 'cate_name'])->asArray()->all();
 
