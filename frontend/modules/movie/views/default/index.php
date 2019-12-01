@@ -504,7 +504,7 @@
 
                 <li >
                     <div>
-                        <img src="./xinpian/img/Tik.png" />
+                        <img src="./xinpian/img/tik.png" />
                     </div>
                     <p>关注抖音</p>
                 </li>
