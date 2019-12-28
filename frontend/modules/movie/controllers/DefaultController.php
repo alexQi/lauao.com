@@ -130,6 +130,21 @@ class DefaultController extends BaseController
 
     }
 
+
+    public function actionGreenwoodabout()
+    {
+        $appid ='wxcb2711060169adca' ;
+        $secret ='d8ebc47e79dffcaf97280b24e60ba66f';
+        $jssdk = new WechatJSSKD($appid, $secret);
+        $signPackage = $jssdk->GetSignPackage();
+
+        return $this->render('mobile/greenwoodabout',['data'=>$signPackage]
+
+        );
+        //}
+
+    }
+
     /*
      * 注册页面
      *
