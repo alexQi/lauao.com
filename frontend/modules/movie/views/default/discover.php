@@ -168,7 +168,7 @@ if ($video_cate_id) {
                 <a class="disabled" href="#" >活动</a>
             </li>
             <li class="nav-item">
-                <a class="disabled" href="#" >维尔斯影业</a>
+                <a href="<?php echo Url::to(['/movie/default/about']) ?>">关于维尔斯</a>
             </li>
 <!--            <li class="nav-item">-->
 <!--                <a class="disabled" href="" target="_blank">魔力短视频</a>-->
