@@ -1,542 +1,606 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>宣城直播</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="robots" content="all"/>
+    <meta name="author" content=""/>
+    <meta name="Copyright" content=""/>
     <meta name="renderer" content="webkit">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta name="keywords" content="宣城直播,企业会议,教育培训直播,体育直播,电商直播">
-    <meta name="description" content="让直播成为生活中的标配">
-    <link rel="stylesheet" href="./layui/css/layui.css">
-
-
-     <style>
-
-         /*https://q42.github.io/delighters/*/
-
-         .ahwes-header{
-             position: fixed;
-             top: 0px;
-             width: 100%;
-             z-index: 999;
-
-             height: 65px;
-             background-color: rgba(0,0,0,0);
-             overflow: hidden;
-         }
-
-         .ahwes-header.scroll{ background-color: rgba(0,0,0,.7); }
-
-         .ahwes-bars{
-             position: absolute;
-             left: 250px;
-             /* top: 0; */
-             /* padding: 0; */
-             background: none;}
-
-          .logo{
-             position: absolute;
-             top: 10px;
-             left: 25px;
-
-         }
-
-          .logo img{ width: 220px;height: 45px;}
-
-         .ahwes-title{padding: 10px 10px 0px 25px; }
-
-         .ahwes-title .two{ text-align: center}
-
-         .ahwes-title p{ }
-
-         .number{display: inline;width:30px;padding-right:15px;font-size: 75px;font-weight: bold}
-         .enname{display: inline;width: 200px;vertical-align:top;font-size: 28px;letter-spacing: 5px;}
-
-         .cnname{font-size: 35px;font-weight: bold;letter-spacing: 3px;}
-         .cnname2{font-size: 28px;font-weight: bold;letter-spacing: 3px;}
-
-         .ahwes-content p{padding: 10px 10px 0px 25px; font-size:14px;line-height: 30px;margin: 20px 0px}
-
-         .ahwes-business li{
-             list-style-type: none;
-             width: 100px;
-             float: left;
-             /*line-height: 40px;!*行内元素不能设置高度，但可以设置行高*!*/
-             text-align: center;/*让li内的内容水平居中，行内元素默认垂直居中*/
-             padding: 10px 0px;
-
-         }
-         .pic {margin:0 auto;
-             -webkit-border-radius: 40px;
-             -moz-border-radius: 40px;
-             border-radius: 40px;
-             background-color:#4e694a;
-             width: 80px;
-             height: 80px;
-             position: relative;
-         }
-         .pic img{width: 50px;
-             height: 50px;
-             position: absolute;
-             top: 0;
-             left: 0;
-             right: 0;
-             bottom: 0;
-             margin: auto;}
-
-         .ahwes-business #title{ font-size: 15px;font-weight: bold;padding-top: 16px;padding-bottom: 5px;color: white}
-         .ahwes-business #enname{ font-size: 10px;color: #f8faf9;letter-spacing: 1px;}
-
-
-         .ones{color: white;height: 780px;padding-top: 80px}
-         .twos{padding-top: 65px}
-         #roundone{
-             background: url(http://images.ahwes.com/background001.png) no-repeat;
-             background-size: 100% 100%;
-             width: 100%;
-         }
-
-         #sixbackground{
-
-             background: url(http://images.ahwes.com/background006.png) no-repeat;
-             background-size: 100% 100%;
-             width: 100%;
-             height: 500px;
-         }
-
-         .ahwes-twotitleexend{ padding-top: 400px;color: white;padding-left: 65px}
-
-         .ahwes-sixtitleexend{ padding-top: 50px;color: white;padding-left: 65px}
-
-         .ahwes-footer {
-             position: relative;
-             height: 280px;
-             background-color: #f9f9f9;
-
-         }
-
-         .ahwes-copyRight p{
-             position: absolute;
-             bottom: 10px;
-             margin: auto 0;
-             height: 34px;
-             font-size: 12px;
-             line-height: 34px;
-             color: #bbc2cd;
-             text-align: center;
-             width: 100%;
-         }
-
-         .ahwes-footer hr{position: absolute;
-             bottom:45px; width: 100%}
-
-         .ahwes-advert{ color: #bbc2cd; font-size: 25px;text-align: center;font-weight: bold ;letter-spacing: 5px;position: absolute;bottom: 70px;left: 32px}
-
-         .ahwes-contact{ color: #bbc2cd; padding: 20px}
-         .ahwes-contact p{margin: 5px;padding: 5px}
-
-         .ahwes-contact .ahwesico{ font-size: 20px; padding-right: 5px; color: #bbc2cd;}
-
-          #roundsix{color: white;background: #4e694a;margin-top: 20px}
-
-         .ahwes-our{margin: 30px}
-
-         .ahwes-ourlist { width:100%
-
-                               list-style: none;
-                               margin:10px 80px;
-                               }
-
-         .ahwes-ourlist li{width:170px;
-             margin:0 10px;
-           float: left;/*该处换为display:inline-block;同样效果*/}
-         .ahwes-ourlist p{ padding: 10px 20px;text-align: center}
-
-         .ahwes-qrcode li {float: left;margin: 50px 10px;}
-
-         .ahwes-qrcode p {font-weight: bold;color:#bbc2cd ;text-align: center;padding: 10px}
-         .ahwes-qrcode img {width: 120px ;height: 120px;}
-
-     </style>
-
-
+    <title> 维尔斯创作团队 - 专业的影视创作</title>
+    <meta name="keywords" content="新媒体电影,新媒体影视,互联网影视,互联网电影,发行,短片,微电影,原创视频,创作人"/>
+    <meta name="description"
+          content="维尔斯是国内专业的影视创作人社区，汇聚众多优秀创作人，提供作品展示、项目交流、拍摄制作机会等影视行业服务。在这里，你可以找到最合适的创作人；在这里，用作品打动世界！"/>
+    <link rel="stylesheet"
+          href="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/css/new-web/font-icon-v=1519469245.css">
+    <link rel="stylesheet"
+          href="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/css/new-web/common-v=1520334715.css">
+    <script>
+        if (top.location != location) {
+            top.location.href = location.href;
+        }
+    </script>
+    <script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/jquery-1.7.1.min.js"></script>
+    <script src="./layui/layui.js"></script>
 </head>
 <body>
-<div class="ahwes-header">
-
-    <a class="logo" href="/">
-        <img src="./xinpian/img/logo.png"  />
-    </a>
-
-<ul class="layui-nav ahwes-bars " lay-filter="bar">
-<li class="layui-nav-item  layui-this"><a class="topLink" href="#roundone">企业简介</a></li>
-<li class="layui-nav-item "><a class="topLink" href="#roundtwo">发展历程</a></li>
-<li class="layui-nav-item "><a class="topLink" href="#roundfour">设备优势</a></li>
-<li class="layui-nav-item "><a class="topLink" href="#roundsix">合作伙伴</a></li>
-</ul>
+<div class="slide-bar">
+    <ul class="slide-bar-list">
+        <li class="to-up icon-arrow-top"></li>
+    </ul>
 </div>
-<!--企业简介-->
-<div class="layui-row " id="roundone" >
-<!--    <img src="./xinpian/img/03bg.png" height="200px" width="200px" style="float: top">  -->
-
-    <div class="layui-col-md6 ones">
-        <div class="ahwes-title">
-            <div style="float: left">
-                <h1 class="number">01</h1>
+<div class="search-wrap zIndex-2 dn opacity0">
+    <div class="search-box">
+        <div class="search-con">
+            <i class="base-v-center v-center"></i>
+            <div class="search-left">
+                <span class="search-btn icon-search"></span>
+                <form action="/index.php" mothod="get">
+                    <input type="hidden" name="app" value="search">
+                    <input class="search-input" type="text" name="kw" placeholder="搜索作品、创作人、文章">
+                </form>
             </div>
-            <p class="enname">COMPANY PROFILE</p>
-            <div style="clear: left">
-            <p class="cnname">企业简介</p>
-            </div>
-
+            <span class="search-close-btn icon-close"></span>
         </div>
-        <div class="ahwes-content">
-            <div class="layui-row">
-                <div class="layui-col-md6">
-                  <p>
-                      安徽维尔斯传媒策划有限公司是一家专注现场直播执行服务公司，主营业务有：教育培训直播、峰会论坛直播、户外活动直播、电商直播、医疗直播、年会庆典直播、音乐节直播等。现有员工23人，在安徽合肥、芜湖、马鞍山、铜陵、江苏南京、浙江杭州、上海等地设有分公司、截至目前，我们服务中大型活动700余次、线上同时观看用户最高370万人次。通过直播带货总销量突破2000万。
-                  </p>
-                  <p>
-                    Anhui Wealth Media Co., Ltd. was founded in 2016. Meanwhile,We created the subsidiary brand - The Live XuanCheng. Our company has 23 current staffs. Offices have been established at seven locations.A total of 278 live broadcast activities were carried out.
-                      We attracted more than 380000 regular fans in Xuanzhou District and the total number of visitors to the live broadcast platform was more than 20 million.
-                  </p>
-                </div>
-                <div class="layui-col-md6">
-                    <p>下一步,我们打算以安徽为片区开设直播网点,全面覆盖安徽16个地级市和54个县级市</p>
-                    <p>Next,we plan to set up outlets of live broad-cast in Anhui, covering 16 prefecture-level cities and 54 county-level cities in Anhui. </p>
-                </div>
-            </div>
-        </div>
-
-
-
-            </div>
-
-    <div class="layui-col-md6 ">
-       <div class="layui-row " >
-           <div class="layui-col-md8">
-               <div class="ahwes-title ahwes-twotitleexend">
-                   <div style="float: left">
-                   <h1 class="number">02</h1>
-                   </div>
-                   <div ">
-                   <h2 class="enname">BUSINESS SCOPE</h2>
-                   <h1 class="cnname2">业务介绍</h1>
-                   </div>
-
-               </div>
-           </div>
-           <div class="layui-col-md2 twos">
-               <ul class="ahwes-business">
-                   <li>
-                       <div class="pic">
-                          <img src="./xinpian/img/hy.png" />
-                       </div>
-                       <p id="title">企业会议</p>
-                       <p id="enname">BUSINESS</p>
-                       <p id="enname">MEETING</p>
-                   </li>
-                   <li>
-                       <div class="pic">
-                           <img src="./xinpian/img/jy.png" />
-                       </div>
-                       <p id="title">教育培训直播</p>
-                       <p id="enname">LIVE</p>
-                       <p id="enname">EDUCATIONAL</p>
-                       <p id="enname">TRAINING</p>
-                   </li>
-                   <li> <div class="pic">
-                           <img src="./xinpian/img/ty.png" />
-                       </div>
-                       <p id="title">体育直播</p>
-                       <p id="enname">LIVE</p>
-                       <p id="enname">SPORT</p>
-
-                   </li>
-               </ul>
-           </div>
-           <div class="layui-col-md2">
-
-               <ul class="ahwes-business">
-                   <li>
-                       <div class="pic">
-                           <img src="./xinpian/img/hd.png" />
-                       </div>
-                       <p id="title">盛典直播</p>
-                       <p id="enname">LIVE</p>
-                       <p id="enname">CEREMONY</p>
-                   </li>
-                   <li>
-                       <div class="pic">
-                           <img src="./xinpian/img/yy.png" />
-                       </div>
-                       <p id="title">音乐直播</p>
-                       <p id="enname">LIVE</p>
-                       <p id="enname">MUSIC</p>
-
-                   </li>
-                   <li> <div class="pic">
-                           <img src="./xinpian/img/yl.png" />
-                       </div>
-                       <p id="title">文化娱乐</p>
-                       <p id="enname">CULTURAL</p>
-                       <p id="enname">ENTERTAINMENT</p>
-
-                   </li>
-                   <li> <div class="pic">
-                           <img src="./xinpian/img/ds.png" />
-                       </div>
-                       <p id="title">电商直播</p>
-                       <p id="enname">LIVE</p>
-                       <p id="enname">E-COMMERCE</p>
-
-                   </li>
-               </ul>
-           </div>
-       </div>
     </div>
 </div>
+<div class="header-common zIndex-1 header-v2 fixed-header complex-header">
+    <div class="header-con">
+        <a class="logo v-center" href="<?php echo Url::to(['/movie/default/index']) ?>">
+            <span class="logo-wrap">
+                <img src="./xinpian/images/logo40.png" width="120" height="40" style="margin-top:10px;">
+            </span>
+        </a>
+        <ul class="fs_16 fw_300 nav-list clearfix v-center">
+            <li class="nav-item select">
+                <a href="<?php echo Url::to(['/movie/default/index']) ?>">首页</a>
+            </li>
+            <li class="nav-item hover-elem">
+                <i class="icon-arrow-down"></i>
+                <a href="<?php echo Url::to(['/movie/default/discover']) ?>">我们的案例</a>
+                <div class="common-hover-wrap issue-hover-wrap">
+                    <div class="hover-box">
+                        <ul class="list">
+                            <li class="nav-dropdown-item">
+                                <ul class="nav-sublist">
+                                    <?php foreach ($cateList as $key => $cate): ?>
+                                        <li class="nav-sublist-item">
+                                            <a href="<?php echo Url::to(['/movie/default/discover', 'video_cate_id' => $cate['id']]) ?>"><?php echo $cate['cate_name']; ?></a>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </li>
+                            <li class="line"></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
 
-<!--发展历程-->
-<div class="layui-row" id="roundtwo">
-    <div class="layui-col-md12">
+<?php ///*var_dump($videoList)*/?>
 
-            <div style="height: 570px; background: url('http://images.ahwes.com/background030.png');background-repeat:no-repeat;
-	background-size:100% 100%;
-	-moz-background-size:100% 100%;">
+            <li class="nav-item school ">
+                <a href="<?php echo Url::to(['/movie/default/rental']) ?>">器械租赁</a>
+            </li>
+            <li class="nav-item resource hover-elem">
+                <i class="icon-arrow-down"></i>
+                <a class="resource-video disabled" href="#">素材</a>
+            </li>
+            <li class="nav-item">
+                <a class="disabled" href="" target="_blank">活动</a>
+            </li>
+            <li class="nav-item">
+                <a href="<?php echo Url::to(['/movie/default/about']) ?>">关于维尔斯</a>
+            </li>
+            <li class="nav-item hover-elem">
+                <i class="icon-arrow-down"></i>
+                <a href="javascript:;">更多</a>
+            </li>
+<!--            <li class="nav-item newera">-->
+<!--                <a class="disabled" href="" target="_blank">-->
+<!--                    <img src="http://oss-xpc0.xpccdn.com/Upload/boss/2017/12/065a2769d0e9cf1.png">-->
+<!--                </a>-->
+<!--            </li>-->
+        </ul>
+        <ul class="fr right-part no-login">
+            <li class="search-btn icon-search"></li>
+<!--            <li class="reg-btn"><a class="disabled" href="">登录</a></li>-->
+            <li class="login-btn"><a  href="<?php echo Url::to(['/movie/default/signup'])?>">注册</a></li>
+        </ul>
+    </div>
+</div>
+<style>
+    .dialog-tip {
+        position: fixed;
+        color: #fff;
+        z-index: -1;
+        opacity: 0;
+        transition: all 1s;
+        -webkit-transition: all 1s;
+        -moz-transition: all 1s;
+        -ms-transition: all 1s;
+        width: 100%;
+        text-align: center;
+        background-color: #e74b3b;
+        height: 50px;
+        line-height: 50px;
+        transform: translateY(-50px);
+        -webkit-transform: translateY(-50px);
+        -moz-transform: translateY(-50px);
+        -ms-transform: translateY(-50px);
+        top: 0;
+        z-index: 100000;
+    }
 
-                    <div style="padding:10px;color:white;z-index:0;width: 320px;height: 250px;background:#669676 ;background-color: rgba(79, 105, 74,0.5);position: relative;top:20%">
+    .dialog-tip .tip-content {
+        padding-left: 20px;
+        background: url("<?php echo Yii::$app->request->hostInfo;?>/xinpian/images/error-notice@3x.png") no-repeat;
+        background-position: left;
+        background-size: 14px;
+        display: inline-block;
+    }
 
-                        <div class="ahwes-title" style="" >
-                            <div>
+    .tip-success {
+        background-color: #28ca42;
+    }
 
-                                <h1 class="number">03</h1>
-                            </div>
-                            <div>
-                                <h3 class="enname">DEVELOPMENT </h3>
-                                <h3 class="enname">HISTORY</h3>
-                                <h1 class="cnname2">发展历程</h1>
-                            </div>
+    .tip-success .tip-content {
+        background-image: url("<?php echo Yii::$app->request->hostInfo;?>/xinpian/images/success-notice@3x.png")
+    }
+</style>
+<div class="dialog-tip">
+    <span class="tip-content">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览器版本过低，为了正常使用请升级浏览器，推荐使用Chrome浏览器</span>
+</div>
+
+<script>
+    var noop = noop || function () {
+    };
+    var templete = $(".dialog-tip");
+
+    window.showDialogTip = function (obj, callback) {
+        callback = callback || obj.complete || noop;
+        //var type = obj.type || 'ERROR';
+        var content = obj.tip || (obj + '');
+        var timeout = obj.timeout || 2500;
+
+        // 每次showDialogTip，都要clone一个tip的模板，让每一次吐司都是独立的调用
+        var tip = templete.clone().appendTo(document.body);
+        tip.find(".tip-content").text(content);
+
+        setTimeout(function () {
+            // appendTo body 之后，需要一点时间（20ms,至少经过一个animate looper）来使得css生效
+            // 然后再增加dialog-top-show，就能有css动画了
+
+            tip.addClass("dialog-tip-show tip-" + (obj.error ? "" : "success")).css("z-index", 10003);
+
+            setTimeout(function () {
+                // timeout 后开始消失css动画
+                tip.removeClass("dialog-tip-show");
+                setTimeout(function () {
+                    // 500ms css小时动画结束后，移出append的tip
+                    tip.remove();
+                }, 500);
+                callback();
+            }, timeout);
+        }, 20);
+
+
+    }
+</script>
+<script type="text/javascript">
+        hoverElem = $(".hover-elem");
+    $(function () {
+
+        var searchWrap = $(".search-wrap"),
+            searchLeft = $(".search-left"),
+            searchBtn = $(".search-btn"),
+            searchClose = $(".search-close-btn"),
+            searchInput = $(".search-input");
+        searchBtn.on("click", function () {
+            searchWrap.removeClass("dn opacity0");
+            setTimeout(function () {
+                searchLeft.find("input").focus();
+                searchLeft.addClass("slideLeft")
+                searchClose.addClass("show");
+                searchInput.focus();
+            }, 30);
+        });
+
+        searchClose.on("click", searchInit);
+
+        searchWrap.on("click", function (e) {
+            if (e.target.className.indexOf("search-wrap") != -1) {
+                searchInit();
+            }
+        });
+
+        function searchInit() {
+            searchWrap.addClass("opacity0");
+            setTimeout(function () {
+                searchWrap.addClass("dn");
+            }, 150);
+            searchLeft.removeClass("slideLeft")
+            searchClose.removeClass("show");
+        }
+
+        hoverElem.hover(function (e) {
+            var _this = $(this),
+                hoverWrap = _this.find(".common-hover-wrap");
+            hoverWrap.addClass('visible')
+
+        }, function (e) {
+            var _this = $(this),
+                hoverWrap = _this.find(".common-hover-wrap");
+            hoverWrap.removeClass('visible')
+        });
+
+    })
+
+    $(".slide-bar .to-up").on("click", function () {
+        $("html,body").animate({scrollTop: 0}, 800);
+    });
+
+    checkPosition($(window).height());
+    $(window).on("scroll", function () {
+        checkPosition($(window).height());
+    });
+
+    function checkPosition(pos) {
+        if ($(window).scrollTop() > pos) {
+            $(".to-up").fadeIn();
+        } else {
+            $(".to-up").fadeOut();
+        }
+        ;
+    };
+
+    $('.to-wap').hover(function () {
+        $('#qrcode').removeClass("dn");
+    }, function () {
+        $('#qrcode').addClass("dn");
+    })
+</script>
+<style type="text/css">body {
+        background-color: #fff !important;
+    }
+
+    .slide-bar {
+        display: none;
+    }
+
+    .incremental-counter {
+        letter-spacing: 2px;
+        font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    }
+
+    .incremental-counter .num, .incremental-counter .do {
+        display: inline-block;
+    }
+</style>
+<div class="wrappage-container">
+    <div class="wrappage-cover-wrap banner-wrap">
+        <video id="backgroundmovie"  src="http://video.sboyo.com/ahweslogo2018.mp4" loop muted autoplay preload
+       class="need-though-play opacity0"></video>
+        <div class="wrappage-cover-main">
+            <div class="wrappage-cover-center">
+                <div class="wrappage-cover-detail">
+                    <p class="slogan">让维尔斯成为⽣活中的标配</p>
+                    <p class="join-num">
+<!--                        <i class="incremental-counter" data-current="13848610" data-value="13848610">13848610</i>位⽤户观看了直播</p>-->
+                </div>
+<!--                <div class="btn-wrap" data-key="位置">-->
+<!--                    <a class="dplus-link join-btn bg-red"-->
+<!--                       href="--><?php //echo Url::to(['/movie/default/discover']) ?><!--">随便逛逛</a>-->
+<!---->
+<!--                    <a  id="show-weixin" class="dplus-link join-btn bg-transparent " href="javascript:;"-->
+<!--                       data-link=""-->
+<!--                       data-value="头部" >联系我们</a>-->
+<!---->
+<!---->
+<!--                </div>-->
+
+                 </div>
+        </div>
+    </div>
+    <div class="article-set-box">
+        <div class="article-show-box float-contaniner">
+            <div class="show-left select-list">
+
+                    <h4 class="level-title second-level-title float-elem el-2">SUCESSFUL CASES</h4>
+                <h4 class="level-title second-level-title float-elem float-down el-2">成功案例</h4>
+
+                <p class="show-intro float-elem float-down el-3">我们学习海量国内外优质作品;<br>只为了创作更好的优秀作品</p>
+                <ul class="show-btn-list float-elem float-down el-4" data-eventname="查看作品分类" data-key="分类">
+                    <?php foreach ($cateList as $key => $cate): ?>
+                        <li>
+                            <a class="dplus-link" href="javascript:;"
+                               data-link="<?php echo Url::to(['default/discover', 'video_cate_id' => $cate['id']]) ?>"><?php echo $cate['cate_name']; ?></a>
+                        </li>
+                    <?php endforeach; ?>
+                    <li><a class="dplus-link disabled">more</a></li>
+                </ul>
+            </div>
+         <ul class="show-right float-elem float-down el-1" data-eventname="查看作品" data-key="作品ID">
+            <?php foreach ($videoList['list'] as $key=>$value):?>
+                <li>
+<!--                    <a class="dplus-link video-cover " data-value="108864"-->
+<!--                       data-link="--><?php //echo Url::to(['default/detail', 'video_id' => $value['video_id']])?><!--"/>-->
+                    <a class="dplus-link video-cover " data-value="108864" href="<?php echo $value['video_url']; ?> " target="_blank"/>
+
+                        <img class="lazy-img1"
+                             src="<?php echo $value['poster']; ?>">
+                        <div class="video-cover-con">
+
+                            <span class="duration fs_12"></span>
+                        </div>
+                        <div class="video-hover-con">
+                            <div class="fs_12 fw_600 c_w_f desc line-hide-2"><?php echo $value['video_name']; ?></div>
+                            <span class="fs_10 fw_300 "><?php echo $value['cate_name']; ?></span>
 
                         </div>
-
-                    </div>
-
-
-            </div>
-
-    </div>
-    <div class="layui-col-md12">
-        <div style="height: 520px; background: url('http://images.ahwes.com/background031.png');background-repeat:no-repeat;
-        background-size:100% 100%;
-        -moz-background-size:100% 100%;"></div>
-
-    </div>
-</div>
-<!--设备优势-->
-<div class="layui-row" id="roundfour">
-    <div class="layui-col-md12">
-        <div class="layui-row" style="height: 580px; margin: 0 auto; background: url(http://images.ahwes.com/background040.png) no-repeat top center;
-                 /* 以父元素的百分比来设置背景图像的宽度和高度。*/
-               background-size:100% 100%; ">
-            <div style=" position: relative;top:40%">
-
-                <div class="ahwes-title" style="position: relative; /*脱离文档流*/
-            top: 30%; /*偏移*/">
-                    <div style="float: left">
-                        <h1 class="number">04</h1>
-                    </div>
-                    <div>
-                        <h2 class="enname">EQUIPMENT ADVANTAGES</h2>
-                        <h1 class="cnname2">设备优势</h1>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-        </div>
-    </div>
-    <div class="layui-col-md12">
-        <div style="height: 320px; background: url('http://images.ahwes.com/background041.png');background-repeat:no-repeat;
-        background-size:100% 100%;
-        -moz-background-size:100% 100%;"></div>
-    </div>
-</div>
-
-
-<!--合作伙伴-->
-<div class="layui-row " id="roundsix">
-
-    <div class="layui-col-md12">
-        <div class="ahwes-title ahwes-sixtitleexend">
-            <div style="float: left">
-                <h1 class="number">06</h1>
-            </div>
-            <div>
-            <h2 class="enname">OUR PARTNERS</h2>
-            <h1 class="cnname2">合作伙伴</h1>
-        </div>
-
-    </div>
-    </div>
-
-    <div class="layui-col-md12" >
-        <div id="sixbackground"></div>
-
-    </div>
-
-    <div class="layui-col-md12">
-
-        <div class="layui-row ahwes-our">
-            <ul class="ahwes-ourlist">
-                <li>
-                    <div >
-                        <p>北京现代</p>
-                        <p>中国平安</p>
-                        <p>三只松鼠</p>
-                        <p>百辣归川</p>
-                        <p>湖南卫视</p>
-                        <p>安徽卫视</p>
-                        <p>东方卫视</p>
-                    </div>
+                    </a>
                 </li>
-                <li>
-                    <div>
-                        <p>拾光瑜伽</p>
-                        <p>小城渔家</p>
-                        <p>中国电信</p>
-                        <p>中国移动</p>
-                        <p>中国联通</p>
-                        <p>宣城论坛</p>
-                        <p>益益乳业</p>
-                    </div>
-                </li>
-                <li>
-                    <div >
-                        <p>泾县论坛</p>
-                        <p>宣城社区</p>
-                        <p>建材商会</p>
-                        <p>吖吖孕婴</p>
-                        <p>迪儿母婴</p>
-                        <p>阿里巴巴</p>
-                        <p>今日头条</p>
-                    </div>
-                </li>
-                <li>
-                    <div >
-                        <p>盛唐金融</p>
-                        <p>美的冰箱</p>
-                        <p>一汽丰田</p>
-                        <p>北汽坤宝</p>
-                        <p>徽商银行</p>
-                        <p>溜溜果园</p>
-                        <p>可口可乐</p>
-                    </div>
-                </li>
-                <li>
-                    <div >
-                        <p>保时捷</p>
-                        <p>周黑鸭</p>
-                        <p>报喜鸟</p>
-                        <p>新片场</p>
-                        <p>叮当星</p>
-                        <p>九牧王</p>
-                        <p>淘宝网</p>
-                    </div>
-                </li>
-                <li>
-                    <div >
-                        <p>梅赛德斯-奔驰</p>
-                        <p>腾讯(Tencent)</p>
-                        <p>宝马(BMW)</p>
-                        <p>奥迪(Audi)</p>
-                        <p>碧邦广告</p>
-                        <p>万达集团</p>
-                        <p>优之颜</p>
-                    </div>
-                </li>
-                <li>
-                    <div >
-                        <p>上海浦东发展银行</p>
-                        <p>碧桂园黄金时代</p>
-                        <p>中国农业银行</p>
-                        <p>中国建设银行</p>
-                        <p>中国人民保险</p>
-                        <p>中国好声音</p>
-                        <p>抖音短视频</p>
-                    </div>
-                </li>
+
+            <?php endforeach;?>
+
             </ul>
+
+        </div>
+        <div class="creator-show-box float-contaniner">
+            <ul class="show-left float-elem float-down el-1" data-eventname="查看创作人" data-key="创作人ID">
+                <?php foreach($memberList as $key=>$value):?>
+
+                <li>
+                    <a class="dplus-link disabled" data-link="/u10001639" data-value="10001639">
+                        <img class="avator"
+                             src="<?php echo $value['avatar_url'] ?>">
+                        <div class="cover">
+                            <div class="cover-inner">
+                                <div class="name-wrap">
+                                    <span class="fs_14 fw_600 name"><?php echo $value['name'] ?></span>
+                                    <span class="author-v yellow-v"></span>
+                                </div>
+                                <p class="fs_12 fw_300 intro"><?php echo $value['desc'] ?></p>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <?php endforeach;?>
+            </ul>
+            <div class="show-right select-list">
+                <h4 class="level-title second-level-title float-elem float-down el-2">TEAM ADVANTAGE</h4>
+                <h4 class="level-title second-level-title float-elem float-down el-2">团队优势</h4>
+                <p class="show-intro float-elem float-down el-3">优秀创作团队<br>优秀创作人聚集地，专业流程，<br>搭建优质创作人团队</p>
+            </div>
         </div>
     </div>
-
-
-</div>
-
-<div class="ahwes-footer" id="footer">
-
-
-    <div class="layui-row">
-        <div class="layui-col-md4 ahwes-contact">
-            <p><i class="layui-icon layui-icon-cellphone ahwesico" ></i> 专属热线:18905631879</p>
-            <p><i class="layui-icon layui-icon-location ahwesico" ></i> 地址:安徽省宣城高新技术产业开发区麒麟大道11号</p>
-            <p><i class="layui-icon layui-icon-list ahwesico" ></i>邮箱地址：ahwes@admin.com</p>
+    <div class="wrappage-complete-video dn">
+        <div class="iframe-layer">
+            <i class="iframe-close icon-close"></i>
         </div>
+    </div>
+</div>
+<script type="text/javascript"
+        src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/incrementalCounter-v=1520824610.js"></script>
+<script type="text/javascript">
 
-        <div class="layui-col-md8">
-            <ul class="ahwes-qrcode">
-                <li >
+    layui.use(['layer'], function(){
+        var layer = layui.layer;
+        //show weixin images
+        $("#show-weixin").click(
+            function(){
+                layer.tips(
+                    '<img src="./xinpian/images/weixin.jpg"  width="150px" height="150px"/>', '#show-weixin',
+                    {tips:[3,'#000'],
+                    time:7000
+                    });}
+        );
+
+
+
+    });
+
+    $(".disabled").attr("disabled", true);
+    $(".disabled").css("pointer-events", "none");
+    // $(".incremental-counter").incrementalCounter();
+
+    $(".dplus-link").live("click", function () {
+        var _this = $(this),
+            link = _this.data("link");
+
+        if (link) {
+            location.href = link;
+        }
+    });
+
+    (function (window, $) {
+        //var videoEle = document.getElementById("backgroundmovie");
+       // videoEle.volume=100;
+        $.fn.creatorchange = function () {
+            return this.each(function () {
+                var random = Math.random() * 1; // 10s内随机开始
+                var firstShowIndex = Math.floor(Math.random() * 3);
+                $(this).find("a").eq(firstShowIndex).addClass("show");
+                setTimeout(function () {
+                   changeCreator(this);
+                }.bind(this), random * 1000);
+            });
+        };
+
+        function changeCreator(elem) {
+            elem.index = $(elem).find(".show").index();
+            var delay = 1;  // 切换间隔时间5s
+            nextShow(elem);
+            elem.timer = setInterval(nextShow, delay, elem);
+            $(elem).on("mouseover", function () {
+                clearInterval(elem.timer);
+            });
+            $(elem).on("mouseout", function () {
+                elem.timer = setInterval(nextShow, delay, elem);
+            });
+        }
+
+        function nextShow(elem) {
+            elem.index++;
+            if (elem.index == $(elem).find("a").length) elem.index = 0;
+            $(elem).find("a").eq(elem.index).addClass("show").siblings("a").removeClass("show");
+        }
+
+        $.fn.floatingUp = function () {
+            return this.each(function () {
+                var _this = $(this);
+                scrollToCur();
+                $(window).on("scroll", scrollToCur);
+
+                function scrollToCur() {
+                    var scrollOverHeight = _this.attr("scrollOverHeight") ? _this.attr("scrollOverHeight") : 200;
+                    if (_this.offset().top - $(window).scrollTop() - ($(window).height() - scrollOverHeight) < 0 && !_this[0].flag) {
+                        _this[0].flag = true;
+                        floatUp(_this);
+                    }
+                }
+            });
+        };
+
+        function floatUp(_elem) {
+            _elem[0].index = 1;
+            while (_elem.find(".el-" + _elem[0].index).length) {
+                _elem.find(".el-" + _elem[0].index).removeClass("float-down");
+                _elem[0].index++;
+            }
+        }
+
+    })(window, $);
+
+    $(function () {
+        var _secondVideoBox = $(".school-show-box"),
+            _window = $(window);
+
+        var playVideoFlag = true;
+
+        function loadVideo(_elem, _window) {
+            if (_elem.offset().top - _window.scrollTop() - _window.height() < 0 && playVideoFlag) {
+                _elem.find("video")[0].play();
+                console.log("play");
+                playVideoFlag = false;
+            }
+        }
+
+        $(".need-though-play").on("canplaythrough", function () {
+            $(this).removeClass("opacity0");
+        });
+
+        $(".creator-show-box li").creatorchange();
+        $(".float-contaniner").floatingUp();
+    });
+
+
+</script>
+<div class="footer-wrap">
+    <div class="footer-inner">
+        <div class="footer-con clearfix">
+            <div class="left fl">
                 <div>
-                    <img src="./xinpian/img/v2s.jpg" />
+                    <a class="logo-wrap v-center disabled" href="#">
+                        <span class="logo-wrap">
+                <img src="./xinpian/images/blacklogo.png" width="120" height="40" style="margin-top:10px;">
+            </span>
+                    </a>
+                    <span class="v-center fs_14 c_b_3">用作品打动世界！</span>
                 </div>
-                    <p>微信公众号</p>
-                </li>
+                <p class="fs_12 c_b_9 fw_300">
+                    维尔斯是专业的影视制作团队，汇聚精通专项人才，我们只做自己最擅长的领域，创作优秀作品。</p>
+            </div>
+            <div class="right fr clearfix">
+                <div class="column-item fl">
+                    <p class="title fs_16 c_b_3 fw_600">联系我们</p>
+                    <ul class="list fs_12 c_b_9 fw_300">
+                        <li><a target="_blank" class="disabled">公司名称:安徽维尔斯传媒策划有限公司</a></li>
+                        <li><a target="_blank" class="disabled">地址:安徽省宣城高新技术产业开发区麒麟大道11号</a></li>
+                        <li><a target="_blank" class="disabled">手机:18905631879</a></li>
+                        <li><a target="_blank" class="disabled">邮箱:279691663@qq.com</a></li>
+                    </ul>
+                </div>
+            </div>
 
-                <li >
-                    <div>
-                        <img src="./xinpian/img/wechat.jpg" />
-                    </div>
-                    <p>关注微信</p>
-                </li>
-
-                <li >
-                    <div>
-                        <img src="./xinpian/img/tik.png" />
-                    </div>
-                    <p>关注抖音</p>
-                </li>
-            </ul>
         </div>
-
-
-
+        <div class="footer-bottom">
+            <div class="bottom-con">
+                <span class="copyright">Copyright © 2017 - 2019 维尔斯. All rights reserved.</span>
+                <span class="copyright">皖ICP备17005514号-1</span>
+                <span class="copyright">皖网文[2019] 4652-199 号</span>
+            </div>
+            <div class="bottom-statute">
+                <a target="_blank"  href="http://report.ccm.gov.cn/" class="disabled">12318全国文化市场举报平台</a>
+                <a target="_blank"  href="http://report.12377.cn:13225/toreportinputNormal_anis.do" class="disabled">中国互联网违法和不良信息举报中心</a>
+            </div>
+        </div>
     </div>
-    <div class="ahwes-advert" >
-        <img src="./xinpian/img/footerlogo.jpg" style="width: 68px ;height: 68px;"/>
-        让维尔斯成为生活中的标配
-    </div>
-    <hr/>
-    <div class="ahwes-copyRight">
-        <p>Copyright © 2016 - 2019 维尔斯. All rights reserved. 皖ICP备17005514号-1 皖网文[2019] 4652-199 号</p>
-
-    </div>
-
 </div>
 
-<script src="./layui/layui.js"></script>
-<script async="" charset="utf-8" src="./script/ahwes.js?v=20191123"></script>
-<!--<script>-->
-<!--    //注意：导航 依赖 element 模块，否则无法进行功能性操作-->
-<!--    layui.use('element', function(){-->
-<!--        var element = layui.element;-->
-<!---->
-<!--        element.on('nav(bar)', function(elem){-->
-<!--            console.log(elem); //得到当前点击的DOM对象-->
-<!--        });-->
-<!--    });-->
-<!--</script>-->
+<script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/jquery.cookie-v=1503453383.js"></script>
+<script>
+    $('.first').hover(function () {
+        $(this).parent().children().first().css({borderBottom: '7px solid #454545'});
+    }, function () {
+        $(this).parent().children().first().css({borderBottom: '7px solid #323232'});
+    });
+</script>
+<script>
+    var hideCode;
+    $('.follow-wx').hover(function () {
+        $(this).parent().parent().siblings('.wx-qr').css('display', 'block');
+        $(this).next(".follow-wx-tri").css('display', 'block');
+    }, function () {
+        $(this).parent().parent().siblings('.wx-qr').css('display', 'none');
+        $(this).next(".follow-wx-tri").css('display', 'none');
+    });
+    $('.followus').hover(function () {
+        $(this).siblings('.wx-qr-follow').css('display', 'block');
+    }, function () {
+        hideCode = setTimeout(function () {
+            $(".wx-qr-follow").hide();
+        }, 300);
+        $(this).siblings('.wx-qr-follow').css('display', 'none');
+    });
+
+</script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#xma_search").bind("click", function () {
+            var conVal = $('#search').val();
+            if (conVal == '') {
+                var pace = 600;
+                $('#search').css('backgroundColor', '#D9EDF7').animate({opacity: 0.2}, pace).animate({opacity: 1}, pace, function () {
+                    $('#search').css('backgroundColor', '#fff');
+                });
+                return;
+            }
+            else
+                $('#search_btn').click();
+        });
+        /* 绑定search input框的回车按下按钮。 */
+        $("#search").bind("keyup", function (event) {
+            if (event.keyCode == 13) {
+                var conVal = $.trim($('#search').val());
+                if (conVal == '') {
+                    var pace = 600;
+                    $('#search').css('backgroundColor', '#D9EDF7').animate({opacity: 0.2}, pace).animate({opacity: 1}, pace, function () {
+                        $('#search').css('backgroundColor', '#fff');
+                    });
+                    return false;
+                } else {
+                    $('#search_btn').click();
+                }
+            }
+        });
+    });
+
+</script>
+<script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/artDialog/artDialog.min-v=1503453382.js"></script>
+<script src="<?php echo Yii::$app->request->hostInfo; ?>/xinpian/js/artDialog/artDialog.plugins.min-v=1503453382.js"></script>
 </body>
 </html>

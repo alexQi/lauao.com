@@ -99,7 +99,20 @@ class DefaultController extends BaseController
 
     public function actionAbout(){
         if (!$this->isMobile){
-            return $this->redirect(['index']);
+            $isNew = Yii::$app->request->get('isNew') ? 1 : 0;
+            $video_cate_id = Yii::$app->request->get('video_cate_id') ? Yii::$app->request->get('video_cate_id') :false;
+            $cateList  = VideoCategory::find()->select(['id','cate_name'])->asArray()->all();
+            $videoList = VideoService::getVideoList(12);
+
+            return $this->render('about',[
+                'cateList'  => $cateList,
+                'videoList' => $videoList,
+                'isNew'     => $isNew,
+                'video_cate_id'  => $video_cate_id
+            ]);
+
+
+
         }else{
             $memberList = VideoMember::find()->orderBy(['sort'=>SORT_ASC])->asArray()->all();
             $cateList = VideoCategory::find()->select(['id','cate_name'])->asArray()->all();
@@ -152,6 +165,29 @@ class DefaultController extends BaseController
     public function actionSignup(){
 
         return $this->render('signup');
+
+
+    }
+
+
+    /*
+    * 注册页面
+    *
+    * */
+    public function actionRental(){
+
+        $isNew = Yii::$app->request->get('isNew') ? 1 : 0;
+        $video_cate_id = Yii::$app->request->get('video_cate_id') ? Yii::$app->request->get('video_cate_id') :false;
+        $cateList  = VideoCategory::find()->select(['id','cate_name'])->asArray()->all();
+        $videoList = VideoService::getVideoList(12);
+
+        return $this->render('rental',[
+            'cateList'  => $cateList,
+            'videoList' => $videoList,
+            'isNew'     => $isNew,
+            'video_cate_id'  => $video_cate_id
+        ]);
+
 
 
     }
