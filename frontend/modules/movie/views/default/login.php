@@ -82,7 +82,7 @@ use yii\helpers\Url;
                 <div class="ant-card-body">
                     <div class="jsx-3434144013 transition">
                         <div style="padding:30px">
-                            <h4 class="card-title">注册</h4>
+                            <h4 class="card-title">登陆</h4>
                             <form class="ant-form ant-form-horizontal">
                                 <div class="ant-row ant-form-item">
                                     <div class="ant-col ant-form-item-control-wrapper">
@@ -91,61 +91,61 @@ use yii\helpers\Url;
                                         </div>
                                     </div>
                                 </div>
-                                <div class="ant-row ant-form-item">
-                                    <div class="ant-col ant-form-item-control-wrapper">
-                                        <div class="ant-form-item-control">
-                                            <span class="ant-form-item-children"><input type="text" placeholder="真实姓名" style="width:100%" value="" id="signup_realname" data-__meta="[object Object]" data-__field="[object Object]" class="ant-input ant-input-lg" /></span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="ant-row ant-form-item">
-                                    <div class="ant-col ant-form-item-control-wrapper">
-                                        <div class="ant-form-item-control">
-                                            <span class="ant-form-item-children"><input type="text" placeholder="身份证号" style="width:100%" value="" id="signup_codenumber" data-__meta="[object Object]" data-__field="[object Object]" class="ant-input ant-input-lg" /></span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="ant-row ant-form-item">
-                                    <div class="ant-col ant-form-item-control-wrapper">
-                                        <div class="ant-form-item-control">
-                                            <span class="ant-form-item-children"><input type="text" placeholder="邮箱" style="width:100%" value="" id="signup_email" data-__meta="[object Object]" data-__field="[object Object]" class="ant-input ant-input-lg" /></span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="ant-row ant-form-item">
-                                    <div class="ant-col ant-form-item-control-wrapper">
-                                        <div class="ant-form-item-control">
-             <span class="ant-form-item-children"><span class="ant-input-group-wrapper ant-input-group-wrapper-lg" style="width:100%"><span class="ant-input-wrapper ant-input-group"><span class="ant-input-group-addon">
-                 <div id="signup_prefix" class="select___1LL2M ant-select ant-select-enabled">
-                  <div class="ant-select-selection
-            ant-select-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-controls="" aria-expanded="false" data-__meta="[object Object]" data-__field="[object Object]" tabindex="0">
-                   <div class="ant-select-selection__rendered">
-                    <div class="ant-select-selection-selected-value" title="" style="display:block;opacity:1">
-                     <i class="flag flag-cn___3HL0X"></i>
-                     <span class="desc">中国大陆</span>
-                     <span class="prefix"> +
-                         <!-- -->86</span>
-                    </div>
-                   </div>
-                   <span class="ant-select-arrow" style="user-select:none;-webkit-user-select:none" unselectable="on"><i aria-label="图标: down" class="anticon anticon-down ant-select-arrow-icon">
-                     <svg viewbox="64 64 896 896" focusable="false" class="" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true">
-                      <path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path>
-                     </svg></i></span>
-                  </div>
-                 </div></span><input type="tel" placeholder="手机号" value="" id="signup_phone" data-__meta="[object Object]" data-__field="[object Object]" class="ant-input ant-input-lg" /></span></span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ant-row ant-form-item">
-                                    <div class="ant-col ant-form-item-control-wrapper">
-                                        <div class="ant-form-item-control">
-                                            <span class="ant-form-item-children"><span class="ant-input-group-wrapper ant-input-group-wrapper-lg"><span class="ant-input-wrapper ant-input-group"><input type="text" placeholder="验证码" value="" id="signup_smscode" data-__meta="[object Object]" data-__field="[object Object]" class="ant-input ant-input-lg" /><span class="ant-input-group-addon"><a>发送验证码</a></span></span></span></span>
-                                        </div>
-                                    </div>
-                                </div>
+<!--                                <div class="ant-row ant-form-item">-->
+<!--                                    <div class="ant-col ant-form-item-control-wrapper">-->
+<!--                                        <div class="ant-form-item-control">-->
+<!--                                            <span class="ant-form-item-children"><input type="text" placeholder="真实姓名" style="width:100%" value="" id="signup_realname" data-__meta="[object Object]" data-__field="[object Object]" class="ant-input ant-input-lg" /></span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!---->
+<!--                                </div>-->
+<!--                                <div class="ant-row ant-form-item">-->
+<!--                                    <div class="ant-col ant-form-item-control-wrapper">-->
+<!--                                        <div class="ant-form-item-control">-->
+<!--                                            <span class="ant-form-item-children"><input type="text" placeholder="身份证号" style="width:100%" value="" id="signup_codenumber" data-__meta="[object Object]" data-__field="[object Object]" class="ant-input ant-input-lg" /></span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!---->
+<!--                                </div>-->
+<!--                                <div class="ant-row ant-form-item">-->
+<!--                                    <div class="ant-col ant-form-item-control-wrapper">-->
+<!--                                        <div class="ant-form-item-control">-->
+<!--                                            <span class="ant-form-item-children"><input type="text" placeholder="邮箱" style="width:100%" value="" id="signup_email" data-__meta="[object Object]" data-__field="[object Object]" class="ant-input ant-input-lg" /></span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!---->
+<!--                                </div>-->
+<!--                                <div class="ant-row ant-form-item">-->
+<!--                                    <div class="ant-col ant-form-item-control-wrapper">-->
+<!--                                        <div class="ant-form-item-control">-->
+<!--             <span class="ant-form-item-children"><span class="ant-input-group-wrapper ant-input-group-wrapper-lg" style="width:100%"><span class="ant-input-wrapper ant-input-group"><span class="ant-input-group-addon">-->
+<!--                 <div id="signup_prefix" class="select___1LL2M ant-select ant-select-enabled">-->
+<!--                  <div class="ant-select-selection-->
+<!--            ant-select-selection--single" role="combobox" aria-autocomplete="list" aria-haspopup="true" aria-controls="" aria-expanded="false" data-__meta="[object Object]" data-__field="[object Object]" tabindex="0">-->
+<!--                   <div class="ant-select-selection__rendered">-->
+<!--                    <div class="ant-select-selection-selected-value" title="" style="display:block;opacity:1">-->
+<!--                     <i class="flag flag-cn___3HL0X"></i>-->
+<!--                     <span class="desc">中国大陆</span>-->
+<!--                     <span class="prefix"> +-->
+<!--
+<!--                    </div>-->
+<!--                   </div>-->
+<!--                   <span class="ant-select-arrow" style="user-select:none;-webkit-user-select:none" unselectable="on"><i aria-label="图标: down" class="anticon anticon-down ant-select-arrow-icon">-->
+<!--                     <svg viewbox="64 64 896 896" focusable="false" class="" data-icon="down" width="1em" height="1em" fill="currentColor" aria-hidden="true">-->
+<!--                      <path d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path>-->
+<!--                     </svg></i></span>-->
+<!--                  </div>-->
+<!--                 </div></span><input type="tel" placeholder="手机号" value="" id="signup_phone" data-__meta="[object Object]" data-__field="[object Object]" class="ant-input ant-input-lg" /></span></span></span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                                <div class="ant-row ant-form-item">-->
+<!--                                    <div class="ant-col ant-form-item-control-wrapper">-->
+<!--                                        <div class="ant-form-item-control">-->
+<!--                                            <span class="ant-form-item-children"><span class="ant-input-group-wrapper ant-input-group-wrapper-lg"><span class="ant-input-wrapper ant-input-group"><input type="text" placeholder="验证码" value="" id="signup_smscode" data-__meta="[object Object]" data-__field="[object Object]" class="ant-input ant-input-lg" /><span class="ant-input-group-addon"><a>发送验证码</a></span></span></span></span>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                                 <div class="ant-row ant-form-item">
                                     <div class="ant-col ant-form-item-control-wrapper">
                                         <div class="ant-form-item-control">
@@ -157,23 +157,27 @@ use yii\helpers\Url;
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="ant-row ant-form-item">
                                     <div class="ant-col ant-form-item-control-wrapper">
                                         <div class="ant-form-item-control">
-                                            <span class="ant-form-item-children"><button type="submit" class="ant-btn ant-btn-primary ant-btn-lg ant-btn-block"><span>注 册</span></button></span>
+                                            <span class="ant-form-item-children"><button type="submit" class="ant-btn ant-btn-primary ant-btn-lg ant-btn-block"><span>登 录</span></button></span>
                                         </div>
                                     </div>
                                 </div>
 
-                                 <span class="text-notice">注册即代表同意<a id="xieyi"  href="javascript:;">《用户协议》</a></span>
+<!--                                 <span class="text-notice">注册即代表同意<a id="xieyi"  href="javascript:;">《用户协议》</a></span>-->
                             </form>
                         </div>
                     </div>
                 </div>
                 <ul class="ant-card-actions">
-                    <li style="width:100%"><span><a href="<?php echo Url::to(['/movie/default/login'])?>">已有账号？
-                                <!-- -->登录</a></span></li>
+                    <li style="width:100%">
+                        <span>
+                            <a href="<?php echo Url::to(['/movie/default/signup'])?>">
+                                没有账号? 请注册
+                            </a>
+                        </span>
+                    </li>
                 </ul>
             </div>
         </main>

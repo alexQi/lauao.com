@@ -5,6 +5,7 @@ use common\models\Pay\ApiService;
 use common\models\Orders;
 use common\models\Pay\Wechat;
 use common\models\ActivityBase;
+use common\models\Rental;
 use common\models\VideoCategory;
 use common\models\VideoMember;
 use frontend\models\WechatJSSKD;
@@ -169,6 +170,13 @@ class DefaultController extends BaseController
 
     }
 
+    public function actionLogin(){
+
+        return $this->render('login');
+
+
+    }
+
 
     /*
     * 注册页面
@@ -180,13 +188,38 @@ class DefaultController extends BaseController
         $video_cate_id = Yii::$app->request->get('video_cate_id') ? Yii::$app->request->get('video_cate_id') :false;
         $cateList  = VideoCategory::find()->select(['id','cate_name'])->asArray()->all();
         $videoList = VideoService::getVideoList(12);
+        $rentalList= Rental::find()->asArray()->all();
+
+
 
         return $this->render('rental',[
             'cateList'  => $cateList,
             'videoList' => $videoList,
             'isNew'     => $isNew,
-            'video_cate_id'  => $video_cate_id
+            'video_cate_id'  => $video_cate_id,
+            'rentalList'=>$rentalList
         ]);
+
+
+
+    }
+
+    public function actionRentaldetail(){
+
+        if (!yii::$app->request->get('detail_id')){
+            return $this->redirect('default/rental');
+        }
+        $rentaldetail = Rental::find()->where(['id'=>yii::$app->request->get('detail_id')])->asArray()->one();
+        if (!$rentaldetail){
+            return $this->redirect('default/rental');
+        }
+
+
+        return $this->render('rentaldetail',[
+            'rentaldetail' => $rentaldetail
+        ]);
+
+
 
 
 

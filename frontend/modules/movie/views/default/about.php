@@ -138,33 +138,33 @@ use yii\helpers\Url;
     <div class="header-con">
         <a class="logo v-center" href="<?php echo Url::to(['default/index']); ?>">
             <span class="logo-wrap">
-                <img src="./xinpian/images/blacklogo.png" width="120" height="40" style="margin-top:10px;">
+                <img src="./xinpian/img/logo.png" width="150" height="40" style="padding:5px;background: #2b2b2b;margin: 5px;border-radius: 5px;">
             </span>
         </a>
         <ul class="fs_16 fw_300 nav-list clearfix v-center">
             <li class="nav-item select">
                 <a href="<?php echo Url::to(['/movie/default/index']) ?>">首页</a>
             </li>
-            <li class="nav-item hover-elem">
-                <i class="icon-arrow-down"></i>
-                <a href="<?php echo Url::to(['default/discover']) ?>">我们的案例</a>
-                <div class="common-hover-wrap issue-hover-wrap">
-                    <div class="hover-box">
-                        <ul class="list">
-                            <li class="nav-dropdown-item">
-                                <ul class="nav-sublist">
-                                    <?php foreach ($cateList as $key => $cate): ?>
-                                        <li class="nav-sublist-item">
-                                            <a href="<?php echo Url::to(['/movie/default/discover', 'video_cate_id' => $cate['id']]) ?>"><?php echo $cate['cate_name']; ?></a>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            </li>
-                            <li class="line"></li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
+<!--            <li class="nav-item hover-elem">-->
+<!--                <i class="icon-arrow-down"></i>-->
+<!--                <a href="--><?php //echo Url::to(['default/discover']) ?><!--">我们的案例</a>-->
+<!--                <div class="common-hover-wrap issue-hover-wrap">-->
+<!--                    <div class="hover-box">-->
+<!--                        <ul class="list">-->
+<!--                            <li class="nav-dropdown-item">-->
+<!--                                <ul class="nav-sublist">-->
+<!--                                    --><?php //foreach ($cateList as $key => $cate): ?>
+<!--                                        <li class="nav-sublist-item">-->
+<!--                                            <a href="--><?php //echo Url::to(['/movie/default/discover', 'video_cate_id' => $cate['id']]) ?><!--">--><?php //echo $cate['cate_name']; ?><!--</a>-->
+<!--                                        </li>-->
+<!--                                    --><?php //endforeach; ?>
+<!--                                </ul>-->
+<!--                            </li>-->
+<!--                            <li class="line"></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </li>-->
             <li class="nav-item school ">
                 <a href="<?php echo Url::to(['/movie/default/rental']) ?>">器械租赁</a>
             </li>
@@ -193,7 +193,7 @@ use yii\helpers\Url;
         </ul>
         <ul class="fr right-part no-login">
             <li class="search-btn icon-search"></li>
-            <!--            <li class="reg-btn"><a class="disabled" href="">登录</a></li>-->
+                        <li class="reg-btn"><a href="<?php echo Url::to(['/movie/default/login'])?>">登录</a></li>
             <li class="login-btn"><a  href="<?php echo Url::to(['/movie/default/signup'])?>">注册</a></li>
         </ul>
     </div>
@@ -272,13 +272,13 @@ use yii\helpers\Url;
                 <div>
                     <a class="logo-wrap v-center disabled" href="#">
                         <span class="logo-wrap">
-                <img src="./xinpian/images/blacklogo.png" width="120" height="40" style="margin-top:10px;">
+                <img src="./xinpian/images/sharelogo.jpg" width="100" height="100" style="margin-top:8px;padding: 5px;">
             </span>
                     </a>
                     <span class="v-center fs_14 c_b_3">用作品打动世界！</span>
                 </div>
                 <p class="fs_12 c_b_9 fw_300">
-                    维尔斯是专业的影视制作团队，汇聚精通专项人才，我们只做自己最擅长的领域，创作优秀作品。</p>
+                    维尔斯传媒影视器材为主的租赁平台，用户实现“免押金、免压身份证、无需跟机员”等服务。</p>
             </div>
             <div class="right fr clearfix">
                 <div class="column-item fl">

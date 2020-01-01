@@ -201,52 +201,68 @@ use yii\helpers\Url;
 </div>
 
 <div class="layui-container" style="background: white;margin-bottom: 200px;top:100px">
-    <ul >
 
+            <div class="layui-row" >
 
-        <?php foreach ($rentalList as $key =>$rental):?>
-        <li id="product-list">
-            <div class="layui-row" style="margin-top: 30px">
-                <div class="layui-col-md3">
-                    <div >
-                    <img class="product-img"  src="<?php echo $rental['image']; ?>"/>
+                <div class="layui-card">
+                    <div class="layui-card-header" style="height: 50px">
+                        <h2 style="padding: 10px"><strong> <?php echo $rentaldetail['title']; ?></strong></h2>
                     </div>
-                </div>
-                <div class="layui-col-md6" >
+                    <div class="layui-card-body">
+
+<!--                        说明-->
+                        <div class="layui-row" style="margin-top: 30px">
+                            <div class="layui-col-md3">
+                                <div >
+                                    <img class="product-img"  src="<?php echo $rentaldetail['image']; ?>"/>
+                                </div>
+                            </div>
+                            <div class="layui-col-md6" >
                                 <div class="product-desc" style="margin-top: 10px;">
-                                    <p style="font-size: 20px;line-height: 25px;">
-                                        <a href="<?php echo Url::to(['/movie/default/rentaldetail', 'detail_id' => $rental['id']]) ?>">
-                                        <?php echo $rental['title']; ?>
-                                        </a>
-                                        <!--                                           庆典会展租赁 气球拱门、舞台设备、同传设备等舞美灯-->
-                                        </p>
-                                    <p style="color:#999;margin-top: 10px">
-                                        <?php echo $rental['desc']; ?>
-<!--                                        专一文化传媒有限公司专业从事各种舞台活动场布，舞美服装灯光影响摄影摄像电子屏一条龙服务，服务全程总监跟随，保质保量。物美价廉，服务到位，欢迎咨询。-->
+                                    <p style="color:#999;margin-top: 10px">类别：<?php echo $rentaldetail['category']; ?></p>
+                                    <p style="color:#999;margin-top: 10px">联系人 ：<?php echo $rentaldetail['person']; ?></p>
+                                    <p style="color:#999;margin-top: 10px">联系电话 ：<?php echo $rentaldetail['callnumber']; ?></p>
+                                    <p style="color:#999;margin-top: 10px">公司名称：<?php echo $rentaldetail['company']; ?></p>
+                                    <p style="color:#999;margin-top: 10px;">
+                                        简述：
+                                        <?php echo $rentaldetail['desc']; ?>
+                                        <!--                                        专一文化传媒有限公司专业从事各种舞台活动场布，舞美服装灯光影响摄影摄像电子屏一条龙服务，服务全程总监跟随，保质保量。物美价廉，服务到位，欢迎咨询。-->
                                     </p>
 
-                                    <p style="color: #666;font-size: 14px;padding:8px 0">
-<!--                                        合肥专壹文化传播有限公司-->
-                                        <?php echo $rental['company']; ?>
-                                    </p>
 
                                 </div>
+                            </div>
+
+
+                        </div>
+<!--                        明细-->
+                        <div class="layui-row">
+                            <div class="layui-tab layui-tab-brief">
+                                <ul class="layui-tab-title">
+                                    <li class="layui-this">详情描述</li>
+
+
+                                </ul>
+                                <div class="layui-tab-content">
+                                    <div class="layui-tab-item layui-show">
+                                        <div class="about-ahwes" style="margin: 20px;background: white;line-height: 35px"">
+                                            <?php echo $rentaldetail['content']; ?>
+
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
                         </div>
 
-                <div class="layui-col-md3" style=" display: flex;align-items: center;max-width: 220px;height: 100px;justify-content: flex-end;">
-                    <button type="button" class="layui-btn layui-btn-danger shownumber" value=" <?php echo $rental['callnumber']; ?>">
-                        <i class="layui-icon layui-icon-cellphone" style="font-size: 18px"></i>
-                        联系商家</button>
+
+                    </div>
                 </div>
 
             </div>
 
-            <hr class="layui-bg-gray po-hr" />
-
-        </li>
-
-        <?php endforeach;?>
-    </ul>
 
 </div>
 

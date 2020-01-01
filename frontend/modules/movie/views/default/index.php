@@ -52,35 +52,35 @@ use yii\helpers\Url;
     <div class="header-con">
         <a class="logo v-center" href="<?php echo Url::to(['/movie/default/index']) ?>">
             <span class="logo-wrap">
-                <img src="./xinpian/images/logo40.png" width="120" height="40" style="margin-top:10px;">
+                <img src="./xinpian/img/logo.png" width="150" height="40" style="padding:5px;margin: 5px">
             </span>
         </a>
         <ul class="fs_16 fw_300 nav-list clearfix v-center">
             <li class="nav-item select">
                 <a href="<?php echo Url::to(['/movie/default/index']) ?>">首页</a>
             </li>
-            <li class="nav-item hover-elem">
-                <i class="icon-arrow-down"></i>
-                <a href="<?php echo Url::to(['/movie/default/discover']) ?>">我们的案例</a>
-                <div class="common-hover-wrap issue-hover-wrap">
-                    <div class="hover-box">
-                        <ul class="list">
-                            <li class="nav-dropdown-item">
-                                <ul class="nav-sublist">
-                                    <?php foreach ($cateList as $key => $cate): ?>
-                                        <li class="nav-sublist-item">
-                                            <a href="<?php echo Url::to(['/movie/default/discover', 'video_cate_id' => $cate['id']]) ?>"><?php echo $cate['cate_name']; ?></a>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            </li>
-                            <li class="line"></li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
+<!--            <li class="nav-item hover-elem">-->
+<!--                <i class="icon-arrow-down"></i>-->
+<!--                <a href="--><?php //echo Url::to(['/movie/default/discover']) ?><!--">我们的案例</a>-->
+<!--                <div class="common-hover-wrap issue-hover-wrap">-->
+<!--                    <div class="hover-box">-->
+<!--                        <ul class="list">-->
+<!--                            <li class="nav-dropdown-item">-->
+<!--                                <ul class="nav-sublist">-->
+<!--                                    --><?php //foreach ($cateList as $key => $cate): ?>
+<!--                                        <li class="nav-sublist-item">-->
+<!--                                            <a href="--><?php //echo Url::to(['/movie/default/discover', 'video_cate_id' => $cate['id']]) ?><!--">--><?php //echo $cate['cate_name']; ?><!--</a>-->
+<!--                                        </li>-->
+<!--                                    --><?php //endforeach; ?>
+<!--                                </ul>-->
+<!--                            </li>-->
+<!--                            <li class="line"></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </li>-->
+<!---->
 
-<?php ///*var_dump($videoList)*/?>
 
             <li class="nav-item school ">
                 <a href="<?php echo Url::to(['/movie/default/rental']) ?>">器械租赁</a>
@@ -107,7 +107,7 @@ use yii\helpers\Url;
         </ul>
         <ul class="fr right-part no-login">
             <li class="search-btn icon-search"></li>
-<!--            <li class="reg-btn"><a class="disabled" href="">登录</a></li>-->
+            <li class="reg-btn"><a href="<?php echo Url::to(['/movie/default/login'])?>">登录</a></li>
             <li class="login-btn"><a  href="<?php echo Url::to(['/movie/default/signup'])?>">注册</a></li>
         </ul>
     </div>
@@ -306,49 +306,49 @@ use yii\helpers\Url;
         </div>
     </div>
     <div class="article-set-box">
-        <div class="article-show-box float-contaniner">
-            <div class="show-left select-list">
-
-                    <h4 class="level-title second-level-title float-elem el-2">SUCESSFUL CASES</h4>
-                <h4 class="level-title second-level-title float-elem float-down el-2">成功案例</h4>
-
-                <p class="show-intro float-elem float-down el-3">我们学习海量国内外优质作品;<br>只为了创作更好的优秀作品</p>
-                <ul class="show-btn-list float-elem float-down el-4" data-eventname="查看作品分类" data-key="分类">
-                    <?php foreach ($cateList as $key => $cate): ?>
-                        <li>
-                            <a class="dplus-link" href="javascript:;"
-                               data-link="<?php echo Url::to(['default/discover', 'video_cate_id' => $cate['id']]) ?>"><?php echo $cate['cate_name']; ?></a>
-                        </li>
-                    <?php endforeach; ?>
-                    <li><a class="dplus-link disabled">more</a></li>
-                </ul>
-            </div>
-         <ul class="show-right float-elem float-down el-1" data-eventname="查看作品" data-key="作品ID">
-            <?php foreach ($videoList['list'] as $key=>$value):?>
-                <li>
-<!--                    <a class="dplus-link video-cover " data-value="108864"-->
-<!--                       data-link="--><?php //echo Url::to(['default/detail', 'video_id' => $value['video_id']])?><!--"/>-->
-                    <a class="dplus-link video-cover " data-value="108864" href="<?php echo $value['video_url']; ?> " target="_blank"/>
-
-                        <img class="lazy-img1"
-                             src="<?php echo $value['poster']; ?>">
-                        <div class="video-cover-con">
-
-                            <span class="duration fs_12"></span>
-                        </div>
-                        <div class="video-hover-con">
-                            <div class="fs_12 fw_600 c_w_f desc line-hide-2"><?php echo $value['video_name']; ?></div>
-                            <span class="fs_10 fw_300 "><?php echo $value['cate_name']; ?></span>
-
-                        </div>
-                    </a>
-                </li>
-
-            <?php endforeach;?>
-
-            </ul>
-
-        </div>
+<!--        <div class="article-show-box float-contaniner">-->
+<!--            <div class="show-left select-list">-->
+<!---->
+<!--                    <h4 class="level-title second-level-title float-elem el-2">SUCESSFUL CASES</h4>-->
+<!--                <h4 class="level-title second-level-title float-elem float-down el-2">成功案例</h4>-->
+<!---->
+<!--                <p class="show-intro float-elem float-down el-3">我们学习海量国内外优质作品;<br>只为了创作更好的优秀作品</p>-->
+<!--                <ul class="show-btn-list float-elem float-down el-4" data-eventname="查看作品分类" data-key="分类">-->
+<!--                    --><?php //foreach ($cateList as $key => $cate): ?>
+<!--                        <li>-->
+<!--                            <a class="dplus-link" href="javascript:;"-->
+<!--                               data-link="--><?php //echo Url::to(['default/discover', 'video_cate_id' => $cate['id']]) ?><!--">--><?php //echo $cate['cate_name']; ?><!--</a>-->
+<!--                        </li>-->
+<!--                    --><?php //endforeach; ?>
+<!--                    <li><a class="dplus-link disabled">more</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--         <ul class="show-right float-elem float-down el-1" data-eventname="查看作品" data-key="作品ID">-->
+<!--            --><?php //foreach ($videoList['list'] as $key=>$value):?>
+<!--                <li>-->
+<!--                   <a class="dplus-link video-cover " data-value="108864"-->
+<!--                       data-link="--><?php ////echo Url::to(['default/detail', 'video_id' => $value['video_id']])?><!--<!--"/>-->-->
+<!--                    <a class="dplus-link video-cover " data-value="108864" href="--><?php //echo $value['video_url']; ?><!-- " target="_blank"/>-->
+<!---->
+<!--                        <img class="lazy-img1"-->
+<!--                             src="--><?php //echo $value['poster']; ?><!--">-->
+<!--                        <div class="video-cover-con">-->
+<!---->
+<!--                            <span class="duration fs_12"></span>-->
+<!--                        </div>-->
+<!--                        <div class="video-hover-con">-->
+<!--                            <div class="fs_12 fw_600 c_w_f desc line-hide-2">--><?php //echo $value['video_name']; ?><!--</div>-->
+<!--                            <span class="fs_10 fw_300 ">--><?php //echo $value['cate_name']; ?><!--</span>-->
+<!---->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!---->
+<!--            --><?php //endforeach;?>
+<!---->
+<!--            </ul>-->
+<!---->
+<!--        </div>-->
         <div class="creator-show-box float-contaniner">
             <ul class="show-left float-elem float-down el-1" data-eventname="查看创作人" data-key="创作人ID">
                 <?php foreach($memberList as $key=>$value):?>
@@ -506,13 +506,13 @@ use yii\helpers\Url;
                 <div>
                     <a class="logo-wrap v-center disabled" href="#">
                         <span class="logo-wrap">
-                <img src="./xinpian/images/blacklogo.png" width="120" height="40" style="margin-top:10px;">
+                <img src="./xinpian/images/sharelogo.jpg" width="100" height="100" style="margin-top:8px;padding: 5px">
             </span>
                     </a>
                     <span class="v-center fs_14 c_b_3">用作品打动世界！</span>
                 </div>
                 <p class="fs_12 c_b_9 fw_300">
-                    维尔斯是专业的影视制作团队，汇聚精通专项人才，我们只做自己最擅长的领域，创作优秀作品。</p>
+                    维尔斯传媒影视器材为主的租赁平台，用户实现“免押金、免压身份证、无需跟机员”等服务。</p>
             </div>
             <div class="right fr clearfix">
                 <div class="column-item fl">

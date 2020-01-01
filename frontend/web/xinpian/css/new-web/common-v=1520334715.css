@@ -2123,7 +2123,7 @@ input {
 
 .header-common .logo .logo-wrap {
     display: inline-block;
-    width: 100px;
+    /*width: 100px;*/
     height: 100%;
     position: relative;
 }
