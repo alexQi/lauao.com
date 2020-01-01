@@ -12,6 +12,7 @@ use frontend\models\WechatJSSKD;
 use frontend\models\VideoService;
 use Yii;
 use frontend\controllers\BaseController;
+use yii\helpers\Url;
 use frontend\models\ApplyUserService;
 use yii\web\ForbiddenHttpException;
 
@@ -207,11 +208,12 @@ class DefaultController extends BaseController
     public function actionRentaldetail(){
 
         if (!yii::$app->request->get('detail_id')){
-            return $this->redirect('default/rental');
+
+            return $this->redirect(Url::to(['default/rental']));
         }
         $rentaldetail = Rental::find()->where(['id'=>yii::$app->request->get('detail_id')])->asArray()->one();
         if (!$rentaldetail){
-            return $this->redirect('default/rental');
+            return $this->redirect(Url::to(['default/rental']));
         }
 
 
