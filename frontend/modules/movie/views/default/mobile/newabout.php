@@ -5,8 +5,6 @@
  * Date: 2019/8/18
  * Time: 15:36
  */
-use common\models\Pay\Wechat;
-
 ?>
 <!DOCTYPE html>
 <html>
