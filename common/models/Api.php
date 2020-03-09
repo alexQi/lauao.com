@@ -98,7 +98,7 @@ class Api extends Model{
                     break;
                 default:
                     //.......
-                    $message = (json_encode($data));
+                    $message = $data->text;
             }
         }
 
