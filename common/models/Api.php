@@ -13,6 +13,11 @@ use yii;
 use yii\base\Model;
 use common\models\service\ApiBaseService;
 
+/**
+ * Class Api
+ *
+ * @package common\models
+ */
 class Api extends Model{
 
     public $queryParam;
