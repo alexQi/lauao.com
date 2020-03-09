@@ -133,6 +133,11 @@ class Wechat extends Model{
         $this->msgTpl  = yii::$app->params['wechat']['tpl'][$this->msgType];
     }
 
+    /**
+     * sendMsg
+     *
+     * @return string
+     */
     public function sendMsg(){
         $result = sprintf($this->msgTpl, $this->data['FromUserName'], $this->data['ToUserName'], time(), $this->msg);
 

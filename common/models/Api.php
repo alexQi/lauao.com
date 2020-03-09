@@ -13,6 +13,11 @@ use yii;
 use yii\base\Model;
 use common\models\service\ApiBaseService;
 
+/**
+ * Class Api
+ *
+ * @package common\models
+ */
 class Api extends Model{
 
     public $queryParam;
@@ -73,7 +78,8 @@ class Api extends Model{
     private function formateData($apiName,$data){
         $message = 'no respons data';
         if ($apiName == "Robot"){
-            if ($data->msg=='ok')
+            yii::info(json_encode($data));
+            if ($data && property_exists($data,'msg') && $data->msg=='ok')
             {
                 $msg = $data->result->content;
 
@@ -81,7 +87,10 @@ class Api extends Model{
                 $realMsg = preg_replace("/\]/",'>',$realMsg);
                 $realMsg = preg_replace("/(link)/",'a',$realMsg);
                 $message = preg_replace("/(url)/",'href',$realMsg);
+            }else{
+                $message = '机器人同学睡着了，没法回复您的消息了';
             }
+
         }else if($apiName == "Turing"){
             switch ($data->code)
             {
@@ -93,6 +102,7 @@ class Api extends Model{
                     break;
                 default:
                     //.......
+                    $message = $data->text;
             }
         }
 

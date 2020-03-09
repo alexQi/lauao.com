@@ -22,6 +22,6 @@ return [
     ],
     'turing' => [
         'APIkey'    => '25648c697a2a4a44b4bfe6a20e6651af',
-        'secret'    => '9a04fb1dc3c066c8ONOFF',
+        'secret'    => '9a04fb1dc3c066c8',
     ]
 ];
