@@ -88,7 +88,7 @@ class Api extends Model{
                 $realMsg = preg_replace("/(link)/",'a',$realMsg);
                 $message = preg_replace("/(url)/",'href',$realMsg);
             }else{
-                $message = json_encode($data);
+                $message = '机器人同学睡着了，没法回复您的消息了';
             }
 
         }else if($apiName == "Turing"){
