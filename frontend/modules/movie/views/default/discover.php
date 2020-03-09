@@ -137,26 +137,26 @@ if ($video_cate_id) {
             <li class="nav-item select">
                 <a href="<?php echo Url::to(['/movie/default/index']) ?>">首页</a>
             </li>
-            <li class="nav-item hover-elem">
-                <i class="icon-arrow-down"></i>
-                <a href="<?php echo Url::to(['default/discover']) ?>">作品</a>
-                <div class="common-hover-wrap issue-hover-wrap">
-                    <div class="hover-box">
-                        <ul class="list">
-                            <li class="nav-dropdown-item">
-                                <ul class="nav-sublist">
-                                    <?php foreach ($cateList as $key => $cate): ?>
-                                        <li class="nav-sublist-item">
-                                            <a href="<?php echo Url::to(['/movie/default/discover', 'video_cate_id' => $cate['id']]) ?>"><?php echo $cate['cate_name']; ?></a>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            </li>
-                            <li class="line"></li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
+<!--            <li class="nav-item hover-elem">-->
+<!--                <i class="icon-arrow-down"></i>-->
+<!--                <a href="--><?php //echo Url::to(['default/discover']) ?><!--">我们的案例</a>-->
+<!--                <div class="common-hover-wrap issue-hover-wrap">-->
+<!--                    <div class="hover-box">-->
+<!--                        <ul class="list">-->
+<!--                            <li class="nav-dropdown-item">-->
+<!--                                <ul class="nav-sublist">-->
+<!--                                    --><?php //foreach ($cateList as $key => $cate): ?>
+<!--                                        <li class="nav-sublist-item">-->
+<!--                                            <a href="--><?php //echo Url::to(['/movie/default/discover', 'video_cate_id' => $cate['id']]) ?><!--">--><?php //echo $cate['cate_name']; ?><!--</a>-->
+<!--                                        </li>-->
+<!--                                    --><?php //endforeach; ?>
+<!--                                </ul>-->
+<!--                            </li>-->
+<!--                            <li class="line"></li>-->
+<!--                        </ul>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </li>-->
             <li class="nav-item school ">
                 <a class="disabled" href="#">器械租赁</a>
             </li>
@@ -168,7 +168,7 @@ if ($video_cate_id) {
                 <a class="disabled" href="#" >活动</a>
             </li>
             <li class="nav-item">
-                <a class="disabled" href="#" >维尔斯影业</a>
+                <a href="<?php echo Url::to(['/movie/default/about']) ?>">关于维尔斯</a>
             </li>
 <!--            <li class="nav-item">-->
 <!--                <a class="disabled" href="" target="_blank">魔力短视频</a>-->
@@ -185,8 +185,8 @@ if ($video_cate_id) {
         </ul>
         <ul class="fr right-part no-login">
             <li class="search-btn icon-search"></li>
-            <li class="reg-btn"><a class="disabled" href="">登录</a></li>
-            <li class="login-btn"><a class="disabled" href="">注册</a></li>
+            <li class="reg-btn"><a  href="<?php echo Url::to(['/movie/default/login'])?>">登录</a></li>
+            <li class="login-btn"><a  href="<?php echo Url::to(['/movie/default/signup'])?>">注册</a></li>
         </ul>
     </div>
 </div>
@@ -428,7 +428,7 @@ if ($video_cate_id) {
                         <?php if (isset($Uri['video_cate_id'])) {
                             unset($Uri['video_cate_id']);
                         } ?>
-                        <a class="fs_14 fw_300 c_b_3" href="<?php echo Url::to($Uri) ?>">全部作品</a>
+                        <a class="fs_14 fw_300 c_b_3" href="<?php echo Url::to($Uri) ?>">成功案例</a>
                     </span>
                     <?php foreach ($cateList as $key => $cate): ?>
                         <?php $Uri['video_cate_id'] = $cate['id']; ?>
@@ -485,8 +485,9 @@ if ($video_cate_id) {
                         </div>
                     </a>
                     <div class="video-con">
-                        <a href="<?php echo Url::to(['default/detail', 'video_id' => $video['video_id']]); ?>">
-                            <p class="fs_14 fw_600 c_b_3 line-hide-1"><?php echo $video['video_name']; ?></p>
+<!--                        <a href="--><?php //echo Url::to(['default/detail', 'video_id' => $video['video_id']]); ?><!--">-->
+                        <a href="<?php echo $video['video_url']; ?> " target="_blank">
+                        <p class="fs_14 fw_600 c_b_3 line-hide-1"><?php echo $video['video_name']; ?></p>
                         </a>
                         <div class="video-view fs_12 fw_300 c_b_9">
                             <p class="fs_12"><?php echo $video['cate_name']; ?></p>
@@ -521,29 +522,37 @@ if ($video_cate_id) {
             <div class="left fl">
                 <div>
                     <a class="logo-wrap v-center disabled" href="#">
-                        <span class="logo-wrap">
-                <img src="./xinpian/images/blacklogo.png" width="120" height="40" style="margin-top:10px;">
+                       <span class="logo-wrap">
+                <img src="./xinpian/images/sharelogo.jpg" width="100" height="100" style="margin-top:8px;padding: 5px;border-radius: 5px;">
             </span>
                     </a>
                     <span class="v-center fs_14 c_b_3">用作品打动世界！</span>
                 </div>
                 <p class="fs_12 c_b_9 fw_300">
-                    维尔斯是专业的影视制作团队，汇聚精通专项人才，我们只做自己最擅长的领域，创作优秀作品。</p>
+                    维尔斯传媒建立的“维尔斯网”，以影视器材为主的租赁平台，用户实现“免押金、免压身份证、无需跟机员”等服务。</p>
             </div>
             <div class="right fr clearfix">
                 <div class="column-item fl">
-                    <p class="title fs_16 c_b_3 fw_600">关于</p>
-                    <ul class="list fs_12 fw_300">
-                        <li><a target="_blank" class="disabled">关于我们</a></li>
-                        <li><a target="_blank" class="disabled">加入我们</a></li>
+                    <p class="title fs_16 c_b_3 fw_600">联系我们</p>
+                    <ul class="list fs_12 c_b_9 fw_300">
+                        <li><a target="_blank" class="disabled">公司名称:安徽维尔斯传媒策划有限公司</a></li>
+                        <li><a target="_blank" class="disabled">地址:安徽省宣城高新技术产业开发区麒麟大道11号</a></li>
+                        <li><a target="_blank" class="disabled">手机:18905631879</a></li>
+                        <li><a target="_blank" class="disabled">邮箱:279691663@qq.com</a></li>
                     </ul>
                 </div>
             </div>
+
         </div>
         <div class="footer-bottom">
             <div class="bottom-con">
-                <span class="copyright">Copyright © 2017 - 2018 维尔斯. All rights reserved.</span>
+                <span class="copyright">Copyright © 2017 - 2019 维尔斯. All rights reserved.</span>
                 <span class="copyright">皖ICP备17005514号-1</span>
+                <span class="copyright">皖网文[2019] 4652-199 号</span>
+            </div>
+            <div class="bottom-statute">
+                <a target="_blank"  href="http://report.ccm.gov.cn/" class="disabled">12318全国文化市场举报平台</a>
+                <a target="_blank"  href="http://report.12377.cn:13225/toreportinputNormal_anis.do" class="disabled">中国互联网违法和不良信息举报中心</a>
             </div>
         </div>
     </div>

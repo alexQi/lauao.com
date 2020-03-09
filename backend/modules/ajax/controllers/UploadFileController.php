@@ -23,8 +23,14 @@ class UploadFileController extends BaseController
                 throw new Exception('Bucket 未定义');
             }
 
-            $fileFormName = yii::$app->request->get('fileClass').'[tempFileUrl]';
+            //7.2版本返回$_FILE返回的数组类型不一样
+            if(version_compare(PHP_VERSION,'7.2.0', '<'))
+               $fileFormName = yii::$app->request->get('fileClass').'[tempFileUrl]';
+            else
+                $fileFormName = yii::$app->request->get('fileClass').'[tempFileUrl][0]';
+
             $uploadFile = UploadedFile::getInstanceByName($fileFormName);
+
             if (!$uploadFile){
                 throw new Exception('未检测到上传文件');
             }

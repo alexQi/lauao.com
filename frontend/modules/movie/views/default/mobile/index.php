@@ -172,7 +172,7 @@ use yii\helpers\Url;
         //输出播放器
        // player.write(id);
 
-}
+//}
 
     layui.use(['layer','jquery'], function(){
         var layer = layui.layer;

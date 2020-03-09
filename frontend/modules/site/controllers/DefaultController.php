@@ -60,7 +60,7 @@ class DefaultController extends BaseController
             'appSecret'=>1,
             'token'=>111,
         ]);
-//        $jsApiConfig = $wechat->jsApiConfig();
+        $jsApiConfig = $wechat->jsApiConfig();
 
         $channel = yii::$app->request->get('channel') ? yii::$app->request->get('channel') : 'xczb';
         $order   = Orders::find();
