@@ -11,6 +11,9 @@ use wechat\models\Wechat;
  */
 class IndexController extends Controller
 {
+    /**
+     * @var Api
+     */
     public $api;
 
     public function init()

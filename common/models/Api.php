@@ -78,7 +78,8 @@ class Api extends Model{
     private function formateData($apiName,$data){
         $message = 'no respons data';
         if ($apiName == "Robot"){
-            if ($data->msg=='ok')
+            yii::info(json_encode($data));
+            if ($data && property_exists($data,'msg') && $data->msg=='ok')
             {
                 $msg = $data->result->content;
 
@@ -89,6 +90,7 @@ class Api extends Model{
             }else{
                 $message = json_encode($data);
             }
+
         }else if($apiName == "Turing"){
             switch ($data->code)
             {
