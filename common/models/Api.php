@@ -98,6 +98,7 @@ class Api extends Model{
                     break;
                 default:
                     //.......
+                    die(json_encode($data));
             }
         }
 
