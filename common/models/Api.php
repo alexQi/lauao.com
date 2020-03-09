@@ -86,6 +86,8 @@ class Api extends Model{
                 $realMsg = preg_replace("/\]/",'>',$realMsg);
                 $realMsg = preg_replace("/(link)/",'a',$realMsg);
                 $message = preg_replace("/(url)/",'href',$realMsg);
+            }else{
+                $message = json_encode($data);
             }
         }else if($apiName == "Turing"){
             switch ($data->code)
