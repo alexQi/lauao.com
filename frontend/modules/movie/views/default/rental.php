@@ -97,19 +97,6 @@ use yii\helpers\Url;
 </head>
 <body>
 
-<div class="filmplay-black-box feedback-wrap dn">
-    <div class="filmplay-inner-box feedback-box">
-        <div class="feedback-con creator-con">
-            <span class="close icon-close"></span>
-            <p class="fs_14 fw_600 c_b_3 line-hide-1">在线提交问题/建议</p>
-            <div class="feedback-input-wrap">
-				<textarea placeholder="亲，遇到什么麻烦了？
-或者告诉我们希望增加什么功能呢？"></textarea>
-                <span class="feedback-btn bg-red fs_14 fw_600 c_w_f">发送</span>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="slide-bar">
     <ul class="slide-bar-list">
         <li class="to-up icon-arrow-top"></li>
